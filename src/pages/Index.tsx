@@ -162,18 +162,17 @@ export default function Index() {
       <section className="hero-wrap">
         <div className="hero-bg">
           <img src={IMG_HERO} alt="Детский сад Рыбка" className="hero-img" />
-          <div className="hero-overlay" />
         </div>
         <div className="hero-content">
-          <div className="hero-badge">🌊 Детский сад «Рыбка» · Керчь</div>
+          <div className="hero-badge">🌈 Комфортное пространство для детей</div>
           <h1 className="hero-h1">
-            Место, куда дети<br />
-            <span className="h1-accent">бегут с радостью</span>
+            Рыбка<br />
+            <span className="h1-accent">Долли</span>
           </h1>
           <p className="hero-desc">
-            Частный детский сад с заботливыми педагогами,{" "}
-            собственной кухней и индивидуальным подходом{" "}
-            к каждому ребёнку от 1,5 до 7 лет
+            Мягкая и быстрая адаптация — без слёз и стресса.
+            Детский центр в Керчи, где ребёнок полюбит учиться,
+            а вы перестанете переживать.
           </p>
           <div className="hero-actions">
             <button className="cta-btn cta-btn-primary" onClick={() => setModalOpen(true)}>
