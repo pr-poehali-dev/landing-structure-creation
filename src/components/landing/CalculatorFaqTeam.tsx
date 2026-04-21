@@ -14,7 +14,7 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const calcPrice = () => {
-    const base = calcHours === "full" ? 18500 : 12500;
+    const base = calcHours === "full" ? 20000 : 18000;
     return Math.round(base * (calcDays / 5));
   };
 
@@ -48,13 +48,13 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
                     className={`calc-type-btn ${calcHours === "full" ? "calc-type-active" : ""}`}
                     onClick={() => setCalcHours("full")}
                   >
-                    Полный день (7:30–19:00)
+                    Полный день (8:00–18:00)
                   </button>
                   <button
                     className={`calc-type-btn ${calcHours === "short" ? "calc-type-active" : ""}`}
                     onClick={() => setCalcHours("short")}
                   >
-                    Короткий (до 13:00)
+                    Короткий (8:00–13:00)
                   </button>
                 </div>
               </div>
@@ -62,7 +62,7 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
             <div className="calc-result">
               <div className="calc-result-label">Ваша стоимость в месяц</div>
               <div className="calc-result-price">{calcPrice().toLocaleString("ru-RU")} ₽</div>
-              <div className="calc-result-note">Включает питание и все занятия</div>
+              <div className="calc-result-note">Включает питание, занятия, прогулки и мероприятия</div>
               <button className="cta-btn cta-btn-primary" onClick={onOpenModal}>
                 Записаться по этой цене
                 <Icon name="ArrowRight" size={18} />
