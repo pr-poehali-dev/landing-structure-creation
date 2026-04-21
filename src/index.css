@@ -232,7 +232,7 @@
 /* Float button */
 .float-phone-wrap {
   position: fixed;
-  bottom: 100px;
+  bottom: 160px;
   right: 28px;
   z-index: 100;
   display: flex;
@@ -285,7 +285,7 @@
   align-items: center;
   gap: 8px;
   padding: 14px 22px;
-  background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
+  background: linear-gradient(135deg, #ff1744 0%, #e53935 40%, #b71c1c 100%);
   color: #fff;
   font-family: "Golos Text", sans-serif;
   font-size: 14px;
@@ -293,7 +293,9 @@
   border-radius: 50px;
   cursor: pointer;
   border: none;
-  box-shadow: 0 4px 20px rgba(229, 57, 53, 0.45);
+  box-shadow:
+    0 4px 24px rgba(255, 23, 68, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   animation: float-pulse 3s ease-in-out infinite;
   transition:
     transform 0.2s ease,
