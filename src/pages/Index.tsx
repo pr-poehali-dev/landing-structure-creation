@@ -24,10 +24,10 @@ export default function Index() {
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} />
 
       {/* Плавающая кнопка */}
-      <button className="float-btn" onClick={openModal}>
-        <Icon name="Calendar" size={20} />
-        <span>Записаться</span>
-      </button>
+      <a className="float-btn" href="tel:+79881521680">
+        <Icon name="Phone" size={20} />
+        <span>Позвонить</span>
+      </a>
 
       <HeroSection onOpenModal={openModal} />
       <InfoSections onOpenModal={openModal} timerMm={mm} timerSs={ss} />
