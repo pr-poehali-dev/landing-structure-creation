@@ -285,7 +285,7 @@
   align-items: center;
   gap: 8px;
   padding: 14px 22px;
-  background: linear-gradient(135deg, #ff1744 0%, #e53935 40%, #b71c1c 100%);
+  background: linear-gradient(180deg, #ff4d6d 0%, #e53935 45%, #b71c1c 100%);
   color: #fff;
   font-family: "Golos Text", sans-serif;
   font-size: 14px;
@@ -294,16 +294,20 @@
   cursor: pointer;
   border: none;
   box-shadow:
-    0 4px 24px rgba(255, 23, 68, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 6px 0 #7f0000,
+    0 10px 24px rgba(183, 28, 28, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
   animation: float-pulse 3s ease-in-out infinite;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
 .float-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 28px rgba(229, 57, 53, 0.6);
+  transform: translateY(3px);
+  box-shadow:
+    0 3px 0 #7f0000,
+    0 6px 16px rgba(183, 28, 28, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 @keyframes float-pulse {
   0%,
