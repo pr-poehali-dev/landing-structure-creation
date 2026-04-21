@@ -1483,6 +1483,23 @@
   margin-top: 8px;
 }
 
+/* VK button in navbar */
+.hero-vk-btn {
+  background: #0077ff !important;
+  color: #fff !important;
+  border-color: #0077ff !important;
+}
+.hero-vk-btn:hover {
+  opacity: 0.88;
+}
+
+/* FAQ CTA */
+.faq-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
 /* Yandex Badge */
 .yandex-badge {
   display: inline-flex;

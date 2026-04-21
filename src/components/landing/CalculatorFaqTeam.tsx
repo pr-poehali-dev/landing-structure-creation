@@ -92,6 +92,12 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
               </div>
             ))}
           </div>
+          <div className="faq-cta">
+            <a href="https://vk.com/app6379730_-179759189#l=6" target="_blank" rel="noopener noreferrer" className="cta-btn cta-btn-primary">
+              Узнать о нас больше
+              <Icon name="ArrowRight" size={18} />
+            </a>
+          </div>
         </div>
       </Section>
 

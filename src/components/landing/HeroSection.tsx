@@ -132,6 +132,10 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           />
         </div>
         <div className="hero-phones">
+          <a href="https://vk.com/rybka_dolli" target="_blank" rel="noopener noreferrer" className="hero-phone-btn hero-vk-btn">
+            <Icon name="Users" size={16} />
+            ВКонтакте
+          </a>
           <a href="tel:+79881521680" className="hero-phone-btn">
             <Icon name="Phone" size={16} />
             +7 (988) 152-16-80 МТС
