@@ -75,13 +75,13 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
                   <div className="schedule-dot" />
                   <div className="schedule-info">
                     <strong>{s.title}</strong>
-                    <span>{s.desc}</span>
+                    {s.desc && <span>{s.desc}</span>}
                   </div>
                 </div>
               ))}
             </div>
             <div className="schedule-photo">
-              <img src={IMG_LUNCH} alt="Обед в садике" />
+              <img src={IMG_LUNCH} alt="1 день в нашем садике" />
               <div className="schedule-photo-badge">
                 <Icon name="Utensils" size={16} />
                 5-разовое питание каждый день

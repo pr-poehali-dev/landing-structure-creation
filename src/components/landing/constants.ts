@@ -3,7 +3,7 @@ export const IMG_HERO =
 export const IMG_TEAM =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/files/99b154c6-e8b8-4f6f-b0a7-29aaef4149c6.jpg";
 export const IMG_LUNCH =
-  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/files/254342fe-c7a7-4128-ab9d-1fabaca2f7da.jpg";
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a507aa9a-3dfb-4721-acdd-914ae49dfafe.png";
 
 export const GALLERY = [IMG_HERO, IMG_TEAM, IMG_LUNCH, IMG_HERO, IMG_TEAM, IMG_LUNCH];
 
@@ -15,15 +15,19 @@ export const ADVANTAGES = [
 ];
 
 export const SCHEDULE = [
-  { time: "7:30", title: "Приём детей", desc: "Утренняя гимнастика, свободная игра" },
-  { time: "9:00", title: "Завтрак", desc: "Горячая каша, фрукты, напиток" },
-  { time: "9:30", title: "Занятия", desc: "Развивающие уроки по возрасту" },
-  { time: "12:00", title: "Прогулка", desc: "Свежий воздух, подвижные игры" },
-  { time: "13:00", title: "Обед", desc: "Полноценный горячий обед" },
-  { time: "13:30", title: "Тихий час", desc: "Дневной сон в уютных кроватках" },
-  { time: "15:30", title: "Полдник", desc: "Лёгкий перекус" },
-  { time: "16:00", title: "Творчество", desc: "Рисование, лепка, музыка" },
-  { time: "18:00", title: "Ужин и уход", desc: "Тёплый ужин, прогулка до прихода родителей" },
+  { time: "8:00",  title: "Приём детей",                    desc: "" },
+  { time: "8:30",  title: "Весёлая зарядка",                desc: "" },
+  { time: "9:00",  title: "Вкусный завтрак",                desc: "" },
+  { time: "9:30",  title: "Увлекательные занятия",          desc: "" },
+  { time: "11:00", title: "Витаминный перекус",             desc: "" },
+  { time: "11:30", title: "Бодрая прогулка",                desc: "" },
+  { time: "13:00", title: "Питательный обед",               desc: "" },
+  { time: "13:30", title: "Сладкий восстанавливающий сон",  desc: "" },
+  { time: "15:00", title: "Гимнастика пробуждения",         desc: "" },
+  { time: "15:30", title: "Полезный полдник",               desc: "" },
+  { time: "16:00", title: "Увлекательные игры",             desc: "" },
+  { time: "17:00", title: "Нескучная прогулка",             desc: "" },
+  { time: "18:00", title: "Пора домой",                     desc: "" },
 ];
 
 export const REVIEWS = [
