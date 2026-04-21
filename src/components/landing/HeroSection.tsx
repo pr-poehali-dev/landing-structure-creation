@@ -174,6 +174,10 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
               Записаться на экскурсию
               <Icon name="ArrowRight" size={18} />
             </button>
+            <a href="tel:+79881521698" className="cta-btn cta-btn-call">
+              <Icon name="Phone" size={18} />
+              Позвонить
+            </a>
           </div>
         </div>
       </div>

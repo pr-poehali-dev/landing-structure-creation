@@ -171,6 +171,18 @@
   box-shadow: 0 8px 24px rgba(232, 124, 30, 0.35);
 }
 
+.cta-btn-call {
+  background: linear-gradient(135deg, #e53935 0%, #c62828 100%);
+  color: #fff;
+  border-color: transparent;
+}
+.cta-btn-call:hover {
+  background: linear-gradient(135deg, #ef5350 0%, #d32f2f 100%);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(229, 57, 53, 0.45);
+}
+
 .cta-btn-outline {
   background: transparent;
   color: var(--dark-bg);
