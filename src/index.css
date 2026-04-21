@@ -337,7 +337,8 @@
 .hero-photo-col {
   position: relative;
   overflow: hidden;
-  min-height: 520px;
+  min-height: 420px;
+  max-height: 580px;
 }
 .hero-photo-main {
   width: 100%;
@@ -346,6 +347,7 @@
   display: block;
   filter: blur(3px);
   transform: scale(1.04);
+  object-position: top center;
 }
 
 .hero-form-col {
