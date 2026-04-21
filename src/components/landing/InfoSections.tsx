@@ -141,7 +141,7 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
                 <div className="price-hours">{p.hours}</div>
                 <div className="price-amount">
                   {p.old && <span className="price-old">{p.old} ₽</span>}
-                  <span className="price-current">{p.price}{" "}₽/мес</span>
+                  <span className="price-current">{p.price}{" "}{p.unit}</span>
                 </div>
                 <button className="cta-btn cta-btn-price" onClick={onOpenModal}>
                   Выбрать <Icon name="ArrowRight" size={15} />
@@ -149,7 +149,7 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
               </div>
             ))}
           </div>
-          <p className="prices-note">В стоимость входит: питание, все занятия, постельное бельё, страховка</p>
+          <p className="prices-note">В стоимость входит: питание, занятия, прогулки, мероприятия проводимые центром</p>
         </div>
       </Section>
     </>

@@ -59,7 +59,7 @@ export const CHECKLIST = [
 ];
 
 export const PRICES = [
-  { name: "Полный день", hours: "7:30–19:00", price: "18 500", old: "22 000", badge: "Популярный" },
-  { name: "Короткий день", hours: "7:30–13:00", price: "12 500", old: null, badge: null },
-  { name: "Гибкое посещение", hours: "По часам", price: "от 300 ₽/ч", old: null, badge: null },
+  { name: "Полный день", hours: "8:00–18:00", price: "от 20 000", unit: "₽/мес", old: null, badge: "Популярный" },
+  { name: "Короткий день", hours: "8:00–13:00", price: "18 000", unit: "₽/мес", old: null, badge: null },
+  { name: "Гибкое посещение", hours: "По часам", price: "от 300", unit: "₽/ч", old: null, badge: null },
 ];
