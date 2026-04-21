@@ -1153,11 +1153,12 @@
   align-items: flex-start;
 }
 .calc-result-label {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  font-family: "Cormorant", serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 4px;
 }
 .calc-result-price {
   font-family: "Cormorant", serif;
@@ -1166,6 +1167,24 @@
   color: #ffb87a;
   line-height: 1;
   margin: 4px 0;
+}
+.calc-result-desc {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+  margin: 4px 0 8px;
+}
+.calc-bonus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 184, 122, 0.15);
+  border: 1px solid rgba(255, 184, 122, 0.35);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #ffb87a;
+  margin: 4px 0 8px;
 }
 .calc-result-note {
   font-size: 13px;

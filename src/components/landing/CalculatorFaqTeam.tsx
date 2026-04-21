@@ -9,14 +9,16 @@ interface CalculatorFaqTeamProps {
 }
 
 export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProps) {
-  const [calcDays, setCalcDays] = useState(5);
-  const [calcHours, setCalcHours] = useState("full");
+  const [calcDays, setCalcDays] = useState("full");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const calcPrice = () => {
-    const base = calcHours === "full" ? 20000 : 18000;
-    return Math.round(base * (calcDays / 5));
+  const formatLabels: Record<string, { title: string; desc: string }> = {
+    full:    { title: "Полный абонемент", desc: "20 рабочих дней · 8:00–18:00 · оставшиеся дни месяца в подарок" },
+    short:   { title: "Короткий абонемент", desc: "20 рабочих дней · 8:00–13:00 · оставшиеся дни месяца в подарок" },
+    days:    { title: "Несколько дней", desc: "Любые дни · полный или короткий · цена зависит от количества дней" },
   };
+
+  const selected = formatLabels[calcDays];
 
   return (
     <>
@@ -30,41 +32,41 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
           <div className="calc-wrap">
             <div className="calc-controls">
               <div className="calc-row">
-                <label className="calc-label">Дней в неделю</label>
-                <div className="calc-days">
-                  {[1, 2, 3, 4, 5].map(d => (
-                    <button
-                      key={d}
-                      className={`calc-day-btn ${calcDays === d ? "calc-day-active" : ""}`}
-                      onClick={() => setCalcDays(d)}
-                    >{d}</button>
-                  ))}
-                </div>
-              </div>
-              <div className="calc-row">
-                <label className="calc-label">Время пребывания</label>
+                <label className="calc-label">Выберите формат посещения</label>
                 <div className="calc-types">
                   <button
-                    className={`calc-type-btn ${calcHours === "full" ? "calc-type-active" : ""}`}
-                    onClick={() => setCalcHours("full")}
+                    className={`calc-type-btn ${calcDays === "full" ? "calc-type-active" : ""}`}
+                    onClick={() => setCalcDays("full")}
                   >
-                    Полный день (8:00–18:00)
+                    Полный абонемент
                   </button>
                   <button
-                    className={`calc-type-btn ${calcHours === "short" ? "calc-type-active" : ""}`}
-                    onClick={() => setCalcHours("short")}
+                    className={`calc-type-btn ${calcDays === "short" ? "calc-type-active" : ""}`}
+                    onClick={() => setCalcDays("short")}
                   >
-                    Короткий (8:00–13:00)
+                    Короткий абонемент
+                  </button>
+                  <button
+                    className={`calc-type-btn ${calcDays === "days" ? "calc-type-active" : ""}`}
+                    onClick={() => setCalcDays("days")}
+                  >
+                    Несколько дней
                   </button>
                 </div>
               </div>
             </div>
             <div className="calc-result">
-              <div className="calc-result-label">Ваша стоимость в месяц</div>
-              <div className="calc-result-price">{calcPrice().toLocaleString("ru-RU")} ₽</div>
+              <div className="calc-result-label">{selected.title}</div>
+              <div className="calc-result-desc">{selected.desc}</div>
+              {calcDays !== "days" && (
+                <div className="calc-bonus">
+                  <Icon name="Gift" size={16} />
+                  Оставшиеся дни месяца — в подарок при покупке абонемента!
+                </div>
+              )}
               <div className="calc-result-note">Включает питание, занятия, прогулки и мероприятия</div>
               <button className="cta-btn cta-btn-primary" onClick={onOpenModal}>
-                Записаться по этой цене
+                Узнать точную стоимость
                 <Icon name="ArrowRight" size={18} />
               </button>
             </div>
