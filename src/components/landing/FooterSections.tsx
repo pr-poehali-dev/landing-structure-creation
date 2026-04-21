@@ -131,7 +131,7 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
           </div>
           <div className="footer-bottom">
             <span>© 2024 Детский сад «Рыбка»</span>
-            <span>ИП Иванова А.В. · ОГРН 000000000000000</span>
+            <span>ИП Савченко И.И. · ОГРН 318911200074795</span>
           </div>
         </div>
       </footer>
