@@ -97,6 +97,12 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
           <div className="section-header">
             <span className="section-tag">Отзывы родителей</span>
             <h2 className="section-h2">Что говорят<br />наши семьи</h2>
+            <a href="https://yandex.ru/maps/-/CPCszO6I" target="_blank" rel="noopener noreferrer" className="yandex-badge">
+              <img src="https://yastatic.net/s3/front-maps-static/maps-front-maps/static/v56/icons/favicon/favicon.svg" alt="Яндекс" width={18} height={18} />
+              <span className="yandex-badge-stars">★★★★★</span>
+              <span className="yandex-badge-rating">4,9</span>
+              <span className="yandex-badge-label">на Яндекс Картах</span>
+            </a>
           </div>
           <div className="reviews-grid">
             {REVIEWS.map((r, i) => (
