@@ -11,6 +11,7 @@ export const GALLERY = [
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d15ea3fc-ee3e-4cee-b0d6-bf0a430cc6ad.jpg",
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d751118d-4314-4ea1-84af-5f701e3492da.png",
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/9c0b8849-c94c-49af-8530-5b1766e288df.jpg",
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/45b730b9-fe33-41db-b95c-93d9b1840b5f.png",
 ];
 
 export const ADVANTAGES = [
