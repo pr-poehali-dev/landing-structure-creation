@@ -105,6 +105,49 @@ function Modal({ open, onClose }: { open: boolean; onClose: () => void }) {
   );
 }
 
+function CountdownTimer() {
+  const [sec, setSec] = useState(4 * 24 * 3600 + 12 * 3600);
+  useEffect(() => {
+    const t = setInterval(() => setSec(s => s > 0 ? s - 1 : 0), 1000);
+    return () => clearInterval(t);
+  }, []);
+  const d = Math.floor(sec / 86400);
+  const h = Math.floor((sec % 86400) / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  return <>{d}д {String(h).padStart(2,"0")}ч {String(m).padStart(2,"0")}м {String(s).padStart(2,"0")}с</>;
+}
+
+function HeroInlineForm({ onSuccess }: { onSuccess: () => void }) {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [age, setAge] = useState("");
+  const [done, setDone] = useState(false);
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (name && phone) { setDone(true); onSuccess(); }
+  };
+
+  if (done) return (
+    <div className="hform-success">
+      <span>🎉</span> Спасибо! Перезвоним в течение 30 минут.
+    </div>
+  );
+
+  return (
+    <form className="hform" onSubmit={submit}>
+      <input className="hform-input" placeholder="Имя" value={name} onChange={e => setName(e.target.value)} required />
+      <input className="hform-input" placeholder="Телефон" value={phone} onChange={e => setPhone(e.target.value)} required />
+      <input className="hform-input" placeholder="Возраст ребёнка" value={age} onChange={e => setAge(e.target.value)} />
+      <button type="submit" className="cta-btn cta-btn-primary hform-btn">
+        Записаться
+        <Icon name="ArrowRight" size={16} />
+      </button>
+    </form>
+  );
+}
+
 function useInView(ref: React.RefObject<HTMLElement>) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -160,37 +203,63 @@ export default function Index() {
 
       {/* ── БЛОК 1: Герой ── */}
       <section className="hero-wrap">
-        <div className="hero-bg">
-          <img src={IMG_HERO} alt="Детский сад Рыбка" className="hero-img" />
+        {/* Шапка */}
+        <div className="hero-navbar">
+          <div className="hero-logo">
+            <div className="hero-logo-icon">🐟</div>
+            <div>
+              <div className="hero-logo-name">Рыбка Долли</div>
+              <div className="hero-logo-sub">Дети наше всё!</div>
+            </div>
+          </div>
+          <a href="tel:+79782345678" className="hero-phone-btn">
+            <Icon name="Phone" size={16} />
+            +7 (978) 234-56-78
+          </a>
         </div>
-        <div className="hero-content">
-          <div className="hero-badge">🌈 Комфортное пространство для детей</div>
-          <h1 className="hero-h1">
-            Рыбка<br />
-            <span className="h1-accent">Долли</span>
-          </h1>
-          <p className="hero-desc">
-            Мягкая и быстрая адаптация — без слёз и стресса.
-            Детский центр в Керчи, где ребёнок полюбит учиться,
-            а вы перестанете переживать.
-          </p>
-          <div className="hero-actions">
-            <button className="cta-btn cta-btn-primary" onClick={() => setModalOpen(true)}>
-              Записаться на экскурсию
-              <Icon name="ArrowRight" size={18} />
-            </button>
-            <a href="tel:+79780000000" className="cta-btn cta-btn-outline">
-              <Icon name="Phone" size={17} />
-              Позвонить
-            </a>
+
+        {/* Двухколоночный контент */}
+        <div className="hero-split">
+          {/* Левая колонка — фото */}
+          <div className="hero-photo-col">
+            <img src={IMG_HERO} alt="Дети в детском саду" className="hero-photo-main" />
           </div>
-          <div className="hero-stats">
-            <div className="hero-stat"><strong>7+</strong><span>лет работаем</span></div>
-            <div className="hero-divider" />
-            <div className="hero-stat"><strong>150+</strong><span>счастливых семей</span></div>
-            <div className="hero-divider" />
-            <div className="hero-stat"><strong>18</strong><span>педагогов</span></div>
+
+          {/* Правая колонка — текст + форма */}
+          <div className="hero-form-col">
+            <h1 className="hero-h1">
+              Частный детский сад<br />
+              <span className="h1-accent">«Рыбка Долли»</span>
+            </h1>
+            <p className="hero-address">
+              <Icon name="MapPin" size={14} />
+              Керчь, ул. Циолковского, 12
+            </p>
+            <p className="hero-desc">Домашняя атмосфера для детей 1,5–6 лет</p>
+
+            <ul className="hero-checklist">
+              <li><Icon name="Check" size={16} /><span>Группы до 10 детей</span></li>
+              <li><Icon name="Check" size={16} /><span>Вкусное питание</span></li>
+              <li><Icon name="Check" size={16} /><span>Педагоги-профессионалы</span></li>
+            </ul>
+
+            {/* Мини-форма */}
+            <div className="hero-inline-form">
+              <HeroInlineForm onSuccess={() => setModalOpen(false)} />
+            </div>
           </div>
+        </div>
+
+        {/* Нижняя строка */}
+        <div className="hero-bottom-bar">
+          <span className="hero-urgency">
+            <Icon name="Clock" size={16} />
+            Осталось <strong>3 места</strong>
+          </span>
+          <span className="hero-urgency-sep">|</span>
+          <span className="hero-urgency">
+            До конца акции: <strong><CountdownTimer /></strong>
+          </span>
         </div>
       </section>
 
