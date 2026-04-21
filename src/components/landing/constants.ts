@@ -49,9 +49,10 @@ export const FAQ_LIST = [
 ];
 
 export const TEAM = [
-  { name: "Ольга Викторовна", role: "Старший воспитатель", exp: "18 лет опыта", img: IMG_TEAM },
-  { name: "Наталья Игоревна", role: "Педагог-психолог", exp: "12 лет опыта", img: IMG_LUNCH },
-  { name: "Светлана Петровна", role: "Воспитатель", exp: "9 лет опыта", img: IMG_HERO },
+  { name: "Ирина Павловна", role: "Управляющая центром, педагог подготовки к школе", exp: "Работает со дня основания центра", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/085c5f38-b78c-4dbe-98ad-adef0ceef589.jpg" },
+  { name: "Наталья Петровна", role: "Учитель продлёнки, учитель английского, педагог-вожатый летнего клуба", exp: "Работает в центре 6 лет", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/f74c42be-206a-4feb-888c-cb207eaa66a9.jpg" },
+  { name: "Ирина Васильевна", role: "Педагог-психолог ясельной группы", exp: "Работает в центре 5 лет", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/b401a66d-fdc6-4428-9a0b-874813db607b.jpg" },
+  { name: "Светлана Владимировна", role: "Креатив-педагог старшей группы", exp: "Работает в центре 1 год", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a5c9496c-631e-4ccc-8af8-6e6e634366de.jpg" },
 ];
 
 export const CHECKLIST = [
