@@ -59,6 +59,14 @@ def handler(event: dict, context) -> dict:
         </a>
       </div>
 
+      <div style="background: #fff; border-radius: 10px; padding: 20px; margin: 20px 0; border-left: 4px solid #e87c1e;">
+        <p style="margin: 0 0 8px; font-weight: bold; color: #333;">✅ 5 вопросов, которые нужно задать на экскурсии</p>
+        <a href="https://disk.yandex.ru/i/0_JuM7lhXoKjOg"
+           style="display: inline-block; background: #e87c1e; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-size: 14px;">
+          Скачать чек-лист →
+        </a>
+      </div>
+
       <p style="color: #888; font-size: 13px; margin-top: 24px;">
         Вы также подписались на наш блог — полезные статьи будут приходить на этот адрес.<br>
         <a href="https://blogribkadolli.ru" style="color: #e87c1e;">blogribkadolli.ru</a>
