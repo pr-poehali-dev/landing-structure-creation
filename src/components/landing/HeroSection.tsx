@@ -104,16 +104,22 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
       {/* Шапка */}
       <div className="hero-navbar">
         <div className="hero-logo">
-          <div className="hero-logo-icon">🐟</div>
-          <div>
-            <div className="hero-logo-name">Рыбка Долли</div>
-            <div className="hero-logo-sub">Дети наше всё!</div>
-          </div>
+          <img
+            src="https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/05246deb-af27-4e0c-be50-d0635a2372ab.png"
+            alt="Рыбка Долли"
+            className="hero-logo-img"
+          />
         </div>
-        <a href="tel:+79782345678" className="hero-phone-btn">
-          <Icon name="Phone" size={16} />
-          +7 (978) 234-56-78
-        </a>
+        <div className="hero-phones">
+          <a href="tel:+79881521680" className="hero-phone-btn">
+            <Icon name="Phone" size={16} />
+            +7 (988) 152-16-80 МТС
+          </a>
+          <a href="tel:+79787120353" className="hero-phone-btn hero-phone-btn-alt">
+            <Icon name="Phone" size={16} />
+            +7 (978) 712-03-53 Волна
+          </a>
+        </div>
       </div>
 
       {/* Двухколоночный контент */}

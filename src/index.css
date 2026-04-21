@@ -281,22 +281,17 @@
 .hero-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
-.hero-logo-icon {
-  font-size: 36px;
-  line-height: 1;
+.hero-logo-img {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
 }
-.hero-logo-name {
-  font-family: "Cormorant", serif;
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--dark-bg);
-}
-.hero-logo-sub {
-  font-size: 11px;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
+.hero-phones {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 .hero-phone-btn {
   display: flex;
@@ -315,6 +310,24 @@
 }
 .hero-phone-btn:hover {
   background: var(--teal-dark);
+}
+.hero-phone-btn-alt {
+  background: #1b6fbf;
+}
+.hero-phone-btn-alt:hover {
+  background: #155aa0;
+}
+@media (max-width: 640px) {
+  .hero-phones {
+    gap: 6px;
+  }
+  .hero-phone-btn {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+  .hero-logo-img {
+    height: 48px;
+  }
 }
 
 /* Split layout */
