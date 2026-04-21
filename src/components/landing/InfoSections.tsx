@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 import { ADVANTAGES, SCHEDULE, REVIEWS, PRICES, IMG_LUNCH } from "./constants";
+import FeaturesSection from "./FeaturesSection";
 
 // ── Section (shared animated wrapper) ─────────────────────────────────────
 function useInView(ref: React.RefObject<HTMLElement>) {
@@ -56,6 +57,8 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
           </div>
         </div>
       </Section>
+
+      <FeaturesSection onOpenModal={onOpenModal} />
 
       {/* ── БЛОК 3: День в садике ── */}
       <Section className="bg-cream">

@@ -785,6 +785,107 @@
   text-align: center;
 }
 
+/* BLOCK: Features (4 cards) */
+.feat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .feat-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.feat-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.feat-emoji {
+  font-size: 36px;
+  line-height: 1;
+}
+.feat-title {
+  font-family: "Golos Text", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark-bg);
+  line-height: 1.3;
+}
+.feat-subtitle {
+  font-size: 14px;
+  color: var(--orange);
+  font-weight: 600;
+  margin: 0;
+}
+.feat-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.feat-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+.feat-list li svg {
+  color: var(--teal);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.feat-result {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--cream);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dark-bg);
+}
+.feat-result svg {
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.feat-review {
+  border-left: 3px solid var(--orange);
+  padding-left: 14px;
+  margin-top: auto;
+}
+.feat-review-text {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 0 0 4px;
+  line-height: 1.5;
+}
+.feat-review-author {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.feat-badge {
+  background: linear-gradient(135deg, var(--orange), #e05a00);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
 /* BLOCK 5: Prices */
 .timer-banner {
   display: flex;
