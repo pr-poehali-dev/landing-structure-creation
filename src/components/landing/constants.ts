@@ -5,7 +5,13 @@ export const IMG_TEAM =
 export const IMG_LUNCH =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a507aa9a-3dfb-4721-acdd-914ae49dfafe.png";
 
-export const GALLERY = [IMG_HERO, IMG_TEAM, IMG_LUNCH, IMG_HERO, IMG_TEAM, IMG_LUNCH];
+export const GALLERY = [
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/abb19cee-a15c-4cca-afb0-be2db878df6e.png",
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/77d301da-9e40-4ff2-a960-1a20252924c9.png",
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d15ea3fc-ee3e-4cee-b0d6-bf0a430cc6ad.jpg",
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d751118d-4314-4ea1-84af-5f701e3492da.png",
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/9c0b8849-c94c-49af-8530-5b1766e288df.jpg",
+];
 
 export const ADVANTAGES = [
   { icon: "Shield", title: "Безопасность", text: "Закрытая территория, видеонаблюдение 24/7, пропускной режим" },
