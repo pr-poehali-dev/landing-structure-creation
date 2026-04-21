@@ -154,6 +154,13 @@
   border: 2px solid transparent;
   white-space: nowrap;
 }
+@media (max-width: 480px) {
+  .cta-btn {
+    white-space: normal;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
 .cta-btn-lg {
   padding: 17px 36px;
   font-size: 16px;
@@ -718,6 +725,12 @@
   position: sticky;
   top: 80px;
 }
+@media (max-width: 768px) {
+  .schedule-photo {
+    position: relative;
+    top: auto;
+  }
+}
 .schedule-photo img {
   width: 100%;
   height: auto;
@@ -987,6 +1000,7 @@
 .timer-banner {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -1000,6 +1014,17 @@
   color: #fbbf24;
   font-size: 18px;
   font-variant-numeric: tabular-nums;
+}
+@media (max-width: 480px) {
+  .timer-banner {
+    font-size: 13px;
+    padding: 10px 14px;
+    justify-content: center;
+    text-align: center;
+  }
+  .timer-banner strong {
+    font-size: 16px;
+  }
 }
 
 .prices-grid {
@@ -1484,6 +1509,15 @@
   gap: 14px;
   animation: scale-in 0.25s ease;
 }
+@media (max-width: 480px) {
+  .exit-popup {
+    padding: 32px 20px;
+    border-radius: 16px;
+  }
+  .exit-popup-title {
+    font-size: 24px;
+  }
+}
 .exit-popup-close {
   position: absolute;
   top: 16px;
@@ -1614,6 +1648,11 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 24px;
 }
+@media (max-width: 640px) {
+  .footer-inner {
+    gap: 24px;
+  }
+}
 .footer-brand {
   display: flex;
   flex-direction: column;
@@ -1692,6 +1731,12 @@
   max-width: 440px;
   position: relative;
   animation: scale-in 0.25s ease;
+}
+@media (max-width: 480px) {
+  .modal-box {
+    padding: 28px 18px;
+    border-radius: 16px;
+  }
 }
 @keyframes scale-in {
   from {
