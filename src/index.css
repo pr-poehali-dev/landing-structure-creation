@@ -337,8 +337,8 @@
 .hero-photo-col {
   position: relative;
   overflow: hidden;
-  min-height: 420px;
-  max-height: 580px;
+  max-height: 480px;
+  align-self: center;
 }
 .hero-photo-main {
   width: 100%;
