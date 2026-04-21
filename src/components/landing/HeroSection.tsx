@@ -120,7 +120,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
       <div className="hero-split">
         {/* Левая колонка — фото */}
         <div className="hero-photo-col">
-          <img src={IMG_HERO} alt="Дети в детском саду" className="hero-photo-main" />
+          <img src="https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/34dad42d-b6dd-42d7-8a81-78033a9057f8.png" alt="Дети в детском саду" className="hero-photo-main" />
         </div>
 
         {/* Правая колонка — текст + форма */}
