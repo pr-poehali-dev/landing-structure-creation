@@ -312,10 +312,10 @@
   background: var(--teal-dark);
 }
 .hero-phone-btn-alt {
-  background: #1b6fbf;
+  background: #2aa8a0;
 }
 .hero-phone-btn-alt:hover {
-  background: #155aa0;
+  background: #228f88;
 }
 @media (max-width: 640px) {
   .hero-phones {

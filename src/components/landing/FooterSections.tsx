@@ -45,9 +45,9 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
                 Записаться на экскурсию
                 <Icon name="ArrowRight" size={20} />
               </button>
-              <a href="tel:+79780000000" className="cta-btn cta-btn-outline-light cta-btn-lg">
+              <a href="tel:+79881521680" className="cta-btn cta-btn-outline-light cta-btn-lg">
                 <Icon name="Phone" size={18} />
-                +7 (978) 000-00-00
+                +7 (988) 152-16-80
               </a>
             </div>
           </div>
@@ -64,8 +64,11 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
               <p>пр-т Победы, 15, Керчь, Республика Крым</p>
             </div>
             <div className="footer-contacts">
-              <a href="tel:+79780000000" className="footer-link">
-                <Icon name="Phone" size={15} /> +7 (978) 000-00-00
+              <a href="tel:+79881521680" className="footer-link">
+                <Icon name="Phone" size={15} /> +7 (988) 152-16-80 (МТС)
+              </a>
+              <a href="tel:+79787120353" className="footer-link">
+                <Icon name="Phone" size={15} /> +7 (978) 712-03-53 (Волна)
               </a>
               <a href="mailto:info@ribkadollli.ru" className="footer-link">
                 <Icon name="Mail" size={15} /> info@ribkadollli.ru
