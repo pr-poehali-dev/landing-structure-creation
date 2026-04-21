@@ -7,12 +7,17 @@ export function Modal({ open, onClose }: { open: boolean; onClose: () => void })
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   if (!open) return null;
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name && phone) setDone(true);
+    if (!name || !phone) return;
+    setLoading(true);
+    await sendLead(name, phone, '', 'Модальное окно');
+    setLoading(false);
+    setDone(true);
   };
 
   return (
@@ -29,9 +34,9 @@ export function Modal({ open, onClose }: { open: boolean; onClose: () => void })
             <form onSubmit={submit} className="modal-form">
               <input className="modal-input" placeholder="Ваше имя" value={name} onChange={e => setName(e.target.value)} />
               <input className="modal-input" placeholder="Телефон или Telegram" value={phone} onChange={e => setPhone(e.target.value)} />
-              <button type="submit" className="cta-btn cta-btn-lg cta-btn-primary">
-                Хочу на экскурсию
-                <Icon name="ArrowRight" size={18} />
+              <button type="submit" className="cta-btn cta-btn-lg cta-btn-primary" disabled={loading}>
+                {loading ? 'Отправляем...' : 'Хочу на экскурсию'}
+                {!loading && <Icon name="ArrowRight" size={18} />}
               </button>
               <p className="modal-privacy"><Icon name="Lock" size={11} /> Данные не передаём третьим лицам</p>
             </form>
@@ -62,16 +67,32 @@ function CountdownTimer() {
   return <>{d}д {String(h).padStart(2, "0")}ч {String(m).padStart(2, "0")}м {String(s).padStart(2, "0")}с</>;
 }
 
+const SEND_LEAD_URL = "https://functions.poehali.dev/57047ae6-091f-4a98-8391-1bc5b14b157a";
+
+async function sendLead(name: string, phone: string, age: string, source: string) {
+  await fetch(SEND_LEAD_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, phone, age, source }),
+  });
+}
+
 // ── HeroInlineForm ─────────────────────────────────────────────────────────
 function HeroInlineForm({ onSuccess }: { onSuccess: () => void }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name && phone) { setDone(true); onSuccess(); }
+    if (!name || !phone) return;
+    setLoading(true);
+    await sendLead(name, phone, age, 'Форма в герое');
+    setLoading(false);
+    setDone(true);
+    onSuccess();
   };
 
   if (done) return (
@@ -85,9 +106,9 @@ function HeroInlineForm({ onSuccess }: { onSuccess: () => void }) {
       <input className="hform-input" placeholder="Имя" value={name} onChange={e => setName(e.target.value)} required />
       <input className="hform-input" placeholder="Телефон" value={phone} onChange={e => setPhone(e.target.value)} required />
       <input className="hform-input" placeholder="Возраст ребёнка" value={age} onChange={e => setAge(e.target.value)} />
-      <button type="submit" className="cta-btn cta-btn-primary hform-btn">
-        Записаться
-        <Icon name="ArrowRight" size={16} />
+      <button type="submit" className="cta-btn cta-btn-primary hform-btn" disabled={loading}>
+        {loading ? 'Отправляем...' : 'Записаться'}
+        {!loading && <Icon name="ArrowRight" size={16} />}
       </button>
     </form>
   );
