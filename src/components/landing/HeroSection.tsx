@@ -33,7 +33,7 @@ export function Modal({ open, onClose }: { open: boolean; onClose: () => void })
             </div>
             <form onSubmit={submit} className="modal-form">
               <input className="modal-input" placeholder="Ваше имя" value={name} onChange={e => setName(e.target.value)} />
-              <input className="modal-input" placeholder="Телефон или Telegram" value={phone} onChange={e => setPhone(e.target.value)} />
+              <input className="modal-input" placeholder="Телефон" value={phone} onChange={e => setPhone(e.target.value)} />
               <button type="submit" className="cta-btn cta-btn-lg cta-btn-primary" disabled={loading}>
                 {loading ? 'Отправляем...' : 'Хочу на экскурсию'}
                 {!loading && <Icon name="ArrowRight" size={18} />}
@@ -168,9 +168,15 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             <li><Icon name="Check" size={16} /><span>Педагоги-профессионалы</span></li>
           </ul>
 
-          {/* Мини-форма */}
-          <div className="hero-inline-form">
-            <HeroInlineForm onSuccess={() => onOpenModal()} />
+          <div className="hero-cta-buttons">
+            <button className="cta-btn cta-btn-primary" onClick={onOpenModal}>
+              Записаться на экскурсию
+              <Icon name="ArrowRight" size={18} />
+            </button>
+            <a href="tel:+79881521680" className="cta-btn cta-btn-outline">
+              <Icon name="Phone" size={17} />
+              Позвонить
+            </a>
           </div>
         </div>
       </div>

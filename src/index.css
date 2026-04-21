@@ -467,6 +467,14 @@
   flex-shrink: 0;
 }
 
+/* Hero CTA buttons */
+.hero-cta-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
 /* Hero inline form */
 .hform {
   display: flex;
