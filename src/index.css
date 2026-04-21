@@ -1488,33 +1488,34 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: #fff;
-  border: 1.5px solid #e8e8e8;
+  background: #fffbf2;
+  border: 2px solid #f5a623;
   border-radius: 40px;
-  padding: 8px 16px;
+  padding: 10px 20px;
   text-decoration: none;
   transition:
     box-shadow 0.2s,
-    border-color 0.2s;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    background 0.2s;
+  box-shadow: 0 3px 12px rgba(245, 166, 35, 0.25);
 }
 .yandex-badge:hover {
-  border-color: #f5a623;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background: #fff3d6;
+  box-shadow: 0 6px 20px rgba(245, 166, 35, 0.4);
 }
 .yandex-badge-stars {
   color: #f5a623;
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 1px;
 }
 .yandex-badge-rating {
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 800;
   color: #1a1a1a;
 }
 .yandex-badge-label {
   font-size: 13px;
-  color: #777;
+  color: #555;
+  font-weight: 500;
 }
 
 /* Exit Intent Popup */
