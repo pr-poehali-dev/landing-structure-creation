@@ -1,10 +1,9 @@
 import Icon from "@/components/ui/icon";
-import { Section } from "./InfoSections";
 
 const FEATURES = [
   {
     emoji: "🤗",
-    tag: "Карточка 1",
+    emojiClass: "feat-emoji-wrap-blue",
     title: "Быстрая адаптация — без слёз и стресса",
     subtitle: "Ваш малыш полюбит садик с первых дней",
     items: [
@@ -17,7 +16,7 @@ const FEATURES = [
   },
   {
     emoji: "📚",
-    tag: "Карточка 2",
+    emojiClass: "feat-emoji-wrap-green",
     title: "Подготовка к школе — реальная, а не для галочки",
     subtitle: "К первому классу ваш ребёнок будет готов на 100%",
     items: [
@@ -32,7 +31,7 @@ const FEATURES = [
   },
   {
     emoji: "🌍",
-    tag: "Карточка 3",
+    emojiClass: "feat-emoji-wrap-purple",
     title: "Английский с удовольствием — играя и говоря",
     subtitle: "Английский без зубрёжки — через игры и живое общение",
     items: [
@@ -41,56 +40,40 @@ const FEATURES = [
       "Запоминают слова в контексте, а не списком",
     ],
     result: "Ребёнок не боится говорить и понимает речь на слух",
-    review: "Сын учится во втором классе. Жутко боялся этот предмет. Тут сняли все зажимы, ребёнок счастлив — мы тоже.",
+    review: "Сын учился во втором классе. Жутко боялся этот предмет. Тут сняли все зажимы, ребёнок счастлив — мы тоже.",
     reviewer: "Мама Максима, 8 лет",
   },
   {
-    emoji: "☀️",
-    tag: "Карточка 4",
-    title: "Летний клуб — лучшее лето в жизни вашего ребёнка",
-    subtitle: "Пока вы работаете, ваш ребёнок проживает приключение",
-    items: [
-      "Мастер-классы: гончарка, роспись, кулинария, эксперименты",
-      "Поездки на море, прогулки, походы",
-      "Квесты, тематические игры, вечерние костры",
-      "Смены для детей 4–14 лет: малыши, школьники, подростки",
-    ],
-    result: null,
-    review: "Это было ЛУЧШЕЕ лето! Можно ещё раз?",
-    reviewer: "Ваня, 10 лет",
-    badge: "⏰ Первая смена стартует 1 июня. Успейте приобрести со скидкой.",
-  },
-  {
     emoji: "💙",
-    tag: "Карточка 5",
+    emojiClass: "feat-emoji-wrap-heart",
     title: "Домашняя атмосфера и индивидуальный подход",
     subtitle: "Мы любим детей, как своих — это чувствуется",
     items: [
       "Кто не ест лук — готовим без лука",
       "Кто боится громких звуков — предупреждаем заранее",
       "Кто сегодня грустит — обнимаем и поддерживаем",
-      "Вкусное питание: безлактозное и безглютеновое по запросу",
+      "Питание с учётом особенностей: безлактозное и безглютеновое",
       "Ежедневные отчёты, фото и видео из жизни садика",
     ],
     result: "Группы до 12 человек — воспитатель знает каждого",
     review: "Это не садик — это вторая семья. Воспитатели любят детей по-настоящему, это видно.",
     reviewer: "Мама Сони, 4 года",
-    badge: null,
   },
 ];
 
 export default function FeaturesSection({ onOpenModal }: { onOpenModal: () => void }) {
   return (
-    <Section className="bg-cream">
+    <section className="feat-section">
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Наши программы</span>
           <h2 className="section-h2">Всё для развития<br />и счастья вашего ребёнка</h2>
         </div>
+
         <div className="feat-grid">
           {FEATURES.map((f, i) => (
             <div key={i} className="feat-card">
-              <div className="feat-emoji">{f.emoji}</div>
+              <div className={`feat-emoji-wrap ${f.emojiClass}`}>{f.emoji}</div>
               <h3 className="feat-title">{f.title}</h3>
               <p className="feat-subtitle">{f.subtitle}</p>
               <ul className="feat-list">
@@ -111,19 +94,43 @@ export default function FeaturesSection({ onOpenModal }: { onOpenModal: () => vo
                 <p className="feat-review-text">«{f.review}»</p>
                 <span className="feat-review-author">— {f.reviewer}</span>
               </div>
-              {f.badge && (
-                <div className="feat-badge">{f.badge}</div>
-              )}
             </div>
           ))}
+
+          {/* Летний клуб — широкая карточка */}
+          <div className="feat-card feat-card-summer">
+            <div className="feat-left">
+              <div className="feat-emoji-wrap feat-emoji-wrap-sun">☀️</div>
+              <h3 className="feat-title" style={{ marginTop: 12 }}>Летний клуб — лучшее лето в жизни вашего ребёнка</h3>
+              <p className="feat-subtitle">Пока вы работаете, ваш ребёнок проживает приключение</p>
+              <ul className="feat-list" style={{ marginTop: 8 }}>
+                <li><Icon name="Check" size={14} /><span>Мастер-классы: гончарка, роспись, кулинария, эксперименты</span></li>
+                <li><Icon name="Check" size={14} /><span>Поездки на море, прогулки, походы</span></li>
+                <li><Icon name="Check" size={14} /><span>Квесты, тематические игры, вечерние костры</span></li>
+                <li><Icon name="Check" size={14} /><span>Смены для детей 4–14 лет: малыши, школьники, подростки</span></li>
+              </ul>
+              <div className="feat-review" style={{ marginTop: 12 }}>
+                <p className="feat-review-text">«Это было ЛУЧШЕЕ лето! Можно ещё раз?»</p>
+                <span className="feat-review-author">— Ваня, 10 лет</span>
+              </div>
+            </div>
+            <div className="feat-right">
+              <div className="feat-badge">⏰ Первая смена стартует 1 июня. Успейте приобрести со скидкой.</div>
+              <button className="cta-btn cta-btn-primary" style={{ width: "100%" }} onClick={onOpenModal}>
+                Записаться в летний клуб
+                <Icon name="ArrowRight" size={16} />
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="reviews-cta">
+
+        <div style={{ textAlign: "center" }}>
           <button className="cta-btn cta-btn-primary" onClick={onOpenModal}>
-            Записаться на экскурсию
+            Записаться на экскурсию в садик
             <Icon name="ArrowRight" size={18} />
           </button>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }
