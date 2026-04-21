@@ -16,15 +16,26 @@ export default function ExitIntentPopup() {
     const alreadyShown = sessionStorage.getItem("exit_popup_shown");
     if (alreadyShown) return;
 
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 10 && !dismissed) {
-        setVisible(true);
-        sessionStorage.setItem("exit_popup_shown", "1");
-      }
-    };
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-    document.addEventListener("mouseleave", handleMouseLeave);
-    return () => document.removeEventListener("mouseleave", handleMouseLeave);
+    if (isMobile) {
+      const timer = setTimeout(() => {
+        if (!dismissed) {
+          setVisible(true);
+          sessionStorage.setItem("exit_popup_shown", "1");
+        }
+      }, 30000);
+      return () => clearTimeout(timer);
+    } else {
+      const handleMouseLeave = (e: MouseEvent) => {
+        if (e.clientY <= 10 && !dismissed) {
+          setVisible(true);
+          sessionStorage.setItem("exit_popup_shown", "1");
+        }
+      };
+      document.addEventListener("mouseleave", handleMouseLeave);
+      return () => document.removeEventListener("mouseleave", handleMouseLeave);
+    }
   }, [dismissed]);
 
   const handleClose = () => {
@@ -55,8 +66,8 @@ export default function ExitIntentPopup() {
         </button>
 
         <div className="exit-popup-emoji">🎁</div>
-        <h2 className="exit-popup-title">Не уходите просто так!</h2>
-        <p className="exit-popup-sub">Скачайте бесплатные чек-листы перед уходом</p>
+        <h2 className="exit-popup-title">Подарок для родителей!</h2>
+        <p className="exit-popup-sub">Получите три бесплатных чек-листа — пришлём на почту</p>
 
         <ul className="exit-popup-list">
           {CHECKLIST.map((item, i) => (
