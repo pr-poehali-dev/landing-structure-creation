@@ -84,7 +84,7 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
               <img src={IMG_LUNCH} alt="1 день в нашем садике" />
               <div className="schedule-photo-badge">
                 <Icon name="Utensils" size={16} />
-                5-разовое питание каждый день
+                4-разовое питание каждый день
               </div>
             </div>
           </div>
