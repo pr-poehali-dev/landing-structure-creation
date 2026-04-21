@@ -1,6 +1,9 @@
+import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { CHECKLIST } from "./constants";
 import { Section } from "./InfoSections";
+
+const SEND_CHECKLIST_URL = "https://functions.poehali.dev/34e49ad9-ee73-40be-bb8a-e56d71588fb0";
 
 // ── FooterSections (блоки 10–12) ───────────────────────────────────────────
 interface FooterSectionsProps {
@@ -8,6 +11,24 @@ interface FooterSectionsProps {
 }
 
 export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
+
+  const submitChecklist = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !email) return;
+    setLoading(true);
+    await fetch(SEND_CHECKLIST_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email }),
+    });
+    setLoading(false);
+    setDone(true);
+  };
+
   return (
     <>
       {/* ── БЛОК 10: Лид-магнит ── */}
@@ -16,16 +37,43 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
           <div className="leadmag-wrap">
             <div className="leadmag-emoji">🎁</div>
             <h2 className="leadmag-title">Получите бесплатно</h2>
-            <p className="leadmag-sub">Подборка материалов для родителей — скачайте прямо сейчас</p>
+            <p className="leadmag-sub">Два полезных чек-листа для родителей — пришлём на почту</p>
             <ul className="leadmag-list">
               {CHECKLIST.map((item, i) => (
                 <li key={i}><Icon name="CheckCircle" size={16} />{item}</li>
               ))}
             </ul>
-            <button className="cta-btn cta-btn-white" onClick={onOpenModal}>
-              Получить подборку бесплатно
-              <Icon name="ArrowRight" size={18} />
-            </button>
+            {!done ? (
+              <form onSubmit={submitChecklist} className="leadmag-form">
+                <input
+                  className="leadmag-input"
+                  placeholder="Ваше имя"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  required
+                />
+                <input
+                  className="leadmag-input"
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  required
+                />
+                <button type="submit" className="cta-btn cta-btn-white" disabled={loading}>
+                  {loading ? 'Отправляем...' : 'Получить чек-листы бесплатно'}
+                  {!loading && <Icon name="ArrowRight" size={18} />}
+                </button>
+                <p className="leadmag-privacy">
+                  <Icon name="Lock" size={11} /> Отправляя форму, вы соглашаетесь получать материалы блога blogribkadolli.ru
+                </p>
+              </form>
+            ) : (
+              <div className="leadmag-success">
+                <Icon name="CheckCircle" size={32} />
+                <p>Отлично, <strong>{name}</strong>! Чек-листы уже летят к вам на почту.</p>
+              </div>
+            )}
           </div>
         </div>
       </Section>
