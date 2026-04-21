@@ -163,9 +163,10 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           <p className="hero-desc">Домашняя атмосфера для детей 1,5–6 лет</p>
 
           <ul className="hero-checklist">
-            <li><Icon name="Check" size={16} /><span>Группы до 10 детей</span></li>
+            <li><Icon name="Check" size={16} /><span>Группы до 12 детей</span></li>
             <li><Icon name="Check" size={16} /><span>Вкусное питание</span></li>
-            <li><Icon name="Check" size={16} /><span>Педагоги-профессионалы</span></li>
+            <li><Icon name="Check" size={16} /><span>Педагоги с профильным высшим образованием</span></li>
+            <li><Icon name="Check" size={16} /><span>Безопасность на высшем уровне</span></li>
           </ul>
 
           <div className="hero-cta-buttons">
