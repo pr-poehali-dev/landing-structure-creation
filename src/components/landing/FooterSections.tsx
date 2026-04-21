@@ -109,20 +109,23 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
             <div className="footer-brand">
               <div className="footer-logo">🌊 Рыбка</div>
               <p>Частный детский сад в Керчи</p>
-              <p>пр-т Победы, 15, Керчь, Республика Крым</p>
+              <p>г. Керчь, ул. Циолковского, 12</p>
             </div>
             <div className="footer-contacts">
-              <a href="tel:+79881521680" className="footer-link">
-                <Icon name="Phone" size={15} /> +7 (988) 152-16-80 (МТС)
+              <a href="tel:+79881521698" className="footer-link">
+                <Icon name="Phone" size={15} /> +7 (988) 152-16-98 (МТС)
               </a>
               <a href="tel:+79787120353" className="footer-link">
                 <Icon name="Phone" size={15} /> +7 (978) 712-03-53 (Волна)
               </a>
-              <a href="mailto:info@ribkadollli.ru" className="footer-link">
-                <Icon name="Mail" size={15} /> info@ribkadollli.ru
+              <a href="https://ribkadollli.ru" target="_blank" rel="noopener noreferrer" className="footer-link">
+                <Icon name="Globe" size={15} /> ribkadollli.ru
+              </a>
+              <a href="https://blogribkadolli.ru" target="_blank" rel="noopener noreferrer" className="footer-link">
+                <Icon name="BookOpen" size={15} /> blogribkadolli.ru
               </a>
               <div className="footer-hours">
-                <Icon name="Clock" size={15} /> Пн–Пт: 7:30–19:00
+                <Icon name="Clock" size={15} /> Пн–Пт: 8:00–18:00
               </div>
             </div>
           </div>
