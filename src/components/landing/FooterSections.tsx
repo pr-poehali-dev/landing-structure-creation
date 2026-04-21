@@ -107,7 +107,7 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
         <div className="container">
           <div className="footer-inner">
             <div className="footer-brand">
-              <div className="footer-logo">🌊 Рыбка</div>
+              <div className="footer-logo">🌊 Рыбка Долли</div>
               <p>Частный детский сад в Керчи</p>
               <p>г. Керчь, ул. Циолковского, 12</p>
             </div>
