@@ -86,16 +86,16 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
             <h2 className="final-title">Свободных мест<br />осталось <span className="clr-teal">3</span></h2>
             <p className="final-sub">
               Не откладывайте — запишитесь на бесплатную экскурсию
-              и убедитесь сами, что это именно то место
+              и убедитесь сами, что это именно тот садик, который вам нужен.
             </p>
             <div className="final-actions">
               <button className="cta-btn cta-btn-primary cta-btn-lg" onClick={onOpenModal}>
                 Записаться на экскурсию
                 <Icon name="ArrowRight" size={20} />
               </button>
-              <a href="tel:+79881521680" className="cta-btn cta-btn-outline-light cta-btn-lg">
+              <a href="tel:+79881521698" className="cta-btn cta-btn-outline-light cta-btn-lg">
                 <Icon name="Phone" size={18} />
-                +7 (988) 152-16-80
+                +7 (988) 152-16-98
               </a>
             </div>
           </div>
