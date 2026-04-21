@@ -37,7 +37,7 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
           <div className="leadmag-wrap">
             <div className="leadmag-emoji">🎁</div>
             <h2 className="leadmag-title">Получите бесплатно</h2>
-            <p className="leadmag-sub">Два полезных чек-листа для родителей — пришлём на почту</p>
+            <p className="leadmag-sub">Три полезных чек-листа для родителей — пришлём на почту</p>
             <ul className="leadmag-list">
               {CHECKLIST.map((item, i) => (
                 <li key={i}><Icon name="CheckCircle" size={16} />{item}</li>
