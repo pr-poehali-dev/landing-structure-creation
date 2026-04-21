@@ -100,7 +100,7 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
             <a href="https://yandex.ru/maps/-/CPCszO6I" target="_blank" rel="noopener noreferrer" className="yandex-badge">
               <img src="https://yastatic.net/s3/front-maps-static/maps-front-maps/static/v56/icons/favicon/favicon.svg" alt="Яндекс" width={18} height={18} />
               <span className="yandex-badge-stars">★★★★★</span>
-              <span className="yandex-badge-rating">4,9</span>
+              <span className="yandex-badge-rating">4,8</span>
               <span className="yandex-badge-label">на Яндекс Картах</span>
             </a>
           </div>
