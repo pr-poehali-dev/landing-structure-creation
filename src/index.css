@@ -348,7 +348,6 @@
   filter: blur(3px);
   transform: scale(1.04);
   object-position: top center;
-  opacity: 0.55;
 }
 
 .hero-form-col {
