@@ -171,7 +171,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             <Icon name="MapPin" size={14} />
             Керчь, ул. Циолковского, 12
           </p>
-          <p className="hero-desc">Домашняя атмосфера для детей 1,5–6 лет</p>
+          <p className="hero-desc">Домашняя атмосфера для детей 1,5–6 лет — от 16 000 ₽</p>
 
           <ul className="hero-checklist">
             <li><Icon name="Check" size={16} /><span>Группы до 12 детей</span></li>
