@@ -15,6 +15,6 @@ Allow: /
 
 User-agent: Yandex
 Allow: /
-Host: rybkadolli.ru
+Host: ribkadollilend.ru
 
-Sitemap: https://rybkadolli.ru/sitemap.xml
+Sitemap: https://ribkadollilend.ru/sitemap.xml
