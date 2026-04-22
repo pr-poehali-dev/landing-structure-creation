@@ -95,7 +95,7 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
                 Записаться на экскурсию
                 <Icon name="ArrowRight" size={20} />
               </button>
-              <a href="tel:+79881521698" className="cta-btn cta-btn-outline-light cta-btn-lg" onClick={() => ymGoal('click_phone_footer')}>
+              <a href="tel:+79881521698" className="cta-btn cta-btn-outline-light cta-btn-lg" onClick={() => ymGoal('click_phone')}>
                 <Icon name="Phone" size={18} />
                 +7 (988) 152-16-98
               </a>
