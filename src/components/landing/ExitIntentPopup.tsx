@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 import { CHECKLIST } from "./constants";
+import { ymGoal } from "@/lib/ym";
 
 const SEND_CHECKLIST_URL = "https://functions.poehali.dev/34e49ad9-ee73-40be-bb8a-e56d71588fb0";
 
@@ -52,6 +53,7 @@ export default function ExitIntentPopup() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email }),
     });
+    ymGoal('form_exit_popup_submit');
     setLoading(false);
     setDone(true);
   };

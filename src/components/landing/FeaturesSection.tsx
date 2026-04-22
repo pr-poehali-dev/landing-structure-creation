@@ -1,4 +1,5 @@
 import Icon from "@/components/ui/icon";
+import { ymGoal } from "@/lib/ym";
 
 const FEATURES = [
   {
@@ -116,7 +117,7 @@ export default function FeaturesSection({ onOpenModal }: { onOpenModal: () => vo
             </div>
             <div className="feat-right">
               <div className="feat-badge">⏰ Первая смена стартует 1 июня. Успейте приобрести со скидкой.</div>
-              <button className="cta-btn cta-btn-primary" style={{ width: "100%" }} onClick={onOpenModal}>
+              <button className="cta-btn cta-btn-primary" style={{ width: "100%" }} onClick={() => { ymGoal('click_summer_club'); onOpenModal(); }}>
                 Записаться в летний клуб
                 <Icon name="ArrowRight" size={16} />
               </button>
@@ -125,7 +126,7 @@ export default function FeaturesSection({ onOpenModal }: { onOpenModal: () => vo
         </div>
 
         <div style={{ textAlign: "center" }}>
-          <button className="cta-btn cta-btn-primary" onClick={onOpenModal}>
+          <button className="cta-btn cta-btn-primary" onClick={() => { ymGoal('click_features_cta'); onOpenModal(); }}>
             Записаться на экскурсию в садик
             <Icon name="ArrowRight" size={18} />
           </button>

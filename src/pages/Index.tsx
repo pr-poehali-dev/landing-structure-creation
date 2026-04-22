@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 import HeroSection, { Modal } from "@/components/landing/HeroSection";
+import { ymGoal } from "@/lib/ym";
 import InfoSections from "@/components/landing/InfoSections";
 import CalculatorFaqTeam from "@/components/landing/CalculatorFaqTeam";
 import FooterSections from "@/components/landing/FooterSections";
@@ -28,14 +29,14 @@ export default function Index() {
       <div className="float-phone-wrap">
         {phoneMenuOpen && (
           <div className="float-phone-menu">
-            <a href="tel:+79881521680" className="float-phone-option" onClick={() => setPhoneMenuOpen(false)}>
+            <a href="tel:+79881521680" className="float-phone-option" onClick={() => { ymGoal('click_float_phone_mts'); setPhoneMenuOpen(false); }}>
               <Icon name="Phone" size={15} />
               <div>
                 <div className="float-phone-number">+7 (988) 152-16-80</div>
                 <div className="float-phone-op">МТС</div>
               </div>
             </a>
-            <a href="tel:+79787120353" className="float-phone-option" onClick={() => setPhoneMenuOpen(false)}>
+            <a href="tel:+79787120353" className="float-phone-option" onClick={() => { ymGoal('click_float_phone_volna'); setPhoneMenuOpen(false); }}>
               <Icon name="Phone" size={15} />
               <div>
                 <div className="float-phone-number">+7 (978) 712-03-53</div>
@@ -44,7 +45,7 @@ export default function Index() {
             </a>
           </div>
         )}
-        <button className="float-btn" onClick={() => setPhoneMenuOpen(v => !v)} title="Позвонить">
+        <button className="float-btn" onClick={() => { ymGoal('click_float_btn'); setPhoneMenuOpen(v => !v); }} title="Позвонить">
           <Icon name="Phone" size={20} />
         </button>
       </div>

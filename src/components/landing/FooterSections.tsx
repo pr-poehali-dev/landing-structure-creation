@@ -2,6 +2,7 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { CHECKLIST } from "./constants";
 import { Section } from "./InfoSections";
+import { ymGoal } from "@/lib/ym";
 
 const SEND_CHECKLIST_URL = "https://functions.poehali.dev/34e49ad9-ee73-40be-bb8a-e56d71588fb0";
 
@@ -25,6 +26,7 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email }),
     });
+    ymGoal('form_checklist_submit');
     setLoading(false);
     setDone(true);
   };
@@ -89,11 +91,11 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
               и убедитесь сами, что это именно тот садик, который вам нужен.
             </p>
             <div className="final-actions">
-              <button className="cta-btn cta-btn-primary cta-btn-lg" onClick={onOpenModal}>
+              <button className="cta-btn cta-btn-primary cta-btn-lg" onClick={() => { ymGoal('click_final_cta'); onOpenModal(); }}>
                 Записаться на экскурсию
                 <Icon name="ArrowRight" size={20} />
               </button>
-              <a href="tel:+79881521698" className="cta-btn cta-btn-outline-light cta-btn-lg">
+              <a href="tel:+79881521698" className="cta-btn cta-btn-outline-light cta-btn-lg" onClick={() => ymGoal('click_phone_footer')}>
                 <Icon name="Phone" size={18} />
                 +7 (988) 152-16-98
               </a>

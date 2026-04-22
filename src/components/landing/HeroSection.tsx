@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 import { IMG_HERO } from "./constants";
+import { ymGoal } from "@/lib/ym";
 
 // ── Modal ──────────────────────────────────────────────────────────────────
 export function Modal({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -16,6 +17,7 @@ export function Modal({ open, onClose }: { open: boolean; onClose: () => void })
     if (!name || !phone) return;
     setLoading(true);
     await sendLead(name, phone, '', 'Модальное окно');
+    ymGoal('form_modal_submit');
     setLoading(false);
     setDone(true);
   };
@@ -90,6 +92,7 @@ function HeroInlineForm({ onSuccess }: { onSuccess: () => void }) {
     if (!name || !phone) return;
     setLoading(true);
     await sendLead(name, phone, age, 'Форма в герое');
+    ymGoal('form_hero_submit');
     setLoading(false);
     setDone(true);
     onSuccess();
@@ -132,15 +135,15 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           />
         </div>
         <div className="hero-phones">
-          <a href="https://vk.com/rybka_dolli" target="_blank" rel="noopener noreferrer" className="hero-phone-btn hero-vk-btn">
+          <a href="https://vk.com/rybka_dolli" target="_blank" rel="noopener noreferrer" className="hero-phone-btn hero-vk-btn" onClick={() => ymGoal('click_vk')}>
             <Icon name="Users" size={16} />
             ВКонтакте
           </a>
-          <a href="tel:+79881521680" className="hero-phone-btn">
+          <a href="tel:+79881521680" className="hero-phone-btn" onClick={() => ymGoal('click_phone_mts')}>
             <Icon name="Phone" size={16} />
             +7 (988) 152-16-80 МТС
           </a>
-          <a href="tel:+79787120353" className="hero-phone-btn hero-phone-btn-alt">
+          <a href="tel:+79787120353" className="hero-phone-btn hero-phone-btn-alt" onClick={() => ymGoal('click_phone_volna')}>
             <Icon name="Phone" size={16} />
             +7 (978) 712-03-53 Волна
           </a>
@@ -182,7 +185,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           </ul>
 
           <div className="hero-cta-buttons">
-            <button className="cta-btn cta-btn-primary" onClick={onOpenModal}>
+            <button className="cta-btn cta-btn-primary" onClick={() => { ymGoal('click_hero_cta'); onOpenModal(); }}>
               Записаться на экскурсию
               <Icon name="ArrowRight" size={18} />
             </button>

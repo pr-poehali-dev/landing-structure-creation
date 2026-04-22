@@ -2,6 +2,7 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { FAQ_LIST, TEAM, GALLERY } from "./constants";
 import { Section } from "./InfoSections";
+import { ymGoal } from "@/lib/ym";
 
 // ── CalculatorFaqTeam (блоки 6–9) ─────────────────────────────────────────
 interface CalculatorFaqTeamProps {
@@ -66,7 +67,7 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
                 </div>
               )}
               <div className="calc-result-note">Включает питание, занятия, прогулки и мероприятия</div>
-              <button className="cta-btn cta-btn-primary" onClick={onOpenModal}>
+              <button className="cta-btn cta-btn-primary" onClick={() => { ymGoal('click_calculator_cta'); onOpenModal(); }}>
                 Узнать точную стоимость
                 <Icon name="ArrowRight" size={18} />
               </button>
@@ -94,7 +95,7 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
             ))}
           </div>
           <div className="faq-cta">
-            <a href="https://vk.com/app6379730_-179759189#l=6" target="_blank" rel="noopener noreferrer" className="cta-btn cta-btn-primary">
+            <a href="https://vk.com/app6379730_-179759189#l=6" target="_blank" rel="noopener noreferrer" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_vk_more')}>
               Узнать о нас больше
               <Icon name="ArrowRight" size={18} />
             </a>

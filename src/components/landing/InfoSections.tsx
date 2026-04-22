@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 import { ADVANTAGES, SCHEDULE, REVIEWS, PRICES, IMG_LUNCH } from "./constants";
 import FeaturesSection from "./FeaturesSection";
+import { ymGoal } from "@/lib/ym";
 
 // ── Section (shared animated wrapper) ─────────────────────────────────────
 function useInView(ref: React.RefObject<HTMLElement>) {
@@ -97,7 +98,7 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
           <div className="section-header">
             <span className="section-tag">Отзывы родителей</span>
             <h2 className="section-h2">Что говорят<br />наши семьи</h2>
-            <a href="https://yandex.ru/maps/-/CPCszO6I" target="_blank" rel="noopener noreferrer" className="yandex-badge">
+            <a href="https://yandex.ru/maps/-/CPCszO6I" target="_blank" rel="noopener noreferrer" className="yandex-badge" onClick={() => ymGoal('click_yandex_maps')}>
               <img src="https://yastatic.net/s3/front-maps-static/maps-front-maps/static/v56/icons/favicon/favicon.svg" alt="Яндекс" width={18} height={18} />
               <span className="yandex-badge-stars">★★★★★</span>
               <span className="yandex-badge-rating">4,8</span>
@@ -120,7 +121,7 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
             ))}
           </div>
           <div className="reviews-cta">
-            <button className="cta-btn cta-btn-primary" onClick={onOpenModal}>
+            <button className="cta-btn cta-btn-primary" onClick={() => { ymGoal('click_reviews_cta'); onOpenModal(); }}>
               Хочу так же — записаться
               <Icon name="ArrowRight" size={18} />
             </button>
@@ -149,7 +150,7 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
                   {p.old && <span className="price-old">{p.old} ₽</span>}
                   <span className="price-current">{p.price}{" "}{p.unit}</span>
                 </div>
-                <button className="cta-btn cta-btn-price" onClick={onOpenModal}>
+                <button className="cta-btn cta-btn-price" onClick={() => { ymGoal(`click_price_${p.name}`); onOpenModal(); }}>
                   Выбрать <Icon name="ArrowRight" size={15} />
                 </button>
               </div>
