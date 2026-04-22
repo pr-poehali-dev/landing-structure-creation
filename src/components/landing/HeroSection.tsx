@@ -134,7 +134,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             className="hero-logo-img"
           />
         </div>
-        <div className="hero-phones">
+        <div id="phones" className="hero-phones">
           <a href="https://vk.com/rybka_dolli" target="_blank" rel="noopener noreferrer" className="hero-phone-btn hero-vk-btn" onClick={() => ymGoal('click_vk')}>
             <Icon name="Users" size={16} />
             ВКонтакте
@@ -165,7 +165,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         </div>
 
         {/* Правая колонка — текст + форма */}
-        <div className="hero-form-col">
+        <div id="form" className="hero-form-col">
           <h1 className="hero-h1">
             Частный детский сад<br />
             <span className="h1-accent">«Рыбка Долли»</span>

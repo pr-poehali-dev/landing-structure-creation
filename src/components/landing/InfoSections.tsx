@@ -18,11 +18,11 @@ function useInView(ref: React.RefObject<HTMLElement>) {
   return visible;
 }
 
-export function Section({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+export function Section({ children, className = "", id }: { children: React.ReactNode; className?: string; id?: string }) {
   const ref = useRef<HTMLElement>(null!);
   const visible = useInView(ref);
   return (
-    <section ref={ref} className={`section-block ${visible ? "section-visible" : ""} ${className}`}>
+    <section id={id} ref={ref} className={`section-block ${visible ? "section-visible" : ""} ${className}`}>
       {children}
     </section>
   );
@@ -130,7 +130,7 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
       </Section>
 
       {/* ── БЛОК 5: Цены ── */}
-      <Section className="bg-dark">
+      <Section id="prices" className="bg-dark">
         <div className="container">
           <div className="section-header section-header-light">
             <span className="section-tag section-tag-light">Прозрачные цены</span>

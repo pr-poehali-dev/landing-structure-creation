@@ -3,6 +3,7 @@ import { ymGoal } from "@/lib/ym";
 
 const FEATURES = [
   {
+    id: "adaptation",
     emoji: "🤗",
     emojiClass: "feat-emoji-wrap-blue",
     title: "Быстрая адаптация — без слёз и стресса",
@@ -16,6 +17,7 @@ const FEATURES = [
     reviewer: "Мама Артёма, 2 года",
   },
   {
+    id: "school",
     emoji: "📚",
     emojiClass: "feat-emoji-wrap-green",
     title: "Подготовка к школе — реальная, а не для галочки",
@@ -31,6 +33,7 @@ const FEATURES = [
     reviewer: "Мама Алины, 7 лет",
   },
   {
+    id: "english",
     emoji: "🌍",
     emojiClass: "feat-emoji-wrap-purple",
     title: "Английский с удовольствием — играя и говоря",
@@ -45,6 +48,7 @@ const FEATURES = [
     reviewer: "Мама Максима, 8 лет",
   },
   {
+    id: "care",
     emoji: "💙",
     emojiClass: "feat-emoji-wrap-heart",
     title: "Домашняя атмосфера и индивидуальный подход",
@@ -73,7 +77,7 @@ export default function FeaturesSection({ onOpenModal }: { onOpenModal: () => vo
 
         <div className="feat-grid">
           {FEATURES.map((f, i) => (
-            <div key={i} className="feat-card">
+            <div key={i} id={f.id} className="feat-card">
               <div className={`feat-emoji-wrap ${f.emojiClass}`}>{f.emoji}</div>
               <h3 className="feat-title">{f.title}</h3>
               <p className="feat-subtitle">{f.subtitle}</p>
@@ -99,7 +103,7 @@ export default function FeaturesSection({ onOpenModal }: { onOpenModal: () => vo
           ))}
 
           {/* Летний клуб — широкая карточка */}
-          <div className="feat-card feat-card-summer">
+          <div id="summer" className="feat-card feat-card-summer">
             <div className="feat-left">
               <div className="feat-emoji-wrap feat-emoji-wrap-sun">☀️</div>
               <h3 className="feat-title" style={{ marginTop: 12 }}>Летний клуб — лучшее лето в жизни вашего ребёнка</h3>

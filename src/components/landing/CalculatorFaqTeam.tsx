@@ -77,7 +77,7 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
       </Section>
 
       {/* ── БЛОК 7: FAQ ── */}
-      <Section className="bg-white">
+      <Section id="faq" className="bg-white">
         <div className="container container-narrow">
           <div className="section-header">
             <span className="section-tag">Частые вопросы</span>
@@ -104,7 +104,7 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
       </Section>
 
       {/* ── БЛОК 8: Команда ── */}
-      <Section className="bg-cream">
+      <Section id="team" className="bg-cream">
         <div className="container">
           <div className="section-header">
             <span className="section-tag">Наша команда</span>
