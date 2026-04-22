@@ -11,6 +11,7 @@ interface CalculatorFaqTeamProps {
 export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProps) {
   const [calcDays, setCalcDays] = useState("full");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [openTeam, setOpenTeam] = useState<number | null>(null);
 
   const formatLabels: Record<string, { title: string; desc: string }> = {
     full:    { title: "Полный абонемент", desc: "20 рабочих дней · 8:00–18:00 · оставшиеся дни месяца в подарок" },
@@ -117,6 +118,25 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
                 <h3 className="team-name">{t.name}</h3>
                 <div className="team-role">{t.role}</div>
                 <div className="team-exp">{t.exp}</div>
+                {t.credo && <div className="team-credo">{t.credo}</div>}
+                {t.bio && (
+                  <>
+                    <button
+                      className="team-bio-toggle"
+                      onClick={() => setOpenTeam(openTeam === i ? null : i)}
+                    >
+                      {openTeam === i ? "Скрыть" : "Читать подробнее"}
+                      <Icon name={openTeam === i ? "ChevronUp" : "ChevronDown"} size={15} />
+                    </button>
+                    {openTeam === i && (
+                      <div className="team-bio">
+                        {t.bio.split("\n\n").map((para, j) => (
+                          <p key={j}>{para}</p>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                )}
               </div>
             ))}
           </div>

@@ -1500,6 +1500,46 @@
   margin-top: 32px;
 }
 
+/* Team bio */
+.team-credo {
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--color-teal, #2a9d8f);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+.team-bio-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-teal, #2a9d8f);
+  padding: 0;
+}
+.team-bio-toggle:hover {
+  opacity: 0.75;
+}
+.team-bio {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: left;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+}
+.team-bio p {
+  margin: 0 0 8px;
+}
+.team-bio p:last-child {
+  margin-bottom: 0;
+}
+
 /* Yandex Badge */
 .yandex-badge {
   display: inline-flex;
