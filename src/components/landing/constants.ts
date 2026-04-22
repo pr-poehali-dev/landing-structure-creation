@@ -1,5 +1,5 @@
 export const IMG_HERO =
-  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/files/9de06b64-cb5a-49ac-8363-00d1dab61f1e.jpg";
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/3835a9e5-32a1-4f82-9509-8613656d37dc.png";
 export const IMG_TEAM =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/files/99b154c6-e8b8-4f6f-b0a7-29aaef4149c6.jpg";
 export const IMG_LUNCH =

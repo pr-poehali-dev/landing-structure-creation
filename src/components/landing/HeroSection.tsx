@@ -151,7 +151,14 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
       <div className="hero-split">
         {/* Левая колонка — фото */}
         <div className="hero-photo-col">
-          <img src={IMG_HERO} alt="Дети в детском саду" className="hero-photo-main" />
+          <figure className="hero-photo-figure">
+            <img
+              src={IMG_HERO}
+              alt="Занятие с детьми старшей группы в частном детском садике Рыбка Долли в Керчи"
+              className="hero-photo-main"
+            />
+            <figcaption className="hero-photo-caption">Педагог Рыбки Долли на занятии с детьми</figcaption>
+          </figure>
         </div>
 
         {/* Правая колонка — текст + форма */}
