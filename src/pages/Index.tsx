@@ -44,9 +44,8 @@ export default function Index() {
             </a>
           </div>
         )}
-        <button className="float-btn" onClick={() => setPhoneMenuOpen(v => !v)}>
+        <button className="float-btn" onClick={() => setPhoneMenuOpen(v => !v)} title="Позвонить">
           <Icon name="Phone" size={20} />
-          <span>Позвонить</span>
         </button>
       </div>
 

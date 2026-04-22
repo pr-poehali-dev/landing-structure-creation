@@ -290,19 +290,17 @@
   z-index: 100;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 22px;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
   background: linear-gradient(180deg, #ff4d6d 0%, #e53935 45%, #b71c1c 100%);
   color: #fff;
-  font-family: "Golos Text", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 50px;
+  border-radius: 50%;
   cursor: pointer;
   border: none;
   box-shadow:
-    0 6px 0 #7f0000,
-    0 10px 24px rgba(183, 28, 28, 0.5),
+    0 4px 0 #7f0000,
+    0 8px 20px rgba(183, 28, 28, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
   animation: float-pulse 3s ease-in-out infinite;
   transition:
