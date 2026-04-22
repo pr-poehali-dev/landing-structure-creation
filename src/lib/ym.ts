@@ -4,7 +4,7 @@ declare global {
   }
 }
 
-const YM_ID = 108707108;
+const YM_ID = 108711263;
 
 export function ymGoal(goal: string) {
   if (typeof window !== "undefined" && typeof window.ym === "function") {
