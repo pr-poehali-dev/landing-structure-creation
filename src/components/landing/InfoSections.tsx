@@ -93,7 +93,7 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
       </Section>
 
       {/* ── БЛОК 4: Отзывы ── */}
-      <Section className="bg-white">
+      <Section id="reviews" className="bg-white">
         <div className="container">
           <div className="section-header">
             <span className="section-tag">Отзывы родителей</span>
