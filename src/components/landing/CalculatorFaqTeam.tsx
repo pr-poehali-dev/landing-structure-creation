@@ -153,7 +153,7 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
           <div className="gallery-grid">
             {GALLERY.map((img, i) => (
               <div key={i} className="gallery-item">
-                <img src={img} alt={`Фото ${i + 1}`} />
+                <img src={img.src} alt={img.alt} />
               </div>
             ))}
           </div>

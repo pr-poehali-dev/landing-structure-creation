@@ -6,12 +6,12 @@ export const IMG_LUNCH =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a507aa9a-3dfb-4721-acdd-914ae49dfafe.png";
 
 export const GALLERY = [
-  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/abb19cee-a15c-4cca-afb0-be2db878df6e.png",
-  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/77d301da-9e40-4ff2-a960-1a20252924c9.png",
-  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d15ea3fc-ee3e-4cee-b0d6-bf0a430cc6ad.jpg",
-  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d751118d-4314-4ea1-84af-5f701e3492da.png",
-  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/9c0b8849-c94c-49af-8530-5b1766e288df.jpg",
-  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/45b730b9-fe33-41db-b95c-93d9b1840b5f.png",
+  { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/abb19cee-a15c-4cca-afb0-be2db878df6e.png", alt: "Праздники в частном детском саду Рыбка Долли Керчь" },
+  { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/77d301da-9e40-4ff2-a960-1a20252924c9.png", alt: "Песочная анимация с яслями в частном садике Рыбка Долли Керчь — проводит педагог ясельной группы" },
+  { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d15ea3fc-ee3e-4cee-b0d6-bf0a430cc6ad.jpg", alt: "Масленица в частном детском садике Рыбка Долли Керчь — ясельная группа" },
+  { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d751118d-4314-4ea1-84af-5f701e3492da.png", alt: "Частный летний лагерь для детей в Керчи в центре Рыбка Долли" },
+  { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/9c0b8849-c94c-49af-8530-5b1766e288df.jpg", alt: "Мастер-класс в частном детском садике в Керчи Рыбка Долли" },
+  { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/45b730b9-fe33-41db-b95c-93d9b1840b5f.png", alt: "Занятие с педагогом продлёнки в частной группе продлённого дня в Керчи — детский центр Рыбка Долли" },
 ];
 
 export const ADVANTAGES = [
