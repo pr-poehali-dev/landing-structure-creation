@@ -29,10 +29,10 @@ export default function Index() {
       <div className="float-phone-wrap">
         {phoneMenuOpen && (
           <div className="float-phone-menu">
-            <a href="tel:+79881521680" className="float-phone-option" onClick={() => { ymGoal('click_phone'); setPhoneMenuOpen(false); }}>
+            <a href="tel:+79881521698" className="float-phone-option" onClick={() => { ymGoal('click_phone'); setPhoneMenuOpen(false); }}>
               <Icon name="Phone" size={15} />
               <div>
-                <div className="float-phone-number">+7 (988) 152-16-80</div>
+                <div className="float-phone-number">+7 (988) 152-16-98</div>
                 <div className="float-phone-op">МТС</div>
               </div>
             </a>

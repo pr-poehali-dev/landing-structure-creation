@@ -139,9 +139,9 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             <Icon name="Users" size={16} />
             ВКонтакте
           </a>
-          <a href="tel:+79881521680" className="hero-phone-btn" onClick={() => ymGoal('click_phone')}>
+          <a href="tel:+79881521698" className="hero-phone-btn" onClick={() => ymGoal('click_phone')}>
             <Icon name="Phone" size={16} />
-            +7 (988) 152-16-80 МТС
+            +7 (988) 152-16-98 МТС
           </a>
           <a href="tel:+79787120353" className="hero-phone-btn hero-phone-btn-alt" onClick={() => ymGoal('click_phone')}>
             <Icon name="Phone" size={16} />

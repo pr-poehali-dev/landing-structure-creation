@@ -95,7 +95,7 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
                 Записаться на экскурсию
                 <Icon name="ArrowRight" size={20} />
               </button>
-              <a href="tel:+79881521680" className="cta-btn cta-btn-outline-light cta-btn-lg" onClick={() => ymGoal('click_phone')}>
+              <a href="tel:+79881521698" className="cta-btn cta-btn-outline-light cta-btn-lg" onClick={() => ymGoal('click_phone')}>
                 <Icon name="Phone" size={18} />
                 +7 (988) 152-16-98
               </a>
@@ -114,8 +114,8 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
               <p>г. Керчь, ул. Циолковского, 12</p>
             </div>
             <div className="footer-contacts">
-              <a href="tel:+79881521680" className="footer-link" onClick={() => ymGoal('click_phone')}>
-                <Icon name="Phone" size={15} /> +7 (988) 152-16-80 (МТС)
+              <a href="tel:+79881521698" className="footer-link" onClick={() => ymGoal('click_phone')}>
+                <Icon name="Phone" size={15} /> +7 (988) 152-16-98 (МТС)
               </a>
               <a href="tel:+79787120353" className="footer-link" onClick={() => ymGoal('click_phone')}>
                 <Icon name="Phone" size={15} /> +7 (978) 712-03-53 (Волна)
