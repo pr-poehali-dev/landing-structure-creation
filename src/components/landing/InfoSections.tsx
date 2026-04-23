@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 import { ADVANTAGES, SCHEDULE, REVIEWS, PRICES, IMG_LUNCH } from "./constants";
 import FeaturesSection from "./FeaturesSection";
+import FoodSection from "./FoodSection";
 import { ymGoal } from "@/lib/ym";
 
 // ── Section (shared animated wrapper) ─────────────────────────────────────
@@ -91,6 +92,8 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
           </div>
         </div>
       </Section>
+
+      <FoodSection />
 
       {/* ── БЛОК 4: Отзывы ── */}
       <Section id="reviews" className="bg-white">
