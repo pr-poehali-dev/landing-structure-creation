@@ -151,11 +151,12 @@ export default function FoodSection() {
               Посмотрите, как дети едят
             </div>
             <div className="food-video-wrap">
-              <div className="food-video-placeholder">
-                <Icon name="Play" size={40} />
-                <span>Видео появится здесь</span>
-                <p>Пришлите ссылку на видео (ВКонтакте или YouTube) — я вставлю его в этот блок</p>
-              </div>
+              <video
+                src="https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/f1745ec5-c958-41e6-b901-140e9cd705dc.mp4"
+                controls
+                playsInline
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
             </div>
             {/* Бракеражная комиссия */}
             <div className="food-brakerage">
