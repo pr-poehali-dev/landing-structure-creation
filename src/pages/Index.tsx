@@ -5,6 +5,7 @@ import { ymGoal } from "@/lib/ym";
 import InfoSections from "@/components/landing/InfoSections";
 import CalculatorFaqTeam from "@/components/landing/CalculatorFaqTeam";
 import FooterSections from "@/components/landing/FooterSections";
+import FoodSection from "@/components/landing/FoodSection";
 
 export default function Index() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -53,6 +54,7 @@ export default function Index() {
       <HeroSection onOpenModal={openModal} />
       <InfoSections onOpenModal={openModal} timerMm={mm} timerSs={ss} />
       <CalculatorFaqTeam onOpenModal={openModal} />
+      <FoodSection />
       <FooterSections onOpenModal={openModal} />
     </div>
   );
