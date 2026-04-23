@@ -80,6 +80,27 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
         </div>
       </Section>
 
+      {/* ── БЛОК 10б: Карта ── */}
+      <Section className="bg-white">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-tag">Как нас найти</span>
+            <h2 className="section-h2">Мы в Керчи,<br />ул. Циолковского, 12</h2>
+          </div>
+          <div className="map-wrap">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?z=16&ol=biz&oid=120578628138"
+              width="100%"
+              height="420"
+              frameBorder="0"
+              allowFullScreen
+              title="Детский сад Рыбка Долли на карте"
+              style={{ borderRadius: "16px", display: "block" }}
+            />
+          </div>
+        </div>
+      </Section>
+
       {/* ── БЛОК 11: Последний призыв ── */}
       <Section className="bg-dark">
         <div className="container container-narrow">
