@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 import { Section } from "./InfoSections";
 
@@ -92,6 +92,24 @@ const NORMS = [
 export default function FoodSection() {
   const [activeDay, setActiveDay] = useState(0);
   const day = MENU_DAYS[activeDay];
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.4 }
+    );
+    obs.observe(video);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <Section id="food" className="bg-cream">
@@ -152,9 +170,12 @@ export default function FoodSection() {
             </div>
             <div className="food-video-wrap">
               <video
+                ref={videoRef}
                 src="https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/f1745ec5-c958-41e6-b901-140e9cd705dc.mp4"
                 controls
+                muted
                 playsInline
+                loop
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
               />
             </div>
