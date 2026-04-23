@@ -182,6 +182,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             <li><Icon name="Check" size={16} /><span>Педагоги с профильным высшим образованием</span></li>
             <li><Icon name="Check" size={16} /><span>Безопасность на высшем уровне</span></li>
             <li><Icon name="Check" size={16} /><span>Имеем лицензию и сертификат соответствия СЭС</span></li>
+            <li><Icon name="Check" size={16} /><span>Проходим проверку санитарного соответствия 2 раза в год</span></li>
           </ul>
 
           <div className="hero-cta-buttons">
