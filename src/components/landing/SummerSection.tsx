@@ -125,12 +125,12 @@ export default function SummerSection() {
 
             {/* Карточки */}
             <div className="summer-cards">
-              <div className="summer-card">
+              <div className="summer-card" style={{ background: "linear-gradient(145deg, rgba(56,142,60,0.55) 0%, rgba(104,195,110,0.45) 100%)", borderColor: "rgba(144,238,144,0.6)" }}>
                 <div className="summer-card-icon">🎨</div>
                 <div className="summer-card-title">Развлекательный формат</div>
                 <div className="summer-card-desc">Творческие мастерские, тематические смены каждые 2 недели</div>
               </div>
-              <div className="summer-card summer-card-highlight">
+              <div className="summer-card summer-card-highlight" style={{ background: "linear-gradient(145deg, rgba(245,124,0,0.6) 0%, rgba(255,183,77,0.55) 100%)", borderColor: "rgba(255,220,100,0.75)" }}>
                 <div className="summer-card-icon">💰</div>
                 <div className="summer-card-title">Гибкие абонементы</div>
                 <div className="summer-card-desc">
@@ -139,7 +139,7 @@ export default function SummerSection() {
                   <span className="summer-price-note">Обычный абонемент в садик — от 20 000 ₽/мес</span>
                 </div>
               </div>
-              <div className="summer-card">
+              <div className="summer-card" style={{ background: "linear-gradient(145deg, rgba(30,136,229,0.55) 0%, rgba(100,181,246,0.45) 100%)", borderColor: "rgba(144,202,249,0.65)" }}>
                 <div className="summer-card-icon">👧</div>
                 <div className="summer-card-title">Возраст 4–7 лет</div>
                 <div className="summer-card-desc">Небольшие группы, знакомые воспитатели, домашняя атмосфера</div>
