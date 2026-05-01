@@ -126,12 +126,12 @@ export default function SummerSection() {
             {/* Карточки */}
             <div className="summer-cards">
               <div className="summer-card" style={{ background: "linear-gradient(145deg, rgba(56,142,60,0.55) 0%, rgba(104,195,110,0.45) 100%)", borderColor: "rgba(144,238,144,0.6)" }}>
-                <div className="summer-card-icon">🎨</div>
+                <div className="summer-card-icon"><img src="https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/64090c93-fbf5-4a17-95a0-8ad53292e627.png" alt="" /></div>
                 <div className="summer-card-title">Развлекательный формат</div>
                 <div className="summer-card-desc">Творческие мастерские, тематические смены каждые 2 недели</div>
               </div>
               <div className="summer-card summer-card-highlight" style={{ background: "linear-gradient(145deg, rgba(245,124,0,0.6) 0%, rgba(255,183,77,0.55) 100%)", borderColor: "rgba(255,220,100,0.75)" }}>
-                <div className="summer-card-icon">💰</div>
+                <div className="summer-card-icon"><img src="https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/f3a5c5c1-6183-41c2-a0ab-5dec33b89b2a.png" alt="" /></div>
                 <div className="summer-card-title">Гибкие абонементы</div>
                 <div className="summer-card-desc">
                   <span className="summer-price-row"><b>1 неделя</b> — 7 000 ₽</span>
@@ -140,7 +140,7 @@ export default function SummerSection() {
                 </div>
               </div>
               <div className="summer-card" style={{ background: "linear-gradient(145deg, rgba(30,136,229,0.55) 0%, rgba(100,181,246,0.45) 100%)", borderColor: "rgba(144,202,249,0.65)" }}>
-                <div className="summer-card-icon">👧</div>
+                <div className="summer-card-icon"><img src="https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/72e09cfa-fdec-430b-a660-3c6b23c4e0b3.png" alt="" /></div>
                 <div className="summer-card-title">Возраст 4–7 лет</div>
                 <div className="summer-card-desc">Небольшие группы, знакомые воспитатели, домашняя атмосфера</div>
               </div>
