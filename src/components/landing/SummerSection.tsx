@@ -100,7 +100,7 @@ export default function SummerSection() {
     <>
       <SummerModal open={modalOpen} onClose={() => setModalOpen(false)} />
 
-      <section className="summer-section">
+      <section className="summer-section" id="summer">
         {/* Декоративные элементы */}
         <div className="summer-deco summer-deco-sun">☀️</div>
         <div className="summer-deco summer-deco-cloud">⛅</div>
