@@ -2376,14 +2376,17 @@
   line-height: 1;
 }
 .summer-card-title {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 800;
   color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
 }
 .summer-card-desc {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.88);
+  font-weight: 500;
+  color: #fff;
   line-height: 1.55;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   gap: 4px;
