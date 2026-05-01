@@ -2438,11 +2438,23 @@
   gap: 10px;
   color: #fff;
 }
-.summer-table-emoji {
-  font-size: 22px;
-  line-height: 1;
+.summer-table-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
   flex-shrink: 0;
-  margin-top: 1px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+.summer-table-icon:hover {
+  transform: scale(1.05);
+}
+@media (max-width: 640px) {
+  .summer-table-icon {
+    width: 64px;
+    height: 64px;
+  }
 }
 .summer-table-name > span:last-child {
   display: flex;

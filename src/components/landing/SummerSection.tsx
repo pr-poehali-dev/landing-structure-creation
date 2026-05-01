@@ -5,13 +5,13 @@ import { ymGoal } from "@/lib/ym";
 const SEND_LEAD_URL = "https://functions.poehali.dev/57047ae6-091f-4a98-8391-1bc5b14b157a";
 
 const SHIFTS = [
-  { id: 1, label: "Дино-смена",                 sub: "Путешествие по миру динозавров",                              dates: "1 июня — 12 июня",        month: "июнь",   emoji: "🦕" },
-  { id: 2, label: "Школа юных волшебников",      sub: "Кто сказал, что волшебство не существует?",                  dates: "15 июня — 26 июня",       month: "июнь",   emoji: "🪄" },
-  { id: 3, label: "Подводное царство русалочки", sub: "Волшебство не только на земле, но и под водой",              dates: "29 июня — 10 июля",       month: "июль",   emoji: "🧜" },
-  { id: 4, label: "Космические приключения",     sub: "Спасаем галактику",                                          dates: "13 июля — 24 июля",       month: "июль",   emoji: "🚀" },
-  { id: 5, label: "Радужная страна красок",      sub: "Творчества не бывает много — и ещё... оно бывает необычным", dates: "27 июля — 7 августа",     month: "август", emoji: "🎨" },
-  { id: 6, label: "Остров пиратов",              sub: "На абордаж! Сокровища ждут нас",                             dates: "10 августа — 21 августа", month: "август", emoji: "🏴‍☠️" },
-  { id: 7, label: "Театр волшебных историй",     sub: "Погружение в закулисье",                                     dates: "24 августа — 28 августа", month: "август", emoji: "🎭" },
+  { id: 1, label: "Дино-смена",                 sub: "Путешествие по миру динозавров",                              dates: "1 июня — 12 июня",        month: "июнь",   icon: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/26ba9f35-f120-4fab-81d6-87696d2ba8e8.png" },
+  { id: 2, label: "Школа юных волшебников",      sub: "Кто сказал, что волшебство не существует?",                  dates: "15 июня — 26 июня",       month: "июнь",   icon: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/5dd9e415-1665-4d9a-bd21-6a622d7fa13d.png" },
+  { id: 3, label: "Подводное царство русалочки", sub: "Волшебство не только на земле, но и под водой",              dates: "29 июня — 10 июля",       month: "июль",   icon: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d94ffc2e-2922-4350-be51-5e8a925ddfba.png" },
+  { id: 4, label: "Космические приключения",     sub: "Спасаем галактику",                                          dates: "13 июля — 24 июля",       month: "июль",   icon: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/bc668c2a-66b1-4213-b571-7a926f005346.png" },
+  { id: 5, label: "Радужная страна красок",      sub: "Творчества не бывает много — и ещё... оно бывает необычным", dates: "27 июля — 7 августа",     month: "август", icon: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/0c827943-e3af-493c-9cc7-483012ea348f.png" },
+  { id: 6, label: "Остров пиратов",              sub: "На абордаж! Сокровища ждут нас",                             dates: "10 августа — 21 августа", month: "август", icon: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/c1b58838-a88e-498d-ac72-e95dbe8fd2fe.png" },
+  { id: 7, label: "Театр волшебных историй",     sub: "Погружение в закулисье",                                     dates: "24 августа — 28 августа", month: "август", icon: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/aa4f9bb3-615b-450a-b231-d069a4024460.png" },
 ];
 
 function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -162,7 +162,7 @@ export default function SummerSection() {
                     onClick={() => setModalOpen(true)}
                   >
                     <span className="summer-table-name">
-                      <span className="summer-table-emoji">{s.emoji}</span>
+                      <img src={s.icon} alt={s.label} className="summer-table-icon" />
                       <span>
                         <span className="summer-table-label">{s.label}</span>
                         <span className="summer-table-sub">{s.sub}</span>
