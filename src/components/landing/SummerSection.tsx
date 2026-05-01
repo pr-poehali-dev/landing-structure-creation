@@ -5,14 +5,14 @@ import { ymGoal } from "@/lib/ym";
 const SEND_LEAD_URL = "https://functions.poehali.dev/57047ae6-091f-4a98-8391-1bc5b14b157a";
 
 const SHIFTS = [
-  { id: 1, label: "Смена 1", dates: "2 июня — 13 июня",        month: "июнь" },
-  { id: 2, label: "Смена 2", dates: "16 июня — 27 июня",       month: "июнь" },
-  { id: 3, label: "Смена 3", dates: "30 июня — 11 июля",       month: "июль" },
-  { id: 4, label: "Смена 4", dates: "14 июля — 25 июля",       month: "июль" },
-  { id: 5, label: "Смена 5", dates: "28 июля — 8 августа",     month: "август" },
-  { id: 6, label: "Смена 6", dates: "11 августа — 22 августа", month: "август" },
-  { id: 7, label: "Смена 7", dates: "25 августа — 5 сентября", month: "сентябрь" },
-  { id: 8, label: "Смена 8", dates: "8 сентября — 19 сентября",month: "сентябрь" },
+  { id: 1, label: "Дино-смена",                   sub: "Путешествие по миру динозавров",                          dates: "2 июня — 13 июня",         month: "июнь",     emoji: "🦕" },
+  { id: 2, label: "Школа юных волшебников",        sub: "Кто сказал, что волшебство не существует?",              dates: "16 июня — 27 июня",        month: "июнь",     emoji: "🪄" },
+  { id: 3, label: "Подводное царство русалочки",   sub: "Волшебство не только на земле, но и под водой",          dates: "30 июня — 11 июля",        month: "июль",     emoji: "🧜" },
+  { id: 4, label: "Космические приключения",       sub: "Спасаем галактику",                                      dates: "14 июля — 25 июля",        month: "июль",     emoji: "🚀" },
+  { id: 5, label: "Радужная страна красок",        sub: "Творчества не бывает много — и ещё... оно бывает необычным", dates: "28 июля — 8 августа",  month: "август",   emoji: "🎨" },
+  { id: 6, label: "В гостях у лесных зверей",      sub: "Лес полон загадок и тайн",                               dates: "11 августа — 22 августа",  month: "август",   emoji: "🦊" },
+  { id: 7, label: "Театр волшебных историй",       sub: "Погружение в закулисье",                                 dates: "25 августа — 5 сентября",  month: "сентябрь", emoji: "🎭" },
+  { id: 8, label: "Остров пиратов",                sub: "На абордаж! Сокровища ждут нас",                         dates: "8 сентября — 19 сентября", month: "сентябрь", emoji: "🏴‍☠️" },
 ];
 
 function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -58,7 +58,7 @@ function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) 
               <select className="modal-input modal-select" value={shift} onChange={e => setShift(e.target.value)} required>
                 <option value="">Выберите смену</option>
                 {SHIFTS.map(s => (
-                  <option key={s.id} value={String(s.id)}>{s.label} — {s.dates}</option>
+                  <option key={s.id} value={String(s.id)}>{s.emoji} {s.label} ({s.dates})</option>
                 ))}
               </select>
               <div className="summer-duration-group">
@@ -152,7 +152,7 @@ export default function SummerSection() {
               <div className="summer-table-title">📋 Расписание смен — лето 2026</div>
               <div className="summer-table">
                 <div className="summer-table-head">
-                  <span>Смена</span>
+                  <span>Тема смены</span>
                   <span>Даты</span>
                   <span>Месяц</span>
                 </div>
@@ -162,7 +162,13 @@ export default function SummerSection() {
                     className={`summer-table-row ${i % 2 === 0 ? "summer-table-row-even" : ""}`}
                     onClick={() => setModalOpen(true)}
                   >
-                    <span className="summer-table-name">{s.label}</span>
+                    <span className="summer-table-name">
+                      <span className="summer-table-emoji">{s.emoji}</span>
+                      <span>
+                        <span className="summer-table-label">{s.label}</span>
+                        <span className="summer-table-sub">{s.sub}</span>
+                      </span>
+                    </span>
                     <span className="summer-table-dates">{s.dates}</span>
                     <span className="summer-table-month">{s.month}</span>
                   </div>
