@@ -2214,13 +2214,27 @@
   background: linear-gradient(
     160deg,
     #1a6b2a 0%,
-    #2d9e43 35%,
-    #f7b731 75%,
-    #ff8c00 100%
+    #2d9e43 20%,
+    #f7b731 55%,
+    #ff8c00 80%,
+    #ff6b35 100%
   );
+  background-size: 300% 300%;
+  animation: summer-bg-shift 8s ease-in-out infinite;
   padding: 80px 0;
   position: relative;
   overflow: hidden;
+}
+@keyframes summer-bg-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 .summer-deco {
   position: absolute;
