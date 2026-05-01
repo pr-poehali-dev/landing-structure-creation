@@ -2208,3 +2208,217 @@
     transform: translateY(0);
   }
 }
+
+/* BLOCK: Summer Section */
+.summer-section {
+  background: linear-gradient(135deg, #fff9e6 0%, #fff3c4 40%, #ffe8a0 100%);
+  padding: 72px 0;
+  border-top: 3px solid #f5c842;
+  border-bottom: 3px solid #f5c842;
+  position: relative;
+  overflow: hidden;
+}
+.summer-section::before {
+  content: "☀️";
+  position: absolute;
+  font-size: 260px;
+  right: -40px;
+  top: -40px;
+  opacity: 0.08;
+  pointer-events: none;
+  line-height: 1;
+}
+.summer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 28px;
+}
+.summer-badge-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.summer-badge {
+  background: #f5c842;
+  color: #7a4800;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 50px;
+}
+.summer-discount-badge {
+  background: #e87c1e;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 50px;
+}
+.summer-h2 {
+  font-family: "Cormorant", serif;
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 700;
+  color: #7a4800;
+  line-height: 1.15;
+  margin: 0;
+}
+.summer-sub {
+  font-size: 16px;
+  color: #5a3a00;
+  line-height: 1.65;
+  max-width: 600px;
+  margin: 0;
+}
+.summer-br {
+  display: block;
+}
+@media (max-width: 640px) {
+  .summer-br {
+    display: none;
+  }
+}
+.summer-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 860px;
+}
+@media (max-width: 768px) {
+  .summer-cards {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+}
+.summer-card {
+  background: rgba(255, 255, 255, 0.75);
+  border: 2px solid rgba(245, 200, 66, 0.5);
+  border-radius: 16px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+.summer-card-icon {
+  font-size: 36px;
+  line-height: 1;
+}
+.summer-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #7a4800;
+}
+.summer-card-desc {
+  font-size: 14px;
+  color: #5a3a00;
+  line-height: 1.55;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.summer-price-row {
+  display: block;
+  font-size: 15px;
+}
+.summer-price-note {
+  display: block;
+  font-size: 12px;
+  color: #9a7040;
+  margin-top: 6px;
+}
+.summer-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1.5px solid #f5c842;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: #5a3a00;
+  max-width: 620px;
+  text-align: left;
+  line-height: 1.55;
+}
+.summer-notice svg {
+  flex-shrink: 0;
+  color: #e87c1e;
+  margin-top: 2px;
+}
+.summer-cta-btn {
+  font-size: 17px !important;
+  padding: 16px 36px !important;
+}
+
+/* Summer Modal */
+.summer-modal-box {
+  max-width: 480px !important;
+}
+.modal-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px !important;
+  cursor: pointer;
+}
+.summer-duration-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.summer-duration-card {
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 12px;
+  cursor: pointer;
+  text-align: center;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+  position: relative;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.summer-duration-card:hover {
+  border-color: #f5c842;
+  background: #fffdf0;
+}
+.summer-duration-card.active {
+  border-color: #e87c1e;
+  background: #fff9f0;
+}
+.summer-dur-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.summer-dur-price {
+  font-size: 17px;
+  font-weight: 700;
+  color: #e87c1e;
+}
+.summer-dur-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: #e87c1e;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 50px;
+}

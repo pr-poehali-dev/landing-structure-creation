@@ -3,6 +3,7 @@ import Icon from "@/components/ui/icon";
 import HeroSection, { Modal } from "@/components/landing/HeroSection";
 import { ymGoal } from "@/lib/ym";
 import InfoSections from "@/components/landing/InfoSections";
+import SummerSection from "@/components/landing/SummerSection";
 import CalculatorFaqTeam from "@/components/landing/CalculatorFaqTeam";
 import FooterSections from "@/components/landing/FooterSections";
 
@@ -51,6 +52,7 @@ export default function Index() {
       </div>
 
       <HeroSection onOpenModal={openModal} />
+      <SummerSection />
       <InfoSections onOpenModal={openModal} timerMm={mm} timerSs={ss} />
       <CalculatorFaqTeam onOpenModal={openModal} />
       <FooterSections onOpenModal={openModal} />
