@@ -128,7 +128,7 @@ export default function SummerSection() {
               <div className="summer-card">
                 <div className="summer-card-icon">🎨</div>
                 <div className="summer-card-title">Развлекательный формат</div>
-                <div className="summer-card-desc">Творческие мастерские, игры на свежем воздухе, без учебной нагрузки</div>
+                <div className="summer-card-desc">Творческие мастерские, тематические смены каждые 2 недели</div>
               </div>
               <div className="summer-card summer-card-highlight">
                 <div className="summer-card-icon">💰</div>
