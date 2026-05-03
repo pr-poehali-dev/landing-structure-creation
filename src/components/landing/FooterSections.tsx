@@ -14,12 +14,13 @@ interface FooterSectionsProps {
 export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
 
   const submitChecklist = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email) return;
+    if (!name || !email || !agreed) return;
     setLoading(true);
     await fetch(SEND_CHECKLIST_URL, {
       method: 'POST',
@@ -62,7 +63,11 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
                   onChange={e => setEmail(e.target.value)}
                   required
                 />
-                <button type="submit" className="cta-btn cta-btn-white" disabled={loading}>
+                <label className="privacy-checkbox-label privacy-checkbox-label--light">
+                  <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} required />
+                  <span>Согласен(а) с <a href="/privacy" target="_blank" rel="noopener noreferrer">обработкой персональных данных</a></span>
+                </label>
+                <button type="submit" className="cta-btn cta-btn-white" disabled={loading || !agreed}>
                   {loading ? 'Отправляем...' : 'Получить чек-листы бесплатно'}
                   {!loading && <Icon name="ArrowRight" size={18} />}
                 </button>
@@ -155,6 +160,7 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
           <div className="footer-bottom">
             <span>© 2024 Детский сад «Рыбка»</span>
             <span>ИП Савченко И.И. · ОГРН 318911200074795</span>
+            <a href="/privacy" style={{ color: "rgba(255,255,255,0.35)", textDecoration: "underline", fontSize: 12 }}>Политика конфиденциальности</a>
           </div>
         </div>
       </footer>

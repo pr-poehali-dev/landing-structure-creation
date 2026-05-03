@@ -19,6 +19,7 @@ function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) 
   const [phone, setPhone] = useState("");
   const [shift, setShift] = useState("");
   const [duration, setDuration] = useState("");
+  const [agreed, setAgreed] = useState(false);
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -26,7 +27,7 @@ function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) 
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone || !shift || !duration) return;
+    if (!name || !phone || !shift || !duration || !agreed) return;
     setLoading(true);
     const shiftObj = SHIFTS.find(s => String(s.id) === shift);
     const source = `Летний клуб — ${shiftObj?.label} (${shiftObj?.dates}), ${duration === "1" ? "1 неделя — 7 000 ₽" : "2 недели — 13 000 ₽"}`;
@@ -71,7 +72,11 @@ function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) 
                   <div className="summer-dur-badge">выгоднее</div>
                 </div>
               </div>
-              <button type="submit" className="cta-btn cta-btn-primary" disabled={loading || !shift || !duration}>
+              <label className="privacy-checkbox-label">
+                <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} required />
+                <span>Согласен(а) с <a href="/privacy" target="_blank" rel="noopener noreferrer">обработкой персональных данных</a></span>
+              </label>
+              <button type="submit" className="cta-btn cta-btn-primary" disabled={loading || !shift || !duration || !agreed}>
                 {loading ? "Отправляем..." : "Оставить заявку"}
                 {!loading && <Icon name="ArrowRight" size={18} />}
               </button>

@@ -7,6 +7,7 @@ import { ymGoal } from "@/lib/ym";
 export function Modal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [agreed, setAgreed] = useState(false);
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -14,7 +15,7 @@ export function Modal({ open, onClose }: { open: boolean; onClose: () => void })
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone) return;
+    if (!name || !phone || !agreed) return;
     setLoading(true);
     await sendLead(name, phone, '', 'Модальное окно');
     ymGoal('form_modal_submit');
@@ -36,7 +37,11 @@ export function Modal({ open, onClose }: { open: boolean; onClose: () => void })
             <form onSubmit={submit} className="modal-form">
               <input className="modal-input" placeholder="Ваше имя" value={name} onChange={e => setName(e.target.value)} />
               <input className="modal-input" placeholder="Телефон" value={phone} onChange={e => setPhone(e.target.value)} />
-              <button type="submit" className="cta-btn cta-btn-lg cta-btn-primary" disabled={loading}>
+              <label className="privacy-checkbox-label">
+                <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} required />
+                <span>Согласен(а) с <a href="/privacy" target="_blank" rel="noopener noreferrer">обработкой персональных данных</a></span>
+              </label>
+              <button type="submit" className="cta-btn cta-btn-lg cta-btn-primary" disabled={loading || !agreed}>
                 {loading ? 'Отправляем...' : 'Хочу на экскурсию'}
                 {!loading && <Icon name="ArrowRight" size={18} />}
               </button>
@@ -84,12 +89,13 @@ function HeroInlineForm({ onSuccess }: { onSuccess: () => void }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
+  const [agreed, setAgreed] = useState(false);
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone) return;
+    if (!name || !phone || !agreed) return;
     setLoading(true);
     await sendLead(name, phone, age, 'Форма в герое');
     ymGoal('form_hero_submit');
@@ -109,7 +115,11 @@ function HeroInlineForm({ onSuccess }: { onSuccess: () => void }) {
       <input className="hform-input" placeholder="Имя" value={name} onChange={e => setName(e.target.value)} required />
       <input className="hform-input" placeholder="Телефон" value={phone} onChange={e => setPhone(e.target.value)} required />
       <input className="hform-input" placeholder="Возраст ребёнка" value={age} onChange={e => setAge(e.target.value)} />
-      <button type="submit" className="cta-btn cta-btn-primary hform-btn" disabled={loading}>
+      <label className="privacy-checkbox-label privacy-checkbox-label--light">
+        <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} required />
+        <span>Согласен(а) с <a href="/privacy" target="_blank" rel="noopener noreferrer">обработкой персональных данных</a></span>
+      </label>
+      <button type="submit" className="cta-btn cta-btn-primary hform-btn" disabled={loading || !agreed}>
         {loading ? 'Отправляем...' : 'Записаться'}
         {!loading && <Icon name="ArrowRight" size={16} />}
       </button>
