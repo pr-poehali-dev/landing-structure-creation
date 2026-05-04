@@ -145,6 +145,23 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
               style={{ display: "block" }}
             />
           </div>
+          <div style={{ maxWidth: 800, margin: "32px auto 0", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "16px" }}>
+            {[
+              { icon: "Camera", text: "Видеонаблюдение" },
+              { icon: "Flame", text: "Пожарная безопасность" },
+              { icon: "KeyRound", text: "Электронный замок на входной двери" },
+              { icon: "BriefcaseMedical", text: "Аптечка первой помощи — воспитатели имеют сертификат" },
+              { icon: "Lightbulb", text: "Бактерицидные лампы закрытого типа в группах" },
+              { icon: "Trees", text: "Своя закрытая площадка для прогулок" },
+              { icon: "DoorOpen", text: "3 пожарных выхода" },
+              { icon: "Thermometer", text: "Индивидуальное отопление" },
+            ].map((item, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 12, background: "#f8fafc", borderRadius: 12, padding: "16px 18px" }}>
+                <Icon name={item.icon} size={20} style={{ color: "var(--clr-teal, #2bbfbf)", flexShrink: 0, marginTop: 2 }} />
+                <span style={{ fontSize: 15, color: "#333", lineHeight: 1.5 }}>{item.text}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 
