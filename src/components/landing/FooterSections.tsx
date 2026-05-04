@@ -137,7 +137,7 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
             <span className="section-tag">Безопасность</span>
             <h2 className="section-h2">Мы заботимся<br />о безопасности детей</h2>
           </div>
-          <div style={{ maxWidth: 800, margin: "0 auto", borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}>
+          <div style={{ maxWidth: 400, margin: "0 auto", borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}>
             <video
               src="https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/4c6ede15-7344-4e48-9347-b67c23097995.mp4"
               controls
