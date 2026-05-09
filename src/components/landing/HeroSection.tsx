@@ -143,25 +143,6 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             alt="Рыбка Долли"
             className="hero-logo-img"
           />
-          {(() => {
-            const now = new Date();
-            const y = now.getFullYear();
-            const m = now.getMonth() + 1;
-            const d = now.getDate();
-            const show = y === 2026 && m === 5 && d >= 9 && d <= 11;
-            return show ? (
-              <div style={{
-                display: 'inline-flex', alignItems: 'center', gap: 6,
-                background: '#fff', border: '2px solid #e53e3e',
-                borderRadius: 20, padding: '4px 12px',
-                fontSize: 13, fontWeight: 700, color: '#c0392b',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-                whiteSpace: 'nowrap', marginTop: 6
-              }}>
-                ⭐ 9 мая · 81 год 🕊️
-              </div>
-            ) : null;
-          })()}
         </div>
         <div id="phones" className="hero-phones">
           <a href="https://vk.com/rybka_dolli" target="_blank" rel="noopener noreferrer" className="hero-phone-btn hero-vk-btn" onClick={() => ymGoal('click_vk')}>
@@ -183,6 +164,32 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
       <div className="hero-split">
         {/* Левая колонка — фото */}
         <div className="hero-photo-col">
+          {(() => {
+            const now = new Date();
+            const y = now.getFullYear();
+            const mo = now.getMonth() + 1;
+            const d = now.getDate();
+            const show = y === 2026 && mo === 5 && d >= 9 && d <= 11;
+            return show ? (
+              <div style={{
+                background: 'linear-gradient(90deg, #d32f2f, #f57c00, #fdd835, #388e3c, #1976d2, #7b1fa2, #d32f2f)',
+                backgroundSize: '300% 100%',
+                animation: 'may9gradient 3s linear infinite',
+                borderRadius: 12,
+                padding: '10px 18px',
+                marginBottom: 10,
+                textAlign: 'center',
+                fontWeight: 800,
+                fontSize: 18,
+                color: '#fff',
+                letterSpacing: 1,
+                textShadow: '0 1px 4px rgba(0,0,0,0.4)',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+              }}>
+                ⭐ С Днём Победы! · 9 мая · 81 год 🕊️
+              </div>
+            ) : null;
+          })()}
           <figure className="hero-photo-figure">
             <img
               src={IMG_HERO}
