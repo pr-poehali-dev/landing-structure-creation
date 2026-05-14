@@ -190,6 +190,21 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
               </div>
             ) : null;
           })()}
+          <div style={{
+            background: 'linear-gradient(135deg, #ff6b35, #f7931e)',
+            borderRadius: 12,
+            padding: '12px 18px',
+            marginBottom: 10,
+            textAlign: 'center',
+            fontWeight: 700,
+            fontSize: 16,
+            color: '#fff',
+            textShadow: '0 1px 3px rgba(0,0,0,0.3)',
+            boxShadow: '0 4px 14px rgba(255,107,53,0.4)',
+            lineHeight: 1.4,
+          }}>
+            ☀️ Летом можно купить место сменами на 2 недели
+          </div>
           <figure className="hero-photo-figure">
             <img
               src={IMG_HERO}
