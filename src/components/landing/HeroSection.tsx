@@ -190,7 +190,6 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
               </div>
             ) : null;
           })()}
-          <a href="https://dolliklub.ru" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
           <div style={{
             background: 'linear-gradient(90deg, #7b1fa2, #ab47bc, #ce93d8, #ab47bc, #7b1fa2)',
             backgroundSize: '300% 100%',
@@ -211,7 +210,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           }}>
             <span>☀️ Летом — место сменами на 2 недели</span>
             <button
-              onClick={onOpenModal}
+              onClick={() => document.getElementById('summer')?.scrollIntoView({ behavior: 'smooth' })}
               style={{
                 background: 'linear-gradient(90deg, #fff, #f3e5f5, #fff)',
                 backgroundSize: '300% 100%',
@@ -230,7 +229,6 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
               Узнать подробнее
             </button>
           </div>
-          </a>
           <figure className="hero-photo-figure">
             <img
               src={IMG_HERO}
