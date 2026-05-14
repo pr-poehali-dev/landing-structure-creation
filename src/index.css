@@ -429,7 +429,10 @@
   position: relative;
   overflow: hidden;
   max-height: 480px;
-  align-self: center;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  padding-top: 48px;
 }
 .hero-photo-figure {
   margin: 0;
