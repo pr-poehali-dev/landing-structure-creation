@@ -190,25 +190,13 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
               </div>
             ) : null;
           })()}
-          <figure className="hero-photo-figure">
-            <img
-              src={IMG_HERO}
-              alt="Занятие с детьми старшей группы в частном детском садике Рыбка Долли в Керчи"
-              className="hero-photo-main"
-            />
-            <figcaption className="hero-photo-caption">Педагог Рыбки Долли на занятии с детьми</figcaption>
-          </figure>
-        </div>
-
-        {/* Правая колонка — текст + форма */}
-        <div id="form" className="hero-form-col">
           <div style={{
             background: 'linear-gradient(90deg, #7b1fa2, #ab47bc, #ce93d8, #ab47bc, #7b1fa2)',
             backgroundSize: '300% 100%',
             animation: 'may9gradient 4s linear infinite',
             borderRadius: 10,
             padding: '6px 12px',
-            marginBottom: 12,
+            marginBottom: 8,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -240,6 +228,18 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
               Узнать подробнее
             </button>
           </div>
+          <figure className="hero-photo-figure">
+            <img
+              src={IMG_HERO}
+              alt="Занятие с детьми старшей группы в частном детском садике Рыбка Долли в Керчи"
+              className="hero-photo-main"
+            />
+            <figcaption className="hero-photo-caption">Педагог Рыбки Долли на занятии с детьми</figcaption>
+          </figure>
+        </div>
+
+        {/* Правая колонка — текст + форма */}
+        <div id="form" className="hero-form-col">
           <h1 className="hero-h1">
             Частный детский сад<br />
             <span className="h1-accent">«Рыбка Долли»</span>
