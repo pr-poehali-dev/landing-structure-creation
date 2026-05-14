@@ -197,6 +197,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             borderRadius: 10,
             padding: '6px 12px',
             marginBottom: 8,
+            marginTop: 48,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
