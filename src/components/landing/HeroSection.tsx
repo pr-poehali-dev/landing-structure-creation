@@ -191,19 +191,41 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             ) : null;
           })()}
           <div style={{
-            background: 'linear-gradient(135deg, #ff6b35, #f7931e)',
-            borderRadius: 12,
-            padding: '12px 18px',
-            marginBottom: 10,
-            textAlign: 'center',
-            fontWeight: 700,
-            fontSize: 16,
-            color: '#fff',
-            textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-            boxShadow: '0 4px 14px rgba(255,107,53,0.4)',
-            lineHeight: 1.4,
+            background: 'rgba(255,255,255,0.85)',
+            borderRadius: 10,
+            padding: '6px 12px',
+            marginBottom: 6,
+            marginTop: -8,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 8,
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+            fontSize: 12,
+            fontWeight: 600,
+            color: '#333',
           }}>
-            ☀️ Летом можно купить место сменами на 2 недели
+            <span>☀️ Летом — место сменами на 2 недели</span>
+            <button
+              onClick={onOpenModal}
+              style={{
+                background: 'linear-gradient(90deg, #ff6b35, #f7931e, #ffcd3c, #ff6b35)',
+                backgroundSize: '300% 100%',
+                animation: 'may9gradient 3s linear infinite',
+                border: 'none',
+                borderRadius: 8,
+                padding: '5px 12px',
+                color: '#fff',
+                fontWeight: 700,
+                fontSize: 11,
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+                boxShadow: '0 2px 8px rgba(255,107,53,0.4)',
+              }}
+            >
+              Узнать подробнее
+            </button>
           </div>
           <figure className="hero-photo-figure">
             <img
