@@ -115,22 +115,48 @@ export default function SummerSection() {
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="summer-inner">
 
-            <div className="summer-badge-row" style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+            <div className="summer-badge-row" style={{ position: 'relative', display: 'flex', alignItems: 'flex-start', gap: 16, flexWrap: 'wrap' }}>
               <span className="summer-badge">☀️ Только летом</span>
               {showDiscount && (
                 <span className="summer-discount-badge">🎁 Скидка 10% до 15 мая</span>
               )}
-              <span style={{
-                background: '#fff',
-                border: '2px solid #FF6B35',
-                borderRadius: 12,
-                padding: '5px 10px',
-                fontSize: 11,
-                fontWeight: 700,
-                color: '#FF6B35',
-                whiteSpace: 'nowrap',
-                boxShadow: '0 2px 8px rgba(255,107,53,0.2)',
-              }}>☀️ Садик работает всё лето!</span>
+
+              {/* Бирка-ценник */}
+              <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', transform: 'rotate(3deg)', marginTop: -8 }}>
+                {/* Верёвочка */}
+                <svg width="2" height="22" viewBox="0 0 2 22" style={{ display: 'block' }}>
+                  <line x1="1" y1="0" x2="1" y2="22" stroke="#b07a3a" strokeWidth="1.5" strokeDasharray="3 2" />
+                </svg>
+                {/* Сама бирка */}
+                <div style={{
+                  background: '#fffdf7',
+                  border: '2.5px solid #FF6B35',
+                  borderRadius: '12px 12px 12px 12px',
+                  padding: '14px 22px 16px',
+                  boxShadow: '3px 4px 14px rgba(255,107,53,0.25), 0 1px 3px rgba(0,0,0,0.1)',
+                  position: 'relative',
+                  minWidth: 180,
+                  textAlign: 'center',
+                }}>
+                  {/* Дырочка */}
+                  <div style={{
+                    position: 'absolute',
+                    top: -8,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: 14,
+                    height: 14,
+                    borderRadius: '50%',
+                    background: '#fffdf7',
+                    border: '2.5px solid #FF6B35',
+                  }} />
+                  <div style={{ fontSize: 28, lineHeight: 1, marginBottom: 6 }}>☀️</div>
+                  <div style={{ fontSize: 16, fontWeight: 800, color: '#FF6B35', lineHeight: 1.2 }}>Садик работает</div>
+                  <div style={{ fontSize: 16, fontWeight: 800, color: '#FF6B35', lineHeight: 1.2, marginBottom: 6 }}>всё лето!</div>
+                  <div style={{ width: '60%', height: 1.5, background: '#FFD0B0', margin: '6px auto' }} />
+                  <div style={{ fontSize: 12, color: '#b07a3a', fontWeight: 600 }}>июнь — август</div>
+                </div>
+              </div>
             </div>
 
             <h2 className="summer-h2">Летний клуб<br />для дошкольников</h2>
