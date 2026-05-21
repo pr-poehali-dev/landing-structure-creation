@@ -208,7 +208,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           }}>
             <span>🐟 Частный садик Рыбка Долли — это уют, забота и развитие для детей 1,5–6 лет</span>
             <button
-              onClick={() => document.getElementById('summer')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })}
               style={{
                 background: '#fff',
                 border: 'none',
