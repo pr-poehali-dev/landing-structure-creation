@@ -190,38 +190,40 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
               </div>
             ) : null;
           })()}
-          <figure className="hero-photo-figure" style={{ position: 'relative' }}>
+          <figure className="hero-photo-figure">
             <img
               src={IMG_HERO}
               alt="Занятие с детьми старшей группы в частном детском садике Рыбка Долли в Керчи"
               className="hero-photo-main"
             />
-            {/* Плашка цены поверх фото */}
-            <div style={{
-              position: 'absolute',
-              top: 14,
-              left: 14,
-              right: 14,
-              background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)',
-              borderRadius: 20,
-              padding: '10px 16px',
-              boxShadow: '0 4px 18px rgba(255,107,53,0.5)',
-              fontSize: 16,
-              fontWeight: 700,
-              color: '#FFFFFF',
-              textAlign: 'center' as const,
-              lineHeight: 1.4,
-              animation: 'priceBadgeBounce 3.5s ease-in-out infinite',
-              userSelect: 'none' as const,
-            }}>
-              💎 от 20 000 ₽/мес. &nbsp;·&nbsp; <span style={{ fontWeight: 600, fontSize: 15 }}>Качество — премиум, цена — доступная!</span>
-            </div>
             <figcaption className="hero-photo-caption">Педагог Рыбки Долли на занятии с детьми</figcaption>
           </figure>
         </div>
 
         {/* Правая колонка — текст + форма */}
-        <div id="form" className="hero-form-col">
+        <div id="form" className="hero-form-col" style={{ position: 'relative' }}>
+          {/* Плашка цены — абсолютно в правом верхнем углу колонки */}
+          <div style={{
+            position: 'absolute',
+            top: 14,
+            right: 14,
+            background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)',
+            borderRadius: 20,
+            padding: '8px 16px',
+            boxShadow: '0 4px 18px rgba(255,107,53,0.45)',
+            fontSize: 14,
+            fontWeight: 700,
+            color: '#FFFFFF',
+            textAlign: 'center' as const,
+            lineHeight: 1.4,
+            animation: 'priceBadgeBounce 3.5s ease-in-out infinite',
+            userSelect: 'none' as const,
+            zIndex: 2,
+          }}>
+            💎 от 20 000 ₽/мес.<br />
+            <span style={{ fontWeight: 600, fontSize: 13 }}>Качество — премиум, цена — доступная!</span>
+          </div>
+
           <h1 className="hero-h1">
             Частный детский сад<br />
             <span className="h1-accent">«Рыбка Долли»</span>
