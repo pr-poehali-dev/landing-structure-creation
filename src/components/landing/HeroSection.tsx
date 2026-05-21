@@ -208,20 +208,20 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             top: 14,
             right: 14,
             background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)',
-            borderRadius: 16,
-            padding: '6px 12px',
-            boxShadow: '0 4px 18px rgba(255,107,53,0.45)',
-            fontSize: 12,
+            borderRadius: 12,
+            padding: '5px 10px',
+            boxShadow: '0 3px 12px rgba(255,107,53,0.4)',
+            fontSize: 11,
             fontWeight: 700,
             color: '#FFFFFF',
             textAlign: 'center' as const,
-            lineHeight: 1.4,
+            lineHeight: 1.3,
             animation: 'priceBadgeBounce 3.5s ease-in-out infinite',
             userSelect: 'none' as const,
             zIndex: 2,
+            whiteSpace: 'nowrap' as const,
           }}>
-            💎 от 20 000 ₽/мес.<br />
-            <span style={{ fontWeight: 600, fontSize: 11 }}>Качество — премиум, цена — доступная!</span>
+            💎 от 20 000 ₽/мес. · <span style={{ fontWeight: 600 }}>премиум качество</span>
           </div>
 
           <h1 className="hero-h1">
