@@ -135,30 +135,6 @@ interface HeroSectionProps {
 export default function HeroSection({ onOpenModal }: HeroSectionProps) {
   return (
     <section className="hero-wrap" style={{ position: 'relative' }}>
-      {/* Плашка цены */}
-      <div style={{
-        position: 'absolute',
-        top: 16,
-        right: 16,
-        zIndex: 10,
-        background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)',
-        color: '#FFFFFF',
-        fontWeight: 700,
-        fontSize: 15,
-        borderRadius: 24,
-        padding: '10px 20px',
-        boxShadow: '0 4px 18px rgba(255,107,53,0.45)',
-        textAlign: 'center',
-        lineHeight: 1.4,
-        animation: 'priceBadgeBounce 3.5s ease-in-out infinite',
-        cursor: 'default',
-        userSelect: 'none',
-        whiteSpace: 'nowrap',
-      }}>
-        💎 от 20 000 ₽/мес.<br />
-        <span style={{ fontSize: 13, fontWeight: 600, opacity: 0.95 }}>Качество — премиум, цена — доступная!</span>
-      </div>
-
       {/* Шапка */}
       <div className="hero-navbar">
         <div className="hero-logo">
@@ -260,7 +236,31 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         </div>
 
         {/* Правая колонка — текст + форма */}
-        <div id="form" className="hero-form-col">
+        <div id="form" className="hero-form-col" style={{ position: 'relative' }}>
+          {/* Плашка цены */}
+          <div style={{
+            display: 'inline-block',
+            alignSelf: 'flex-end',
+            float: 'right',
+            marginBottom: 12,
+            background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)',
+            color: '#FFFFFF',
+            fontWeight: 700,
+            fontSize: 15,
+            borderRadius: 24,
+            padding: '10px 20px',
+            boxShadow: '0 4px 18px rgba(255,107,53,0.45)',
+            textAlign: 'center',
+            lineHeight: 1.4,
+            animation: 'priceBadgeBounce 3.5s ease-in-out infinite',
+            cursor: 'default',
+            userSelect: 'none' as const,
+            whiteSpace: 'nowrap' as const,
+          }}>
+            💎 от 20 000 ₽/мес.<br />
+            <span style={{ fontSize: 13, fontWeight: 600, opacity: 0.95 }}>Качество — премиум, цена — доступная!</span>
+          </div>
+
           <h1 className="hero-h1">
             Частный детский сад<br />
             <span className="h1-accent">«Рыбка Долли»</span>
