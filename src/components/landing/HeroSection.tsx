@@ -191,39 +191,25 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             ) : null;
           })()}
           <div style={{
-            background: '#b2dfdb',
-            borderRadius: 10,
-            padding: '10px 16px',
+            background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)',
+            borderRadius: 24,
+            padding: '12px 20px',
             marginBottom: 8,
             marginTop: 0,
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: 10,
-            boxShadow: '0 3px 12px rgba(0,137,123,0.15)',
+            justifyContent: 'center',
+            gap: 8,
+            boxShadow: '0 4px 18px rgba(255,107,53,0.45)',
             fontSize: 15,
-            fontWeight: 600,
-            color: '#00574f',
-            textShadow: 'none',
+            fontWeight: 700,
+            color: '#FFFFFF',
+            textAlign: 'center' as const,
+            lineHeight: 1.4,
+            animation: 'priceBadgeBounce 3.5s ease-in-out infinite',
+            userSelect: 'none' as const,
           }}>
-            <span>🐟 Частный садик Рыбка Долли — это уют, забота и развитие для детей 1,5–6 лет</span>
-            <button
-              onClick={() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })}
-              style={{
-                background: '#fff',
-                border: 'none',
-                borderRadius: 8,
-                padding: '7px 16px',
-                color: '#00574f',
-                fontWeight: 700,
-                fontSize: 13,
-                cursor: 'pointer',
-                whiteSpace: 'nowrap',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
-              }}
-            >
-              Узнать подробнее
-            </button>
+            <span>💎 от 20 000 ₽/мес. &nbsp;·&nbsp; <span style={{ fontWeight: 600, fontSize: 14 }}>Качество — премиум, цена — доступная!</span></span>
           </div>
           <figure className="hero-photo-figure">
             <img
@@ -236,31 +222,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         </div>
 
         {/* Правая колонка — текст + форма */}
-        <div id="form" className="hero-form-col" style={{ position: 'relative' }}>
-          {/* Плашка цены */}
-          <div style={{
-            display: 'inline-block',
-            alignSelf: 'flex-end',
-            float: 'right',
-            marginBottom: 12,
-            background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)',
-            color: '#FFFFFF',
-            fontWeight: 700,
-            fontSize: 15,
-            borderRadius: 24,
-            padding: '10px 20px',
-            boxShadow: '0 4px 18px rgba(255,107,53,0.45)',
-            textAlign: 'center',
-            lineHeight: 1.4,
-            animation: 'priceBadgeBounce 3.5s ease-in-out infinite',
-            cursor: 'default',
-            userSelect: 'none' as const,
-            whiteSpace: 'nowrap' as const,
-          }}>
-            💎 от 20 000 ₽/мес.<br />
-            <span style={{ fontSize: 13, fontWeight: 600, opacity: 0.95 }}>Качество — премиум, цена — доступная!</span>
-          </div>
-
+        <div id="form" className="hero-form-col">
           <h1 className="hero-h1">
             Частный детский сад<br />
             <span className="h1-accent">«Рыбка Долли»</span>
