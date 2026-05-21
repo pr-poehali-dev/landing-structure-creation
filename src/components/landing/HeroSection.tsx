@@ -190,33 +190,32 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
               </div>
             ) : null;
           })()}
-          <div style={{
-            background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)',
-            borderRadius: 24,
-            padding: '12px 20px',
-            marginBottom: 8,
-            marginTop: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 8,
-            boxShadow: '0 4px 18px rgba(255,107,53,0.45)',
-            fontSize: 16,
-            fontWeight: 700,
-            color: '#FFFFFF',
-            textAlign: 'center' as const,
-            lineHeight: 1.4,
-            animation: 'priceBadgeBounce 3.5s ease-in-out infinite',
-            userSelect: 'none' as const,
-          }}>
-            <span>💎 от 20 000 ₽/мес. &nbsp;·&nbsp; <span style={{ fontWeight: 600, fontSize: 15 }}>Качество — премиум, цена — доступная!</span></span>
-          </div>
-          <figure className="hero-photo-figure">
+          <figure className="hero-photo-figure" style={{ position: 'relative' }}>
             <img
               src={IMG_HERO}
               alt="Занятие с детьми старшей группы в частном детском садике Рыбка Долли в Керчи"
               className="hero-photo-main"
             />
+            {/* Плашка цены поверх фото */}
+            <div style={{
+              position: 'absolute',
+              top: 14,
+              left: 14,
+              right: 14,
+              background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)',
+              borderRadius: 20,
+              padding: '10px 16px',
+              boxShadow: '0 4px 18px rgba(255,107,53,0.5)',
+              fontSize: 16,
+              fontWeight: 700,
+              color: '#FFFFFF',
+              textAlign: 'center' as const,
+              lineHeight: 1.4,
+              animation: 'priceBadgeBounce 3.5s ease-in-out infinite',
+              userSelect: 'none' as const,
+            }}>
+              💎 от 20 000 ₽/мес. &nbsp;·&nbsp; <span style={{ fontWeight: 600, fontSize: 15 }}>Качество — премиум, цена — доступная!</span>
+            </div>
             <figcaption className="hero-photo-caption">Педагог Рыбки Долли на занятии с детьми</figcaption>
           </figure>
         </div>
