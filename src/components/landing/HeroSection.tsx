@@ -201,7 +201,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             justifyContent: 'center',
             gap: 8,
             boxShadow: '0 4px 18px rgba(255,107,53,0.45)',
-            fontSize: 15,
+            fontSize: 16,
             fontWeight: 700,
             color: '#FFFFFF',
             textAlign: 'center' as const,
@@ -209,7 +209,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             animation: 'priceBadgeBounce 3.5s ease-in-out infinite',
             userSelect: 'none' as const,
           }}>
-            <span>💎 от 20 000 ₽/мес. &nbsp;·&nbsp; <span style={{ fontWeight: 600, fontSize: 14 }}>Качество — премиум, цена — доступная!</span></span>
+            <span>💎 от 20 000 ₽/мес. &nbsp;·&nbsp; <span style={{ fontWeight: 600, fontSize: 15 }}>Качество — премиум, цена — доступная!</span></span>
           </div>
           <figure className="hero-photo-figure">
             <img
