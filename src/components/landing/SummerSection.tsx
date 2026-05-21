@@ -115,11 +115,22 @@ export default function SummerSection() {
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="summer-inner">
 
-            <div className="summer-badge-row">
+            <div className="summer-badge-row" style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', gap: 10 }}>
               <span className="summer-badge">☀️ Только летом</span>
               {showDiscount && (
                 <span className="summer-discount-badge">🎁 Скидка 10% до 15 мая</span>
               )}
+              <span style={{
+                background: '#fff',
+                border: '2px solid #FF6B35',
+                borderRadius: 12,
+                padding: '5px 10px',
+                fontSize: 11,
+                fontWeight: 700,
+                color: '#FF6B35',
+                whiteSpace: 'nowrap',
+                boxShadow: '0 2px 8px rgba(255,107,53,0.2)',
+              }}>☀️ Садик работает всё лето!</span>
             </div>
 
             <h2 className="summer-h2">Летний клуб<br />для дошкольников</h2>
