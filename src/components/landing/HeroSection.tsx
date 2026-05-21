@@ -191,9 +191,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             ) : null;
           })()}
           <div style={{
-            background: 'linear-gradient(90deg, #7b1fa2, #ab47bc, #ce93d8, #ab47bc, #7b1fa2)',
-            backgroundSize: '300% 100%',
-            animation: 'may9gradient 4s linear infinite',
+            background: '#b2dfdb',
             borderRadius: 10,
             padding: '10px 16px',
             marginBottom: 8,
@@ -202,23 +200,21 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             alignItems: 'center',
             justifyContent: 'space-between',
             gap: 10,
-            boxShadow: '0 3px 12px rgba(123,31,162,0.35)',
+            boxShadow: '0 3px 12px rgba(0,137,123,0.15)',
             fontSize: 15,
             fontWeight: 600,
-            color: '#fff',
-            textShadow: '0 1px 2px rgba(0,0,0,0.2)',
+            color: '#00574f',
+            textShadow: 'none',
           }}>
-            <span>☀️ Летом — место сменами на 2 недели</span>
+            <span>🐟 Частный садик Рыбка Долли — это уют, забота и развитие для детей 1,5–6 лет</span>
             <button
               onClick={() => document.getElementById('summer')?.scrollIntoView({ behavior: 'smooth' })}
               style={{
-                background: 'linear-gradient(90deg, #fff, #f3e5f5, #fff)',
-                backgroundSize: '300% 100%',
-                animation: 'may9gradient 3s linear infinite',
+                background: '#fff',
                 border: 'none',
                 borderRadius: 8,
                 padding: '7px 16px',
-                color: '#7b1fa2',
+                color: '#00574f',
                 fontWeight: 700,
                 fontSize: 13,
                 cursor: 'pointer',
