@@ -202,26 +202,52 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
 
         {/* Правая колонка — текст + форма */}
         <div id="form" className="hero-form-col" style={{ position: 'relative' }}>
-          {/* Плашка цены — абсолютно в правом верхнем углу колонки */}
+          {/* Бирка-ценник */}
           <div style={{
             position: 'absolute',
-            top: 14,
-            right: 14,
-            background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%)',
-            borderRadius: 12,
-            padding: '5px 10px',
-            boxShadow: '0 3px 12px rgba(255,107,53,0.4)',
-            fontSize: 11,
-            fontWeight: 700,
-            color: '#FFFFFF',
-            textAlign: 'center' as const,
-            lineHeight: 1.3,
-            animation: 'priceBadgeBounce 3.5s ease-in-out infinite',
-            userSelect: 'none' as const,
+            top: 0,
+            right: 24,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            transform: 'rotate(4deg)',
             zIndex: 2,
-            whiteSpace: 'nowrap' as const,
+            userSelect: 'none' as const,
+            animation: 'priceBadgeBounce 3.5s ease-in-out infinite',
           }}>
-            💎 от 20 000 ₽/мес. · <span style={{ fontWeight: 600 }}>премиум качество</span>
+            {/* Верёвочка */}
+            <svg width="3" height="28" viewBox="0 0 3 28" style={{ display: 'block' }}>
+              <line x1="1.5" y1="0" x2="1.5" y2="28" stroke="#b07a3a" strokeWidth="1.8" strokeDasharray="4 3" />
+            </svg>
+            {/* Сама бирка */}
+            <div style={{
+              background: 'linear-gradient(150deg, #fff8ee 0%, #fff3e0 100%)',
+              border: '2.5px solid #FF6B35',
+              borderRadius: 14,
+              padding: '18px 20px 16px',
+              boxShadow: '4px 5px 18px rgba(255,107,53,0.28), 0 2px 4px rgba(0,0,0,0.12)',
+              position: 'relative',
+              minWidth: 150,
+              textAlign: 'center' as const,
+            }}>
+              {/* Дырочка */}
+              <div style={{
+                position: 'absolute',
+                top: -9,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 16,
+                height: 16,
+                borderRadius: '50%',
+                background: '#fff8ee',
+                border: '2.5px solid #FF6B35',
+              }} />
+              <div style={{ fontSize: 22, lineHeight: 1, marginBottom: 8 }}>💎</div>
+              <div style={{ fontSize: 20, fontWeight: 900, color: '#FF6B35', lineHeight: 1.1 }}>от 20 000 ₽</div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#FF6B35', marginBottom: 8 }}>в месяц</div>
+              <div style={{ width: '70%', height: 1.5, background: '#FFD0B0', margin: '0 auto 8px' }} />
+              <div style={{ fontSize: 12, color: '#b07a3a', fontWeight: 700, lineHeight: 1.3 }}>невысокая цена —<br />премиум качество</div>
+            </div>
           </div>
 
           <h1 className="hero-h1">
