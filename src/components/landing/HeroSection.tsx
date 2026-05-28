@@ -198,6 +198,22 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             />
             <figcaption className="hero-photo-caption">Педагог Рыбки Долли на занятии с детьми</figcaption>
           </figure>
+          {/* Плашка выгоды под фото */}
+          <div style={{
+            marginTop: 12,
+            background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 60%, #FFB347 100%)',
+            borderRadius: 12,
+            padding: '10px 18px',
+            boxShadow: '0 4px 14px rgba(255,107,53,0.35)',
+            textAlign: 'center',
+            fontWeight: 800,
+            fontSize: 15,
+            color: '#fff',
+            letterSpacing: 0.2,
+            textShadow: '0 1px 3px rgba(0,0,0,0.15)',
+          }}>
+            🎁 Выгода 10% при записи до 31 июня
+          </div>
         </div>
 
         {/* Правая колонка — текст + форма */}
@@ -271,7 +287,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
 
           <div className="hero-cta-buttons">
             <button className="cta-btn cta-btn-primary" onClick={() => { ymGoal('click_hero_cta'); onOpenModal(); }}>
-              Записаться на экскурсию
+              Записаться с выгодой
               <Icon name="ArrowRight" size={18} />
             </button>
           </div>
