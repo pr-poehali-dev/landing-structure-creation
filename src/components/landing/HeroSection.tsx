@@ -111,7 +111,7 @@ function HeroInlineForm({ onSuccess }: { onSuccess: () => void }) {
   );
 
   return (
-    <form className="hform" onSubmit={submit}>
+    <form id="booking-form" className="hform" onSubmit={submit}>
       <input className="hform-input" placeholder="Имя" value={name} onChange={e => setName(e.target.value)} required />
       <input className="hform-input" placeholder="Телефон" value={phone} onChange={e => setPhone(e.target.value)} required />
       <input className="hform-input" placeholder="Возраст ребёнка" value={age} onChange={e => setAge(e.target.value)} />
