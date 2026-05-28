@@ -200,17 +200,20 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           </figure>
           {/* Плашка выгоды под фото */}
           <div style={{
-            marginTop: 12,
-            background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C42 60%, #FFB347 100%)',
+            marginTop: 24,
+            background: 'linear-gradient(90deg, #FF4500 0%, #FF6B35 25%, #FF8C42 50%, #FF6B35 75%, #FF4500 100%)',
+            backgroundSize: '300% 100%',
+            animation: 'coralShimmer 3s ease-in-out infinite',
             borderRadius: 12,
-            padding: '10px 18px',
-            boxShadow: '0 4px 14px rgba(255,107,53,0.35)',
-            textAlign: 'center',
+            padding: '11px 18px',
+            border: '2px solid rgba(255,120,60,0.6)',
+            boxShadow: '0 4px 18px rgba(255,80,30,0.4), inset 0 1px 0 rgba(255,255,255,0.2)',
+            textAlign: 'center' as const,
             fontWeight: 800,
             fontSize: 15,
             color: '#fff',
             letterSpacing: 0.2,
-            textShadow: '0 1px 3px rgba(0,0,0,0.15)',
+            textShadow: '0 1px 4px rgba(0,0,0,0.2)',
           }}>
             🎁 Выгода 10% при записи до 31 июня
           </div>
