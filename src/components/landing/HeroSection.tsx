@@ -289,7 +289,13 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           </ul>
 
           <div className="hero-cta-buttons">
-            <button className="cta-btn cta-btn-primary" onClick={() => { ymGoal('click_hero_cta'); onOpenModal(); }}>
+            <button className="cta-btn cta-btn-primary" onClick={() => { ymGoal('click_hero_cta'); onOpenModal(); }} style={{
+              background: 'linear-gradient(90deg, #FF4500 0%, #FF6B35 25%, #FF8C42 50%, #FF6B35 75%, #FF4500 100%)',
+              backgroundSize: '300% 100%',
+              animation: 'coralShimmer 3s ease-in-out infinite',
+              border: '2px solid rgba(255,120,60,0.5)',
+              boxShadow: '0 4px 18px rgba(255,80,30,0.4)',
+            }}>
               Записаться с выгодой
               <Icon name="ArrowRight" size={18} />
             </button>
