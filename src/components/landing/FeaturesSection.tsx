@@ -102,7 +102,7 @@ export default function FeaturesSection({ onOpenModal }: { onOpenModal: () => vo
             </div>
           ))}
 
-          {/* Летний клуб — широкая карточка */}
+          {/* Летний клуб — временно скрыт, вернуть по первому требованию:
           <div id="summer" className="feat-card feat-card-summer">
             <div className="feat-left">
               <div className="feat-emoji-wrap feat-emoji-wrap-sun">☀️</div>
@@ -127,6 +127,7 @@ export default function FeaturesSection({ onOpenModal }: { onOpenModal: () => vo
               </button>
             </div>
           </div>
+          */}
         </div>
 
         <div style={{ textAlign: "center" }}>

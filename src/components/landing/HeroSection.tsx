@@ -60,20 +60,6 @@ export function Modal({ open, onClose }: { open: boolean; onClose: () => void })
   );
 }
 
-// ── CountdownTimer ─────────────────────────────────────────────────────────
-function CountdownTimer() {
-  const [sec, setSec] = useState(4 * 24 * 3600 + 12 * 3600);
-  useEffect(() => {
-    const t = setInterval(() => setSec(s => s > 0 ? s - 1 : 0), 1000);
-    return () => clearInterval(t);
-  }, []);
-  const d = Math.floor(sec / 86400);
-  const h = Math.floor((sec % 86400) / 3600);
-  const m = Math.floor((sec % 3600) / 60);
-  const s = sec % 60;
-  return <>{d}д {String(h).padStart(2, "0")}ч {String(m).padStart(2, "0")}м {String(s).padStart(2, "0")}с</>;
-}
-
 const SEND_LEAD_URL = "https://functions.poehali.dev/57047ae6-091f-4a98-8391-1bc5b14b157a";
 
 async function sendLead(name: string, phone: string, age: string, source: string) {
@@ -215,7 +201,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             letterSpacing: 0.2,
             textShadow: '0 1px 4px rgba(0,0,0,0.2)',
           }}>
-            🎁 Выгода 10% при записи до 31 июня
+            🎁 Выгодно. Качественно. С заботой о каждом
           </div>
         </div>
 
@@ -306,12 +292,8 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
       {/* Нижняя строка */}
       <div className="hero-bottom-bar">
         <span className="hero-urgency">
-          <Icon name="Clock" size={16} />
-          Осталось <strong>3 места</strong>
-        </span>
-        <span className="hero-urgency-sep">|</span>
-        <span className="hero-urgency">
-          До конца акции: <strong><CountdownTimer /></strong>
+          <Icon name="CalendarCheck" size={16} />
+          Ведём осенний набор в группу. Успейте забронировать место. Занятия начинаются с 5 сентября.
         </span>
       </div>
     </section>

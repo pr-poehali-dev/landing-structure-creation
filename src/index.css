@@ -782,8 +782,8 @@
   );
 }
 .service-icon-wrap {
-  width: 84px;
-  height: 84px;
+  width: 112px;
+  height: 112px;
   margin: 0 auto 18px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.22);
@@ -794,8 +794,8 @@
   animation: serviceFloat 3.5s ease-in-out infinite;
 }
 .service-icon-wrap img {
-  width: 48px;
-  height: 48px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
 }
 .service-title {
