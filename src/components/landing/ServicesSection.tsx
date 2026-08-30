@@ -1,4 +1,6 @@
+import Icon from "@/components/ui/icon";
 import { Section } from "./InfoSections";
+import { ymGoal } from "@/lib/ym";
 
 const SERVICES = [
   {
@@ -24,7 +26,11 @@ const SERVICES = [
   },
 ];
 
-export default function ServicesSection() {
+interface ServicesSectionProps {
+  onOpenModal: () => void;
+}
+
+export default function ServicesSection({ onOpenModal }: ServicesSectionProps) {
   return (
     <Section id="services" className="bg-cream">
       <div className="container">
@@ -41,6 +47,12 @@ export default function ServicesSection() {
               <h3 className="service-title">{s.title}</h3>
               {s.age && <div className="service-age">{s.age}</div>}
               <p className="service-desc">{s.desc}</p>
+              <button
+                className="service-btn"
+                onClick={() => { ymGoal(`click_service_${s.title}`); onOpenModal(); }}
+              >
+                Записаться <Icon name="ArrowRight" size={15} />
+              </button>
             </div>
           ))}
         </div>

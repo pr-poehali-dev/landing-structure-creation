@@ -32,11 +32,9 @@ export function Section({ children, className = "", id }: { children: React.Reac
 // ── InfoSections (блоки 2–5) ───────────────────────────────────────────────
 interface InfoSectionsProps {
   onOpenModal: () => void;
-  timerMm: string;
-  timerSs: string;
 }
 
-export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSectionsProps) {
+export default function InfoSections({ onOpenModal }: InfoSectionsProps) {
   return (
     <>
       {/* ── БЛОК 2: Преимущества ── */}
@@ -138,10 +136,6 @@ export default function InfoSections({ onOpenModal, timerMm, timerSs }: InfoSect
           <div className="section-header section-header-light">
             <span className="section-tag section-tag-light">Прозрачные цены</span>
             <h2 className="section-h2 clr-white">Никаких скрытых<br />доплат</h2>
-          </div>
-          <div className="timer-banner">
-            <Icon name="Clock" size={18} />
-            <span>Акция «Раннее бронирование» заканчивается через: <strong>{timerMm}:{timerSs}</strong></span>
           </div>
           <div className="prices-grid">
             {PRICES.map((p) => (

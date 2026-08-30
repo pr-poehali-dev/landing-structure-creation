@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import HeroSection, { Modal } from "@/components/landing/HeroSection";
 import { ymGoal } from "@/lib/ym";
@@ -11,15 +11,6 @@ import FooterSections from "@/components/landing/FooterSections";
 export default function Index() {
   const [modalOpen, setModalOpen] = useState(false);
   const [phoneMenuOpen, setPhoneMenuOpen] = useState(false);
-  const [timerSec, setTimerSec] = useState(23 * 60 + 47);
-
-  useEffect(() => {
-    const t = setInterval(() => setTimerSec(s => s > 0 ? s - 1 : 0), 1000);
-    return () => clearInterval(t);
-  }, []);
-
-  const mm = String(Math.floor(timerSec / 60)).padStart(2, "0");
-  const ss = String(timerSec % 60).padStart(2, "0");
 
   const openModal = () => setModalOpen(true);
 
@@ -54,8 +45,8 @@ export default function Index() {
 
       <HeroSection onOpenModal={openModal} />
       {/* <SummerSection /> — временно скрыт, вернуть при необходимости */}
-      <ServicesSection />
-      <InfoSections onOpenModal={openModal} timerMm={mm} timerSs={ss} />
+      <ServicesSection onOpenModal={openModal} />
+      <InfoSections onOpenModal={openModal} />
       <CalculatorFaqTeam onOpenModal={openModal} />
       <FooterSections onOpenModal={openModal} />
     </div>
