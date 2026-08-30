@@ -52,7 +52,7 @@ export default function Index() {
       </div>
 
       <HeroSection onOpenModal={openModal} />
-      <SummerSection />
+      {/* <SummerSection /> — временно скрыт, вернуть при необходимости */}
       <InfoSections onOpenModal={openModal} timerMm={mm} timerSs={ss} />
       <CalculatorFaqTeam onOpenModal={openModal} />
       <FooterSections onOpenModal={openModal} />
