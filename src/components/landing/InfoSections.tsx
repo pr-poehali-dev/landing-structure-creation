@@ -61,7 +61,7 @@ export default function InfoSections({ onOpenModal }: InfoSectionsProps) {
       <FeaturesSection onOpenModal={onOpenModal} />
 
       {/* ── БЛОК 3: День в садике ── */}
-      <Section className="bg-cream">
+      <Section id="schedule" className="bg-cream">
         <div className="container">
           <div className="section-header">
             <span className="section-tag">Распорядок дня</span>
