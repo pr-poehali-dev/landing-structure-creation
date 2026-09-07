@@ -195,24 +195,15 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
               </div>
               <div className="footer-messengers">
                 <a
-                  href="https://wa.me/79881521698"
+                  href="https://max.ru/u/f9LHodD0cOIhbnzQELXr9pYLpa3UrPFtm6a-qdComLrDEwRysIA_MF93vG4"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="footer-messenger-btn footer-messenger-wa"
-                  aria-label="Написать в WhatsApp"
+                  className="footer-messenger-btn footer-messenger-max"
+                  aria-label="Написать в MAX"
                   onClick={() => ymGoal('click_messenger')}
                 >
                   <Icon name="MessageCircle" size={18} />
-                </a>
-                <a
-                  href="https://t.me/+79881521698"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-messenger-btn footer-messenger-tg"
-                  aria-label="Написать в Telegram"
-                  onClick={() => ymGoal('click_messenger')}
-                >
-                  <Icon name="Send" size={18} />
+                  <span>Написать в MAX</span>
                 </a>
               </div>
             </div>
