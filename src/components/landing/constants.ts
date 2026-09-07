@@ -132,12 +132,6 @@ export const CHECKLIST = [
   "5 вопросов, которые нужно задать на экскурсии",
 ];
 
-export const PRICES = [
-  { name: "Полный день", hours: "8:00–18:00 · 12 часов", price: "20 000", unit: "₽/мес", old: null, badge: "Популярный" },
-  { name: "Короткий день", hours: "8:00–13:00 · 4 часа", price: "18 000", unit: "₽/мес", old: null, badge: null },
-  { name: "Гибкое посещение", hours: "По часам", price: "от 300", unit: "₽/ч", old: null, badge: null },
-];
-
 // БЛОК 8: Стоимость — два формата на выбор
 export const PRICE_PLANS = [
   {
