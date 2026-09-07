@@ -17,11 +17,15 @@ const SAFETY_MORE = [
 ];
 
 // ── БЛОК 5: Безопасность (кратко) ───────────────────────────────────────────
-export default function SafetySection() {
+interface SafetySectionProps {
+  id?: string;
+}
+
+export default function SafetySection({ id = "safety" }: SafetySectionProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <Section className="bg-white">
+    <Section id={id} className="bg-white">
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Безопасность</span>

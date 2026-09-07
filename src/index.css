@@ -3412,6 +3412,10 @@
   text-decoration: none;
   border-bottom: 1px solid #f0f0f0;
 }
+.mobile-menu-link-active,
+.site-header-nav-link-active {
+  color: var(--teal) !important;
+}
 .mobile-menu-contacts {
   display: flex;
   flex-direction: column;
@@ -3779,4 +3783,184 @@
 .draft-card-result svg {
   color: var(--teal);
   flex-shrink: 0;
+}
+
+/* Yasli page: fear cards (Block 4) */
+.fear-card {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+.fear-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--teal-light);
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+.fear-q {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+.fear-a {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+.fear-anchor-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--teal);
+  text-decoration: none;
+  margin-top: auto;
+}
+
+/* Yasli page: adaptation steps (Block 5) */
+.adaptation-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .adaptation-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.adaptation-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.adaptation-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.adaptation-step-badge {
+  flex-shrink: 0;
+  background: var(--teal);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 50px;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+.adaptation-step-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 4px;
+}
+.adaptation-step-title span {
+  font-weight: 500;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+.adaptation-step-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+.adaptation-photo {
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+}
+.adaptation-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  max-height: 380px;
+}
+.adaptation-photo figcaption {
+  background: var(--dark-bg);
+  color: #fff;
+  font-size: 13px;
+  padding: 10px 16px;
+  text-align: center;
+}
+
+/* Yasli page: schedule with photos (Block 6) */
+.schedule-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .schedule-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .schedule-photo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.schedule-photo-card {
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+.schedule-photo-card img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+.schedule-photo-card-info {
+  padding: 12px 14px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.schedule-photo-card-time {
+  font-family: "Cormorant", serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+/* Yasli page: team group photo (Block 9) */
+.komanda-group-photo {
+  margin: 0 auto;
+  max-width: 720px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+}
+.komanda-group-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 420px;
+  object-fit: cover;
+}
+.komanda-group-photo figcaption {
+  background: var(--dark-bg);
+  color: #fff;
+  font-size: 13px;
+  padding: 10px 16px;
+  text-align: center;
 }

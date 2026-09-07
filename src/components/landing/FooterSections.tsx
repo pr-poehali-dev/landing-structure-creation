@@ -13,9 +13,19 @@ const UTM_BLOG = "?utm_source=ribkadollilend&utm_medium=footer&utm_content=blog"
 // ── FooterSections (блоки 12–15) ────────────────────────────────────────────
 interface FooterSectionsProps {
   onOpenModal: (source?: string) => void;
+  checklist?: string[];
+  leadmagTitle?: string;
+  leadmagSubtitle?: string;
+  deficitNode?: React.ReactNode;
 }
 
-export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
+export default function FooterSections({
+  onOpenModal,
+  checklist = CHECKLIST,
+  leadmagTitle = "Получите бесплатно",
+  leadmagSubtitle = "Три полезных чек-листа для родителей — пришлём на почту",
+  deficitNode,
+}: FooterSectionsProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
@@ -43,10 +53,10 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
         <div className="container container-narrow">
           <div className="leadmag-wrap">
             <div className="leadmag-emoji">🎁</div>
-            <h2 className="leadmag-title">Получите бесплатно</h2>
-            <p className="leadmag-sub">Три полезных чек-листа для родителей — пришлём на почту</p>
+            <h2 className="leadmag-title">{leadmagTitle}</h2>
+            <p className="leadmag-sub">{leadmagSubtitle}</p>
             <ul className="leadmag-list">
-              {CHECKLIST.map((item, i) => (
+              {checklist.map((item, i) => (
                 <li key={i}><Icon name="CheckCircle" size={16} />{item}</li>
               ))}
             </ul>
@@ -94,7 +104,9 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
         <div className="container container-narrow">
           <div className="final-cta">
             <div className="final-emoji">🌊</div>
-            <h2 className="final-title">Свободных мест<br />осталось: ясли — <span className="clr-teal">2</span>, старшая — <span className="clr-teal">4</span></h2>
+            {deficitNode ?? (
+              <h2 className="final-title">Свободных мест<br />осталось: ясли — <span className="clr-teal">2</span>, старшая — <span className="clr-teal">4</span></h2>
+            )}
             <p className="final-sub">
               Не откладывайте — запишитесь на бесплатную экскурсию
               и убедитесь сами, что это именно тот садик, который вам нужен.

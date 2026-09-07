@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { ymGoal } from "@/lib/ym";
 
@@ -18,6 +18,7 @@ interface SiteHeaderProps {
 
 export default function SiteHeader({ onOpenModal }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -48,11 +49,15 @@ export default function SiteHeader({ onOpenModal }: SiteHeaderProps) {
           <nav className="site-header-nav">
             {NAV_LINKS.map((l) =>
               l.href.startsWith("#") ? (
-                <a key={l.label} href={l.href} className="site-header-nav-link" onClick={() => handleNavClick(l.href)}>
+                <a key={l.label} href={location.pathname === "/" ? l.href : `/${l.href}`} className="site-header-nav-link" onClick={() => handleNavClick(l.href)}>
                   {l.label}
                 </a>
               ) : (
-                <Link key={l.label} to={l.href} className="site-header-nav-link">
+                <Link
+                  key={l.label}
+                  to={l.href}
+                  className={`site-header-nav-link ${location.pathname === l.href ? "site-header-nav-link-active" : ""}`}
+                >
                   {l.label}
                 </Link>
               )
@@ -99,11 +104,16 @@ export default function SiteHeader({ onOpenModal }: SiteHeaderProps) {
             <nav className="mobile-menu-nav">
               {NAV_LINKS.map((l) =>
                 l.href.startsWith("#") ? (
-                  <a key={l.label} href={l.href} className="mobile-menu-link" onClick={() => handleNavClick(l.href)}>
+                  <a key={l.label} href={location.pathname === "/" ? l.href : `/${l.href}`} className="mobile-menu-link" onClick={() => handleNavClick(l.href)}>
                     {l.label}
                   </a>
                 ) : (
-                  <Link key={l.label} to={l.href} className="mobile-menu-link" onClick={() => setMenuOpen(false)}>
+                  <Link
+                    key={l.label}
+                    to={l.href}
+                    className={`mobile-menu-link ${location.pathname === l.href ? "mobile-menu-link-active" : ""}`}
+                    onClick={() => setMenuOpen(false)}
+                  >
                     {l.label}
                   </Link>
                 )

@@ -11,7 +11,7 @@ const SERVICES = [
     icon: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/e17abf1b-eaa0-43fe-b7f0-ec754690b647.png",
     cardClass: "service-card-nursery",
     type: "link" as const,
-    href: "/yasli/",
+    href: "/yasli/?utm_source=main&utm_medium=internal&utm_campaign=hub_yasli",
     goal: "click_service_yasli",
   },
   {

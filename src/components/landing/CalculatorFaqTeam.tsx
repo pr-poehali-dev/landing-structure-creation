@@ -145,7 +145,7 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
             <Icon name="Heart" size={15} /> Нянечка Марина Анатольевна работает с обеими группами
           </p>
           <div className="team-links-row">
-            <Link to="/yasli/" className="cta-btn cta-btn-outline" onClick={() => ymGoal('click_team_yasli')}>
+            <Link to="/yasli/?utm_source=main&utm_medium=internal&utm_campaign=hub_yasli" className="cta-btn cta-btn-outline" onClick={() => ymGoal('click_team_yasli')}>
               Страница яслей <Icon name="ArrowRight" size={15} />
             </Link>
             <Link to="/podgotovka-k-shkole/" className="cta-btn cta-btn-outline" onClick={() => ymGoal('click_team_school')}>
