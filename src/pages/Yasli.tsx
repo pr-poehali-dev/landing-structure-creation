@@ -15,6 +15,7 @@ import {
   IMG_KOMANDA_GRUPPOVOE,
   IMG_POSTER_YASLI_DEN,
   VIDEO_YASLI_DEN,
+  IMG_MARINA_ANATOLIEVNA,
   YASLI_FEARS,
   YASLI_ADAPTATION_STEPS,
   YASLI_SCHEDULE_PHOTOS,
@@ -226,7 +227,7 @@ export default function Yasli() {
             </div>
             <div className="team-card">
               <div className="team-photo">
-                <img src={IMG_YASLI_PEDAGOG} alt="Марина Анатольевна — нянечка ясельной группы" />
+                <img src={IMG_MARINA_ANATOLIEVNA} alt="Марина Анатольевна — нянечка ясельной группы" />
               </div>
               <h3 className="team-name">Марина Анатольевна</h3>
               <div className="team-role">Нянечка — «сердце группы»</div>
