@@ -31,7 +31,7 @@ export function Section({ children, className = "", id }: { children: React.Reac
 
 // ── InfoSections (блоки 2–5) ───────────────────────────────────────────────
 interface InfoSectionsProps {
-  onOpenModal: () => void;
+  onOpenModal: (source?: string) => void;
 }
 
 export default function InfoSections({ onOpenModal }: InfoSectionsProps) {

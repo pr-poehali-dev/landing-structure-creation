@@ -137,10 +137,13 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
             <span className="section-tag">Безопасность</span>
             <h2 className="section-h2">Мы заботимся<br />о безопасности детей</h2>
           </div>
-          <div style={{ maxWidth: 280, margin: "0 auto", borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 32px rgba(0,0,0,0.10)" }}>
+          <div className="phone-frame">
+            <div className="phone-frame-notch" />
             <video
               src="https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/4c6ede15-7344-4e48-9347-b67c23097995.mp4"
+              poster="/images/safety-video-poster.jpg"
               controls
+              playsInline
               width="100%"
               style={{ display: "block" }}
             />
@@ -170,7 +173,7 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
         <div className="container">
           <div className="footer-inner">
             <div className="footer-brand">
-              <div className="footer-logo">🌊 Рыбка Долли</div>
+              <div className="footer-logo">🌊 Частный детский сад «Рыбка Долли»</div>
               <p>Частный детский сад в Керчи</p>
               <p>г. Керчь, ул. Циолковского, 12</p>
             </div>
@@ -190,10 +193,32 @@ export default function FooterSections({ onOpenModal }: FooterSectionsProps) {
               <div className="footer-hours">
                 <Icon name="Clock" size={15} /> Пн–Пт: 8:00–18:00
               </div>
+              <div className="footer-messengers">
+                <a
+                  href="https://wa.me/79881521698"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-messenger-btn footer-messenger-wa"
+                  aria-label="Написать в WhatsApp"
+                  onClick={() => ymGoal('click_messenger')}
+                >
+                  <Icon name="MessageCircle" size={18} />
+                </a>
+                <a
+                  href="https://t.me/+79881521698"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-messenger-btn footer-messenger-tg"
+                  aria-label="Написать в Telegram"
+                  onClick={() => ymGoal('click_messenger')}
+                >
+                  <Icon name="Send" size={18} />
+                </a>
+              </div>
             </div>
           </div>
           <div className="footer-bottom">
-            <span>© 2024 Детский сад «Рыбка»</span>
+            <span>© 2026 Частный детский сад «Рыбка Долли»</span>
             <span>ИП Савченко И.И. · ОГРН 318911200074795</span>
             <a href="/privacy" style={{ color: "rgba(255,255,255,0.35)", textDecoration: "underline", fontSize: 12 }}>Политика конфиденциальности</a>
           </div>

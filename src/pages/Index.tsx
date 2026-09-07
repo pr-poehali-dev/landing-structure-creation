@@ -10,13 +10,17 @@ import FooterSections from "@/components/landing/FooterSections";
 
 export default function Index() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalSource, setModalSource] = useState("excursion");
   const [phoneMenuOpen, setPhoneMenuOpen] = useState(false);
 
-  const openModal = () => setModalOpen(true);
+  const openModal = (source?: string) => {
+    setModalSource(source || "excursion");
+    setModalOpen(true);
+  };
 
   return (
     <div className="ld">
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)} source={modalSource} />
 
       {/* Плавающая кнопка с выбором номера */}
       <div className="float-phone-wrap">

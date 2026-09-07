@@ -6,7 +6,7 @@ import { ymGoal } from "@/lib/ym";
 
 // ── CalculatorFaqTeam (блоки 6–9) ─────────────────────────────────────────
 interface CalculatorFaqTeamProps {
-  onOpenModal: () => void;
+  onOpenModal: (source?: string) => void;
 }
 
 export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProps) {
@@ -67,7 +67,7 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
                 </div>
               )}
               <div className="calc-result-note">Включает питание, занятия, прогулки и мероприятия</div>
-              <button className="cta-btn cta-btn-primary" onClick={() => { ymGoal('click_calculator_cta'); onOpenModal(); }}>
+              <button className="cta-btn cta-btn-primary" onClick={() => { ymGoal('click_calculator_cta'); onOpenModal('calculator'); }}>
                 Узнать точную стоимость
                 <Icon name="ArrowRight" size={18} />
               </button>

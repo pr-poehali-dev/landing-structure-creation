@@ -4,7 +4,7 @@ import { IMG_HERO } from "./constants";
 import { ymGoal } from "@/lib/ym";
 
 // ── Modal ──────────────────────────────────────────────────────────────────
-export function Modal({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function Modal({ open, onClose, source = 'excursion' }: { open: boolean; onClose: () => void; source?: string }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [agreed, setAgreed] = useState(false);
@@ -18,7 +18,7 @@ export function Modal({ open, onClose }: { open: boolean; onClose: () => void })
     if (!name || !phone || !agreed) return;
     setLoading(true);
     await sendLead(name, phone, '', 'Модальное окно');
-    ymGoal('form_modal_submit');
+    ymGoal(source === 'calculator' ? 'form_calculator_submit' : 'form_excursion_submit');
     setLoading(false);
     setDone(true);
   };
@@ -115,7 +115,7 @@ function HeroInlineForm({ onSuccess }: { onSuccess: () => void }) {
 
 // ── HeroSection ────────────────────────────────────────────────────────────
 interface HeroSectionProps {
-  onOpenModal: () => void;
+  onOpenModal: (source?: string) => void;
 }
 
 export default function HeroSection({ onOpenModal }: HeroSectionProps) {
@@ -248,7 +248,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
                 border: '2.5px solid #FF6B35',
               }} />
               <div style={{ fontSize: 22, lineHeight: 1, marginBottom: 8 }}>💎</div>
-              <div style={{ fontSize: 20, fontWeight: 900, color: '#FF6B35', lineHeight: 1.1 }}>от 20 000 ₽</div>
+              <div style={{ fontSize: 20, fontWeight: 900, color: '#FF6B35', lineHeight: 1.1 }}>18 000–20 000 ₽</div>
               <div style={{ fontSize: 13, fontWeight: 700, color: '#FF6B35', marginBottom: 8 }}>в месяц</div>
               <div style={{ width: '70%', height: 1.5, background: '#FFD0B0', margin: '0 auto 8px' }} />
               <div style={{ fontSize: 12, color: '#b07a3a', fontWeight: 700, lineHeight: 1.3 }}>невысокая цена —<br />премиум качество</div>
@@ -263,7 +263,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             <Icon name="MapPin" size={14} />
             Керчь, ул. Циолковского, 12
           </p>
-          <p className="hero-desc">Домашняя атмосфера для детей 1,5–6 лет — от 16 000 ₽</p>
+          <p className="hero-desc">Домашняя атмосфера для детей 1,5–6 лет — от 18 000 ₽/мес</p>
 
           <ul className="hero-checklist">
             <li><Icon name="Check" size={16} /><span>Группы до 12 детей</span></li>
@@ -282,7 +282,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
               border: '2px solid rgba(255,120,60,0.5)',
               boxShadow: '0 4px 18px rgba(255,80,30,0.4)',
             }}>
-              Записаться с выгодой
+              Записаться на бесплатную экскурсию
               <Icon name="ArrowRight" size={18} />
             </button>
           </div>
@@ -293,7 +293,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
       <div className="hero-bottom-bar">
         <span className="hero-urgency">
           <Icon name="CalendarCheck" size={16} />
-          Ведём осенний набор в группу. Успейте забронировать место. Занятия начинаются с 5 сентября.
+          Идёт ежедневный набор. Старт занятий — сразу после адаптации.
         </span>
       </div>
     </section>

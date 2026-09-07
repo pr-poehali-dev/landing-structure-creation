@@ -1882,6 +1882,35 @@
   line-height: 1.5;
 }
 
+/* Phone-frame wrapper for vertical video */
+.phone-frame {
+  position: relative;
+  max-width: 280px;
+  margin: 0 auto;
+  border-radius: 32px;
+  overflow: hidden;
+  background: #111;
+  border: 6px solid #1b1b1b;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    0 0 0 2px rgba(255, 255, 255, 0.06) inset;
+}
+.phone-frame-notch {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 16px;
+  background: #1b1b1b;
+  border-radius: 0 0 10px 10px;
+  z-index: 2;
+}
+.phone-frame video {
+  aspect-ratio: 9/16;
+  object-fit: cover;
+}
+
 /* BLOCK 10б: Map */
 .map-wrap {
   border-radius: 16px;
@@ -2246,6 +2275,33 @@
   gap: 8px;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.25);
+}
+.footer-messengers {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+.footer-messenger-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #fff;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+.footer-messenger-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+.footer-messenger-wa {
+  background: #25d366;
+}
+.footer-messenger-tg {
+  background: #229ed9;
 }
 
 /* Modal */
