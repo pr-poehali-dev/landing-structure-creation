@@ -6,6 +6,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Privacy from "./pages/Privacy";
+import Yasli from "./pages/Yasli";
+import PodgotovkaKShkole from "./pages/PodgotovkaKShkole";
 import NotFound from "./pages/NotFound";
 import ExitIntentPopup from "./components/landing/ExitIntentPopup";
 import CookieBanner from "./components/landing/CookieBanner";
@@ -23,6 +25,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/yasli/" element={<Yasli />} />
+          <Route path="/podgotovka-k-shkole/" element={<PodgotovkaKShkole />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
