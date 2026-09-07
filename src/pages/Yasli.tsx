@@ -19,6 +19,8 @@ import {
   YASLI_FEARS,
   YASLI_ADAPTATION_STEPS,
   YASLI_SCHEDULE_PHOTOS,
+  YASLI_SCHEDULE_TEXT_SLOTS,
+  YASLI_DAY_STRIP,
   YASLI_REVIEWS,
   YASLI_FAQ,
   YASLI_CHECKLIST,
@@ -99,8 +101,7 @@ export default function Yasli() {
             <span className="section-tag">Один день в яслях</span>
             <h2 className="section-h2">Посмотрите, как проходит<br />день в наших яслях</h2>
           </div>
-          <div className="phone-frame" style={{ margin: "0 auto" }}>
-            <div className="phone-frame-notch" />
+          <div className="tv-frame" style={{ margin: "0 auto" }}>
             <video
               src={VIDEO_YASLI_DEN}
               poster={IMG_POSTER_YASLI_DEN}
@@ -184,6 +185,14 @@ export default function Yasli() {
             <span className="section-tag">Распорядок дня</span>
             <h2 className="section-h2">Каждая минута<br />наполнена смыслом</h2>
           </div>
+          <div className="schedule-text-slots">
+            {YASLI_SCHEDULE_TEXT_SLOTS.map((s) => (
+              <div key={s.time} className="schedule-text-slot">
+                <span className="schedule-photo-card-time">{s.time}</span>
+                <strong>{s.title}</strong>
+              </div>
+            ))}
+          </div>
           <div className="schedule-photo-grid">
             {YASLI_SCHEDULE_PHOTOS.map((s) => (
               <div key={s.time} className="schedule-photo-card">
@@ -194,6 +203,16 @@ export default function Yasli() {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="yasli-day-strip">
+            <p className="yasli-day-strip-title">Ясельный день в кадрах</p>
+            <div className="yasli-day-strip-row">
+              {YASLI_DAY_STRIP.map((p) => (
+                <div key={p.src} className="yasli-day-strip-item">
+                  <img src={p.src} alt={p.alt} loading="lazy" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </Section>

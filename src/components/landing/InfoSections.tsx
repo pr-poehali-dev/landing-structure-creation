@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
-import { FACTS, SCHEDULE, REVIEWS, PRICE_PLANS } from "./constants";
+import { FACTS, SCHEDULE, REVIEWS, PRICE_PLANS_MAIN } from "./constants";
 import FoodSection from "./FoodSection";
 import SafetySection from "./SafetySection";
 import { ymGoal } from "@/lib/ym";
@@ -95,7 +95,7 @@ export default function InfoSections({ onOpenModal }: InfoSectionsProps) {
             <h2 className="section-h2 clr-white">Честная стоимость:<br />два формата на выбор</h2>
           </div>
           <div className="plans-grid">
-            {PRICE_PLANS.map((p) => (
+            {PRICE_PLANS_MAIN.map((p) => (
               <div key={p.id} className={`plan-card ${p.badge ? "plan-card-accent" : ""}`}>
                 {p.badge && <div className="plan-badge">{p.badge}</div>}
                 <h3 className="plan-name">{p.name}</h3>

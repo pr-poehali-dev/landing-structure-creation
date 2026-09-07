@@ -23,9 +23,7 @@ export const GALLERY = [
   { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/abb19cee-a15c-4cca-afb0-be2db878df6e.png", alt: "Праздники в частном детском саду Рыбка Долли Керчь" },
   { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/77d301da-9e40-4ff2-a960-1a20252924c9.png", alt: "Песочная анимация с яслями в частном садике Рыбка Долли Керчь — проводит педагог ясельной группы" },
   { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d15ea3fc-ee3e-4cee-b0d6-bf0a430cc6ad.jpg", alt: "Масленица в частном детском садике Рыбка Долли Керчь — ясельная группа" },
-  { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d751118d-4314-4ea1-84af-5f701e3492da.png", alt: "Частный летний лагерь для детей в Керчи в центре Рыбка Долли" },
   { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/9c0b8849-c94c-49af-8530-5b1766e288df.jpg", alt: "Мастер-класс в частном детском садике в Керчи Рыбка Долли" },
-  { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/45b730b9-fe33-41db-b95c-93d9b1840b5f.png", alt: "Занятие с педагогом продлёнки в частной группе продлённого дня в Керчи — детский центр Рыбка Долли" },
 ];
 
 export const ADVANTAGES = [
@@ -188,6 +186,19 @@ export const PRICE_PLANS = [
   },
 ];
 
+// Версия для главной страницы: карточка «Короткий день» объединяет режим яслей и старшей группы
+export const PRICE_PLANS_MAIN = PRICE_PLANS.map((p) =>
+  p.id === "short"
+    ? {
+        ...p,
+        features: [
+          { included: true, text: "8:00–12:00 (ясли) / 8:00–13:00 (старшая)" },
+          { included: true, text: "Удобно для мягкого старта или занятий без полного дня" },
+        ],
+      }
+    : p
+);
+
 // ── Данные страницы /yasli/ ─────────────────────────────────────────────────
 
 export const YASLI_FEARS = [
@@ -243,12 +254,22 @@ export const YASLI_ADAPTATION_STEPS = [
 ];
 
 export const YASLI_SCHEDULE_PHOTOS = [
-  { time: "8:00", title: "Приём детей", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/77d301da-9e40-4ff2-a960-1a20252924c9.png", alt: "Ясли в Керчи: приём детей и утренние игры" },
-  { time: "9:30", title: "Занятие", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/9c0b8849-c94c-49af-8530-5b1766e288df.jpg", alt: "Ясли в Керчи: занятие с педагогом" },
-  { time: "11:30", title: "Прогулка", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/45b730b9-fe33-41db-b95c-93d9b1840b5f.png", alt: "Ясли в Керчи: прогулка на закрытой площадке" },
-  { time: "13:00", title: "Обед", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a507aa9a-3dfb-4721-acdd-914ae49dfafe.png", alt: "Ясли в Керчи: дети обедают" },
-  { time: "13:30", title: "Тихий час", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d15ea3fc-ee3e-4cee-b0d6-bf0a430cc6ad.jpg", alt: "Ясли в Керчи: тихий час" },
-  { time: "17:00", title: "Прогулка домой", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d751118d-4314-4ea1-84af-5f701e3492da.png", alt: "Ясли в Керчи: вечерняя прогулка" },
+  { time: "9:30", title: "Занятие", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/fa401847-c00b-4b14-82e3-96daa7f26bab.jpg", alt: "Ясли в Керчи: занятие с педагогом" },
+  { time: "11:30", title: "Прогулка", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/88c7df85-521b-4ce6-a634-594a85e0bfc0.png", alt: "Ясли в Керчи: прогулка на закрытой площадке" },
+  { time: "13:00", title: "Обед", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/fb6fb02b-ac21-4497-be6a-592174822578.jpg", alt: "Ясли в Керчи: дети обедают" },
+  { time: "13:30", title: "Тихий час", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/18820895-52e6-4c0c-8ff5-a44dfaeb89ac.png", alt: "Ясли в Керчи: тихий час" },
+];
+
+export const YASLI_SCHEDULE_TEXT_SLOTS = [
+  { time: "8:00", title: "Приём детей" },
+  { time: "17:00", title: "Прогулка домой" },
+];
+
+export const YASLI_DAY_STRIP = [
+  { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/6dbe3c51-cf67-450c-ae8e-3e9ca45b8f2f.jpg", alt: "Ясельный день в кадрах — фото 1" },
+  { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/181310db-3c6b-4f94-94d3-78360904ce95.jpg", alt: "Ясельный день в кадрах — фото 2" },
+  { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/33f961e4-605f-427d-be81-d76d5a612175.png", alt: "Ясельный день в кадрах — фото 3" },
+  { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/547f0328-bf93-4eed-a552-1b7bb9f3f027.png", alt: "Ясельный день в кадрах — фото 4" },
 ];
 
 export const YASLI_REVIEWS = [

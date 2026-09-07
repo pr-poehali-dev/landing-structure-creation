@@ -3942,6 +3942,74 @@
   color: var(--teal);
 }
 
+.schedule-text-slots {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.schedule-text-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 18px;
+  background: var(--cream, #faf6ee);
+  border-radius: 12px;
+}
+
+.yasli-day-strip {
+  margin-top: 28px;
+}
+.yasli-day-strip-title {
+  font-family: "Cormorant", serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-dark, #1f2a37);
+}
+.yasli-day-strip-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 640px) {
+  .yasli-day-strip-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.yasli-day-strip-item {
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.yasli-day-strip-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* TV-frame wrapper for horizontal video (16:9, contain, no crop) */
+.tv-frame {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #111;
+  border: 10px solid #1b1b1b;
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    0 0 0 2px rgba(255, 255, 255, 0.06) inset;
+}
+.tv-frame video {
+  aspect-ratio: 16/9;
+  width: 100%;
+  object-fit: contain;
+  background: #000;
+  display: block;
+}
+
 /* Yasli page: team group photo (Block 9) */
 .komanda-group-photo {
   margin: 0 auto;
