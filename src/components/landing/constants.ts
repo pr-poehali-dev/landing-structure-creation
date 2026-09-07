@@ -36,32 +36,32 @@ export const ADVANTAGES = [
 // БЛОК 4: Почему родители выбирают нас — 6 фактов с фото
 export const FACTS = [
   {
-    img: "/images/facts/fact-groups.jpg",
+    img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/10a199b4-cf5e-4d86-a4ac-d53a9d7d59c3.png",
     title: "Группы до 12 детей",
     text: "Воспитатель успевает уделить внимание каждому. Фотоотчёты о дне ребёнка — каждый день",
   },
   {
-    img: "/images/facts/fact-playground.jpg",
+    img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/579e5342-9321-4ebf-88bf-2751038c7c88.png",
     title: "Своя закрытая площадка",
     text: "Безопасная территория для прогулок и игр на свежем воздухе",
   },
   {
-    img: "/images/facts/fact-security.jpg",
+    img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/df93bfd5-39f8-47d2-b886-eb827fbcfa6e.png",
     title: "Видеонаблюдение и электронный замок",
     text: "Камеры во всех группах и на территории, доступ в здание только по коду",
   },
   {
-    img: "/images/facts/fact-food.jpg",
+    img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/59e28fbf-1ccb-483e-92e8-70f4d3458e6d.png",
     title: "Питание своей производственной линии",
     text: "Готовим по утверждённому меню, каждое блюдо проверяет бракеражная комиссия",
   },
   {
-    img: "/images/facts/fact-license.jpg",
+    img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/830f025c-c292-4b25-b527-139af107ac42.png",
     title: "Лицензия и проверки СанПиН",
     text: "Проходим проверку санитарного соответствия 2 раза в год",
   },
   {
-    img: "/images/facts/fact-teachers.jpg",
+    img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a2a85eb8-5a09-459f-b135-12311cc3d390.png",
     title: "Педагоги с профильным образованием",
     text: "В штате — психолог. Воспитатели с высшим педагогическим образованием",
   },
