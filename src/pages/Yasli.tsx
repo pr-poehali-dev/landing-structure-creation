@@ -13,6 +13,8 @@ import {
   IMG_YASLI_HERO,
   IMG_YASLI_PEDAGOG,
   IMG_KOMANDA_GRUPPOVOE,
+  IMG_POSTER_YASLI_DEN,
+  VIDEO_YASLI_DEN,
   YASLI_FEARS,
   YASLI_ADAPTATION_STEPS,
   YASLI_SCHEDULE_PHOTOS,
@@ -99,8 +101,8 @@ export default function Yasli() {
           <div className="phone-frame" style={{ margin: "0 auto" }}>
             <div className="phone-frame-notch" />
             <video
-              src="/media/yasli-den.mp4"
-              poster="/images/poster-yasli-den.jpg"
+              src={VIDEO_YASLI_DEN}
+              poster={IMG_POSTER_YASLI_DEN}
               preload="none"
               controls
               playsInline

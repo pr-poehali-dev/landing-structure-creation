@@ -5,13 +5,17 @@ export const IMG_TEAM =
 export const IMG_LUNCH =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a507aa9a-3dfb-4721-acdd-914ae49dfafe.png";
 
-// Временная замена фото для страницы /yasli/, пока не пришлют yasli-hero.jpg и др. — используем реальные фото из галереи главной
+// Фото/видео для страницы /yasli/ (из медиатеки)
 export const IMG_YASLI_HERO =
-  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d15ea3fc-ee3e-4cee-b0d6-bf0a430cc6ad.jpg";
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/13eca0d8-5e0e-4ff1-bc12-799d85f2bbc4.png";
 export const IMG_YASLI_PEDAGOG =
-  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/77d301da-9e40-4ff2-a960-1a20252924c9.png";
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/998bb82a-77e2-4025-832f-73e08e3838c4.png";
 export const IMG_KOMANDA_GRUPPOVOE =
-  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/77d301da-9e40-4ff2-a960-1a20252924c9.png";
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a2a85eb8-5a09-459f-b135-12311cc3d390.png";
+export const IMG_POSTER_YASLI_DEN =
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a6464d40-05f3-4f4c-b0f6-00725339aeaf.jpg";
+export const VIDEO_YASLI_DEN =
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/380b2587-e5ec-46ca-a60a-e7038c46e745.mp4";
 
 export const GALLERY = [
   { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/abb19cee-a15c-4cca-afb0-be2db878df6e.png", alt: "Праздники в частном детском саду Рыбка Долли Керчь" },
