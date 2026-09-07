@@ -117,7 +117,7 @@ export default function InfoSections({ onOpenModal }: InfoSectionsProps) {
             ))}
           </div>
           <p className="prices-note prices-note-light">
-            Английский — абонемент 4 000 ₽/мес. Короткий день и посещение по часам — уточните по телефону или в MAX.
+            Английский для дошкольников — абонемент 4 000 ₽/мес. Нестандартный график — уточните по телефону или в MAX.
           </p>
           <p className="prices-footnote">Полные условия — в договоре, выдаём на ознакомление до подписания.</p>
         </div>

@@ -3,7 +3,7 @@ import ProgramPageDraft from "@/components/landing/ProgramPageDraft";
 export default function PodgotovkaKShkole() {
   return (
     <ProgramPageDraft
-      h1="Старшая группа и подготовка к школе в Керчи"
+      h1="Старшая группа и подготовка к школе в Керчи — ДДЦ «Рыбка Долли»"
       intro="Для детей 4–6 лет — осознанная подготовка к школе по программе ФГОС в мини-группах до 12 человек. Читают, пишут, считают, готовы к первому классу не для галочки, а по-настоящему."
       cardTitle="Подготовка к школе — реальная, а не для галочки"
       cardItems={[

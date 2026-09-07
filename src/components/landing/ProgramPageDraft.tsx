@@ -65,9 +65,9 @@ export default function ProgramPageDraft({ h1, intro, cardTitle, cardItems, card
 
       <section className="bg-cream" style={{ padding: "48px 0" }}>
         <div className="container container-narrow">
-          <div className="feat-card" style={{ maxWidth: 640, margin: "0 auto" }}>
-            <h3 className="feat-title">{cardTitle}</h3>
-            <ul className="feat-list">
+          <div className="draft-card" style={{ maxWidth: 640, margin: "0 auto" }}>
+            <h3 className="draft-card-title">{cardTitle}</h3>
+            <ul className="draft-card-list">
               {cardItems.map((item, i) => (
                 <li key={i}>
                   <Icon name="Check" size={14} />
@@ -76,7 +76,7 @@ export default function ProgramPageDraft({ h1, intro, cardTitle, cardItems, card
               ))}
             </ul>
             {cardResult && (
-              <div className="feat-result">
+              <div className="draft-card-result">
                 <Icon name="TrendingUp" size={14} />
                 {cardResult}
               </div>
@@ -113,6 +113,31 @@ export default function ProgramPageDraft({ h1, intro, cardTitle, cardItems, card
               <p className="modal-sub">Мы позвоним вам в течение 30 минут.</p>
             </div>
           )}
+        </div>
+      </section>
+
+      <section className="bg-cream" style={{ padding: "40px 0" }}>
+        <div className="container container-narrow" style={{ textAlign: "center" }}>
+          <div className="hero-v2-cta-row" style={{ justifyContent: "center", flexWrap: "wrap", gap: 12 }}>
+            <a href="tel:+79881521698" className="cta-btn cta-btn-outline" onClick={() => ymGoal("click_phone")}>
+              <Icon name="Phone" size={16} /> +7 (988) 152-16-98 (МТС)
+            </a>
+            <a href="tel:+79787120353" className="cta-btn cta-btn-outline" onClick={() => ymGoal("click_phone")}>
+              <Icon name="Phone" size={16} /> +7 (978) 712-03-53 (Волна)
+            </a>
+            <a
+              href="https://max.ru/u/f9LHodD0cOIhbnzQELXr9pYLpa3UrPFtm6a-qdComLrDEwRysIA_MF93vG4"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-btn cta-btn-primary"
+              onClick={() => ymGoal("click_messenger")}
+            >
+              <Icon name="MessageCircle" size={16} /> Спросить в MAX
+            </a>
+          </div>
+          <Link to="/" className="footer-link" style={{ display: "inline-flex", marginTop: 24, color: "var(--text-muted)" }}>
+            <Icon name="ArrowLeft" size={15} /> На главную
+          </Link>
         </div>
       </section>
 
