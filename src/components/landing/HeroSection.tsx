@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
-import { IMG_HERO } from "./constants";
+import { IMG_HERO, IMG_YASLI_HERO, IMG_STARSHAYA_HERO } from "./constants";
 import { ymGoal } from "@/lib/ym";
 
 // ── Modal ──────────────────────────────────────────────────────────────────
@@ -93,23 +93,37 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
 
         {/* Развилка */}
         <div className="hero-v2-fork">
-          <div className="hero-fork-card">
-            <div className="hero-fork-emoji">🧸</div>
-            <h3>Моему ребёнку 1,5–3 года</h3>
-            <p>Мягкая адаптация, забота и первые шаги в развитии</p>
-            <Link to="/yasli/?utm_source=main&utm_medium=internal&utm_campaign=hub_yasli" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_yasli')}>
-              Страница яслей
-              <Icon name="ArrowRight" size={16} />
-            </Link>
+          <div
+            className="hero-fork-card hero-fork-card-photo"
+            style={{ backgroundImage: `url(${IMG_YASLI_HERO})` }}
+          >
+            <div className="hero-fork-overlay hero-fork-overlay-peach" />
+            <div className="hero-fork-card-body">
+              <div className="hero-fork-deficit">Свободно 2 места</div>
+              <div className="hero-fork-emoji">🧸</div>
+              <h3>Моему ребёнку 1,5–3 года</h3>
+              <p>Мягкая адаптация, забота и первые шаги в развитии</p>
+              <Link to="/yasli/?utm_source=main&utm_medium=internal&utm_campaign=hub_yasli" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_yasli')}>
+                Страница яслей
+                <Icon name="ArrowRight" size={16} />
+              </Link>
+            </div>
           </div>
-          <div className="hero-fork-card">
-            <div className="hero-fork-emoji">🎓</div>
-            <h3>Моему ребёнку 4–6 лет</h3>
-            <p>Осознанная подготовка к школе по программе ФГОС</p>
-            <Link to="/podgotovka-k-shkole/?utm_source=main&utm_medium=internal&utm_campaign=hub_starshaya" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_school')}>
-              Старшая группа
-              <Icon name="ArrowRight" size={16} />
-            </Link>
+          <div
+            className="hero-fork-card hero-fork-card-photo"
+            style={{ backgroundImage: `url(${IMG_STARSHAYA_HERO})` }}
+          >
+            <div className="hero-fork-overlay hero-fork-overlay-honey" />
+            <div className="hero-fork-card-body">
+              <div className="hero-fork-deficit">Свободно 4 места</div>
+              <div className="hero-fork-emoji">🎓</div>
+              <h3>Моему ребёнку 4–6 лет</h3>
+              <p>Осознанная подготовка к школе по программе ФГОС</p>
+              <Link to="/podgotovka-k-shkole/?utm_source=main&utm_medium=internal&utm_campaign=hub_starshaya" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_school')}>
+                Старшая группа
+                <Icon name="ArrowRight" size={16} />
+              </Link>
+            </div>
           </div>
         </div>
 

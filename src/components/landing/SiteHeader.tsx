@@ -14,9 +14,10 @@ const NAV_LINKS = [
 
 interface SiteHeaderProps {
   onOpenModal: (source?: string) => void;
+  ctaLabel?: string;
 }
 
-export default function SiteHeader({ onOpenModal }: SiteHeaderProps) {
+export default function SiteHeader({ onOpenModal, ctaLabel = "Записаться на экскурсию" }: SiteHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -84,7 +85,7 @@ export default function SiteHeader({ onOpenModal }: SiteHeaderProps) {
               <Icon name="MessageCircle" size={17} />
             </a>
             <button className="cta-btn cta-btn-primary site-header-cta" onClick={() => { ymGoal('click_header_cta'); onOpenModal('excursion'); }}>
-              Записаться на экскурсию
+              {ctaLabel}
             </button>
           </div>
 
@@ -141,7 +142,7 @@ export default function SiteHeader({ onOpenModal }: SiteHeaderProps) {
               style={{ width: "100%", justifyContent: "center", marginTop: 8 }}
               onClick={() => { setMenuOpen(false); ymGoal('click_header_cta'); onOpenModal('excursion'); }}
             >
-              Записаться на экскурсию
+              {ctaLabel}
               <Icon name="ArrowRight" size={16} />
             </button>
           </div>
@@ -154,7 +155,7 @@ export default function SiteHeader({ onOpenModal }: SiteHeaderProps) {
           <Icon name="Phone" size={18} />
         </a>
         <button className="sticky-bottom-cta" onClick={() => { ymGoal('click_sticky_cta'); onOpenModal('excursion'); }}>
-          Записаться на экскурсию
+          {ctaLabel}
         </button>
       </div>
     </>

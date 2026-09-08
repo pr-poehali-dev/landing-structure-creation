@@ -7,6 +7,7 @@ import { Section } from "@/components/landing/InfoSections";
 import FoodSection from "@/components/landing/FoodSection";
 import SafetySection from "@/components/landing/SafetySection";
 import FooterSections from "@/components/landing/FooterSections";
+import WaveDivider from "@/components/landing/WaveDivider";
 import { ymGoal } from "@/lib/ym";
 import { useSeo } from "@/lib/useSeo";
 import {
@@ -46,9 +47,17 @@ export default function Yasli() {
   };
 
   return (
-    <div className="ld">
+    <div className="ld theme-yasli">
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} source={modalSource} />
-      <SiteHeader onOpenModal={openModal} />
+      <SiteHeader onOpenModal={openModal} ctaLabel="Записаться на экскурсию" />
+
+      <div className="back-to-home-bar">
+        <div className="container">
+          <Link to="/" className="back-to-home-link">
+            <Icon name="ArrowLeft" size={16} /> На главную
+          </Link>
+        </div>
+      </div>
 
       {/* БЛОК 2: Первый экран */}
       <section className="hero-wrap-v2">
@@ -262,6 +271,7 @@ export default function Yasli() {
       </Section>
 
       {/* БЛОК 10: Стоимость */}
+      <WaveDivider bg="var(--cream)" color="#1b3a5c" />
       <Section id="prices" className="bg-dark">
         <div className="container">
           <div className="section-header section-header-light">
@@ -302,6 +312,7 @@ export default function Yasli() {
           </div>
         </div>
       </Section>
+      <WaveDivider bg="var(--dark-bg)" color="#fff" flip />
 
       {/* БЛОК 11: Отзывы родителей яслей */}
       <Section id="reviews" className="bg-white">
@@ -370,11 +381,6 @@ export default function Yasli() {
         deficitNode={<h2 className="final-title">В ясельной группе<br />свободно <span className="clr-teal">2</span> места</h2>}
       />
 
-      <p style={{ textAlign: "center", padding: "16px 0", background: "#0a0f1a" }}>
-        <Link to="/" className="footer-link" style={{ display: "inline-flex", color: "rgba(255,255,255,0.5)" }}>
-          <Icon name="ArrowLeft" size={14} /> На главную
-        </Link>
-      </p>
     </div>
   );
 }

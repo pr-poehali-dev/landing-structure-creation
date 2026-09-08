@@ -2,6 +2,7 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { CHECKLIST } from "./constants";
 import { Section } from "./InfoSections";
+import WaveDivider from "./WaveDivider";
 import { ymGoal } from "@/lib/ym";
 
 const SEND_CHECKLIST_URL = "https://functions.poehali.dev/34e49ad9-ee73-40be-bb8a-e56d71588fb0";
@@ -48,6 +49,7 @@ export default function FooterSections({
 
   return (
     <>
+      <WaveDivider bg="var(--cream)" color="#e87c1e" />
       {/* ── БЛОК 12: Лид-магнит ── */}
       <Section className="bg-teal">
         <div className="container container-narrow">
@@ -98,6 +100,7 @@ export default function FooterSections({
           </div>
         </div>
       </Section>
+      <WaveDivider bg="var(--teal)" color="#1b3a5c" />
 
       {/* ── БЛОК 14: Финальный CTA + мини-карта ── */}
       <Section id="footer" className="bg-dark">

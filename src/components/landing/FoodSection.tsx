@@ -89,12 +89,22 @@ const NORMS = [
   { icon: "Droplets", label: "Питьевой режим", desc: "Вода без ограничений, соки и морсы по расписанию" },
 ];
 
-export default function FoodSection() {
+interface FoodSectionProps {
+  videoSrc?: string;
+  videoPoster?: string;
+  videoCaption?: string;
+}
+
+const DEFAULT_VIDEO = "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/f1745ec5-c958-41e6-b901-140e9cd705dc.mp4";
+
+export default function FoodSection({ videoSrc, videoPoster, videoCaption }: FoodSectionProps) {
   const [activeDay, setActiveDay] = useState(0);
   const day = MENU_DAYS[activeDay];
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isCustomVideo = Boolean(videoSrc);
 
   useEffect(() => {
+    if (isCustomVideo) return;
     const video = videoRef.current;
     if (!video) return;
     const obs = new IntersectionObserver(
@@ -109,7 +119,7 @@ export default function FoodSection() {
     );
     obs.observe(video);
     return () => obs.disconnect();
-  }, []);
+  }, [isCustomVideo]);
 
   return (
     <Section id="food" className="bg-cream">
@@ -168,17 +178,34 @@ export default function FoodSection() {
               <Icon name="Play" size={18} />
               Посмотрите, как дети едят
             </div>
-            <div className="food-video-wrap">
-              <video
-                ref={videoRef}
-                src="https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/f1745ec5-c958-41e6-b901-140e9cd705dc.mp4"
-                controls
-                muted
-                playsInline
-                loop
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-              />
-            </div>
+            {isCustomVideo ? (
+              <>
+                <div className="tv-frame" style={{ margin: 0 }}>
+                  <video
+                    src={videoSrc}
+                    poster={videoPoster}
+                    preload="none"
+                    controls
+                    playsInline
+                    width="100%"
+                    style={{ display: "block" }}
+                  />
+                </div>
+                {videoCaption && <p className="schedule-note" style={{ marginTop: 10 }}>{videoCaption}</p>}
+              </>
+            ) : (
+              <div className="food-video-wrap">
+                <video
+                  ref={videoRef}
+                  src={DEFAULT_VIDEO}
+                  controls
+                  muted
+                  playsInline
+                  loop
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                />
+              </div>
+            )}
             {/* Бракеражная комиссия */}
             <div className="food-brakerage">
               <div className="food-brakerage-icon">

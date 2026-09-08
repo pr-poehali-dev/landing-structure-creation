@@ -264,7 +264,7 @@ export const YASLI_SCHEDULE_PHOTOS = [
 
 export const YASLI_SCHEDULE_TEXT_SLOTS = [
   { time: "8:00", title: "Приём детей" },
-  { time: "17:00", title: "Прогулка домой" },
+  { time: "17:00", title: "Нескучная прогулка" },
 ];
 
 export const YASLI_DAY_STRIP = [
@@ -308,6 +308,12 @@ export const IMG_SVETLANA_VLADIMIROVNA =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/e7487fea-c2d8-45e5-91c5-cc04fb5df87c.jpg";
 export const IMG_NATALIA_PETROVNA =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a8d077a8-8286-461d-bab8-b44103706e8a.jpg";
+export const IMG_VIKTORIA_ANATOLIEVNA =
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/e9248345-31fe-4fff-b9dd-fb44818541a7.jpg";
+export const VIDEO_STARSHAYA_FOOD =
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/8912ff2b-195c-40cc-9007-1ecfce8098e9.mp4";
+export const IMG_POSTER_STARSHAYA_FOOD =
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a47d8fe6-ae89-4a9d-a968-c60a96089c02.png";
 
 export const STARSHAYA_SKILLS = [
   { icon: "BookOpen", title: "Чтение", text: "Чтение и понимание прочитанного", anchor: null },
@@ -329,7 +335,7 @@ export const STARSHAYA_SCHEDULE_PHOTOS = [
 export const STARSHAYA_SCHEDULE_TEXT_SLOTS = [
   { time: "8:00", title: "Приём детей" },
   { time: "13:30", title: "Тихий час" },
-  { time: "17:00", title: "Прогулка домой" },
+  { time: "17:00", title: "Нескучная прогулка" },
 ];
 
 export const STARSHAYA_REVIEWS = [

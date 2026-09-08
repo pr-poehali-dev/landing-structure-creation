@@ -72,10 +72,34 @@
     --teal-light: #fff4e6;
     --teal-dark: #c4640f;
     --dark-bg: #1b3a5c;
-    --cream: #fdf8ee;
+    --cream: #fbf4ea;
     --text-main: #1b3a5c;
     --text-muted: #6b7280;
     --hero-bg: linear-gradient(160deg, #fdf3d0 0%, #fce8b2 50%, #fdf8ee 100%);
+
+    /* Тёплая палитра «Персик + мёд» — акценты второго плана по страницам */
+    --accent-page: var(--teal);
+    --accent-page-light: var(--teal-light);
+    --accent-page-dark: var(--teal-dark);
+    --peach: #e8985f;
+    --peach-light: #fdece0;
+    --peach-dark: #c97a42;
+    --honey: #d9a441;
+    --honey-light: #faf0d9;
+    --honey-dark: #b6852c;
+  }
+
+  /* Акценты второго плана для /yasli/ — персиково-абрикосовый */
+  .theme-yasli {
+    --accent-page: var(--peach);
+    --accent-page-light: var(--peach-light);
+    --accent-page-dark: var(--peach-dark);
+  }
+  /* Акценты второго плана для /podgotovka-k-shkole/ — медово-янтарный */
+  .theme-starshaya {
+    --accent-page: var(--honey);
+    --accent-page-light: var(--honey-light);
+    --accent-page-dark: var(--honey-dark);
   }
 }
 
@@ -124,12 +148,49 @@
 }
 .bg-cream {
   background: var(--cream);
+  position: relative;
+  isolation: isolate;
+}
+/* Полупрозрачный силуэт рыбки водяным знаком на кремовых блоках */
+.bg-cream::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  bottom: -30px;
+  width: 260px;
+  height: 260px;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%231b3a5c'%3E%3Cpath d='M60 32c-6-10-18-16-30-16-8 0-15 3-20 8 3 2 6 5 8 8-2 3-5 6-8 8 5 5 12 8 20 8 12 0 24-6 30-16zm-14 0a4 4 0 11-8 0 4 4 0 018 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .bg-dark {
   background: var(--dark-bg);
 }
 .bg-teal {
   background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
+}
+
+/* Волнистый разделитель между крупными блоками */
+.wave-divider {
+  position: relative;
+  width: 100%;
+  height: 44px;
+  margin-top: -1px;
+  overflow: hidden;
+  line-height: 0;
+}
+.wave-divider svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+@media (max-width: 640px) {
+  .wave-divider {
+    height: 28px;
+  }
 }
 .bg-hero {
   background: linear-gradient(160deg, #fdf3d0 0%, #fce8b2 50%, #fdf8ee 100%);
@@ -152,7 +213,7 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--accent-page);
   margin-bottom: 12px;
 }
 .section-tag-light {
@@ -384,9 +445,10 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(27, 58, 92, 0.78) 0%,
+    rgba(232, 152, 95, 0.35) 0%,
+    rgba(27, 58, 92, 0.75) 18%,
     rgba(27, 58, 92, 0.6) 45%,
-    rgba(253, 248, 238, 0.97) 100%
+    rgba(251, 244, 234, 0.97) 100%
   );
 }
 .hero-v2-content {
@@ -428,6 +490,63 @@
   flex-direction: column;
   align-items: center;
   gap: 6px;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.hero-fork-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+}
+.hero-fork-card-photo {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  padding: 0;
+  min-height: 260px;
+}
+.hero-fork-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-fork-overlay-peach {
+  background: linear-gradient(
+    180deg,
+    rgba(232, 152, 95, 0.35) 0%,
+    rgba(201, 122, 66, 0.88) 100%
+  );
+}
+.hero-fork-overlay-honey {
+  background: linear-gradient(
+    180deg,
+    rgba(217, 164, 65, 0.35) 0%,
+    rgba(182, 133, 44, 0.88) 100%
+  );
+}
+.hero-fork-card-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px 24px;
+  justify-content: flex-end;
+}
+.hero-fork-deficit {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #b45309;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 50px;
 }
 .hero-fork-emoji {
   font-size: 34px;
@@ -438,11 +557,19 @@
   font-weight: 700;
   color: var(--text-main);
 }
+.hero-fork-card-photo h3 {
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
 .hero-fork-card p {
   font-size: 13px;
   color: var(--text-muted);
   margin-bottom: 12px;
   line-height: 1.4;
+}
+.hero-fork-card-photo p {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 .hero-fork-card .cta-btn {
   width: 100%;
@@ -924,7 +1051,7 @@
 }
 .service-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
 }
 .service-card-nursery {
   background-image: linear-gradient(
@@ -945,18 +1072,65 @@
 .service-card-speech {
   background-image: linear-gradient(
     135deg,
-    #7c5cff 0%,
-    #a06bff 45%,
-    #ff8ac1 100%
+    #6b7d3d 0%,
+    #8ea354 45%,
+    #c3d18a 100%
   );
 }
 .service-card-english {
   background-image: linear-gradient(
     135deg,
-    #1a9c7a 0%,
-    #2bbf9a 45%,
-    #7de0c4 100%
+    #e0553f 0%,
+    #f0795f 45%,
+    #ffab8f 100%
   );
+}
+
+/* Фото-плитки (ясли / старшая группа): фото + тёплый оверлей вместо плоской заливки */
+.service-card-photo {
+  background-size: cover;
+  background-position: center;
+  animation: none;
+}
+.service-card-photo-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.service-overlay-peach {
+  background: linear-gradient(
+    160deg,
+    rgba(232, 152, 95, 0.4) 0%,
+    rgba(201, 122, 66, 0.78) 100%
+  );
+}
+.service-overlay-honey {
+  background: linear-gradient(
+    160deg,
+    rgba(217, 164, 65, 0.4) 0%,
+    rgba(182, 133, 44, 0.78) 100%
+  );
+}
+.service-card-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  flex: 1;
+}
+.service-card-deficit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #b45309;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 50px;
+  margin-bottom: 12px;
 }
 .service-icon-wrap {
   width: 112px;
@@ -1624,10 +1798,10 @@
   transition: color 0.2s;
 }
 .faq-q:hover {
-  color: var(--teal);
+  color: var(--accent-page);
 }
 .faq-open .faq-q {
-  color: var(--teal);
+  color: var(--accent-page);
 }
 .faq-a {
   padding: 0 0 20px;
@@ -1669,7 +1843,7 @@
   margin-top: 32px;
 }
 .team-nanny-note svg {
-  color: var(--teal);
+  color: var(--accent-page);
 }
 .team-links-row {
   display: flex;
@@ -1680,6 +1854,17 @@
 }
 .team-card {
   text-align: center;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
 }
 .team-photo {
   width: 180px;
@@ -1687,7 +1872,7 @@
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto 16px;
-  border: 3px solid var(--teal-light);
+  border: 3px solid var(--accent-page-light);
 }
 .team-photo img {
   width: 100%;
@@ -1703,7 +1888,7 @@
 }
 .team-role {
   font-size: 14px;
-  color: var(--teal);
+  color: var(--accent-page);
   font-weight: 500;
   margin-bottom: 4px;
 }
@@ -1858,7 +2043,7 @@
 
 /* Menu */
 .food-menu {
-  background: #fff;
+  background: var(--cream);
   border-radius: 20px;
   padding: 28px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
@@ -1877,7 +2062,7 @@
 }
 .food-menu-title svg,
 .food-video-title svg {
-  color: var(--teal);
+  color: var(--accent-page);
 }
 .food-day-tabs {
   display: flex;
@@ -1890,20 +2075,20 @@
   border-radius: 20px;
   font-size: 13px;
   font-weight: 500;
-  border: 1.5px solid var(--teal-light);
-  background: var(--teal-light);
+  border: 1.5px solid var(--accent-page-light);
+  background: var(--accent-page-light);
   color: var(--text-muted);
   cursor: pointer;
   transition: all 0.18s;
 }
 .food-day-tab:hover {
-  border-color: var(--teal);
-  color: var(--teal);
+  border-color: var(--accent-page);
+  color: var(--accent-page);
 }
 .food-day-active {
-  background: var(--teal) !important;
+  background: var(--accent-page) !important;
   color: #fff !important;
-  border-color: var(--teal) !important;
+  border-color: var(--accent-page) !important;
 }
 .food-meals {
   display: flex;
@@ -1923,7 +2108,7 @@
   font-family: "Cormorant", serif;
   font-size: 17px;
   font-weight: 600;
-  color: var(--teal);
+  color: var(--accent-page);
   white-space: nowrap;
   padding-top: 2px;
   min-width: 44px;
@@ -1964,7 +2149,7 @@
 .food-video-wrap {
   border-radius: 16px;
   overflow: hidden;
-  background: var(--teal-light);
+  background: var(--accent-page-light);
   aspect-ratio: 16/9;
 }
 .food-video-placeholder {
@@ -2000,7 +2185,7 @@
   display: flex;
   gap: 16px;
   align-items: flex-start;
-  background: #fff;
+  background: var(--cream);
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
@@ -2010,11 +2195,11 @@
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: var(--teal-light);
+  background: var(--accent-page-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--teal);
+  color: var(--accent-page);
 }
 .food-brakerage-title {
   font-size: 15px;
@@ -2046,7 +2231,7 @@
   }
 }
 .food-norm-card {
-  background: #fff;
+  background: var(--cream);
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -2058,11 +2243,11 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: var(--teal-light);
+  background: var(--accent-page-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--teal);
+  color: var(--accent-page);
 }
 .food-norm-label {
   font-size: 14px;
@@ -3255,6 +3440,34 @@
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(232, 124, 30, 0.12);
 }
+
+.back-to-home-bar {
+  background: var(--cream);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+.back-to-home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+.back-to-home-link:hover {
+  transform: translateX(-3px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  color: var(--accent-page);
+}
 .site-header-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -3563,7 +3776,7 @@
   line-height: 1.4;
 }
 .safety-card svg {
-  color: var(--teal);
+  color: var(--accent-page);
   flex-shrink: 0;
   margin-top: 1px;
 }
@@ -3574,8 +3787,8 @@
   justify-content: center;
   gap: 6px;
   background: none;
-  border: 1.5px solid var(--teal);
-  color: var(--teal);
+  border: 1.5px solid var(--accent-page);
+  color: var(--accent-page);
   border-radius: 50px;
   padding: 10px 20px;
   font-size: 13px;
@@ -3585,7 +3798,7 @@
   transition: background 0.2s;
 }
 .safety-more-btn:hover {
-  background: var(--teal-light);
+  background: var(--accent-page-light);
 }
 
 /* BLOCK 7: Schedule compact */
@@ -3686,6 +3899,26 @@
   color: rgba(255, 255, 255, 0.3);
   flex-shrink: 0;
   margin-top: 1px;
+}
+
+/* Список с галочками на светлом фоне (напр. блок английского) */
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+.check-list li svg {
+  color: var(--accent-page);
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 .prices-note-light {
   color: rgba(255, 255, 255, 0.75) !important;
@@ -3799,8 +4032,8 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: var(--teal-light);
-  color: var(--teal);
+  background: var(--accent-page-light);
+  color: var(--accent-page);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3824,7 +4057,7 @@
   gap: 6px;
   font-size: 13px;
   font-weight: 700;
-  color: var(--teal);
+  color: var(--accent-page);
   text-decoration: none;
   margin-top: auto;
 }
@@ -3853,7 +4086,7 @@
 }
 .adaptation-step-badge {
   flex-shrink: 0;
-  background: var(--teal);
+  background: var(--accent-page);
   color: #fff;
   font-size: 12px;
   font-weight: 700;
@@ -3930,7 +4163,7 @@
 }
 .schedule-photo-card-info {
   padding: 12px 14px;
-  background: #fff;
+  background: var(--cream);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -3939,7 +4172,7 @@
   font-family: "Cormorant", serif;
   font-size: 15px;
   font-weight: 700;
-  color: var(--teal);
+  color: var(--accent-page);
 }
 
 .schedule-text-slots {
@@ -3953,8 +4186,17 @@
   flex-direction: column;
   gap: 2px;
   padding: 12px 18px;
-  background: var(--cream, #faf6ee);
+  background: #fff;
   border-radius: 12px;
+  border-left: 3px solid var(--accent-page);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.schedule-text-slot:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
 }
 
 .yasli-day-strip {

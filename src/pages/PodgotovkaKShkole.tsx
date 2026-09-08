@@ -7,6 +7,7 @@ import { Section } from "@/components/landing/InfoSections";
 import FoodSection from "@/components/landing/FoodSection";
 import SafetySection from "@/components/landing/SafetySection";
 import FooterSections from "@/components/landing/FooterSections";
+import WaveDivider from "@/components/landing/WaveDivider";
 import { ymGoal } from "@/lib/ym";
 import { useSeo } from "@/lib/useSeo";
 import {
@@ -18,6 +19,9 @@ import {
   IMG_SVETLANA_VLADIMIROVNA,
   IMG_MARINA_ANATOLIEVNA,
   IMG_NATALIA_PETROVNA,
+  IMG_VIKTORIA_ANATOLIEVNA,
+  VIDEO_STARSHAYA_FOOD,
+  IMG_POSTER_STARSHAYA_FOOD,
   STARSHAYA_SKILLS,
   STARSHAYA_SCHEDULE_PHOTOS,
   STARSHAYA_SCHEDULE_TEXT_SLOTS,
@@ -43,9 +47,17 @@ export default function PodgotovkaKShkole() {
   };
 
   return (
-    <div className="ld">
+    <div className="ld theme-starshaya">
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} source={modalSource} />
-      <SiteHeader onOpenModal={openModal} />
+      <SiteHeader onOpenModal={openModal} ctaLabel="Записаться на пробное занятие" />
+
+      <div className="back-to-home-bar">
+        <div className="container">
+          <Link to="/" className="back-to-home-link">
+            <Icon name="ArrowLeft" size={16} /> На главную
+          </Link>
+        </div>
+      </div>
 
       {/* БЛОК 2: Первый экран */}
       <section className="hero-wrap-v2">
@@ -177,7 +189,11 @@ export default function PodgotovkaKShkole() {
       </Section>
 
       {/* БЛОК 6: Питание */}
-      <FoodSection />
+      <FoodSection
+        videoSrc={VIDEO_STARSHAYA_FOOD}
+        videoPoster={IMG_POSTER_STARSHAYA_FOOD}
+        videoCaption="Завтрак, обед и полдник в старшей группе"
+      />
 
       {/* БЛОК 7: Безопасность */}
       <SafetySection id="safety" />
@@ -237,10 +253,10 @@ export default function PodgotovkaKShkole() {
               <p className="fear-a" style={{ fontSize: 15, marginBottom: 16 }}>
                 Абонемент — 4 000 ₽/мес.
               </p>
-              <ul className="plan-features" style={{ marginBottom: 16 }}>
-                <li className="plan-feature-yes"><Icon name="Check" size={16} /><span>Погружение в языковую среду</span></li>
-                <li className="plan-feature-yes"><Icon name="Check" size={16} /><span>Дети говорят и договариваются на английском</span></li>
-                <li className="plan-feature-yes"><Icon name="Check" size={16} /><span>Слова запоминаются в контексте</span></li>
+              <ul className="check-list" style={{ marginBottom: 16 }}>
+                <li><Icon name="Check" size={16} /><span>Полное погружение в языковую среду</span></li>
+                <li><Icon name="Check" size={16} /><span>Дети говорят и договариваются на английском</span></li>
+                <li><Icon name="Check" size={16} /><span>Слова запоминаются в контексте, а не списком</span></li>
               </ul>
               <div className="feat-result" style={{ marginBottom: 20 }}>
                 <Icon name="TrendingUp" size={14} />
@@ -256,23 +272,32 @@ export default function PodgotovkaKShkole() {
       </Section>
 
       {/* БЛОК 10: Логопед */}
-      <Section className="bg-cream">
+      <Section id="logoped" className="bg-cream">
         <div className="container container-narrow">
-          <div className="fear-card" style={{ maxWidth: 560, margin: "0 auto" }}>
-            <div className="fear-icon"><Icon name="MessageCircle" size={24} /></div>
-            <h3 className="fear-q">Логопед</h3>
-            <p className="fear-a">
-              Коррекция звукопроизношения, развитие речи, подготовка к школе.
-            </p>
-            <button className="cta-btn cta-btn-outline" style={{ marginTop: 12, alignSelf: "flex-start" }} onClick={() => { ymGoal('click_logoped_cta'); openModal('logoped'); }}>
-              Записаться на консультацию
-              <Icon name="ArrowRight" size={15} />
-            </button>
+          <div className="section-header">
+            <span className="section-tag">Логопед</span>
+            <h2 className="section-h2">Чистая речь —<br />уверенный старт в школе</h2>
+          </div>
+          <div className="adaptation-layout" style={{ gridTemplateColumns: "260px 1fr" }}>
+            <figure className="adaptation-photo">
+              <img src={IMG_VIKTORIA_ANATOLIEVNA} alt="Виктория Анатольевна — логопед" />
+              <figcaption>Виктория Анатольевна, логопед</figcaption>
+            </figure>
+            <div>
+              <p className="fear-a" style={{ fontSize: 15, marginBottom: 16 }}>
+                Коррекция звукопроизношения, развитие речи, подготовка к школе.
+              </p>
+              <button className="cta-btn cta-btn-primary" onClick={() => { ymGoal('click_logoped_cta'); openModal('logoped'); }}>
+                Записаться на консультацию
+                <Icon name="ArrowRight" size={18} />
+              </button>
+            </div>
           </div>
         </div>
       </Section>
 
       {/* БЛОК 11: Стоимость */}
+      <WaveDivider bg="var(--cream)" color="#1b3a5c" />
       <Section id="prices" className="bg-dark">
         <div className="container">
           <div className="section-header section-header-light">
@@ -313,6 +338,7 @@ export default function PodgotovkaKShkole() {
           </div>
         </div>
       </Section>
+      <WaveDivider bg="var(--dark-bg)" color="#fff" flip />
 
       {/* БЛОК 12: Отзывы родителей */}
       <Section id="reviews" className="bg-white">
@@ -381,11 +407,7 @@ export default function PodgotovkaKShkole() {
         deficitNode={<h2 className="final-title">В старшей группе<br />свободно <span className="clr-teal">4</span> места</h2>}
       />
 
-      <p style={{ textAlign: "center", padding: "16px 0", background: "#0a0f1a" }}>
-        <Link to="/" className="footer-link" style={{ display: "inline-flex", color: "rgba(255,255,255,0.5)" }}>
-          <Icon name="ArrowLeft" size={14} /> На главную
-        </Link>
-      </p>
+
     </div>
   );
 }
