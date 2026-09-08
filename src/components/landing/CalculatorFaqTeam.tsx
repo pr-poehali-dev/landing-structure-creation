@@ -165,7 +165,7 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
             <Link to="/yasli/?utm_source=main&utm_medium=internal&utm_campaign=hub_yasli" className="cta-btn cta-btn-outline" onClick={() => ymGoal('click_team_yasli')}>
               Страница яслей <Icon name="ArrowRight" size={15} />
             </Link>
-            <Link to="/podgotovka-k-shkole/" className="cta-btn cta-btn-outline" onClick={() => ymGoal('click_team_school')}>
+            <Link to="/podgotovka-k-shkole/?utm_source=main&utm_medium=internal&utm_campaign=hub_starshaya" className="cta-btn cta-btn-outline" onClick={() => ymGoal('click_team_school')}>
               Страница старшей группы <Icon name="ArrowRight" size={15} />
             </Link>
           </div>

@@ -106,7 +106,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             <div className="hero-fork-emoji">🎓</div>
             <h3>Моему ребёнку 4–6 лет</h3>
             <p>Осознанная подготовка к школе по программе ФГОС</p>
-            <Link to="/podgotovka-k-shkole/" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_school')}>
+            <Link to="/podgotovka-k-shkole/?utm_source=main&utm_medium=internal&utm_campaign=hub_starshaya" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_school')}>
               Старшая группа
               <Icon name="ArrowRight" size={16} />
             </Link>

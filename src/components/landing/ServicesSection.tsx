@@ -21,7 +21,7 @@ const SERVICES = [
     icon: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/c72fac87-c170-45ca-9636-8d52fca5e6d1.png",
     cardClass: "service-card-senior",
     type: "link" as const,
-    href: "/podgotovka-k-shkole/",
+    href: "/podgotovka-k-shkole/?utm_source=main&utm_medium=internal&utm_campaign=hub_starshaya",
     goal: "click_service_school",
   },
   {
