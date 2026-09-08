@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
-import { FAQ_LIST, TEAM, GALLERY } from "./constants";
+import { FAQ_LIST, TEAM, GALLERY, VIDEO_ZAKULISE_DEN } from "./constants";
 import { Section } from "./InfoSections";
 import { ymGoal } from "@/lib/ym";
 
@@ -144,7 +144,21 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
           <p className="team-nanny-note">
             <Icon name="Heart" size={15} /> Нянечка Марина Анатольевна работает с обеими группами
           </p>
-          <div className="team-links-row">
+          <div className="section-header" style={{ textAlign: "center", marginTop: 40 }}>
+            <span className="section-tag">Закулисье</span>
+            <h3 className="section-h2" style={{ fontSize: "1.5rem" }}>Посмотрите,<br />как мы работаем</h3>
+          </div>
+          <div className="tv-frame" style={{ margin: "0 auto" }}>
+            <video
+              src={VIDEO_ZAKULISE_DEN}
+              preload="none"
+              controls
+              playsInline
+              width="100%"
+              style={{ display: "block" }}
+            />
+          </div>
+          <div className="team-links-row" style={{ marginTop: 32 }}>
             <Link to="/yasli/?utm_source=main&utm_medium=internal&utm_campaign=hub_yasli" className="cta-btn cta-btn-outline" onClick={() => ymGoal('click_team_yasli')}>
               Страница яслей <Icon name="ArrowRight" size={15} />
             </Link>

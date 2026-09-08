@@ -18,6 +18,8 @@ export const VIDEO_YASLI_DEN =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/380b2587-e5ec-46ca-a60a-e7038c46e745.mp4";
 export const IMG_MARINA_ANATOLIEVNA =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/79e4a5dd-3bea-4db3-bc63-a4d91c92de42.png";
+export const VIDEO_ZAKULISE_DEN =
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/51fb6ff9-c911-4fe0-8d6f-fd8ac7b92d62.mp4";
 
 export const GALLERY = [
   { src: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/abb19cee-a15c-4cca-afb0-be2db878df6e.png", alt: "Праздники в частном детском саду Рыбка Долли Керчь" },
