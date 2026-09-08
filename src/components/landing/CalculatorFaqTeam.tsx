@@ -145,12 +145,12 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
             <Icon name="Heart" size={15} /> Нянечка Марина Анатольевна работает с обеими группами
           </p>
           <div className="section-header" style={{ textAlign: "center", marginTop: 40 }}>
-            <span className="section-tag">Закулисье</span>
-            <h3 className="section-h2" style={{ fontSize: "1.5rem" }}>Посмотрите,<br />как мы работаем</h3>
+            <span className="section-tag">Закулисье: как начинается и заканчивается наш день</span>
           </div>
           <div className="tv-frame" style={{ margin: "0 auto" }}>
             <video
               src={VIDEO_ZAKULISE_DEN}
+              poster="/images/poster-zakulise.jpg"
               preload="none"
               controls
               playsInline
@@ -158,6 +158,9 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
               style={{ display: "block" }}
             />
           </div>
+          <p className="schedule-note">
+            В кадре: утром педагоги готовят комнаты и материалы, вечером провожают детей. Так начинается и заканчивается каждый день в «Рыбке Долли».
+          </p>
           <div className="team-links-row" style={{ marginTop: 32 }}>
             <Link to="/yasli/?utm_source=main&utm_medium=internal&utm_campaign=hub_yasli" className="cta-btn cta-btn-outline" onClick={() => ymGoal('click_team_yasli')}>
               Страница яслей <Icon name="ArrowRight" size={15} />
