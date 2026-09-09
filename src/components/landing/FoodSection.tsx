@@ -84,8 +84,8 @@ const MENU_DAYS = [
 
 const NORMS = [
   { icon: "Salad", label: "Соответствие СанПиН 2.3/2.4.3590-20", desc: "Меню разработано по нормам питания для дошкольников" },
-  { icon: "Scale", label: "Контроль калорийности", desc: "1400–1700 ккал в день в соответствии с возрастом 3–7 лет" },
-  { icon: "Wheat", label: "Витамины и микроэлементы", desc: "Разнообразное меню обеспечивает суточную норму белков, жиров и углеводов" },
+  { icon: "Scale", label: "Контроль калорийности", desc: "1400–1700 ккал в день в соответствии с возрастом 3–7 лет", ageSpecific: true },
+  { icon: "Wheat", label: "Витамины и микроэлементы", desc: "Разнообразное меню обеспечивает суточную норму белков, жиров и углеводов", ageSpecific: true },
   { icon: "Droplets", label: "Питьевой режим", desc: "Вода без ограничений, соки и морсы по расписанию" },
 ];
 
@@ -93,11 +93,13 @@ interface FoodSectionProps {
   videoSrc?: string;
   videoPoster?: string;
   videoCaption?: string;
+  hideAgeSpecificNorms?: boolean;
 }
 
 const DEFAULT_VIDEO = "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/f1745ec5-c958-41e6-b901-140e9cd705dc.mp4";
 
-export default function FoodSection({ videoSrc, videoPoster, videoCaption }: FoodSectionProps) {
+export default function FoodSection({ videoSrc, videoPoster, videoCaption, hideAgeSpecificNorms = false }: FoodSectionProps) {
+  const norms = hideAgeSpecificNorms ? NORMS.filter((n) => !n.ageSpecific) : NORMS;
   const [activeDay, setActiveDay] = useState(0);
   const day = MENU_DAYS[activeDay];
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -224,7 +226,7 @@ export default function FoodSection({ videoSrc, videoPoster, videoCaption }: Foo
 
         {/* Нормы */}
         <div className="food-norms">
-          {NORMS.map((n, i) => (
+          {norms.map((n, i) => (
             <div key={i} className="food-norm-card">
               <div className="food-norm-icon">
                 <Icon name={n.icon} size={22} />

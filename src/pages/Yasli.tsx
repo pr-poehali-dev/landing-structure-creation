@@ -227,7 +227,7 @@ export default function Yasli() {
       </Section>
 
       {/* БЛОК 7: Питание */}
-      <FoodSection />
+      <FoodSection hideAgeSpecificNorms />
 
       {/* БЛОК 8: Безопасность */}
       <SafetySection id="safety" />
