@@ -51,7 +51,7 @@ export function Modal({ open, onClose, source = 'excursion' }: { open: boolean; 
           <div className="modal-success">
             <span className="success-big-emoji">🎉</span>
             <h3 className="modal-title">Отлично!</h3>
-            <p className="modal-sub">Мы позвоним вам в течение 30 минут и договоримся об удобном времени.</p>
+            <p className="modal-sub">Мы позвоним вам в течение дня, в рабочее время.</p>
           </div>
         )}
       </div>

@@ -85,7 +85,7 @@ function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) 
           <div className="modal-success">
             <span className="success-big-emoji">🎉</span>
             <h3 className="modal-title">Заявка принята!</h3>
-            <p className="modal-sub">Мы перезвоним вам в течение 30 минут и подтвердим место.</p>
+            <p className="modal-sub">Мы позвоним вам в течение дня, в рабочее время, и подтвердим место.</p>
           </div>
         )}
       </div>
