@@ -1858,8 +1858,14 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
+.team-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 640px;
+  margin: 40px auto 0;
+}
 @media (max-width: 768px) {
-  .team-grid {
+  .team-grid,
+  .team-grid-2 {
     grid-template-columns: 1fr;
   }
 }
@@ -4152,8 +4158,12 @@
   gap: 48px;
   align-items: start;
 }
+.adaptation-layout-photo-left {
+  grid-template-columns: 260px 1fr;
+}
 @media (max-width: 768px) {
-  .adaptation-layout {
+  .adaptation-layout,
+  .adaptation-layout-photo-left {
     grid-template-columns: 1fr;
   }
 }

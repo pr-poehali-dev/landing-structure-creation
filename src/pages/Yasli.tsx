@@ -243,7 +243,7 @@ export default function Yasli() {
             <img src={IMG_KOMANDA_GRUPPOVOE} alt="Ясли в Керчи: команда центра «Рыбка Долли»" />
             <figcaption>Ирина Васильевна, Светлана Владимировна, Ирина Павловна, Наталья Петровна — команда центра</figcaption>
           </figure>
-          <div className="team-grid" style={{ gridTemplateColumns: "repeat(2, 1fr)", maxWidth: 640, margin: "40px auto 0" }}>
+          <div className="team-grid team-grid-2">
             <div className="team-card">
               <div className="team-photo">
                 <img src={irinaVasilievna.img} alt={irinaVasilievna.name} />

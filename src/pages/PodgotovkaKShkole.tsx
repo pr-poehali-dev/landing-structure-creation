@@ -209,7 +209,7 @@ export default function PodgotovkaKShkole() {
             <img src={IMG_KOMANDA_GRUPPOVOE} alt="Подготовка к школе в Керчи: команда центра «Рыбка Долли»" />
             <figcaption>Ирина Васильевна, Светлана Владимировна, Ирина Павловна, Наталья Петровна — команда центра</figcaption>
           </figure>
-          <div className="team-grid" style={{ gridTemplateColumns: "repeat(2, 1fr)", maxWidth: 640, margin: "40px auto 0" }}>
+          <div className="team-grid team-grid-2">
             <div className="team-card">
               <div className="team-photo">
                 <img src={IMG_SVETLANA_VLADIMIROVNA} alt="Светлана Владимировна — педагог старшей группы" />
@@ -244,7 +244,7 @@ export default function PodgotovkaKShkole() {
             <span className="section-tag">Английский язык</span>
             <h2 className="section-h2">Английский — играя<br />и говоря, без зубрёжки</h2>
           </div>
-          <div className="adaptation-layout" style={{ gridTemplateColumns: "260px 1fr" }}>
+          <div className="adaptation-layout adaptation-layout-photo-left">
             <figure className="adaptation-photo">
               <img src={IMG_NATALIA_PETROVNA} alt="Наталья Петровна — педагог английского языка" />
               <figcaption>Наталья Петровна — педагог английского языка</figcaption>
@@ -278,7 +278,7 @@ export default function PodgotovkaKShkole() {
             <span className="section-tag">Логопед</span>
             <h2 className="section-h2">Чистая речь —<br />уверенный старт в школе</h2>
           </div>
-          <div className="adaptation-layout" style={{ gridTemplateColumns: "260px 1fr" }}>
+          <div className="adaptation-layout adaptation-layout-photo-left">
             <figure className="adaptation-photo">
               <img src={IMG_VIKTORIA_ANATOLIEVNA} alt="Виктория Анатольевна — логопед" />
               <figcaption>Виктория Анатольевна, логопед</figcaption>
