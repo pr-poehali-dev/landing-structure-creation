@@ -329,15 +329,16 @@ export default function Yasli() {
           </div>
           <div className="reviews-grid">
             {YASLI_REVIEWS.map((r, i) => (
-              <div key={i} className="review-card">
+              <div key={i} className="review-card review-card-noavatar">
                 <div className="review-stars">{"⭐".repeat(r.stars)}</div>
+                <div className="review-meta">
+                  <strong>{r.name}</strong>
+                  <span>{r.date}</span>
+                </div>
                 <p className="review-text">«{r.text}»</p>
-                <div className="review-author">
-                  <div className="review-avatar">{r.name[0]}</div>
-                  <div>
-                    <strong>{r.name}</strong>
-                    <span>{r.age}</span>
-                  </div>
+                <div className="review-source">
+                  <Icon name="MapPin" size={13} />
+                  Отзыв с Яндекс Карт
                 </div>
               </div>
             ))}
