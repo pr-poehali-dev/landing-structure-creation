@@ -19,8 +19,7 @@ import {
   IMG_MARINA_ANATOLIEVNA,
   YASLI_FEARS,
   YASLI_ADAPTATION_STEPS,
-  YASLI_SCHEDULE_PHOTOS,
-  YASLI_SCHEDULE_TEXT_SLOTS,
+  YASLI_SCHEDULE,
   YASLI_DAY_STRIP,
   YASLI_REVIEWS,
   YASLI_FAQ,
@@ -194,20 +193,12 @@ export default function Yasli() {
             <span className="section-tag">Распорядок дня</span>
             <h2 className="section-h2">Каждая минута<br />наполнена смыслом</h2>
           </div>
-          <div className="schedule-text-slots">
-            {YASLI_SCHEDULE_TEXT_SLOTS.map((s) => (
-              <div key={s.time} className="schedule-text-slot">
-                <span className="schedule-photo-card-time">{s.time}</span>
-                <strong>{s.title}</strong>
-              </div>
-            ))}
-          </div>
-          <div className="schedule-photo-grid">
-            {YASLI_SCHEDULE_PHOTOS.map((s) => (
-              <div key={s.time} className="schedule-photo-card">
-                <img src={s.img} alt={s.alt} loading="lazy" />
-                <div className="schedule-photo-card-info">
-                  <span className="schedule-photo-card-time">{s.time}</span>
+          <div className="schedule-timeline">
+            {YASLI_SCHEDULE.map((s) => (
+              <div key={s.time} className={`schedule-slot ${s.img ? "schedule-slot-photo" : "schedule-slot-text"}`}>
+                {s.img && <img src={s.img} alt={s.alt} loading="lazy" />}
+                <div className="schedule-slot-info">
+                  <span className="schedule-slot-time">{s.time}</span>
                   <strong>{s.title}</strong>
                 </div>
               </div>

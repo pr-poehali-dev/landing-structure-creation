@@ -23,8 +23,7 @@ import {
   VIDEO_STARSHAYA_FOOD,
   IMG_POSTER_STARSHAYA_FOOD,
   STARSHAYA_SKILLS,
-  STARSHAYA_SCHEDULE_PHOTOS,
-  STARSHAYA_SCHEDULE_TEXT_SLOTS,
+  STARSHAYA_SCHEDULE,
   STARSHAYA_REVIEWS,
   STARSHAYA_FAQ,
   STARSHAYA_CHECKLIST,
@@ -165,20 +164,12 @@ export default function PodgotovkaKShkole() {
             <h2 className="section-h2">День в старшей<br />группе</h2>
             <p className="food-subtitle">Распорядок общий с яслями, занятия — по возрасту.</p>
           </div>
-          <div className="schedule-text-slots">
-            {STARSHAYA_SCHEDULE_TEXT_SLOTS.map((s) => (
-              <div key={s.time} className="schedule-text-slot">
-                <span className="schedule-photo-card-time">{s.time}</span>
-                <strong>{s.title}</strong>
-              </div>
-            ))}
-          </div>
-          <div className="schedule-photo-grid">
-            {STARSHAYA_SCHEDULE_PHOTOS.map((s) => (
-              <div key={s.time} className="schedule-photo-card">
-                <img src={s.img} alt={s.alt} loading="lazy" />
-                <div className="schedule-photo-card-info">
-                  <span className="schedule-photo-card-time">{s.time}</span>
+          <div className="schedule-timeline">
+            {STARSHAYA_SCHEDULE.map((s) => (
+              <div key={s.time} className={`schedule-slot ${s.img ? "schedule-slot-photo" : "schedule-slot-text"}`}>
+                {s.img && <img src={s.img} alt={s.alt} loading="lazy" />}
+                <div className="schedule-slot-info">
+                  <span className="schedule-slot-time">{s.time}</span>
                   <strong>{s.title}</strong>
                   {s.caption && <span style={{ fontSize: 12, color: "var(--text-muted)", fontWeight: 400 }}>{s.caption}</span>}
                 </div>

@@ -4226,68 +4226,65 @@
   text-align: center;
 }
 
-/* Yasli page: schedule with photos (Block 6) */
-.schedule-photo-grid {
+/* Yasli / Podgotovka page: schedule timeline (Block 6) — единая хронологическая лента */
+.schedule-timeline {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  align-items: start;
 }
 @media (max-width: 900px) {
-  .schedule-photo-grid {
+  .schedule-timeline {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 560px) {
-  .schedule-photo-grid {
+  .schedule-timeline {
     grid-template-columns: 1fr;
   }
 }
-.schedule-photo-card {
+.schedule-slot {
   border-radius: 14px;
   overflow: hidden;
   position: relative;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
-.schedule-photo-card img {
+.schedule-slot-photo img {
   width: 100%;
   aspect-ratio: 4/3;
   object-fit: cover;
   display: block;
 }
-.schedule-photo-card-info {
+.schedule-slot-info {
   padding: 12px 14px;
   background: var(--cream);
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
-.schedule-photo-card-time {
+.schedule-slot-time {
   font-family: "Cormorant", serif;
   font-size: 15px;
   font-weight: 700;
   color: var(--accent-page);
 }
-
-.schedule-text-slots {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-.schedule-text-slot {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 12px 18px;
-  background: #fff;
-  border-radius: 12px;
-  border-left: 3px solid var(--accent-page);
+.schedule-slot-text {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-left: 3px solid var(--accent-page);
+  border-radius: 12px;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
+  display: flex;
+  align-items: stretch;
 }
-.schedule-text-slot:hover {
+.schedule-slot-text .schedule-slot-info {
+  background: #fff;
+  border-radius: 0 12px 12px 0;
+  justify-content: center;
+  width: 100%;
+}
+.schedule-slot-text:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
 }

@@ -255,15 +255,12 @@ export const YASLI_ADAPTATION_STEPS = [
   },
 ];
 
-export const YASLI_SCHEDULE_PHOTOS = [
+export const YASLI_SCHEDULE = [
+  { time: "8:00", title: "Приём детей" },
   { time: "9:30", title: "Занятие", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/fa401847-c00b-4b14-82e3-96daa7f26bab.jpg", alt: "Ясли в Керчи: занятие с педагогом" },
   { time: "11:30", title: "Прогулка", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/88c7df85-521b-4ce6-a634-594a85e0bfc0.png", alt: "Ясли в Керчи: прогулка на закрытой площадке" },
   { time: "13:00", title: "Обед", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/fb6fb02b-ac21-4497-be6a-592174822578.jpg", alt: "Ясли в Керчи: дети обедают" },
   { time: "13:30", title: "Тихий час", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/18820895-52e6-4c0c-8ff5-a44dfaeb89ac.png", alt: "Ясли в Керчи: тихий час" },
-];
-
-export const YASLI_SCHEDULE_TEXT_SLOTS = [
-  { time: "8:00", title: "Приём детей" },
   { time: "17:00", title: "Нескучная прогулка" },
 ];
 
@@ -324,17 +321,14 @@ export const STARSHAYA_SKILLS = [
   { icon: "Languages", title: "Английский", text: "Абонемент 4 000 ₽/мес, ведёт Наталья Петровна", anchor: "#english" },
 ];
 
-export const STARSHAYA_SCHEDULE_PHOTOS = [
+export const STARSHAYA_SCHEDULE = [
+  { time: "8:00", title: "Приём детей" },
   { time: "9:30", title: "Занятие", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/962ae8c7-56d9-4fbf-b791-40dabb235b4c.png", alt: "Старшая группа в Керчи: занятие с педагогом" },
   { time: "11:30", title: "Прогулка", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/d30cc8e5-0197-4f6b-996b-9191900d8279.png", alt: "Старшая группа в Керчи: прогулка на закрытой площадке" },
   { time: "13:00", title: "Обед", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a47d8fe6-ae89-4a9d-a968-c60a96089c02.png", alt: "Старшая группа в Керчи: дети обедают" },
+  { time: "13:30", title: "Тихий час" },
   { time: "15:00", title: "Гимнастика пробуждения", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/77a3bb7c-52c2-4a29-b988-b8231405e401.png", alt: "Старшая группа в Керчи: гимнастика пробуждения на массажных дорожках", caption: "Гимнастика пробуждения на массажных дорожках — профилактика плоскостопия и бодрый старт второй половины дня" },
   { time: "16:00", title: "Увлекательные игры", img: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/12955286-5dae-43b4-8a5d-206899fa38b8.png", alt: "Старшая группа в Керчи: увлекательные игры" },
-];
-
-export const STARSHAYA_SCHEDULE_TEXT_SLOTS = [
-  { time: "8:00", title: "Приём детей" },
-  { time: "13:30", title: "Тихий час" },
   { time: "17:00", title: "Нескучная прогулка" },
 ];
 
