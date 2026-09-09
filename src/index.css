@@ -3553,9 +3553,6 @@
 .site-header-phone svg {
   color: var(--teal);
 }
-.site-header-phone-alt {
-  display: none;
-}
 .site-header-max {
   display: flex;
   align-items: center;
