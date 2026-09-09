@@ -4,8 +4,12 @@ import { CHECKLIST } from "./constants";
 import { Section } from "./InfoSections";
 import WaveDivider from "./WaveDivider";
 import { ymGoal } from "@/lib/ym";
+import ConsentCheckbox from "./ConsentCheckbox";
 
 const SEND_CHECKLIST_URL = "https://functions.poehali.dev/34e49ad9-ee73-40be-bb8a-e56d71588fb0";
+
+const PDF_OFERTA = "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/790410e3-ec68-4029-8af0-8b5ca84f4d14.pdf";
+const PDF_CONSENT = "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/e42cc733-5e84-4fe9-98f3-daf2acb7ec07.pdf";
 
 const UTM_PRODLENKA = "?utm_source=ribkadollilend&utm_medium=footer&utm_content=prodlenka";
 const UTM_LETO = "?utm_source=ribkadollilend&utm_medium=footer&utm_content=leto";
@@ -79,10 +83,7 @@ export default function FooterSections({
                   onChange={e => setEmail(e.target.value)}
                   required
                 />
-                <label className="privacy-checkbox-label privacy-checkbox-label--light">
-                  <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} required />
-                  <span>Согласен(а) с <a href="/privacy" target="_blank" rel="noopener noreferrer">обработкой персональных данных</a></span>
-                </label>
+                <ConsentCheckbox checked={agreed} onChange={setAgreed} light />
                 <button type="submit" className="cta-btn cta-btn-white" disabled={loading || !agreed}>
                   {loading ? 'Отправляем...' : 'Получить чек-листы бесплатно'}
                   {!loading && <Icon name="ArrowRight" size={18} />}
@@ -186,8 +187,23 @@ export default function FooterSections({
               >
                 <Icon name="BookOpen" size={15} /> Блог
               </a>
+            </div>
+            <div className="footer-links-col">
+              <div className="footer-docs-title">Документы</div>
               <a href="/privacy" className="footer-link">
                 <Icon name="ShieldCheck" size={15} /> Политика конфиденциальности
+              </a>
+              <a href="/consent" className="footer-link">
+                <Icon name="FileCheck" size={15} /> Согласие на обработку ПД
+              </a>
+              <a href="/photo-policy" className="footer-link">
+                <Icon name="Camera" size={15} /> Правила фото- и видеосъёмки
+              </a>
+              <a href={PDF_OFERTA} target="_blank" rel="noopener noreferrer" className="footer-link">
+                <Icon name="FileText" size={15} /> Договор-оферта (PDF)
+              </a>
+              <a href={PDF_CONSENT} target="_blank" rel="noopener noreferrer" className="footer-link">
+                <Icon name="FileText" size={15} /> Согласие на обработку ПД (PDF)
               </a>
             </div>
             <div className="footer-contacts">

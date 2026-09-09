@@ -329,7 +329,12 @@ export default function PodgotovkaKShkole() {
           <p className="prices-note prices-note-light">
             Английский — абонемент 4 000 ₽/мес. Нестандартный график — уточните по телефону или в MAX.
           </p>
-          <p className="prices-footnote">Полные условия — в договоре, выдаём на ознакомление до подписания.</p>
+          <p className="prices-footnote">
+            Полные условия — в договоре, выдаём на ознакомление до подписания.{" "}
+            <a href="https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/790410e3-ec68-4029-8af0-8b5ca84f4d14.pdf" target="_blank" rel="noopener noreferrer" className="prices-oferta-link">
+              Читать договор-оферту
+            </a>
+          </p>
           <div style={{ textAlign: "center", marginTop: 24 }}>
             <button className="cta-btn cta-btn-outline-light" onClick={() => { ymGoal('click_prices_excursion'); openModal('excursion'); }}>
               Записаться на пробное занятие

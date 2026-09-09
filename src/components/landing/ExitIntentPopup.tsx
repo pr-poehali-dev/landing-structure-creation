@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
 import { CHECKLIST } from "./constants";
 import { ymGoal } from "@/lib/ym";
+import ConsentCheckbox from "./ConsentCheckbox";
 
 const SEND_CHECKLIST_URL = "https://functions.poehali.dev/34e49ad9-ee73-40be-bb8a-e56d71588fb0";
 
@@ -98,10 +99,7 @@ export default function ExitIntentPopup() {
               onChange={e => setEmail(e.target.value)}
               required
             />
-            <label className="privacy-checkbox-label">
-              <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} required />
-              <span>Согласен(а) с <a href="/privacy" target="_blank" rel="noopener noreferrer">обработкой персональных данных</a></span>
-            </label>
+            <ConsentCheckbox checked={agreed} onChange={setAgreed} />
             <button type="submit" className="exit-popup-btn" disabled={loading || !agreed}>
               {loading ? "Отправляем..." : "Получить чек-листы бесплатно"}
               {!loading && <Icon name="ArrowRight" size={16} />}

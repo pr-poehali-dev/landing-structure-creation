@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { ymGoal } from "@/lib/ym";
+import ConsentCheckbox from "./ConsentCheckbox";
 
 const SEND_LEAD_URL = "https://functions.poehali.dev/57047ae6-091f-4a98-8391-1bc5b14b157a";
 
@@ -72,10 +73,7 @@ function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) 
                   <div className="summer-dur-badge">выгоднее</div>
                 </div>
               </div>
-              <label className="privacy-checkbox-label">
-                <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} required />
-                <span>Согласен(а) с <a href="/privacy" target="_blank" rel="noopener noreferrer">обработкой персональных данных</a></span>
-              </label>
+              <ConsentCheckbox checked={agreed} onChange={setAgreed} />
               <button type="submit" className="cta-btn cta-btn-primary" disabled={loading || !shift || !duration || !agreed}>
                 {loading ? "Отправляем..." : "Оставить заявку"}
                 {!loading && <Icon name="ArrowRight" size={18} />}

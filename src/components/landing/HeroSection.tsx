@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { IMG_HERO, IMG_YASLI_HERO, IMG_STARSHAYA_HERO } from "./constants";
 import { ymGoal } from "@/lib/ym";
+import ConsentCheckbox from "./ConsentCheckbox";
 
 // ── Modal ──────────────────────────────────────────────────────────────────
 export function Modal({ open, onClose, source = 'excursion' }: { open: boolean; onClose: () => void; source?: string }) {
@@ -38,10 +39,7 @@ export function Modal({ open, onClose, source = 'excursion' }: { open: boolean; 
             <form onSubmit={submit} className="modal-form">
               <input className="modal-input" placeholder="Ваше имя" value={name} onChange={e => setName(e.target.value)} />
               <input className="modal-input" placeholder="Телефон" value={phone} onChange={e => setPhone(e.target.value)} />
-              <label className="privacy-checkbox-label">
-                <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} required />
-                <span>Согласен(а) с <a href="/privacy" target="_blank" rel="noopener noreferrer">обработкой персональных данных</a></span>
-              </label>
+              <ConsentCheckbox checked={agreed} onChange={setAgreed} />
               <button type="submit" className="cta-btn cta-btn-lg cta-btn-primary" disabled={loading || !agreed}>
                 {loading ? 'Отправляем...' : 'Хочу на экскурсию'}
                 {!loading && <Icon name="ArrowRight" size={18} />}
