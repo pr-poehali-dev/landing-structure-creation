@@ -20,6 +20,7 @@ export function Modal({ open, onClose, source = 'excursion' }: { open: boolean; 
     if (!name || !phone || !agreed) return;
     setLoading(true);
     await sendLead(name, phone, '', `Модальное окно (${source})`);
+    ymGoal('form_modal_submit');
     ymGoal(source === 'calculator' ? 'form_calculator_submit' : 'form_excursion_submit');
     setLoading(false);
     setDone(true);
