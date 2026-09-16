@@ -1,6 +1,9 @@
 import Icon from "@/components/ui/icon";
 import { Section } from "./InfoSections";
 import { ymGoal } from "@/lib/ym";
+import Quiz from "./quiz/Quiz";
+import quizFoundation45Config from "./quiz/configs/quiz-4-5.json";
+import type { QuizConfig } from "./quiz/types";
 import {
   IMG_FUNDAMENT_4_5,
   IMG_PREDSHKOLA_5_7,
@@ -28,6 +31,8 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
               В 4-5 мы ещё не учим — мы строим фундамент, на котором встанет учёба: внимание, речь, рука и любовь к занятиям
             </p>
           </div>
+
+          <Quiz config={quizFoundation45Config as QuizConfig} />
 
           <div className="age-points-grid">
             {FUNDAMENT_4_5_POINTS.map((p) => (
