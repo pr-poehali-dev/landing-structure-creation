@@ -5165,3 +5165,636 @@
     scroll-margin-top: 116px;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════════════
+   «Карта готовности» — печатный шаблон А4, служебный раздел /internal/
+   ════════════════════════════════════════════════════════════════════════ */
+.rm-doc {
+  --rm-milk: #fbf6ee;
+  --rm-navy: #17364a;
+  --rm-honey: #d9a441;
+  --rm-honey-light: #faf0d9;
+  --rm-peach: #e8985f;
+  --rm-graphite: #4a4a4a;
+  background: #e9e9e9;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.rm-page {
+  width: 210mm;
+  min-height: 297mm;
+  background: var(--rm-milk);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  padding: 12mm 16mm;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: "Golos Text", "Manrope", sans-serif;
+  color: var(--rm-graphite);
+}
+
+/* ── Шапка листа 1 ───────────────────────────────────────────────────── */
+.rm-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.rm-logo {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.rm-header-text {
+  display: flex;
+  flex-direction: column;
+}
+.rm-overline {
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--rm-honey);
+  line-height: 1.15;
+}
+.rm-title {
+  font-family: "Playfair Display", "Cormorant", serif;
+  font-size: 27px;
+  font-weight: 700;
+  color: var(--rm-navy);
+  line-height: 1.1;
+}
+
+/* ── Строка-анкета ───────────────────────────────────────────────────── */
+.rm-anketa {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+  break-inside: avoid;
+}
+.rm-anketa-field {
+  flex: 1 1 260px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 14px;
+  border: 1px solid rgba(23, 54, 74, 0.08);
+}
+.rm-anketa-field-sm {
+  flex: 1 1 140px;
+}
+.rm-anketa-label {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--rm-honey);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.rm-anketa-value {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--rm-navy);
+  min-height: 18px;
+  border-bottom: 1px solid rgba(23, 54, 74, 0.15);
+}
+
+/* ── Белые карточки (общий стиль) ────────────────────────────────────── */
+.rm-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(23, 54, 74, 0.06);
+  break-inside: avoid;
+}
+.rm-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Playfair Display", "Cormorant", serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--rm-navy);
+  margin: 0 0 8px;
+}
+.rm-card-title svg {
+  color: var(--rm-peach);
+  flex-shrink: 0;
+}
+
+/* ── «Что уже сияет» ─────────────────────────────────────────────────── */
+.rm-shine-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  border-bottom: 1px dashed rgba(217, 164, 65, 0.4);
+}
+.rm-shine-line:last-child {
+  border-bottom: none;
+}
+.rm-shine-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--rm-honey-light);
+  color: var(--rm-honey);
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.rm-shine-text {
+  font-size: 13.5px;
+  color: var(--rm-graphite);
+  flex: 1;
+}
+
+/* ── Семь параметров со шкалой ───────────────────────────────────────── */
+.rm-params {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.rm-param {
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 14px;
+  box-shadow: 0 1px 5px rgba(23, 54, 74, 0.05);
+  break-inside: avoid;
+}
+.rm-param-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rm-param-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--rm-honey);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.rm-param-titles {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.rm-param-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--rm-navy);
+  line-height: 1.3;
+}
+.rm-param-hint {
+  font-size: 10px;
+  color: #8a8a8a;
+  line-height: 1.2;
+}
+.rm-param-scale {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.rm-scale-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1.5px solid var(--rm-honey);
+  background: #fff;
+  display: inline-block;
+}
+.rm-scale-dot-filled {
+  background: var(--rm-honey);
+}
+.rm-param-comment {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 3px;
+  padding-top: 3px;
+  border-top: 1px solid rgba(23, 54, 74, 0.07);
+}
+.rm-comment-label {
+  font-size: 10px;
+  color: #9a9a9a;
+  flex-shrink: 0;
+}
+.rm-comment-line {
+  flex: 1;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(23, 54, 74, 0.15);
+  min-height: 15px;
+}
+
+.rm-page-num {
+  margin-top: auto;
+  padding-top: 12px;
+  text-align: center;
+  font-size: 10px;
+  color: #b0b0b0;
+}
+
+/* ── Лист 2: Вывод ───────────────────────────────────────────────────── */
+.rm-verdict-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.rm-total-circle {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--rm-honey-light);
+  border: 2px solid var(--rm-honey);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.rm-total-num {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--rm-navy);
+  line-height: 1;
+}
+.rm-total-of {
+  font-size: 10px;
+  color: var(--rm-honey-dark, #b6852c);
+}
+.rm-verdict-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.rm-check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--rm-navy);
+}
+.rm-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid var(--rm-honey);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+}
+.rm-checkbox-checked {
+  background: var(--rm-honey);
+}
+
+/* ── Дорожки/формат ──────────────────────────────────────────────────── */
+.rm-tracks-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.rm-card-track {
+  flex: 1;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.rm-track-title {
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--rm-navy);
+  margin: 0 0 4px;
+}
+
+/* ── План по месяцам ─────────────────────────────────────────────────── */
+.rm-plan-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(217, 164, 65, 0.35);
+}
+.rm-plan-line:last-child {
+  border-bottom: none;
+}
+.rm-plan-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--rm-honey);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.rm-plan-text {
+  font-size: 13px;
+  flex: 1;
+  border-bottom: 1px solid rgba(23, 54, 74, 0.12);
+  min-height: 16px;
+}
+
+/* ── Что делать дома ─────────────────────────────────────────────────── */
+.rm-home-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--rm-graphite);
+  min-height: 40px;
+}
+
+/* ── Подпись ─────────────────────────────────────────────────────────── */
+.rm-signature-row {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0 18px;
+  break-inside: avoid;
+}
+.rm-signature-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 220px;
+}
+.rm-signature-line {
+  width: 220px;
+  height: 44px;
+  border-bottom: 1.5px solid var(--rm-honey);
+}
+.rm-signature-img {
+  width: 220px;
+  height: 56px;
+  object-fit: contain;
+}
+.rm-signature-caption {
+  font-size: 11px;
+  color: #8a8a8a;
+  text-align: center;
+}
+
+/* ── Подвал листа 2: волна, контакты, QR, методичка ──────────────────── */
+.rm-footer {
+  margin-top: auto;
+}
+.rm-footer-wave {
+  line-height: 0;
+  margin: 0 -16mm 12px;
+}
+.rm-footer-wave svg {
+  width: 100%;
+  height: 28px;
+  display: block;
+}
+.rm-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.rm-footer-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+  color: var(--rm-navy);
+  font-weight: 600;
+}
+.rm-footer-qr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rm-footer-qr img {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+.rm-footer-qr-caption {
+  font-family: "Caveat", cursive;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--rm-honey);
+  max-width: 140px;
+  line-height: 1.2;
+}
+.rm-footer-method {
+  font-size: 9px;
+  line-height: 1.4;
+  color: #a3a3a3;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* ── Печатные стили ──────────────────────────────────────────────────── */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+  body * {
+    visibility: hidden;
+  }
+  .rm-doc,
+  .rm-doc * {
+    visibility: visible;
+  }
+  .rm-doc {
+    background: #fff;
+    padding: 0;
+    gap: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .rm-page {
+    width: 210mm;
+    min-height: 297mm;
+    box-shadow: none;
+    page-break-after: always;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  .rm-page:last-child {
+    page-break-after: auto;
+  }
+  .rm-page-num {
+    display: none;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ── Панель предпросмотра перед печатью ─────────────────────────────── */
+.rm-preview-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px;
+  background: #fff;
+  border-bottom: 1px solid rgba(23, 54, 74, 0.1);
+}
+
+/* ── Служебная форма заполнения карты готовности ────────────────────── */
+.rm-admin {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+  font-family: "Golos Text", sans-serif;
+  color: var(--text-main);
+}
+.rm-admin-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  color: var(--dark-bg);
+  margin-bottom: 6px;
+}
+.rm-admin-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+.rm-admin-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.rm-admin-section {
+  background: #fff;
+  border: 1px solid rgba(23, 54, 74, 0.08);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+.rm-admin-section h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark-bg);
+  margin-bottom: 12px;
+}
+.rm-admin-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.rm-admin-field {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.rm-admin-field-sm {
+  flex: 0 1 140px;
+}
+.rm-admin-param {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(23, 54, 74, 0.06);
+}
+.rm-admin-param:last-of-type {
+  border-bottom: none;
+}
+.rm-admin-param-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.rm-admin-param-title {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.rm-admin-scale {
+  display: flex;
+  gap: 6px;
+}
+.rm-admin-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--honey, #d9a441);
+  background: #fff;
+  color: var(--honey, #d9a441);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.rm-admin-dot-active {
+  background: var(--honey, #d9a441);
+  color: #fff;
+}
+.rm-admin-total {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--honey-dark, #b6852c);
+}
+.rm-admin-radio-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.rm-admin-chip {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(23, 54, 74, 0.15);
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.rm-admin-chip-active {
+  background: var(--honey, #d9a441);
+  border-color: var(--honey, #d9a441);
+  color: #fff;
+}
+.rm-admin-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
