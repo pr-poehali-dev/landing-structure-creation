@@ -8,11 +8,18 @@ import { computeTotalScore, computeVerdictScore, findVerdict, computeScales, for
 
 const SEND_LEAD_URL = "https://functions.poehali.dev/57047ae6-091f-4a98-8391-1bc5b14b157a";
 
-async function sendQuizLead(name: string, phone: string, source: string) {
+interface QuizLeadPayload {
+  quizId: string;
+  verdictTitle: string;
+  score: number;
+  scales: QuizScaleResult[];
+}
+
+async function sendQuizLead(name: string, phone: string, source: string, quiz: QuizLeadPayload) {
   await fetch(SEND_LEAD_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, phone, age: "", source }),
+    body: JSON.stringify({ name, phone, age: "", source, quiz }),
   });
 }
 
@@ -115,7 +122,12 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
     const summary = buildQuizResultSummary(config, score, verdict, scales);
     const cta = verdict.cta;
     const source = `Квиз (${cta.formType ?? cta.action}) — ${summary.replace(/\n/g, "; ")}`;
-    await sendQuizLead(name, phone, source);
+    await sendQuizLead(name, phone, source, {
+      quizId: config.metrics.quizIdInEvent,
+      verdictTitle: verdict.title,
+      score,
+      scales,
+    });
     ymGoal(config.metrics.lead, {
       quizId: config.metrics.quizIdInEvent,
       verdict: verdict.title,
