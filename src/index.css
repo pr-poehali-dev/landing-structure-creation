@@ -718,6 +718,34 @@
   }
 }
 
+/* Квиз-карточка на странице /podgotovka-k-shkole/: медовый контур + звезда в углу */
+.age-section .quiz-card {
+  position: relative;
+  border: 1.5px solid var(--honey);
+  overflow: visible;
+}
+.age-section .quiz-card::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 22px;
+  height: 22px;
+  background: var(--honey);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
 /* Quiz modal — движок квиза */
 .quiz-modal-overlay {
   position: fixed;
@@ -4808,6 +4836,55 @@
 }
 
 /* Age-program sections (/podgotovka-k-shkole/ #4-5, #5-7) */
+.age-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.age-section-milk {
+  background: #fbf6ee;
+}
+.age-section-white {
+  background: #fff;
+}
+/* Гигантская полупрозрачная цифра-водяной знак в углу секции */
+.age-section-watermark {
+  position: absolute;
+  right: -0.03em;
+  bottom: -0.22em;
+  font-family: "Playfair Display", "Cormorant", serif;
+  font-weight: 700;
+  font-size: clamp(220px, 32vw, 460px);
+  line-height: 1;
+  color: var(--text-main);
+  opacity: 0.07;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+.age-section .container {
+  position: relative;
+  z-index: 1;
+}
+/* Оверлайн рукописным шрифтом над заголовком секции */
+.age-overline {
+  display: block;
+  font-family: "Caveat", cursive;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--honey-dark);
+  margin-bottom: 2px;
+}
+/* Тонкая медовая линия под заголовком */
+.age-underline {
+  display: block;
+  width: 64px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--honey);
+  margin: 14px auto 0;
+}
 .age-section-h2 {
   font-family: "Playfair Display", "Cormorant", serif;
   font-size: clamp(30px, 4.4vw, 46px);
@@ -4834,13 +4911,18 @@
   }
 }
 .age-point-card {
-  background: var(--cream);
+  background: #fff;
   border-radius: 16px;
   padding: 22px 20px;
   display: flex;
   gap: 14px;
   align-items: flex-start;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 2px 6px rgba(27, 58, 92, 0.04),
+    0 10px 24px rgba(27, 58, 92, 0.07);
+}
+.age-point-card-milk {
+  background: #fbf6ee;
 }
 .age-point-icon {
   width: 40px;
@@ -4870,6 +4952,9 @@
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
+  box-shadow:
+    0 2px 6px rgba(27, 58, 92, 0.04),
+    0 10px 24px rgba(27, 58, 92, 0.06);
 }
 .age-extra-block-icon {
   width: 44px;
@@ -4890,22 +4975,28 @@
 .age-extra-block-text strong {
   color: var(--honey-dark);
 }
-.age-teacher-photo-stub {
+/* Круглый портрет Ирины Павловны в медовом кольце */
+.age-teacher-photo {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: var(--honey-light);
-  color: var(--honey-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-shrink: 0;
-  border: 2px dashed var(--honey);
+  overflow: hidden;
+  border: 2px solid var(--honey);
+  box-shadow: 0 4px 12px rgba(217, 164, 65, 0.3);
+}
+.age-teacher-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .age-photo-wrap {
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 2px 8px rgba(27, 58, 92, 0.06),
+    0 16px 36px rgba(27, 58, 92, 0.12);
   margin-top: 40px;
 }
 .age-photo-wrap img {
@@ -4924,6 +5015,21 @@
   color: var(--honey-dark);
   font-weight: 700;
   text-decoration: underline;
+}
+/* Разделитель между секциями #4-5 и #5-7: три медовые звезды в ряд */
+.age-section-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 22px 0;
+  background: #fbf6ee;
+  color: var(--honey);
+}
+.age-section-divider svg {
+  fill: var(--honey);
+  stroke: var(--honey);
 }
 [id="4-5"],
 [id="5-7"] {

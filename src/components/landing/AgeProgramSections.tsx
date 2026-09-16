@@ -5,9 +5,10 @@ import Quiz from "./quiz/Quiz";
 import quizFoundation45Config from "./quiz/configs/quiz-4-5.json";
 import quizSchoolReadiness57Config from "./quiz/configs/quiz-5-7.json";
 import type { QuizConfig } from "./quiz/types";
+import irinaPavlovnaPortrait from "@/assets/irina-pavlovna-portrait.jpg";
 import {
-  IMG_FUNDAMENT_4_5,
-  IMG_PREDSHKOLA_5_7,
+  IMG_FUNDAMENT_4_5_MAIN,
+  IMG_PREDSHKOLA_5_7_MAIN,
   FUNDAMENT_4_5_POINTS,
   PREDSHKOLA_5_7_POINTS,
 } from "./constants";
@@ -23,11 +24,14 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
   return (
     <>
       {/* БЛОК 2а: 4-5 лет — Фундамент */}
-      <Section id="4-5" className="bg-white">
+      <Section id="4-5" className="age-section age-section-milk">
+        <span className="age-section-watermark" aria-hidden="true">4-5</span>
         <div className="container container-narrow">
           <div className="section-header" style={{ textAlign: "center" }}>
             <span className="section-tag">4-5 лет</span>
+            <span className="age-overline">дорожка фундамента</span>
             <h2 className="age-section-h2">4-5 лет: Фундамент</h2>
+            <span className="age-underline" aria-hidden="true" />
             <p className="age-lead">
               В 4-5 мы ещё не учим — мы строим фундамент, на котором встанет учёба: внимание, речь, рука и любовь к занятиям
             </p>
@@ -52,7 +56,7 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
           </div>
 
           <figure className="age-photo-wrap">
-            <img src={IMG_FUNDAMENT_4_5} alt="Фундамент 4-5 лет: занятие в мини-группе" />
+            <img src={IMG_FUNDAMENT_4_5_MAIN} alt="Фундамент 4-5 лет: россыпь развивающих пособий" />
           </figure>
 
           <div style={{ textAlign: "center", marginTop: 32 }}>
@@ -64,12 +68,22 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
         </div>
       </Section>
 
+      {/* Разделитель между секциями */}
+      <div className="age-section-divider" aria-hidden="true">
+        <Icon name="Star" size={14} />
+        <Icon name="Star" size={14} />
+        <Icon name="Star" size={14} />
+      </div>
+
       {/* БЛОК 2б: 5-7 лет — Предшкольная подготовка */}
-      <Section id="5-7" className="bg-cream">
+      <Section id="5-7" className="age-section age-section-white">
+        <span className="age-section-watermark" aria-hidden="true">5-7</span>
         <div className="container container-narrow">
           <div className="section-header" style={{ textAlign: "center" }}>
             <span className="section-tag">5-7 лет</span>
+            <span className="age-overline">предшкольная дорожка</span>
             <h2 className="age-section-h2">5-7 лет: Предшкольная подготовка</h2>
+            <span className="age-underline" aria-hidden="true" />
             <p className="age-lead">
               С пяти лет начинается настоящая предшкольная подготовка: за два года мы приводим ребёнка к первому классу с беглым чтением, поставленной рукой и спокойной уверенностью
             </p>
@@ -79,7 +93,7 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
 
           <div className="age-points-grid">
             {PREDSHKOLA_5_7_POINTS.map((p) => (
-              <div key={p.text} className="age-point-card">
+              <div key={p.text} className="age-point-card age-point-card-milk">
                 <div className="age-point-icon"><Icon name={p.icon} size={20} /></div>
                 <p className="age-point-text">{p.text}</p>
               </div>
@@ -87,14 +101,16 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
           </div>
 
           <div className="age-extra-block">
-            <div className="age-teacher-photo-stub"><Icon name="User" size={26} /></div>
+            <div className="age-teacher-photo">
+              <img src={irinaPavlovnaPortrait} alt="Ирина Павловна — учитель начальных классов" />
+            </div>
             <p className="age-extra-block-text">
-              <strong>Кто ведёт:</strong> Ирину Павловну, учителя начальных классов, ведёт подготовку
+              <strong>Кто ведёт:</strong> Ирина Павловна, учитель начальных классов.
             </p>
           </div>
 
           <figure className="age-photo-wrap">
-            <img src={IMG_PREDSHKOLA_5_7} alt="Предшкольная подготовка 5-7 лет: занятие" />
+            <img src={IMG_PREDSHKOLA_5_7_MAIN} alt="Ирина Павловна с карточкой у зелёного стола: предшкольная подготовка" />
           </figure>
 
           <div style={{ textAlign: "center", marginTop: 32 }}>

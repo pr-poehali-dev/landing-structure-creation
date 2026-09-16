@@ -5,11 +5,17 @@ export const IMG_TEAM =
 export const IMG_LUNCH =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a507aa9a-3dfb-4721-acdd-914ae49dfafe.png";
 
-// Фото для развилки на главной и страницы /podgotovka-k-shkole/ (возрастные группы 4-5 и 5-7 лет)
+// Фото для развилки на главной (возрастные группы 4-5 и 5-7 лет)
 export const IMG_FUNDAMENT_4_5 =
   "https://cdn.poehali.dev/projects/891591f8-ea8a-4dbb-94f9-151d66af9489/bucket/43e91a93-d4c3-43ee-960f-a1a72f443355.jpg";
 export const IMG_PREDSHKOLA_5_7 =
   "https://cdn.poehali.dev/projects/891591f8-ea8a-4dbb-94f9-151d66af9489/bucket/66ff53cc-a574-4fa5-ba0a-cc50bd4b7baa.jpg";
+
+// Фото для секций #4-5 и #5-7 на странице /podgotovka-k-shkole/
+export const IMG_FUNDAMENT_4_5_MAIN =
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/2494fd77-0b65-469e-9860-a9b0d46bfe9e.jpg";
+export const IMG_PREDSHKOLA_5_7_MAIN =
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/e15de9d9-0bf5-40b1-8131-abac959b176d.jpg";
 
 // Фото/видео для страницы /yasli/ (из медиатеки)
 export const IMG_YASLI_HERO =
