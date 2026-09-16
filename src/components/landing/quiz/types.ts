@@ -29,9 +29,11 @@ export interface QuizVerdict {
 }
 
 export interface QuizScale {
+  id?: string;
   key?: string;
   name?: string;
   label?: string;
+  maxScore?: number;
   order?: number;
 }
 

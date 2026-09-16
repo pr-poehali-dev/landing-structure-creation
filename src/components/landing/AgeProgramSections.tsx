@@ -3,6 +3,7 @@ import { Section } from "./InfoSections";
 import { ymGoal } from "@/lib/ym";
 import Quiz from "./quiz/Quiz";
 import quizFoundation45Config from "./quiz/configs/quiz-4-5.json";
+import quizSchoolReadiness57Config from "./quiz/configs/quiz-5-7.json";
 import type { QuizConfig } from "./quiz/types";
 import {
   IMG_FUNDAMENT_4_5,
@@ -73,6 +74,8 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
               С пяти лет начинается настоящая предшкольная подготовка: за два года мы приводим ребёнка к первому классу с беглым чтением, поставленной рукой и спокойной уверенностью
             </p>
           </div>
+
+          <Quiz config={quizSchoolReadiness57Config as QuizConfig} />
 
           <div className="age-points-grid">
             {PREDSHKOLA_5_7_POINTS.map((p) => (

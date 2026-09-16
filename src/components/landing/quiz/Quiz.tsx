@@ -9,17 +9,12 @@ interface QuizProps {
 }
 
 export default function Quiz({ config }: QuizProps) {
-  const params = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
-  const debugAutoOpen = params?.get("debug_quiz_open") === "1";
-  const debugStepRaw = params?.get("debug_quiz_step");
-  const debugStep = debugStepRaw === "result" || debugStepRaw === "lead" ? debugStepRaw : undefined;
-  const debugSelectFirst = params?.get("debug_quiz_select") === "1";
-  const [open, setOpen] = useState(debugAutoOpen);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
       <QuizCard config={config} onStart={() => setOpen(true)} />
-      <QuizModal config={config} open={open} onClose={() => setOpen(false)} debugJumpTo={debugStep} debugSelectFirst={debugSelectFirst} />
+      <QuizModal config={config} open={open} onClose={() => setOpen(false)} />
     </>
   );
 }

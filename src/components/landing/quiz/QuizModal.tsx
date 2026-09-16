@@ -4,7 +4,7 @@ import Icon from "@/components/ui/icon";
 import ConsentCheckbox from "../ConsentCheckbox";
 import { ymGoal } from "@/lib/ym";
 import type { QuizConfig, QuizVerdict, QuizScaleResult } from "./types";
-import { computeTotalScore, findVerdict, computeScales, formatProgress, buildQuizResultSummary } from "./utils";
+import { computeTotalScore, computeVerdictScore, findVerdict, computeScales, formatProgress, buildQuizResultSummary } from "./utils";
 
 const SEND_LEAD_URL = "https://functions.poehali.dev/57047ae6-091f-4a98-8391-1bc5b14b157a";
 
@@ -23,11 +23,9 @@ interface QuizModalProps {
   config: QuizConfig;
   open: boolean;
   onClose: () => void;
-  debugJumpTo?: "result" | "lead";
-  debugSelectFirst?: boolean;
 }
 
-export default function QuizModal({ config, open, onClose, debugJumpTo, debugSelectFirst }: QuizModalProps) {
+export default function QuizModal({ config, open, onClose }: QuizModalProps) {
   const [step, setStep] = useState<QuizStep>("question");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
@@ -66,28 +64,6 @@ export default function QuizModal({ config, open, onClose, debugJumpTo, debugSel
     }
   }, [open, config]);
 
-  useEffect(() => {
-    if (!open || !debugJumpTo) return;
-    const allAnswers: Record<number, number> = {};
-    config.questions.forEach((q) => { allAnswers[q.id] = 0; });
-    const finalScore = computeTotalScore(config, allAnswers);
-    const finalVerdict = findVerdict(config, finalScore);
-    const finalScales = computeScales(config, allAnswers);
-    setAnswers(allAnswers);
-    setScore(finalScore);
-    setVerdict(finalVerdict);
-    setScales(finalScales);
-    setStep(debugJumpTo);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, debugJumpTo]);
-
-  useEffect(() => {
-    if (open && debugSelectFirst) {
-      setAnswers((prev) => ({ ...prev, [config.questions[0].id]: 0 }));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, debugSelectFirst]);
-
   if (!open) return null;
 
   const total = config.questions.length;
@@ -119,7 +95,7 @@ export default function QuizModal({ config, open, onClose, debugJumpTo, debugSel
       return;
     }
     const finalScore = computeTotalScore(config, answers);
-    const finalVerdict = findVerdict(config, finalScore);
+    const finalVerdict = findVerdict(config, computeVerdictScore(config, finalScore));
     const finalScales = computeScales(config, answers);
     setScore(finalScore);
     setVerdict(finalVerdict);
