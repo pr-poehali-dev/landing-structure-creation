@@ -8,6 +8,9 @@ import FoodSection from "@/components/landing/FoodSection";
 import SafetySection from "@/components/landing/SafetySection";
 import FooterSections from "@/components/landing/FooterSections";
 import WaveDivider from "@/components/landing/WaveDivider";
+import Quiz from "@/components/landing/quiz/Quiz";
+import quizYasliConfig from "@/components/landing/quiz/configs/quiz-yasli.json";
+import type { QuizConfig } from "@/components/landing/quiz/types";
 import { ymGoal } from "@/lib/ym";
 import { useSeo } from "@/lib/useSeo";
 import {
@@ -82,6 +85,8 @@ export default function Yasli() {
             <Icon name="Clock" size={16} />
             В ясельной группе свободно 2 места
           </div>
+
+          <Quiz config={quizYasliConfig as QuizConfig} />
 
           <div className="hero-v2-cta-row">
             <button className="cta-btn cta-btn-primary cta-btn-lg" onClick={() => { ymGoal('click_hero_cta'); openModal('excursion'); }}>
