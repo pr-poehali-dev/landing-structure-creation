@@ -17,7 +17,7 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
 
   const planLabels: Record<string, { title: string; desc: string; price: string }> = {
     current: { title: "Текущий", desc: "Перерасчёт по болезни, мастер-классы включены, летний отпуск 1 месяц", price: "25 000 ₽/мес" },
-    special: { title: "Специальный", desc: "Цена зафиксирована от 4 месяцев, без перерасчётов", price: "20 000 ₽/мес" },
+    special: { title: "Специальный", desc: "Посещение с 8:00 до 16:00, цена зафиксирована от 4 месяцев, без перерасчётов", price: "20 000 ₽/мес" },
   };
 
   const selected = planLabels[calcPlan];
