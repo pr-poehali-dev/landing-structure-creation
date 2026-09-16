@@ -6,6 +6,7 @@ import quizFoundation45Config from "./quiz/configs/quiz-4-5.json";
 import quizSchoolReadiness57Config from "./quiz/configs/quiz-5-7.json";
 import type { QuizConfig } from "./quiz/types";
 import irinaPavlovnaPortrait from "@/assets/irina-pavlovna-portrait.jpg";
+import DiagnosticsVideoBlock from "./DiagnosticsVideoBlock";
 import {
   IMG_FUNDAMENT_4_5_MAIN,
   IMG_PREDSHKOLA_5_7_MAIN,
@@ -108,6 +109,8 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
               <strong>Кто ведёт:</strong> Ирина Павловна, учитель начальных классов.
             </p>
           </div>
+
+          <DiagnosticsVideoBlock />
 
           <figure className="age-photo-wrap">
             <img src={IMG_PREDSHKOLA_5_7_MAIN} alt="Ирина Павловна с карточкой у зелёного стола: предшкольная подготовка" />

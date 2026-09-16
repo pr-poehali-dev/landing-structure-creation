@@ -17,9 +17,10 @@ export default function QuizCard({ config, onStart }: QuizCardProps) {
         <h3 className="quiz-card-title">{config.card.title}</h3>
         <p className="quiz-card-subtitle">{config.card.subtitle}</p>
       </div>
-      <button className="cta-btn cta-btn-outline quiz-card-btn" onClick={onStart}>
-        {config.card.button}
-        <Icon name="ArrowRight" size={16} />
+      <button className="quiz-card-btn-lead quiz-card-btn" onClick={onStart}>
+        <Icon name="Star" size={14} className="quiz-card-btn-lead-star" />
+        <span>{config.card.button}</span>
+        <Icon name="ArrowRight" size={18} />
       </button>
     </div>
   );
