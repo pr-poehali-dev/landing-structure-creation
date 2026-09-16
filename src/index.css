@@ -5188,7 +5188,7 @@
   min-height: 297mm;
   background: var(--rm-milk);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
-  padding: 12mm 16mm;
+  padding: 10mm 16mm;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -5205,8 +5205,8 @@
   margin-bottom: 12px;
 }
 .rm-logo {
-  width: 46px;
-  height: 46px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -5216,17 +5216,17 @@
 }
 .rm-overline {
   font-family: "Caveat", cursive;
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 600;
   color: var(--rm-honey);
-  line-height: 1.15;
+  line-height: 1.1;
 }
 .rm-title {
   font-family: "Playfair Display", "Cormorant", serif;
-  font-size: 27px;
+  font-size: 31px;
   font-weight: 700;
   color: var(--rm-navy);
-  line-height: 1.1;
+  line-height: 1.05;
 }
 
 /* ── Строка-анкета ───────────────────────────────────────────────────── */
@@ -5234,14 +5234,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 11px;
   break-inside: avoid;
 }
 .rm-anketa-field {
   flex: 1 1 260px;
   background: #fff;
   border-radius: 10px;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border: 1px solid rgba(23, 54, 74, 0.08);
 }
 .rm-anketa-field-sm {
@@ -5249,19 +5249,19 @@
 }
 .rm-anketa-label {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--rm-honey);
   font-weight: 700;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 .rm-anketa-value {
   display: block;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--rm-navy);
-  min-height: 18px;
+  min-height: 22px;
   border-bottom: 1px solid rgba(23, 54, 74, 0.15);
 }
 
@@ -5269,7 +5269,7 @@
 .rm-card {
   background: #fff;
   border-radius: 14px;
-  padding: 12px 18px;
+  padding: 12px 20px;
   margin-bottom: 10px;
   box-shadow: 0 2px 8px rgba(23, 54, 74, 0.06);
   break-inside: avoid;
@@ -5277,12 +5277,12 @@
 .rm-card-title {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   font-family: "Playfair Display", "Cormorant", serif;
-  font-size: 16px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--rm-navy);
-  margin: 0 0 8px;
+  margin: 0 0 7px;
 }
 .rm-card-title svg {
   color: var(--rm-peach);
@@ -5293,28 +5293,28 @@
 .rm-shine-line {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 4px 0;
+  gap: 12px;
+  padding: 5px 0;
   border-bottom: 1px dashed rgba(217, 164, 65, 0.4);
 }
 .rm-shine-line:last-child {
   border-bottom: none;
 }
 .rm-shine-num {
-  width: 22px;
-  height: 22px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   background: var(--rm-honey-light);
   color: var(--rm-honey);
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 .rm-shine-text {
-  font-size: 13.5px;
+  font-size: 15px;
   color: var(--rm-graphite);
   flex: 1;
 }
@@ -5328,23 +5328,23 @@
 .rm-param {
   background: #fff;
   border-radius: 10px;
-  padding: 6px 14px;
+  padding: 7px 16px;
   box-shadow: 0 1px 5px rgba(23, 54, 74, 0.05);
   break-inside: avoid;
 }
 .rm-param-head {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 .rm-param-num {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: var(--rm-honey);
   color: #fff;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5357,24 +5357,24 @@
   flex-direction: column;
 }
 .rm-param-title {
-  font-size: 12.5px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--rm-navy);
-  line-height: 1.3;
+  line-height: 1.25;
 }
 .rm-param-hint {
-  font-size: 10px;
+  font-size: 12px;
   color: #8a8a8a;
   line-height: 1.2;
 }
 .rm-param-scale {
   display: flex;
-  gap: 5px;
+  gap: 6px;
   flex-shrink: 0;
 }
 .rm-scale-dot {
-  width: 13px;
-  height: 13px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   border: 1.5px solid var(--rm-honey);
   background: #fff;
@@ -5386,28 +5386,28 @@
 .rm-param-comment {
   display: flex;
   align-items: baseline;
-  gap: 6px;
-  margin-top: 3px;
-  padding-top: 3px;
+  gap: 8px;
+  margin-top: 4px;
+  padding-top: 4px;
   border-top: 1px solid rgba(23, 54, 74, 0.07);
 }
 .rm-comment-label {
-  font-size: 10px;
+  font-size: 12px;
   color: #9a9a9a;
   flex-shrink: 0;
 }
 .rm-comment-line {
   flex: 1;
-  font-size: 12px;
+  font-size: 14px;
   border-bottom: 1px solid rgba(23, 54, 74, 0.15);
-  min-height: 15px;
+  min-height: 18px;
 }
 
 .rm-page-num {
   margin-top: auto;
   padding-top: 12px;
   text-align: center;
-  font-size: 10px;
+  font-size: 11px;
   color: #b0b0b0;
 }
 
@@ -5415,12 +5415,12 @@
 .rm-verdict-row {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
   flex-wrap: wrap;
 }
 .rm-total-circle {
-  width: 84px;
-  height: 84px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   background: var(--rm-honey-light);
   border: 2px solid var(--rm-honey);
@@ -5432,32 +5432,32 @@
 }
 .rm-total-num {
   font-family: "Playfair Display", serif;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 700;
   color: var(--rm-navy);
   line-height: 1;
 }
 .rm-total-of {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--rm-honey-dark, #b6852c);
 }
 .rm-verdict-checks {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 11px;
 }
 .rm-check-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
+  gap: 10px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--rm-navy);
 }
 .rm-checkbox {
-  width: 18px;
-  height: 18px;
-  border-radius: 5px;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
   border: 1.5px solid var(--rm-honey);
   background: #fff;
   display: flex;
@@ -5481,11 +5481,11 @@
   margin-bottom: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 .rm-track-title {
   font-family: "Playfair Display", serif;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--rm-navy);
   margin: 0 0 4px;
@@ -5495,67 +5495,67 @@
 .rm-plan-line {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 0;
+  gap: 12px;
+  padding: 9px 0;
   border-bottom: 1px dashed rgba(217, 164, 65, 0.35);
 }
 .rm-plan-line:last-child {
   border-bottom: none;
 }
 .rm-plan-num {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   background: var(--rm-honey);
   color: #fff;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 .rm-plan-text {
-  font-size: 13px;
+  font-size: 16px;
   flex: 1;
   border-bottom: 1px solid rgba(23, 54, 74, 0.12);
-  min-height: 16px;
+  min-height: 20px;
 }
 
 /* ── Что делать дома ─────────────────────────────────────────────────── */
 .rm-home-text {
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.7;
   color: var(--rm-graphite);
-  min-height: 40px;
+  min-height: 50px;
 }
 
 /* ── Подпись ─────────────────────────────────────────────────────────── */
 .rm-signature-row {
   display: flex;
   justify-content: flex-end;
-  margin: 10px 0 18px;
+  margin: 16px 0 24px;
   break-inside: avoid;
 }
 .rm-signature-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  min-width: 220px;
+  gap: 6px;
+  min-width: 260px;
 }
 .rm-signature-line {
-  width: 220px;
-  height: 44px;
+  width: 260px;
+  height: 52px;
   border-bottom: 1.5px solid var(--rm-honey);
 }
 .rm-signature-img {
-  width: 220px;
-  height: 56px;
+  width: 260px;
+  height: 64px;
   object-fit: contain;
 }
 .rm-signature-caption {
-  font-size: 11px;
+  font-size: 13px;
   color: #8a8a8a;
   text-align: center;
 }
@@ -5566,11 +5566,11 @@
 }
 .rm-footer-wave {
   line-height: 0;
-  margin: 0 -16mm 12px;
+  margin: 0 -16mm 16px;
 }
 .rm-footer-wave svg {
   width: 100%;
-  height: 28px;
+  height: 34px;
   display: block;
 }
 .rm-footer-inner {
@@ -5583,34 +5583,34 @@
 .rm-footer-contacts {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  font-size: 12px;
+  gap: 4px;
+  font-size: 14px;
   color: var(--rm-navy);
   font-weight: 600;
 }
 .rm-footer-qr {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 .rm-footer-qr img {
-  width: 56px;
-  height: 56px;
+  width: 66px;
+  height: 66px;
   flex-shrink: 0;
 }
 .rm-footer-qr-caption {
   font-family: "Caveat", cursive;
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 600;
   color: var(--rm-honey);
-  max-width: 140px;
+  max-width: 150px;
   line-height: 1.2;
 }
 .rm-footer-method {
-  font-size: 9px;
-  line-height: 1.4;
+  font-size: 10.5px;
+  line-height: 1.45;
   color: #a3a3a3;
-  margin-top: 12px;
+  margin-top: 14px;
   text-align: center;
 }
 
