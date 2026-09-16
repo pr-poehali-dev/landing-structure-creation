@@ -5,6 +5,12 @@ export const IMG_TEAM =
 export const IMG_LUNCH =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a507aa9a-3dfb-4721-acdd-914ae49dfafe.png";
 
+// Фото для развилки на главной и страницы /podgotovka-k-shkole/ (возрастные группы 4-5 и 5-7 лет)
+export const IMG_FUNDAMENT_4_5 =
+  "https://cdn.poehali.dev/projects/891591f8-ea8a-4dbb-94f9-151d66af9489/bucket/43e91a93-d4c3-43ee-960f-a1a72f443355.jpg";
+export const IMG_PREDSHKOLA_5_7 =
+  "https://cdn.poehali.dev/projects/891591f8-ea8a-4dbb-94f9-151d66af9489/bucket/66ff53cc-a574-4fa5-ba0a-cc50bd4b7baa.jpg";
+
 // Фото/видео для страницы /yasli/ (из медиатеки)
 export const IMG_YASLI_HERO =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/13eca0d8-5e0e-4ff1-bc12-799d85f2bbc4.png";
@@ -320,6 +326,22 @@ export const STARSHAYA_SKILLS = [
   { icon: "MessageSquareText", title: "Речь", text: "Развитие речи: пересказ, рассказы, словарный запас", anchor: null },
   { icon: "Users", title: "Готовность", text: "Психологическая готовность: слушать, работать в группе, не бояться ошибок", anchor: null },
   { icon: "Languages", title: "Английский", text: "Абонемент 4 000 ₽/мес, ведёт Наталья Петровна", anchor: "#english" },
+];
+
+// ── Блок «4-5 лет: Фундамент» на странице /podgotovka-k-shkole/ ────────────
+export const FUNDAMENT_4_5_POINTS = [
+  { icon: "Timer", text: "внимание, которое выдерживает 20 минут занятия" },
+  { icon: "PenLine", text: "рука, которая потом захочет писать: мелкая моторика через игру" },
+  { icon: "MessageSquareText", text: "речь, которую слышно: словарный запас и связный пересказ" },
+  { icon: "Heart", text: "любовь к занятиям до того, как появится слово «надо»" },
+];
+
+// ── Блок «5-7 лет: Предшкольная подготовка» на странице /podgotovka-k-shkole/ ─
+export const PREDSHKOLA_5_7_POINTS = [
+  { icon: "BookOpen", text: "беглое чтение и понимание прочитанного, а не озвучивание букв" },
+  { icon: "PenLine", text: "письмо: почерк, посадка, правильный захват пера" },
+  { icon: "Calculator", text: "математика до 20 и задачи, а не примеры" },
+  { icon: "GraduationCap", text: "пробный урок: 35-40 минут внимания и волевая регуляция" },
 ];
 
 export const STARSHAYA_SCHEDULE = [

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
-import { IMG_HERO, IMG_YASLI_HERO, IMG_STARSHAYA_HERO } from "./constants";
+import { IMG_HERO, IMG_YASLI_HERO, IMG_FUNDAMENT_4_5, IMG_PREDSHKOLA_5_7 } from "./constants";
 import { ymGoal } from "@/lib/ym";
 import ConsentCheckbox from "./ConsentCheckbox";
 
@@ -21,7 +21,12 @@ export function Modal({ open, onClose, source = 'excursion' }: { open: boolean; 
     setLoading(true);
     await sendLead(name, phone, '', `Модальное окно (${source})`);
     ymGoal('form_modal_submit');
-    ymGoal(source === 'calculator' ? 'form_calculator_submit' : 'form_excursion_submit');
+    const goalBySource: Record<string, string> = {
+      calculator: 'form_calculator_submit',
+      fundament: 'form_fundament_submit',
+      predshkola: 'form_predshkola_submit',
+    };
+    ymGoal(goalBySource[source] ?? 'form_excursion_submit');
     setLoading(false);
     setDone(true);
   };
@@ -34,7 +39,9 @@ export function Modal({ open, onClose, source = 'excursion' }: { open: boolean; 
           <>
             <div className="modal-header">
               <span className="modal-emoji">🌟</span>
-              <h3 className="modal-title">Запишитесь на экскурсию</h3>
+              <h3 className="modal-title">
+                {source === 'fundament' || source === 'predshkola' ? 'Запишитесь на диагностику' : 'Запишитесь на экскурсию'}
+              </h3>
               <p className="modal-sub">Бесплатно. Без обязательств. Просто посмотрите.</p>
             </div>
             <form onSubmit={submit} className="modal-form">
@@ -42,7 +49,7 @@ export function Modal({ open, onClose, source = 'excursion' }: { open: boolean; 
               <input className="modal-input" placeholder="Телефон" value={phone} onChange={e => setPhone(e.target.value)} />
               <ConsentCheckbox checked={agreed} onChange={setAgreed} />
               <button type="submit" className="cta-btn cta-btn-lg cta-btn-primary" disabled={loading || !agreed}>
-                {loading ? 'Отправляем...' : 'Хочу на экскурсию'}
+                {loading ? 'Отправляем...' : (source === 'fundament' || source === 'predshkola' ? 'Хочу на диагностику' : 'Хочу на экскурсию')}
                 {!loading && <Icon name="ArrowRight" size={18} />}
               </button>
               <p className="modal-privacy"><Icon name="Lock" size={11} /> Данные не передаём третьим лицам</p>
@@ -91,7 +98,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         </p>
 
         {/* Развилка */}
-        <div className="hero-v2-fork">
+        <div className="hero-v2-fork hero-v2-fork-3">
           <div
             className="hero-fork-card hero-fork-card-photo"
             style={{ backgroundImage: `url(${IMG_YASLI_HERO})` }}
@@ -99,9 +106,8 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             <div className="hero-fork-overlay hero-fork-overlay-peach" />
             <div className="hero-fork-card-body">
               <div className="hero-fork-deficit">Свободно 2 места</div>
-              <div className="hero-fork-emoji">🧸</div>
-              <h3>Моему ребёнку 1,5–3 года</h3>
-              <p>Мягкая адаптация, забота и первые шаги в развитии</p>
+              <h3>Моему ребёнку 1,5-3 года</h3>
+              <p>Мягкая адаптация и первые открытия</p>
               <Link to="/yasli/?utm_source=main&utm_medium=internal&utm_campaign=hub_yasli" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_yasli')}>
                 Страница яслей
                 <Icon name="ArrowRight" size={16} />
@@ -110,16 +116,30 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           </div>
           <div
             className="hero-fork-card hero-fork-card-photo"
-            style={{ backgroundImage: `url(${IMG_STARSHAYA_HERO})` }}
+            style={{ backgroundImage: `url(${IMG_FUNDAMENT_4_5})` }}
+          >
+            <div className="hero-fork-overlay hero-fork-overlay-honey" />
+            <div className="hero-fork-card-body">
+              <div className="hero-fork-deficit">Свободно 2 места</div>
+              <h3>Моему ребёнку 4-5 лет</h3>
+              <p>Фундамент: учимся учиться через игру</p>
+              <Link to="/podgotovka-k-shkole/?utm_source=main&utm_medium=internal&utm_campaign=hub_fundament#4-5" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_fundament')}>
+                Программа 4-5
+                <Icon name="ArrowRight" size={16} />
+              </Link>
+            </div>
+          </div>
+          <div
+            className="hero-fork-card hero-fork-card-photo"
+            style={{ backgroundImage: `url(${IMG_PREDSHKOLA_5_7})` }}
           >
             <div className="hero-fork-overlay hero-fork-overlay-honey" />
             <div className="hero-fork-card-body">
               <div className="hero-fork-deficit">Свободно 4 места</div>
-              <div className="hero-fork-emoji">🎓</div>
-              <h3>Моему ребёнку 4–6 лет</h3>
-              <p>Осознанная подготовка к школе по программе ФГОС</p>
-              <Link to="/podgotovka-k-shkole/?utm_source=main&utm_medium=internal&utm_campaign=hub_starshaya" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_school')}>
-                Старшая группа
+              <h3>Моему ребёнку 5-7 лет</h3>
+              <p>Предшкольная подготовка: чтение, письмо, счёт и пробный урок</p>
+              <Link to="/podgotovka-k-shkole/?utm_source=main&utm_medium=internal&utm_campaign=hub_predshkola#5-7" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_predshkola')}>
+                Программа 5-7
                 <Icon name="ArrowRight" size={16} />
               </Link>
             </div>
