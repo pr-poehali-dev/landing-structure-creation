@@ -2,6 +2,8 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 import { ymGoal } from "@/lib/ym";
 import ConsentCheckbox from "./ConsentCheckbox";
+import PhoneField from "./PhoneField";
+import { isPhoneComplete, normalizePhoneForCrm } from "@/lib/phone";
 
 const SEND_LEAD_URL = "https://functions.poehali.dev/57047ae6-091f-4a98-8391-1bc5b14b157a";
 
@@ -23,19 +25,23 @@ function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) 
   const [agreed, setAgreed] = useState(false);
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [submitAttempted, setSubmitAttempted] = useState(false);
 
   if (!open) return null;
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone || !shift || !duration || !agreed) return;
+    setSubmitAttempted(true);
+    if (!name) ymGoal('form_error', { field: 'name' });
+    if (!isPhoneComplete(phone)) ymGoal('form_error', { field: 'phone' });
+    if (!name || !isPhoneComplete(phone) || !shift || !duration || !agreed) return;
     setLoading(true);
     const shiftObj = SHIFTS.find(s => String(s.id) === shift);
     const source = `Летний клуб — ${shiftObj?.label} (${shiftObj?.dates}), ${duration === "1" ? "1 неделя — 7 000 ₽" : "2 недели — 13 000 ₽"}`;
     await fetch(SEND_LEAD_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, phone, age: "4–7 лет", source }),
+      body: JSON.stringify({ name, phone: normalizePhoneForCrm(phone), age: "4–7 лет", source }),
     });
     ymGoal("summer_form_submit");
     setLoading(false);
@@ -55,7 +61,7 @@ function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) 
             </div>
             <form onSubmit={submit} className="modal-form">
               <input className="modal-input" placeholder="Имя" value={name} onChange={e => setName(e.target.value)} required />
-              <input className="modal-input" placeholder="Телефон" value={phone} onChange={e => setPhone(e.target.value)} required />
+              <PhoneField value={phone} onChange={setPhone} submitAttempted={submitAttempted} />
               <select className="modal-input modal-select" value={shift} onChange={e => setShift(e.target.value)} required>
                 <option value="">Выберите смену</option>
                 {SHIFTS.map(s => (

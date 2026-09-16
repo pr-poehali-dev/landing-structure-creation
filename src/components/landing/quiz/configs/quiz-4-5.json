@@ -62,5 +62,5 @@
     {"min": 0, "max": 7, "title": "Фундаменту нужна поддержка — и это нормально", "text": "Ваши ответы показывают зоны, которые нужно растить сейчас. В 4-5 это делается естественно: через игру в группе, через материалы и педагога. Чем раньше начнём, тем легче ребёнку будет в 6-7, когда пойдёт настоящая подготовка к школе.", "cta": {"label": "Записаться на диагностику", "action": "form", "formType": "diagnostics"}}
   ],
   "scales": null,
-  "metrics": {"started": "quiz_started", "completed": "quiz_completed", "lead": "lead_after_quiz", "quizIdInEvent": "foundation-4-5"}
+  "metrics": {"started": "quiz_started", "completed": "quiz_completed", "cta": "quiz_cta_click", "lead": "lead_after_quiz", "quizIdInEvent": "foundation-4-5"}
 }

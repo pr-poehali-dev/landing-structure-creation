@@ -61,5 +61,5 @@
     {"min": 0, "max": 6, "title": "Ваши тревоги — с ответами", "text": "Ваши тревоги — те же, что у каждой хорошей мамы, и на каждую у нас есть ответ: адаптация в темпе ребёнка, первые дни вместе с мамой, маленькие группы, забота. Чем раньше вы придёте на экскурсию, тем спокойнее будет старт.", "cta": {"label": "Записаться на экскурсию", "action": "form", "formType": "tour"}}
   ],
   "scales": null,
-  "metrics": {"started": "quiz_started", "completed": "quiz_completed", "lead": "lead_after_quiz", "quizIdInEvent": "yasli"}
+  "metrics": {"started": "quiz_started", "completed": "quiz_completed", "cta": "quiz_cta_click", "lead": "lead_after_quiz", "quizIdInEvent": "yasli"}
 }

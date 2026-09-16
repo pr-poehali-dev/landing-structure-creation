@@ -40,6 +40,9 @@ export interface QuizScale {
 export interface QuizMetrics {
   started: string;
   completed: string;
+  /** Аналитическая цель клика по CTA на экране результата (до заполнения формы).
+   *  НЕ добавлять в целевые действия рекламной кампании — только для отчётов. */
+  cta?: string;
   lead: string;
   quizIdInEvent: string;
 }

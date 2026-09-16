@@ -4,6 +4,8 @@ import Icon from "@/components/ui/icon";
 import ConsentCheckbox from "../ConsentCheckbox";
 import { ymGoal } from "@/lib/ym";
 import { LEAD_GOAL_BY_TYPE, deriveModalType, MODAL_CONTENT, CHILD_AGE_OPTIONS } from "../modalContent";
+import PhoneField from "../PhoneField";
+import { isPhoneComplete, normalizePhoneForCrm } from "@/lib/phone";
 import type { QuizConfig, QuizVerdict, QuizScaleResult } from "./types";
 import { computeTotalScore, computeVerdictScore, findVerdict, computeScales, formatProgress, buildQuizResultSummary } from "./utils";
 
@@ -47,6 +49,7 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
   const [comment, setComment] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [leadLoading, setLeadLoading] = useState(false);
+  const [submitAttempted, setSubmitAttempted] = useState(false);
 
   const startFired = useRef(false);
 
@@ -73,6 +76,7 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
       setComment("");
       setAgreed(false);
       setLeadLoading(false);
+      setSubmitAttempted(false);
     }
   }, [open, config]);
 
@@ -122,13 +126,16 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
 
   const submitLead = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone || !agreed || !verdict) return;
+    setSubmitAttempted(true);
+    if (!name) ymGoal('form_error', { field: 'name' });
+    if (!isPhoneComplete(phone)) ymGoal('form_error', { field: 'phone' });
+    if (!name || !isPhoneComplete(phone) || !agreed || !verdict) return;
     setLeadLoading(true);
     const summary = buildQuizResultSummary(config, score, verdict, scales);
     const cta = verdict.cta;
     const modalType = deriveModalType(undefined, cta.formType);
     const source = `Квиз (${cta.formType ?? cta.action}) — ${summary.replace(/\n/g, "; ")}`;
-    await sendQuizLead(name, phone, age, comment, source, modalType, {
+    await sendQuizLead(name, normalizePhoneForCrm(phone), age, comment, source, modalType, {
       quizId: config.metrics.quizIdInEvent,
       verdictTitle: verdict.title,
       score,
@@ -219,7 +226,15 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
                 </div>
               )}
 
-              <button className="cta-btn cta-btn-primary cta-btn-lg quiz-cta-btn" onClick={() => setStep("lead")}>
+              <button
+                className="cta-btn cta-btn-primary cta-btn-lg quiz-cta-btn"
+                onClick={() => {
+                  if (config.metrics.cta) {
+                    ymGoal(config.metrics.cta, { quizId: config.metrics.quizIdInEvent, verdict: verdict.title });
+                  }
+                  setStep("lead");
+                }}
+              >
                 {verdict.cta.label}
                 <Icon name="ArrowRight" size={18} />
               </button>
@@ -237,8 +252,18 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
                 {MODAL_CONTENT[deriveModalType(undefined, verdict.cta.formType)].subtitle}
               </p>
               <form onSubmit={submitLead} className="modal-form">
-                <input className="modal-input" placeholder="Ваше имя" value={name} onChange={(e) => setName(e.target.value)} />
-                <input className="modal-input" placeholder="Телефон" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                <div className="modal-field-group">
+                  <input
+                    className={`modal-input ${submitAttempted && !name ? "modal-input-error" : ""}`}
+                    placeholder="Ваше имя"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  {submitAttempted && !name && (
+                    <p className="modal-field-error"><Icon name="AlertCircle" size={13} /> Укажите имя</p>
+                  )}
+                </div>
+                <PhoneField value={phone} onChange={setPhone} submitAttempted={submitAttempted} />
                 <select className="modal-input modal-select" value={age} onChange={(e) => setAge(e.target.value)}>
                   <option value="">Возраст ребёнка</option>
                   {CHILD_AGE_OPTIONS.map((a) => (

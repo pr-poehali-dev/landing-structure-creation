@@ -5,6 +5,8 @@ import { IMG_HERO, IMG_YASLI_HERO, IMG_FUNDAMENT_4_5, IMG_PREDSHKOLA_5_7 } from 
 import { ymGoal } from "@/lib/ym";
 import ConsentCheckbox from "./ConsentCheckbox";
 import { MODAL_CONTENT, CHILD_AGE_OPTIONS, LEAD_GOAL_BY_TYPE, deriveModalType, type ModalType } from "./modalContent";
+import PhoneField from "./PhoneField";
+import { isPhoneComplete, normalizePhoneForCrm } from "@/lib/phone";
 
 // ── Modal ──────────────────────────────────────────────────────────────────
 // Контекстная модалка заявки: содержимое и цель зависят от type (tour | diagnostics).
@@ -30,6 +32,7 @@ export function Modal({
   const [agreed, setAgreed] = useState(false);
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [submitAttempted, setSubmitAttempted] = useState(false);
 
   useEffect(() => {
     if (!open) {
@@ -40,6 +43,7 @@ export function Modal({
       setAgreed(false);
       setDone(false);
       setLoading(false);
+      setSubmitAttempted(false);
     }
   }, [open]);
 
@@ -47,9 +51,12 @@ export function Modal({
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone || !agreed) return;
+    setSubmitAttempted(true);
+    if (!name) ymGoal('form_error', { field: 'name' });
+    if (!isPhoneComplete(phone)) ymGoal('form_error', { field: 'phone' });
+    if (!name || !isPhoneComplete(phone) || !agreed) return;
     setLoading(true);
-    await sendLead(name, phone, age, `Модальное окно (${source})`, comment, modalType);
+    await sendLead(name, normalizePhoneForCrm(phone), age, `Модальное окно (${source})`, comment, modalType);
     ymGoal('form_modal_submit');
     ymGoal(LEAD_GOAL_BY_TYPE[modalType], { application_type: modalType, source });
     setLoading(false);
@@ -68,8 +75,18 @@ export function Modal({
               <p className="modal-sub">{content.subtitle}</p>
             </div>
             <form onSubmit={submit} className="modal-form">
-              <input className="modal-input" placeholder="Ваше имя" value={name} onChange={e => setName(e.target.value)} />
-              <input className="modal-input" placeholder="Телефон" value={phone} onChange={e => setPhone(e.target.value)} />
+              <div className="modal-field-group">
+                <input
+                  className={`modal-input ${submitAttempted && !name ? "modal-input-error" : ""}`}
+                  placeholder="Ваше имя"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                />
+                {submitAttempted && !name && (
+                  <p className="modal-field-error"><Icon name="AlertCircle" size={13} /> Укажите имя</p>
+                )}
+              </div>
+              <PhoneField value={phone} onChange={setPhone} submitAttempted={submitAttempted} />
               <select className="modal-input modal-select" value={age} onChange={e => setAge(e.target.value)}>
                 <option value="">Возраст ребёнка</option>
                 {CHILD_AGE_OPTIONS.map((a) => (

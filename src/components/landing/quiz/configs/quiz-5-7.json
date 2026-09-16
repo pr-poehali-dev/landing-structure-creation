@@ -76,5 +76,5 @@
     {"id": "hand-writing", "name": "Рука и письмо", "maxScore": 4},
     {"id": "motivation-social", "name": "Мотивация и социальность", "maxScore": 4}
   ],
-  "metrics": {"started": "quiz_started", "completed": "quiz_completed", "lead": "lead_after_quiz", "quizIdInEvent": "school-readiness-5-7"}
+  "metrics": {"started": "quiz_started", "completed": "quiz_completed", "cta": "quiz_cta_click", "lead": "lead_after_quiz", "quizIdInEvent": "school-readiness-5-7"}
 }

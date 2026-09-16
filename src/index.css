@@ -3201,6 +3201,27 @@
   border-color: var(--teal);
   background: #fff;
 }
+.modal-input-error {
+  border-color: #dc2626 !important;
+}
+.modal-field-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: #dc2626;
+  margin-top: -8px;
+}
+.modal-field-error svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.modal-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 .modal-textarea {
   resize: vertical;
   min-height: 64px;
