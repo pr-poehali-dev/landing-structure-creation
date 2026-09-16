@@ -85,8 +85,10 @@ def handler(event: dict, context) -> dict:
     name = body.get('name', '').strip()
     phone = body.get('phone', '').strip()
     age = body.get('age', '').strip()
+    comment = body.get('comment', '').strip()
     source = body.get('source', 'Форма на сайте')
     quiz = body.get('quiz')
+    application_type = body.get('application_type', '').strip()
 
     if not name or not phone:
         return {
@@ -102,6 +104,25 @@ def handler(event: dict, context) -> dict:
     to_email = 'ribkadolli@mail.ru'
 
     quiz_block = render_quiz_block(quiz)
+
+    application_type_labels = {'tour': 'Экскурсия', 'diagnostics': 'Диагностика'}
+    application_type_row = ''
+    if application_type:
+        application_type_row = f"""
+        <tr>
+          <td style="padding: 8px 0; color: #888;">Тип заявки:</td>
+          <td style="padding: 8px 0; font-weight: bold;">{application_type_labels.get(application_type, application_type)}</td>
+        </tr>
+        """
+
+    comment_row = ''
+    if comment:
+        comment_row = f"""
+        <tr>
+          <td style="padding: 8px 0; color: #888;">Комментарий:</td>
+          <td style="padding: 8px 0;">{comment}</td>
+        </tr>
+        """
 
     html = f"""
     <div style="font-family: Arial, sans-serif; max-width: 500px; padding: 24px; border: 1px solid #e0e0e0; border-radius: 8px;">
@@ -119,6 +140,8 @@ def handler(event: dict, context) -> dict:
           <td style="padding: 8px 0; color: #888;">Возраст:</td>
           <td style="padding: 8px 0;">{age if age else '—'}</td>
         </tr>
+        {application_type_row}
+        {comment_row}
         <tr>
           <td style="padding: 8px 0; color: #888;">Источник:</td>
           <td style="padding: 8px 0;">{source}</td>

@@ -1,17 +1,47 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { IMG_HERO, IMG_YASLI_HERO, IMG_FUNDAMENT_4_5, IMG_PREDSHKOLA_5_7 } from "./constants";
 import { ymGoal } from "@/lib/ym";
 import ConsentCheckbox from "./ConsentCheckbox";
+import { MODAL_CONTENT, CHILD_AGE_OPTIONS, LEAD_GOAL_BY_TYPE, deriveModalType, type ModalType } from "./modalContent";
 
 // ── Modal ──────────────────────────────────────────────────────────────────
-export function Modal({ open, onClose, source = 'excursion' }: { open: boolean; onClose: () => void; source?: string }) {
+// Контекстная модалка заявки: содержимое и цель зависят от type (tour | diagnostics).
+// source по-прежнему определяет текст для письма/CRM (откуда конкретно пришла заявка).
+export function Modal({
+  open,
+  onClose,
+  source = 'excursion',
+  type,
+}: {
+  open: boolean;
+  onClose: () => void;
+  source?: string;
+  type?: ModalType;
+}) {
+  const modalType: ModalType = deriveModalType(source, type);
+  const content = MODAL_CONTENT[modalType];
+
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [age, setAge] = useState("");
+  const [comment, setComment] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!open) {
+      setName("");
+      setPhone("");
+      setAge("");
+      setComment("");
+      setAgreed(false);
+      setDone(false);
+      setLoading(false);
+    }
+  }, [open]);
 
   if (!open) return null;
 
@@ -19,14 +49,9 @@ export function Modal({ open, onClose, source = 'excursion' }: { open: boolean; 
     e.preventDefault();
     if (!name || !phone || !agreed) return;
     setLoading(true);
-    await sendLead(name, phone, '', `Модальное окно (${source})`);
+    await sendLead(name, phone, age, `Модальное окно (${source})`, comment, modalType);
     ymGoal('form_modal_submit');
-    const goalBySource: Record<string, string> = {
-      calculator: 'form_calculator_submit',
-      fundament: 'form_fundament_submit',
-      predshkola: 'form_predshkola_submit',
-    };
-    ymGoal(goalBySource[source] ?? 'form_excursion_submit');
+    ymGoal(LEAD_GOAL_BY_TYPE[modalType], { application_type: modalType, source });
     setLoading(false);
     setDone(true);
   };
@@ -39,17 +64,28 @@ export function Modal({ open, onClose, source = 'excursion' }: { open: boolean; 
           <>
             <div className="modal-header">
               <span className="modal-emoji">🌟</span>
-              <h3 className="modal-title">
-                {source === 'fundament' || source === 'predshkola' ? 'Запишитесь на диагностику' : 'Запишитесь на экскурсию'}
-              </h3>
-              <p className="modal-sub">Бесплатно. Без обязательств. Просто посмотрите.</p>
+              <h3 className="modal-title-playfair">{content.title}</h3>
+              <p className="modal-sub">{content.subtitle}</p>
             </div>
             <form onSubmit={submit} className="modal-form">
               <input className="modal-input" placeholder="Ваше имя" value={name} onChange={e => setName(e.target.value)} />
               <input className="modal-input" placeholder="Телефон" value={phone} onChange={e => setPhone(e.target.value)} />
+              <select className="modal-input modal-select" value={age} onChange={e => setAge(e.target.value)}>
+                <option value="">Возраст ребёнка</option>
+                {CHILD_AGE_OPTIONS.map((a) => (
+                  <option key={a} value={a}>{a}</option>
+                ))}
+              </select>
+              <textarea
+                className="modal-input modal-textarea"
+                placeholder="Комментарий (необязательно)"
+                value={comment}
+                onChange={e => setComment(e.target.value)}
+                rows={3}
+              />
               <ConsentCheckbox checked={agreed} onChange={setAgreed} />
               <button type="submit" className="cta-btn cta-btn-lg cta-btn-primary" disabled={loading || !agreed}>
-                {loading ? 'Отправляем...' : (source === 'fundament' || source === 'predshkola' ? 'Хочу на диагностику' : 'Хочу на экскурсию')}
+                {loading ? 'Отправляем...' : content.submitLabel}
                 {!loading && <Icon name="ArrowRight" size={18} />}
               </button>
               <p className="modal-privacy"><Icon name="Lock" size={11} /> Данные не передаём третьим лицам</p>
@@ -69,11 +105,11 @@ export function Modal({ open, onClose, source = 'excursion' }: { open: boolean; 
 
 const SEND_LEAD_URL = "https://functions.poehali.dev/57047ae6-091f-4a98-8391-1bc5b14b157a";
 
-async function sendLead(name: string, phone: string, age: string, source: string) {
+async function sendLead(name: string, phone: string, age: string, source: string, comment: string, applicationType: ModalType) {
   await fetch(SEND_LEAD_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, phone, age, source }),
+    body: JSON.stringify({ name, phone, age, source, comment, application_type: applicationType }),
   });
 }
 

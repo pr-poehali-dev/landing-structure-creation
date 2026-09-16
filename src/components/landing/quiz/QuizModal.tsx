@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import Icon from "@/components/ui/icon";
 import ConsentCheckbox from "../ConsentCheckbox";
 import { ymGoal } from "@/lib/ym";
+import { LEAD_GOAL_BY_TYPE, deriveModalType, MODAL_CONTENT, CHILD_AGE_OPTIONS } from "../modalContent";
 import type { QuizConfig, QuizVerdict, QuizScaleResult } from "./types";
 import { computeTotalScore, computeVerdictScore, findVerdict, computeScales, formatProgress, buildQuizResultSummary } from "./utils";
 
@@ -15,11 +16,11 @@ interface QuizLeadPayload {
   scales: QuizScaleResult[];
 }
 
-async function sendQuizLead(name: string, phone: string, source: string, quiz: QuizLeadPayload) {
+async function sendQuizLead(name: string, phone: string, age: string, comment: string, source: string, applicationType: string, quiz: QuizLeadPayload) {
   await fetch(SEND_LEAD_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, phone, age: "", source, quiz }),
+    body: JSON.stringify({ name, phone, age, comment, source, application_type: applicationType, quiz }),
   });
 }
 
@@ -42,6 +43,8 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [age, setAge] = useState("");
+  const [comment, setComment] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [leadLoading, setLeadLoading] = useState(false);
 
@@ -66,6 +69,8 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
       setAnswers({});
       setName("");
       setPhone("");
+      setAge("");
+      setComment("");
       setAgreed(false);
       setLeadLoading(false);
     }
@@ -121,8 +126,9 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
     setLeadLoading(true);
     const summary = buildQuizResultSummary(config, score, verdict, scales);
     const cta = verdict.cta;
+    const modalType = deriveModalType(undefined, cta.formType);
     const source = `Квиз (${cta.formType ?? cta.action}) — ${summary.replace(/\n/g, "; ")}`;
-    await sendQuizLead(name, phone, source, {
+    await sendQuizLead(name, phone, age, comment, source, modalType, {
       quizId: config.metrics.quizIdInEvent,
       verdictTitle: verdict.title,
       score,
@@ -132,6 +138,10 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
       quizId: config.metrics.quizIdInEvent,
       verdict: verdict.title,
       score,
+    });
+    ymGoal(LEAD_GOAL_BY_TYPE[modalType], {
+      quizId: config.metrics.quizIdInEvent,
+      application_type: modalType,
     });
     setLeadLoading(false);
     setStep("success");
@@ -220,16 +230,31 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
 
           {step === "lead" && verdict && (
             <div className="quiz-lead">
-              <h3 className="quiz-result-title" style={{ fontSize: 22 }}>{verdict.cta.label}</h3>
-              <p className="quiz-result-text" style={{ marginBottom: 20 }}>
-                Оставьте телефон — мы свяжемся и договоримся об удобном времени.
+              <h3 className="modal-title-playfair" style={{ textAlign: "center" }}>
+                {MODAL_CONTENT[deriveModalType(undefined, verdict.cta.formType)].title}
+              </h3>
+              <p className="modal-sub" style={{ textAlign: "center", marginBottom: 20 }}>
+                {MODAL_CONTENT[deriveModalType(undefined, verdict.cta.formType)].subtitle}
               </p>
               <form onSubmit={submitLead} className="modal-form">
                 <input className="modal-input" placeholder="Ваше имя" value={name} onChange={(e) => setName(e.target.value)} />
                 <input className="modal-input" placeholder="Телефон" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                <select className="modal-input modal-select" value={age} onChange={(e) => setAge(e.target.value)}>
+                  <option value="">Возраст ребёнка</option>
+                  {CHILD_AGE_OPTIONS.map((a) => (
+                    <option key={a} value={a}>{a}</option>
+                  ))}
+                </select>
+                <textarea
+                  className="modal-input modal-textarea"
+                  placeholder="Комментарий (необязательно)"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  rows={3}
+                />
                 <ConsentCheckbox checked={agreed} onChange={setAgreed} />
                 <button type="submit" className="cta-btn cta-btn-lg cta-btn-primary" disabled={leadLoading || !agreed}>
-                  {leadLoading ? "Отправляем..." : "Отправить заявку"}
+                  {leadLoading ? "Отправляем..." : MODAL_CONTENT[deriveModalType(undefined, verdict.cta.formType)].submitLabel}
                   {!leadLoading && <Icon name="ArrowRight" size={18} />}
                 </button>
                 <p className="modal-privacy"><Icon name="Lock" size={11} /> Данные не передаём третьим лицам</p>

@@ -3089,7 +3089,7 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(6px);
-  z-index: 200;
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3110,6 +3110,8 @@
   padding: 40px 36px;
   width: 100%;
   max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
   position: relative;
   animation: scale-in 0.25s ease;
 }
@@ -3117,6 +3119,7 @@
   .modal-box {
     padding: 28px 18px;
     border-radius: 16px;
+    max-height: 92vh;
   }
 }
 @keyframes scale-in {
@@ -3164,6 +3167,14 @@
   color: var(--text-main);
   margin-bottom: 6px;
 }
+.modal-title-playfair {
+  font-family: "Playfair Display", "Cormorant", serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
 .modal-sub {
   font-size: 14px;
   color: var(--text-muted);
@@ -3189,6 +3200,12 @@
 .modal-input:focus {
   border-color: var(--teal);
   background: #fff;
+}
+.modal-textarea {
+  resize: vertical;
+  min-height: 64px;
+  font-family: "Golos Text", sans-serif;
+  line-height: 1.4;
 }
 .modal-privacy {
   display: flex;
