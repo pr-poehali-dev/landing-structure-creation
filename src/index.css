@@ -765,35 +765,110 @@
   }
 }
 
-/* Квиз-карточка на странице /podgotovka-k-shkole/: медовый контур + звезда в углу */
-.age-section .quiz-card {
-  position: relative;
-  border: 2px solid var(--honey);
-  overflow: visible;
-  box-shadow:
-    0 2px 8px rgba(217, 164, 65, 0.16),
-    0 16px 36px rgba(27, 58, 92, 0.14);
+/* Quiz panel — глубокая синяя панель-триггер квиза на /podgotovka-k-shkole/ (сама панель = карточка) */
+.quiz-panel-wrap {
+  margin: 0 auto 24px;
+  max-width: 720px;
 }
-.age-section .quiz-card::after {
-  content: "";
-  position: absolute;
-  top: -13px;
-  right: -13px;
-  width: 28px;
-  height: 28px;
-  background: var(--honey);
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
+.quiz-panel-overline {
+  display: block;
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--honey-dark);
+  margin: 0 0 10px;
+}
+.quiz-panel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #17364a;
+  border-radius: 20px;
+  padding: 22px 26px;
+  text-align: left;
+  box-shadow:
+    0 4px 14px rgba(23, 54, 74, 0.18),
+    0 18px 40px rgba(23, 54, 74, 0.22);
+}
+.quiz-panel-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.quiz-panel-body {
+  flex: 1;
+  min-width: 0;
+}
+.quiz-panel-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 2px;
+}
+.quiz-panel-subtitle {
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  margin: 0;
+}
+.quiz-panel-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  max-width: 240px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: none;
+  background: var(--peach);
+  color: #fff;
+  font-family: "Golos Text", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: normal;
+  text-align: center;
+  cursor: pointer;
+  box-shadow:
+    0 2px 6px rgba(197, 111, 55, 0.18),
+    0 10px 22px rgba(197, 111, 55, 0.28);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.quiz-panel-btn:hover {
+  background: #eda772;
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 10px rgba(197, 111, 55, 0.22),
+    0 14px 28px rgba(197, 111, 55, 0.32);
+}
+.quiz-panel-btn-star {
+  flex-shrink: 0;
+  color: var(--honey-light);
+  fill: var(--honey-light);
+}
+@media (max-width: 640px) {
+  .quiz-panel {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  .quiz-panel-btn {
+    width: 100%;
+    max-width: none;
+    justify-content: center;
+  }
 }
 
 /* Quiz modal — движок квиза */
@@ -4888,7 +4963,6 @@
 /* Age-program sections (/podgotovka-k-shkole/ #4-5, #5-7) */
 .age-section {
   position: relative;
-  overflow: hidden;
   isolation: isolate;
 }
 .age-section-milk {
@@ -4897,93 +4971,9 @@
 .age-section-white {
   background: #fff;
 }
-/* Персиковая акварельная волна сверху/снизу секции (под водяным знаком) */
-.age-wave {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: clamp(70px, 12vw, 160px);
-  opacity: 0.22;
-  z-index: 0;
-  pointer-events: none;
-}
-.age-wave-top {
-  top: 0;
-}
-.age-wave-bottom {
-  bottom: 0;
-}
-/* Медовые звёздочки-акценты по углам секции */
-.age-decor-star {
-  position: absolute;
-  z-index: 0;
-  color: var(--honey);
-  opacity: 0.35;
-  pointer-events: none;
-}
-.age-decor-star svg {
-  fill: var(--honey);
-}
-.age-decor-star-a {
-  top: 10%;
-  left: 4%;
-}
-.age-decor-star-b {
-  top: 22%;
-  right: 6%;
-}
-.age-decor-star-c {
-  bottom: 14%;
-  left: 8%;
-}
-@media (max-width: 640px) {
-  .age-decor-star-b {
-    display: none;
-  }
-}
-/* Гигантская полупрозрачная цифра-водяной знак в углу секции */
-.age-section-watermark {
-  position: absolute;
-  right: -0.03em;
-  bottom: -0.22em;
-  font-family: "Playfair Display", "Cormorant", serif;
-  font-weight: 700;
-  font-size: clamp(220px, 32vw, 460px);
-  line-height: 1;
-  color: var(--text-main);
-  opacity: 0.07;
-  z-index: 0;
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-}
 .age-section .container {
   position: relative;
   z-index: 1;
-}
-/* Обёртка квиз-карточки: акварельная волна-подложка, выступающая за края */
-.age-quiz-wrap {
-  position: relative;
-  margin: 0 auto;
-  max-width: 720px;
-}
-.age-quiz-wrap::before {
-  content: "";
-  position: absolute;
-  inset: -24px -28px;
-  background: var(--peach);
-  opacity: 0.16;
-  border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
-  z-index: -1;
-}
-.age-quiz-overline {
-  display: block;
-  text-align: center;
-  font-family: "Caveat", cursive;
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--honey-dark);
-  margin: 0 0 6px;
 }
 /* Оверлайн рукописным шрифтом над заголовком секции */
 .age-overline {
@@ -5046,8 +5036,8 @@
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  background: var(--honey-light);
-  color: var(--honey-dark);
+  background: #17364a;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
