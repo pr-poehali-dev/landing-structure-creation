@@ -122,11 +122,11 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
               <Icon name="ArrowRight" size={18} />
             </button>
             <p className="age-prodlenka-note">
-              А в сентябре не бросим: у центра своя{" "}
+              А когда пойдёте в первый класс — не бросим: у нас своя{" "}
               <a href={PRODLENKA_URL} target="_blank" rel="noopener noreferrer" onClick={() => ymGoal('click_footer_prodlenka')}>
                 продлёнка
               </a>{" "}
-              с домашкой и английским
+              и английский
             </p>
           </div>
         </div>
