@@ -18,8 +18,7 @@ export const IMG_PREDSHKOLA_5_7_MAIN =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/e15de9d9-0bf5-40b1-8131-abac959b176d.jpg";
 
 // Видео диагностики с Ириной Павловной (секция #5-7). Постер — тот же кадр, что на IMG_PREDSHKOLA_5_7_MAIN.
-// TODO: заменить на реальное видео, когда пришлют файл.
-export const VIDEO_DIAGNOSTICS_DEMO = "";
+export const VIDEO_DIAGNOSTICS_DEMO = "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/7d1e19fa-4169-4648-b893-818695c1f7f2.mp4";
 
 // Фото/видео для страницы /yasli/ (из медиатеки)
 export const IMG_YASLI_HERO =
