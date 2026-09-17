@@ -217,7 +217,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         {/* Плашка дефицита */}
         <div className="hero-v2-deficit">
           <Icon name="Clock" size={16} />
-          Набор сентября: в яслях 2 места, в старшей группе 4 места
+          Набор сентября: в яслях 2 места, в старшей группе 3 места
         </div>
 
         {/* CTA */}
