@@ -768,16 +768,19 @@
 /* Квиз-карточка на странице /podgotovka-k-shkole/: медовый контур + звезда в углу */
 .age-section .quiz-card {
   position: relative;
-  border: 1.5px solid var(--honey);
+  border: 2px solid var(--honey);
   overflow: visible;
+  box-shadow:
+    0 2px 8px rgba(217, 164, 65, 0.16),
+    0 16px 36px rgba(27, 58, 92, 0.14);
 }
 .age-section .quiz-card::after {
   content: "";
   position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 22px;
-  height: 22px;
+  top: -13px;
+  right: -13px;
+  width: 28px;
+  height: 28px;
   background: var(--honey);
   clip-path: polygon(
     50% 0%,
@@ -4894,6 +4897,50 @@
 .age-section-white {
   background: #fff;
 }
+/* Персиковая акварельная волна сверху/снизу секции (под водяным знаком) */
+.age-wave {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: clamp(70px, 12vw, 160px);
+  opacity: 0.22;
+  z-index: 0;
+  pointer-events: none;
+}
+.age-wave-top {
+  top: 0;
+}
+.age-wave-bottom {
+  bottom: 0;
+}
+/* Медовые звёздочки-акценты по углам секции */
+.age-decor-star {
+  position: absolute;
+  z-index: 0;
+  color: var(--honey);
+  opacity: 0.35;
+  pointer-events: none;
+}
+.age-decor-star svg {
+  fill: var(--honey);
+}
+.age-decor-star-a {
+  top: 10%;
+  left: 4%;
+}
+.age-decor-star-b {
+  top: 22%;
+  right: 6%;
+}
+.age-decor-star-c {
+  bottom: 14%;
+  left: 8%;
+}
+@media (max-width: 640px) {
+  .age-decor-star-b {
+    display: none;
+  }
+}
 /* Гигантская полупрозрачная цифра-водяной знак в углу секции */
 .age-section-watermark {
   position: absolute;
@@ -4913,6 +4960,30 @@
 .age-section .container {
   position: relative;
   z-index: 1;
+}
+/* Обёртка квиз-карточки: акварельная волна-подложка, выступающая за края */
+.age-quiz-wrap {
+  position: relative;
+  margin: 0 auto;
+  max-width: 720px;
+}
+.age-quiz-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -24px -28px;
+  background: var(--peach);
+  opacity: 0.16;
+  border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+  z-index: -1;
+}
+.age-quiz-overline {
+  display: block;
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--honey-dark);
+  margin: 0 0 6px;
 }
 /* Оверлайн рукописным шрифтом над заголовком секции */
 .age-overline {
@@ -5154,6 +5225,25 @@
 .age-section-divider svg {
   fill: var(--honey);
   stroke: var(--honey);
+}
+.age-section-divider-star:nth-of-type(2) {
+  opacity: 0.9;
+}
+.age-section-divider-line {
+  width: 64px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--honey) 50%,
+    transparent
+  );
+  opacity: 0.5;
+}
+@media (max-width: 640px) {
+  .age-section-divider-line {
+    width: 32px;
+  }
 }
 [id="4-5"],
 [id="5-7"] {

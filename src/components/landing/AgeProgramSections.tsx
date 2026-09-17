@@ -27,6 +27,15 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
       {/* БЛОК 2а: 4-5 лет — Фундамент */}
       <Section id="4-5" className="age-section age-section-milk">
         <span className="age-section-watermark" aria-hidden="true">4-5</span>
+        <svg className="age-wave age-wave-top" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,60 C150,20 350,90 600,55 C850,20 1050,70 1200,40 L1200,0 L0,0 Z" fill="var(--peach)" />
+        </svg>
+        <svg className="age-wave age-wave-bottom" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,100 C150,140 350,70 600,105 C850,140 1050,90 1200,120 L1200,160 L0,160 Z" fill="var(--peach)" />
+        </svg>
+        <span className="age-decor-star age-decor-star-a" aria-hidden="true"><Icon name="Star" size={30} /></span>
+        <span className="age-decor-star age-decor-star-b" aria-hidden="true"><Icon name="Star" size={22} /></span>
+        <span className="age-decor-star age-decor-star-c" aria-hidden="true"><Icon name="Star" size={18} /></span>
         <div className="container container-narrow">
           <div className="section-header" style={{ textAlign: "center" }}>
             <span className="section-tag">4-5 лет</span>
@@ -38,7 +47,10 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
             </p>
           </div>
 
-          <Quiz config={quizFoundation45Config as QuizConfig} />
+          <div className="age-quiz-wrap">
+            <p className="age-quiz-overline">начните здесь: три минуты — и всё понятно про фундамент</p>
+            <Quiz config={quizFoundation45Config as QuizConfig} />
+          </div>
 
           <div className="age-points-grid">
             {FUNDAMENT_4_5_POINTS.map((p) => (
@@ -71,14 +83,25 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
 
       {/* Разделитель между секциями */}
       <div className="age-section-divider" aria-hidden="true">
-        <Icon name="Star" size={14} />
-        <Icon name="Star" size={14} />
-        <Icon name="Star" size={14} />
+        <span className="age-section-divider-line" />
+        <Icon name="Star" size={12} className="age-section-divider-star" />
+        <Icon name="Star" size={20} className="age-section-divider-star" />
+        <Icon name="Star" size={12} className="age-section-divider-star" />
+        <span className="age-section-divider-line" />
       </div>
 
       {/* БЛОК 2б: 5-7 лет — Предшкольная подготовка */}
       <Section id="5-7" className="age-section age-section-white">
         <span className="age-section-watermark" aria-hidden="true">5-7</span>
+        <svg className="age-wave age-wave-top" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,60 C150,20 350,90 600,55 C850,20 1050,70 1200,40 L1200,0 L0,0 Z" fill="var(--peach)" />
+        </svg>
+        <svg className="age-wave age-wave-bottom" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,100 C150,140 350,70 600,105 C850,140 1050,90 1200,120 L1200,160 L0,160 Z" fill="var(--peach)" />
+        </svg>
+        <span className="age-decor-star age-decor-star-a" aria-hidden="true"><Icon name="Star" size={30} /></span>
+        <span className="age-decor-star age-decor-star-b" aria-hidden="true"><Icon name="Star" size={22} /></span>
+        <span className="age-decor-star age-decor-star-c" aria-hidden="true"><Icon name="Star" size={18} /></span>
         <div className="container container-narrow">
           <div className="section-header" style={{ textAlign: "center" }}>
             <span className="section-tag">5-7 лет</span>
@@ -90,7 +113,10 @@ export default function AgeProgramSections({ onOpenModal }: AgeProgramSectionsPr
             </p>
           </div>
 
-          <Quiz config={quizSchoolReadiness57Config as QuizConfig} />
+          <div className="age-quiz-wrap">
+            <p className="age-quiz-overline">начните здесь: четыре минуты — и вы увидите карту готовности</p>
+            <Quiz config={quizSchoolReadiness57Config as QuizConfig} />
+          </div>
 
           <div className="age-points-grid">
             {PREDSHKOLA_5_7_POINTS.map((p) => (
