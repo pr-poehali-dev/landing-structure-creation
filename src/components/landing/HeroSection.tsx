@@ -188,7 +188,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           >
             <div className="hero-fork-overlay hero-fork-overlay-honey" />
             <div className="hero-fork-card-body">
-              <div className="hero-fork-deficit">Свободно 4 места</div>
+              <div className="hero-fork-deficit">Свободно 2 места</div>
               <h3>Моему ребёнку 5-7 лет</h3>
               <p>Предшкольная подготовка: чтение, письмо, счёт и пробный урок</p>
               <Link to="/podgotovka-k-shkole/?utm_source=main&utm_medium=internal&utm_campaign=hub_predshkola#5-7" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_predshkola')}>
