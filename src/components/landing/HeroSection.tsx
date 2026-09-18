@@ -57,7 +57,6 @@ export function Modal({
     if (!name || !isPhoneComplete(phone) || !agreed) return;
     setLoading(true);
     await sendLead(name, normalizePhoneForCrm(phone), age, `Модальное окно (${source})`, comment, modalType);
-    ymGoal('form_modal_submit');
     ymGoal(LEAD_GOAL_BY_TYPE[modalType], { application_type: modalType, source });
     setLoading(false);
     setDone(true);
