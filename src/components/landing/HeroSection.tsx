@@ -198,6 +198,27 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
           </div>
         </div>
 
+        {/* Промо-полоса акции «Скоро в школу» */}
+        <div className="promo-strip">
+          <Icon name="Star" size={22} className="promo-strip-star" />
+          <div className="promo-strip-body">
+            <span className="promo-strip-overline">акция до 31 октября</span>
+            <h3 className="promo-strip-title">Бесплатная диагностика готовности к школе</h3>
+            <p className="promo-strip-sub">
+              40 минут игры с Ириной Павловной — и вы уносите карту готовности и план по месяцам.
+              При записи в группу — скидка 1000 ₽ на первый месяц
+            </p>
+          </div>
+          <Link
+            to="/podgotovka-k-shkole/#5-7"
+            className="cta-btn cta-btn-peach cta-btn-lg promo-strip-btn"
+            onClick={() => ymGoal('click_promo_strip_diagnostics')}
+          >
+            Занять бесплатное место
+            <Icon name="ArrowRight" size={18} />
+          </Link>
+        </div>
+
         {/* Строка доверия */}
         <div className="hero-v2-trust">
           <a href="https://yandex.ru/maps/-/CPCszO6I" target="_blank" rel="noopener noreferrer" onClick={() => ymGoal('click_yandex_maps')}>

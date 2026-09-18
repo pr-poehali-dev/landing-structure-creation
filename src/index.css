@@ -871,6 +871,78 @@
   }
 }
 
+/* Промо-полоса акции «Скоро в школу» (главная, после развилки карточек) */
+.promo-strip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #17364a;
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin: 28px 0;
+  overflow: hidden;
+  box-shadow:
+    0 4px 14px rgba(23, 54, 74, 0.18),
+    0 18px 40px rgba(23, 54, 74, 0.22);
+}
+.promo-strip-star {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  color: var(--honey);
+  fill: var(--honey);
+  opacity: 0.9;
+}
+.promo-strip-body {
+  flex: 1;
+  min-width: 0;
+}
+.promo-strip-overline {
+  display: block;
+  font-family: "Caveat", cursive;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--honey);
+  margin: 0 0 4px;
+}
+.promo-strip-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 6px;
+  line-height: 1.25;
+}
+.promo-strip-sub {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 560px;
+}
+.promo-strip-btn {
+  flex-shrink: 0;
+}
+@media (max-width: 720px) {
+  .promo-strip {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 24px 20px;
+  }
+  .promo-strip-star {
+    top: 12px;
+    right: 12px;
+  }
+  .promo-strip-sub {
+    max-width: none;
+  }
+  .promo-strip-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* Quiz modal — движок квиза */
 .quiz-modal-overlay {
   position: fixed;
