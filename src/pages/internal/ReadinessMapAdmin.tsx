@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import ReadinessMapTemplate from "@/components/internal/readiness-map/ReadinessMapTemplate";
-import { buildReadinessMapPdf } from "@/components/internal/readiness-map/buildPdf";
+import { buildReadinessMapImage } from "@/components/internal/readiness-map/buildImage";
 import {
   READINESS_PARAMS,
   VERDICTS,
@@ -55,7 +55,7 @@ export default function ReadinessMapAdmin() {
     previewParam === "demo" ? DEMO_DATA : EMPTY_READINESS_MAP
   );
   const [showPreview, setShowPreview] = useState(previewParam === "empty" || previewParam === "demo");
-  const [pdfLoading, setPdfLoading] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false);
   const docRef = useRef<HTMLDivElement>(null);
 
   const total = calcTotalScore(data.scores);
@@ -83,17 +83,16 @@ export default function ReadinessMapAdmin() {
 
   const handleBuildPdf = () => {
     setShowPreview(true);
-    setTimeout(() => window.print(), 200);
   };
 
-  const handleDownloadPdf = async () => {
-    if (!docRef.current || pdfLoading) return;
-    setPdfLoading(true);
+  const handleDownloadImage = async () => {
+    if (!docRef.current || imageLoading) return;
+    setImageLoading(true);
     try {
       const namePart = data.childName ? data.childName.replace(/[^\p{L}\p{N}]+/gu, "_") : "karta-gotovnosti";
-      await buildReadinessMapPdf(docRef.current, `Карта_готовности_${namePart}.pdf`);
+      await buildReadinessMapImage(docRef.current, `Карта_готовности_${namePart}.png`);
     } finally {
-      setPdfLoading(false);
+      setImageLoading(false);
     }
   };
 
@@ -107,11 +106,11 @@ export default function ReadinessMapAdmin() {
           </Button>
           <Button variant="outline" onClick={() => window.print()}>
             <Icon name="Printer" size={16} />
-            Печать
+            Печать / PDF
           </Button>
-          <Button onClick={handleDownloadPdf} disabled={pdfLoading}>
-            <Icon name={pdfLoading ? "Loader2" : "FileDown"} size={16} className={pdfLoading ? "rm-spin" : undefined} />
-            {pdfLoading ? "Готовим файл..." : "Скачать PDF"}
+          <Button onClick={handleDownloadImage} disabled={imageLoading}>
+            <Icon name={imageLoading ? "Loader2" : "ImageDown"} size={16} className={imageLoading ? "rm-spin" : undefined} />
+            {imageLoading ? "Готовим картинку..." : "Скачать картинку"}
           </Button>
         </div>
         <div ref={docRef}>
@@ -242,7 +241,7 @@ export default function ReadinessMapAdmin() {
       <div className="rm-admin-footer">
         <Button size="lg" onClick={handleBuildPdf}>
           <Icon name="FileDown" size={18} />
-          Собрать PDF
+          Собрать электронную версию
         </Button>
       </div>
     </div>
