@@ -3,7 +3,8 @@
 export interface QuizOption {
   label: string;
   score: number;
-  line: string;
+  /** Всплывающая подсказка после выбора ответа. Опционально — не все квизы её используют. */
+  line?: string;
 }
 
 export interface QuizQuestion {

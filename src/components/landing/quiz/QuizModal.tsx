@@ -195,7 +195,7 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
                   </button>
                 ))}
               </div>
-              {selectedOption !== undefined && (
+              {selectedOption !== undefined && question.options[selectedOption].line && (
                 <div className="quiz-option-line">
                   <Icon name="Sparkles" size={15} fallback="Star" />
                   <span>{question.options[selectedOption].line}</span>
