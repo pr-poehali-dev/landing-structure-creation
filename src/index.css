@@ -5826,6 +5826,17 @@
   background: #fff;
   border-bottom: 1px solid rgba(23, 54, 74, 0.1);
 }
+.rm-spin {
+  animation: rm-spin-rotate 0.8s linear infinite;
+}
+@keyframes rm-spin-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 /* ── Служебная форма заполнения карты готовности ────────────────────── */
 .rm-admin {

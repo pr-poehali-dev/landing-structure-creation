@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import ReadinessMapTemplate from "@/components/internal/readiness-map/ReadinessMapTemplate";
+import { buildReadinessMapPdf } from "@/components/internal/readiness-map/buildPdf";
 import {
   READINESS_PARAMS,
   VERDICTS,
@@ -54,6 +55,8 @@ export default function ReadinessMapAdmin() {
     previewParam === "demo" ? DEMO_DATA : EMPTY_READINESS_MAP
   );
   const [showPreview, setShowPreview] = useState(previewParam === "empty" || previewParam === "demo");
+  const [pdfLoading, setPdfLoading] = useState(false);
+  const docRef = useRef<HTMLDivElement>(null);
 
   const total = calcTotalScore(data.scores);
 
@@ -83,6 +86,17 @@ export default function ReadinessMapAdmin() {
     setTimeout(() => window.print(), 200);
   };
 
+  const handleDownloadPdf = async () => {
+    if (!docRef.current || pdfLoading) return;
+    setPdfLoading(true);
+    try {
+      const namePart = data.childName ? data.childName.replace(/[^\p{L}\p{N}]+/gu, "_") : "karta-gotovnosti";
+      await buildReadinessMapPdf(docRef.current, `Карта_готовности_${namePart}.pdf`);
+    } finally {
+      setPdfLoading(false);
+    }
+  };
+
   if (showPreview) {
     return (
       <div>
@@ -91,12 +105,18 @@ export default function ReadinessMapAdmin() {
             <Icon name="ArrowLeft" size={16} />
             Назад к форме
           </Button>
-          <Button onClick={() => window.print()}>
+          <Button variant="outline" onClick={() => window.print()}>
             <Icon name="Printer" size={16} />
-            Печать / Сохранить в PDF
+            Печать
+          </Button>
+          <Button onClick={handleDownloadPdf} disabled={pdfLoading}>
+            <Icon name={pdfLoading ? "Loader2" : "FileDown"} size={16} className={pdfLoading ? "rm-spin" : undefined} />
+            {pdfLoading ? "Готовим файл..." : "Скачать PDF"}
           </Button>
         </div>
-        <ReadinessMapTemplate data={data} />
+        <div ref={docRef}>
+          <ReadinessMapTemplate data={data} />
+        </div>
       </div>
     );
   }
