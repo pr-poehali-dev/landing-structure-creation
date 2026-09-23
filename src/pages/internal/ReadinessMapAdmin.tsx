@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -6,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import ReadinessMapTemplate from "@/components/internal/readiness-map/ReadinessMapTemplate";
 import { buildReadinessMapImage } from "@/components/internal/readiness-map/buildImage";
+import { buildDefaultCaption } from "@/components/internal/readiness-map/caption";
 import {
   READINESS_PARAMS,
   VERDICTS,
@@ -56,7 +58,13 @@ export default function ReadinessMapAdmin() {
   );
   const [showPreview, setShowPreview] = useState(previewParam === "empty" || previewParam === "demo");
   const [imageLoading, setImageLoading] = useState(false);
+  const [caption, setCaption] = useState("");
   const docRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (showPreview) setCaption(buildDefaultCaption(data));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showPreview]);
 
   const total = calcTotalScore(data.scores);
 
@@ -96,6 +104,15 @@ export default function ReadinessMapAdmin() {
     }
   };
 
+  const handleCopyCaption = async () => {
+    try {
+      await navigator.clipboard.writeText(caption);
+      toast.success("Текст скопирован — вставьте его в сообщение маме");
+    } catch {
+      toast.error("Не удалось скопировать. Выделите текст вручную");
+    }
+  };
+
   if (showPreview) {
     return (
       <div>
@@ -113,6 +130,21 @@ export default function ReadinessMapAdmin() {
             {imageLoading ? "Готовим картинку..." : "Скачать картинку"}
           </Button>
         </div>
+
+        <div className="rm-caption-block no-print">
+          <Label>Подпись для сообщения маме</Label>
+          <Textarea
+            value={caption}
+            onChange={(e) => setCaption(e.target.value)}
+            rows={4}
+            className="rm-caption-textarea"
+          />
+          <Button variant="outline" onClick={handleCopyCaption}>
+            <Icon name="Copy" size={16} />
+            Скопировать текст
+          </Button>
+        </div>
+
         <div ref={docRef}>
           <ReadinessMapTemplate data={data} />
         </div>

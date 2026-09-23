@@ -5837,6 +5837,18 @@
     transform: rotate(360deg);
   }
 }
+.rm-caption-block {
+  max-width: 560px;
+  margin: 0 auto 8px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.rm-caption-textarea {
+  background: #fff;
+  resize: vertical;
+}
 
 /* ── Служебная форма заполнения карты готовности ────────────────────── */
 .rm-admin {
