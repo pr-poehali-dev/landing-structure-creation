@@ -27,6 +27,10 @@ export interface QuizVerdict {
   title: string;
   text: string;
   cta: QuizVerdictCta;
+  /** Персональная цель Метрики для клика по CTA этого результата (для аналитики по вердиктам) */
+  resultGoal?: string;
+  /** Текст, который автоматически подставляется в поле "Комментарий" формы заявки */
+  prefillComment?: string;
 }
 
 export interface QuizScale {

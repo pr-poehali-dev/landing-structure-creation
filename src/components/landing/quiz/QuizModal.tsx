@@ -232,6 +232,12 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
                   if (config.metrics.cta) {
                     ymGoal(config.metrics.cta, { quizId: config.metrics.quizIdInEvent, verdict: verdict.title });
                   }
+                  if (verdict.resultGoal) {
+                    ymGoal(verdict.resultGoal, { quizId: config.metrics.quizIdInEvent, verdict: verdict.title });
+                  }
+                  if (verdict.prefillComment) {
+                    setComment(verdict.prefillComment);
+                  }
                   setStep("lead");
                 }}
               >
