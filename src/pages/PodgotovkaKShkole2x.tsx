@@ -12,6 +12,7 @@ import {
   IMG_PODGOTOVKA_2X_MAIN,
   PODGOTOVKA_2X_POINTS,
   PODGOTOVKA_2X_FAQ,
+  PODGOTOVKA_2X_PRICE,
 } from "@/components/landing/constants";
 
 export default function PodgotovkaKShkole2x() {
@@ -63,6 +64,10 @@ export default function PodgotovkaKShkole2x() {
             <span><Icon name="MapPin" size={14} /> ул. Циолковского, 12</span>
           </div>
 
+          <p className="hero-v2-price-teaser">
+            Абонемент {PODGOTOVKA_2X_PRICE.amount} {PODGOTOVKA_2X_PRICE.unit} — 2 занятия в неделю
+          </p>
+
           <div className="hero-v2-cta-row">
             <button className="cta-btn cta-btn-blue cta-btn-lg" onClick={() => { ymGoal('click_hero_cta_podgotovka2x'); openModal('podgotovka2x'); }}>
               Записаться на пробное занятие
@@ -110,6 +115,28 @@ export default function PodgotovkaKShkole2x() {
 
           <div style={{ textAlign: "center", marginTop: 32 }}>
             <button className="cta-btn cta-btn-blue cta-btn-lg" onClick={() => { ymGoal('click_podgotovka2x_diagnostics'); openModal('podgotovka2x'); }}>
+              Записаться на пробное занятие
+              <Icon name="ArrowRight" size={18} />
+            </button>
+          </div>
+        </div>
+      </Section>
+
+      {/* Стоимость */}
+      <Section id="prices" className="bg-cream">
+        <div className="container container-narrow">
+          <div className="section-header" style={{ textAlign: "center" }}>
+            <span className="section-tag">Стоимость</span>
+            <h2 className="age-section-h2">Один абонемент — без скрытых доплат</h2>
+          </div>
+          <div className="age-extra-block" style={{ justifyContent: "center", maxWidth: 480, margin: "32px auto 0", borderColor: "#dbeafe" }}>
+            <div className="age-extra-block-icon" style={{ background: "#2563eb" }}><Icon name="Wallet" size={20} /></div>
+            <p className="age-extra-block-text">
+              <strong style={{ color: "#1d4ed8" }}>{PODGOTOVKA_2X_PRICE.amount} {PODGOTOVKA_2X_PRICE.unit}</strong> — {PODGOTOVKA_2X_PRICE.note.toLowerCase()}
+            </p>
+          </div>
+          <div style={{ textAlign: "center", marginTop: 24 }}>
+            <button className="cta-btn cta-btn-blue cta-btn-lg" onClick={() => { ymGoal('click_podgotovka2x_prices'); openModal('podgotovka2x'); }}>
               Записаться на пробное занятие
               <Icon name="ArrowRight" size={18} />
             </button>
