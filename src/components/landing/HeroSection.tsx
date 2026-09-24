@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
-import { IMG_HERO, IMG_YASLI_HERO, IMG_FUNDAMENT_4_5, IMG_PREDSHKOLA_5_7 } from "./constants";
+import { IMG_HERO, IMG_YASLI_HERO, IMG_FUNDAMENT_4_5, IMG_PREDSHKOLA_5_7, IMG_PODGOTOVKA_2X } from "./constants";
 import { ymGoal } from "@/lib/ym";
 import ConsentCheckbox from "./ConsentCheckbox";
 import { MODAL_CONTENT, CHILD_AGE_OPTIONS, LEAD_GOAL_BY_TYPE, deriveModalType, type ModalType } from "./modalContent";
@@ -150,7 +150,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         </p>
 
         {/* Развилка */}
-        <div className="hero-v2-fork hero-v2-fork-3">
+        <div className="hero-v2-fork hero-v2-fork-4">
           <div
             className="hero-fork-card hero-fork-card-photo"
             style={{ backgroundImage: `url(${IMG_YASLI_HERO})` }}
@@ -159,6 +159,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             <div className="hero-fork-card-body">
               <div className="hero-fork-deficit">Свободно 2 места</div>
               <h3>Моему ребёнку 1,5-3 года</h3>
+              <span className="hero-fork-format">Группа полного дня</span>
               <p>Мягкая адаптация и первые открытия</p>
               <Link to="/yasli/?utm_source=main&utm_medium=internal&utm_campaign=hub_yasli" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_yasli')}>
                 Страница яслей
@@ -174,6 +175,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             <div className="hero-fork-card-body">
               <div className="hero-fork-deficit">Свободно 1 место</div>
               <h3>Моему ребёнку 4-5 лет</h3>
+              <span className="hero-fork-format">Группа полного дня</span>
               <p>Фундамент: учимся учиться через игру</p>
               <Link to="/podgotovka-k-shkole/?utm_source=main&utm_medium=internal&utm_campaign=hub_fundament#4-5" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_fundament')}>
                 Программа 4-5
@@ -189,9 +191,25 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
             <div className="hero-fork-card-body">
               <div className="hero-fork-deficit">Свободно 2 места</div>
               <h3>Моему ребёнку 5-7 лет</h3>
+              <span className="hero-fork-format">Группа полного дня</span>
               <p>Предшкольная подготовка: чтение, письмо, счёт и пробный урок</p>
               <Link to="/podgotovka-k-shkole/?utm_source=main&utm_medium=internal&utm_campaign=hub_predshkola#5-7" className="cta-btn cta-btn-primary" onClick={() => ymGoal('click_fork_predshkola')}>
                 Программа 5-7
+                <Icon name="ArrowRight" size={16} />
+              </Link>
+            </div>
+          </div>
+          <div
+            className="hero-fork-card hero-fork-card-photo"
+            style={{ backgroundImage: `url(${IMG_PODGOTOVKA_2X})` }}
+          >
+            <div className="hero-fork-overlay hero-fork-overlay-blue" />
+            <div className="hero-fork-card-body">
+              <h3>Подготовка к школе</h3>
+              <span className="hero-fork-format">Занятия 2 раза в неделю</span>
+              <p>Чтение, письмо, математика. Без полного пребывания</p>
+              <Link to="/podgotovka-k-shkole-2-raza-v-nedelyu/?utm_source=main&utm_medium=internal&utm_campaign=hub_podgotovka2x" className="cta-btn cta-btn-blue" onClick={() => ymGoal('click_fork_podgotovka2x')}>
+                Программа подготовки
                 <Icon name="ArrowRight" size={16} />
               </Link>
             </div>

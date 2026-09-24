@@ -101,6 +101,12 @@
     --accent-page-light: var(--honey-light);
     --accent-page-dark: var(--honey-dark);
   }
+  /* Акценты второго плана для /podgotovka-k-shkole-2-raza-v-nedelyu/ — синий, отличается от садика */
+  .theme-podgotovka2x {
+    --accent-page: #2563eb;
+    --accent-page-light: #eff6ff;
+    --accent-page-dark: #1d4ed8;
+  }
 }
 
 @layer base {
@@ -344,6 +350,18 @@
   box-shadow: 0 8px 24px rgba(232, 152, 95, 0.4);
 }
 
+.cta-btn-blue {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+.cta-btn-blue:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+}
+
 /* Float button */
 .float-phone-wrap {
   position: fixed;
@@ -496,8 +514,12 @@
 .hero-v2-fork-3 {
   grid-template-columns: repeat(3, 1fr);
 }
+.hero-v2-fork-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
 @media (max-width: 900px) {
-  .hero-v2-fork-3 {
+  .hero-v2-fork-3,
+  .hero-v2-fork-4 {
     grid-template-columns: 1fr;
   }
 }
@@ -545,6 +567,13 @@
     rgba(182, 133, 44, 0.88) 100%
   );
 }
+.hero-fork-overlay-blue {
+  background: linear-gradient(
+    180deg,
+    rgba(59, 130, 246, 0.35) 0%,
+    rgba(29, 78, 216, 0.88) 100%
+  );
+}
 .hero-fork-card-body {
   position: relative;
   z-index: 1;
@@ -580,6 +609,21 @@
 .hero-fork-card-photo h3 {
   color: #fff;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+.hero-fork-format {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  background: rgba(27, 58, 92, 0.06);
+  padding: 3px 10px;
+  border-radius: 50px;
+  margin-bottom: 2px;
+}
+.hero-fork-card-photo .hero-fork-format {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.22);
+  text-shadow: none;
 }
 .hero-fork-card p {
   font-size: 13px;
