@@ -67,6 +67,7 @@ const EXTRA_SERVICES = [
     cardClass: "service-card-english",
     goal: "click_service_english",
     btnLabel: "Записаться",
+    topIcon: "Languages" as const,
   },
   {
     title: "Логопед",
@@ -76,6 +77,7 @@ const EXTRA_SERVICES = [
     cardClass: "service-card-speech",
     goal: "click_service_speech",
     btnLabel: "Записаться на консультацию",
+    topIcon: "MicVocal" as const,
   },
 ];
 
@@ -122,6 +124,9 @@ export default function ServicesSection({ onOpenModal }: ServicesSectionProps) {
           {EXTRA_SERVICES.map((s) => (
             <div key={s.title} className={`service-card ${s.cardClass}`}>
               <div className="service-card-body">
+                <div className="service-top-icon">
+                  <Icon name={s.topIcon} size={24} />
+                </div>
                 <div className="service-icon-wrap">
                   <img src={s.medallion} alt={s.title} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "50%" }} />
                 </div>

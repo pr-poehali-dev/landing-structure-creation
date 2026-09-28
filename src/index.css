@@ -374,6 +374,17 @@
   box-shadow: 0 8px 24px rgba(232, 132, 92, 0.4);
 }
 
+.cta-btn-outline-terracotta {
+  background: transparent;
+  color: #e8845c;
+  border-color: #e8845c;
+}
+.cta-btn-outline-terracotta:hover {
+  background: rgba(232, 132, 92, 0.1);
+  border-color: #d9724a;
+  color: #d9724a;
+}
+
 /* Float button */
 .float-phone-wrap {
   position: fixed;
@@ -470,6 +481,17 @@
   align-items: center;
   overflow: hidden;
   padding: 60px 0;
+}
+/* Компактная версия Hero для главной страницы — 60-70% высоты экрана */
+.hero-wrap-v2-compact {
+  min-height: 65vh;
+  padding: 48px 0;
+}
+@media (max-width: 640px) {
+  .hero-wrap-v2-compact {
+    min-height: auto;
+    padding: 36px 0;
+  }
 }
 .hero-v2-bg {
   position: absolute;
@@ -1916,6 +1938,18 @@
   padding: 5px 12px;
   border-radius: 50px;
   margin-bottom: 12px;
+}
+.service-top-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: #fff;
+  color: #e8845c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 .service-icon-wrap {
   width: 112px;
