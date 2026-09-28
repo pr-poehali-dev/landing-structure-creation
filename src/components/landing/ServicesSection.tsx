@@ -5,8 +5,8 @@ import { ymGoal } from "@/lib/ym";
 import {
   IMG_YASLI_HERO,
   IMG_STARSHAYA_HERO,
-  IMG_VIKTORIA_ANATOLIEVNA,
-  IMG_NATALIA_PETROVNA,
+  IMG_ENGLISH_TEACHER,
+  IMG_SPEECH_THERAPIST,
   IMG_RANETS_ICON,
 } from "./constants";
 
@@ -61,23 +61,19 @@ const AGE_CARDS = [
 const EXTRA_SERVICES = [
   {
     title: "Английский",
-    age: "Абонемент 4 000 ₽/мес",
+    age: "Абонемент 5 000 ₽/мес",
     desc: "Ведёт Наталья Петровна — играя и говоря, без зубрёжки",
-    medallion: IMG_NATALIA_PETROVNA,
-    cardClass: "service-card-english",
+    medallion: IMG_ENGLISH_TEACHER,
     goal: "click_service_english",
     btnLabel: "Записаться",
-    topIcon: "Languages" as const,
   },
   {
     title: "Логопед",
     age: "",
     desc: "Коррекция звукопроизношения",
-    medallion: IMG_VIKTORIA_ANATOLIEVNA,
-    cardClass: "service-card-speech",
+    medallion: IMG_SPEECH_THERAPIST,
     goal: "click_service_speech",
     btnLabel: "Записаться на консультацию",
-    topIcon: "MicVocal" as const,
   },
 ];
 
@@ -114,23 +110,19 @@ export default function ServicesSection({ onOpenModal }: ServicesSectionProps) {
           ))}
         </div>
 
-        <div className="services-grid services-grid-2">
+        <div className="extra-services-grid">
           {EXTRA_SERVICES.map((s) => (
-            <div key={s.title} className={`service-card ${s.cardClass}`}>
-              <div className="service-card-body">
-                <div className="service-top-icon">
-                  <Icon name={s.topIcon} size={24} />
-                </div>
-                <div className="service-icon-wrap">
-                  <img src={s.medallion} alt={s.title} style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "50%" }} />
-                </div>
-                <h3 className="service-title">{s.title}</h3>
-                {s.age && <div className="service-age">{s.age}</div>}
-                <p className="service-desc">{s.desc}</p>
-                <button className="service-btn" onClick={() => { ymGoal(s.goal); onOpenModal(s.goal); }}>
-                  {s.btnLabel} <Icon name="ArrowRight" size={15} />
-                </button>
+            <div key={s.title} className="extra-service-card">
+              <span className="extra-service-tag">Дополнительно</span>
+              <div className="extra-service-photo">
+                <img src={s.medallion} alt={s.title} loading="lazy" />
               </div>
+              <h3 className="extra-service-title">{s.title}</h3>
+              {s.age && <div className="extra-service-age">{s.age}</div>}
+              <p className="extra-service-desc">{s.desc}</p>
+              <button className="extra-service-btn" onClick={() => { ymGoal(s.goal); onOpenModal(s.goal); }}>
+                {s.btnLabel} <Icon name="ArrowRight" size={15} />
+              </button>
             </div>
           ))}
         </div>

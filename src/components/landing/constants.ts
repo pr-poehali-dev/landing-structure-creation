@@ -334,6 +334,11 @@ export const IMG_NATALIA_PETROVNA =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/a8d077a8-8286-461d-bab8-b44103706e8a.jpg";
 export const IMG_VIKTORIA_ANATOLIEVNA =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/e9248345-31fe-4fff-b9dd-fb44818541a7.jpg";
+// Фото педагога английского и логопеда для карточек доп. занятий на главной
+export const IMG_ENGLISH_TEACHER =
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/610b2000-776c-4c47-a150-3dbf00fa78a6.png";
+export const IMG_SPEECH_THERAPIST =
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/6b02e0c8-dccf-408a-97ef-9db89cbb4e44.png";
 export const VIDEO_STARSHAYA_FOOD =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/8912ff2b-195c-40cc-9007-1ecfce8098e9.mp4";
 export const IMG_POSTER_STARSHAYA_FOOD =
