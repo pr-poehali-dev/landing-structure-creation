@@ -15,6 +15,10 @@ export const IMG_PREDSHKOLA_5_7 =
 export const IMG_PODGOTOVKA_2X =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/bdb85139-bcfb-4179-81b2-cc974a5696ee.png";
 
+// Иконка ранца для карточки «Подготовка к школе» в блоке «Для каждого возраста»
+export const IMG_RANETS_ICON =
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/1c900cf8-d7f5-4cb8-a588-6df0071fc2b4.png";
+
 // Фото для секций #4-5 и #5-7 на странице /podgotovka-k-shkole/
 export const IMG_FUNDAMENT_4_5_MAIN =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/2494fd77-0b65-469e-9860-a9b0d46bfe9e.jpg";

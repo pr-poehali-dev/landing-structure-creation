@@ -101,11 +101,11 @@
     --accent-page-light: var(--honey-light);
     --accent-page-dark: var(--honey-dark);
   }
-  /* Акценты второго плана для /podgotovka-k-shkole-2-raza-v-nedelyu/ — синий, отличается от садика */
+  /* Акценты второго плана для /podgotovka-k-shkole-2-raza-v-nedelyu/ — терракотовый */
   .theme-podgotovka2x {
-    --accent-page: #2563eb;
-    --accent-page-light: #eff6ff;
-    --accent-page-dark: #1d4ed8;
+    --accent-page: #e8845c;
+    --accent-page-light: #fbeae2;
+    --accent-page-dark: #c96a44;
   }
 }
 
@@ -360,6 +360,18 @@
   border-color: #1d4ed8;
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+}
+
+.cta-btn-terracotta {
+  background: #e8845c;
+  color: #fff;
+  border-color: #e8845c;
+}
+.cta-btn-terracotta:hover {
+  background: #d9724a;
+  border-color: #d9724a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(232, 132, 92, 0.4);
 }
 
 /* Float button */
@@ -1611,6 +1623,150 @@
   margin-bottom: 8px;
 }
 
+/* ── Карточки «Для каждого возраста» (ясли / старшая группа / подготовка 2х) ─ */
+.age-cards-grid {
+  display: grid;
+  grid-template-columns: 320px 420px 320px;
+  gap: 24px;
+  justify-content: center;
+  align-items: stretch;
+}
+@media (max-width: 1100px) {
+  .age-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+}
+.age-card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.age-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+.age-card-body {
+  padding: 24px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+}
+.age-card-stripe {
+  height: 6px;
+  width: 100%;
+}
+.age-card-stripe-sage {
+  background: #8fae8f;
+}
+.age-card-stripe-lavender {
+  background: #b8a9c9;
+}
+.age-card-photo-frame {
+  margin: 20px 24px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  border: 3px solid transparent;
+}
+.age-card-photo-frame-sage {
+  border-color: #8fae8f;
+}
+.age-card-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.age-card-icon-frame {
+  margin: 20px 24px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  border: 3px solid #b8a9c9;
+  background: #f4f0f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.age-card-icon-frame img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+.age-card-badge {
+  align-self: flex-start;
+  background: #e8845c;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 50px;
+  margin-bottom: 8px;
+}
+.age-card-title {
+  font-family: "Cormorant", serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin: 0 0 2px;
+}
+.age-card-subtitle {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #8fae8f;
+  margin-bottom: 8px;
+}
+.age-card-lavender .age-card-subtitle {
+  color: #9b87ae;
+}
+.age-card-desc {
+  font-size: 14px;
+  color: #2d2d2d;
+  line-height: 1.5;
+  margin: 0 0 8px;
+  flex: 1;
+}
+.age-card-desc ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+.age-card-desc li {
+  margin-bottom: 4px;
+}
+.age-card-btn {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e8845c;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+  text-decoration: none;
+}
+.age-card-btn:hover {
+  background: #d9724a;
+  transform: translateY(-2px);
+}
+
 /* Services (Ясли / Старшая группа / Логопед) */
 @keyframes serviceGradientMove {
   0% {
@@ -1645,11 +1801,19 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+.services-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 700px;
+  margin: 40px auto 0;
+}
 @media (max-width: 768px) {
   .services-grid {
     grid-template-columns: 1fr;
   }
   .services-grid-4 {
+    grid-template-columns: 1fr;
+  }
+  .services-grid-2 {
     grid-template-columns: 1fr;
   }
 }
@@ -1693,17 +1857,17 @@
 .service-card-speech {
   background-image: linear-gradient(
     135deg,
-    #6b7d3d 0%,
-    #8ea354 45%,
-    #c3d18a 100%
+    #9683ab 0%,
+    #b8a9c9 45%,
+    #d8cee2 100%
   );
 }
 .service-card-english {
   background-image: linear-gradient(
     135deg,
-    #e0553f 0%,
-    #f0795f 45%,
-    #ffab8f 100%
+    #9683ab 0%,
+    #b8a9c9 45%,
+    #d8cee2 100%
   );
 }
 
