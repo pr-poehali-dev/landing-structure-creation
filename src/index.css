@@ -601,7 +601,7 @@
 }
 @media (max-width: 640px) {
   .hero-v3-photo {
-    display: none;
+    max-width: 320px;
   }
 }
 .hero-v3-h1 {
