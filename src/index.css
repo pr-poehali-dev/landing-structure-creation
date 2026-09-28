@@ -1963,9 +1963,9 @@
 }
 .extra-service-card {
   background: #fff;
-  border: 2px solid #b8a9c9;
+  border: 3px solid #9b8ab8;
   border-radius: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(155, 138, 184, 0.15);
   padding: 20px 24px 28px;
   display: flex;
   flex-direction: column;
@@ -1977,17 +1977,17 @@
 }
 .extra-service-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 28px rgba(155, 138, 184, 0.22);
 }
 .extra-service-tag {
   align-self: center;
-  background: #b8a9c9;
+  background: #9b8ab8;
   color: #fff;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
   letter-spacing: 0.03em;
   padding: 4px 14px;
-  border-radius: 12px;
+  border-radius: 16px;
   margin-bottom: 16px;
 }
 .extra-service-photo {
@@ -1995,7 +1995,7 @@
   height: 120px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid #b8a9c9;
+  border: 4px solid #9b8ab8;
   margin-bottom: 16px;
 }
 .extra-service-photo img {
