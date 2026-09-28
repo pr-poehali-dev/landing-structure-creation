@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Icon from "@/components/ui/icon";
-import { IMG_YASLI_HERO } from "./constants";
+import { IMG_HERO_MAIN } from "./constants";
 import { ymGoal } from "@/lib/ym";
 import ConsentCheckbox from "./ConsentCheckbox";
 import { MODAL_CONTENT, CHILD_AGE_OPTIONS, LEAD_GOAL_BY_TYPE, deriveModalType, type ModalType } from "./modalContent";
@@ -178,7 +178,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         </div>
 
         <div className="hero-v3-photo">
-          <img src={IMG_YASLI_HERO} alt="Дети в частном детском садике Рыбка Долли в Керчи" loading="eager" />
+          <img src={IMG_HERO_MAIN} alt="Дети в частном детском садике Рыбка Долли в Керчи" loading="eager" />
         </div>
       </div>
     </section>
