@@ -50,7 +50,7 @@ const AGE_CARDS = [
     subtitle: "Занятия 2 раза в неделю",
     desc: "Чтение, письмо, математика. Без полного дня — для тех, кто ходит в другой сад",
     badge: "2 раза в неделю",
-    icon: IMG_RANETS_ICON,
+    photo: IMG_RANETS_ICON,
     accent: "lavender" as const,
     href: "/podgotovka-k-shkole-2-raza-v-nedelyu/?utm_source=main&utm_medium=internal&utm_campaign=hub_podgotovka2x",
     btnLabel: "Подробнее",
@@ -97,15 +97,9 @@ export default function ServicesSection({ onOpenModal }: ServicesSectionProps) {
         <div className="age-cards-grid">
           {AGE_CARDS.map((c) => (
             <div key={c.key} className={`age-card ${c.accent === "lavender" ? "age-card-lavender" : ""}`}>
-              {c.photo ? (
-                <div className={`age-card-photo-frame ${c.accent === "sage" ? "age-card-photo-frame-sage" : ""}`}>
-                  <img src={c.photo} alt={c.title} loading="lazy" />
-                </div>
-              ) : (
-                <div className="age-card-icon-frame">
-                  <img src={c.icon} alt={c.title} loading="lazy" />
-                </div>
-              )}
+              <div className={`age-card-photo-frame ${c.accent === "sage" ? "age-card-photo-frame-sage" : "age-card-photo-frame-lavender"}`}>
+                <img src={c.photo} alt={c.title} loading="lazy" />
+              </div>
               <div className="age-card-body">
                 {c.badge && <span className="age-card-badge">{c.badge}</span>}
                 <h3 className="age-card-title">{c.title}</h3>
