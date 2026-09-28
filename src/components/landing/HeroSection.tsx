@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Icon from "@/components/ui/icon";
-import { IMG_HERO } from "./constants";
 import { ymGoal } from "@/lib/ym";
 import ConsentCheckbox from "./ConsentCheckbox";
 import { MODAL_CONTENT, CHILD_AGE_OPTIONS, LEAD_GOAL_BY_TYPE, deriveModalType, type ModalType } from "./modalContent";
@@ -135,21 +134,19 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onOpenModal }: HeroSectionProps) {
   return (
-    <section className="hero-wrap-v2 hero-wrap-v2-compact">
-      <div className="hero-v2-bg">
-        <img src={IMG_HERO} alt="Занятие с детьми старшей группы в частном детском садике Рыбка Долли в Керчи" />
-        <div className="hero-v2-overlay" />
-      </div>
+    <section className="hero-wrap-v3">
+      <span className="hero-v3-blob hero-v3-blob-sage" aria-hidden="true" />
+      <span className="hero-v3-blob hero-v3-blob-lavender" aria-hidden="true" />
 
-      <div className="container hero-v2-content">
-        <h1 className="hero-v2-h1">Частный детский сад «Рыбка Долли» в Керчи</h1>
-        <p className="hero-v2-sub">
+      <div className="container hero-v3-content">
+        <h1 className="hero-v3-h1">Частный детский сад «Рыбка Долли» в Керчи</h1>
+        <p className="hero-v3-sub">
           Ясли с 1,5 лет и подготовка к школе в мини-группах до 12 детей.
           Лицензия, своя площадка, 4-разовое питание.
         </p>
 
         {/* Строка доверия */}
-        <div className="hero-v2-trust">
+        <div className="hero-v3-trust">
           <a href="https://yandex.ru/maps/-/CPCszO6I" target="_blank" rel="noopener noreferrer" onClick={() => ymGoal('click_yandex_maps')}>
             <Icon name="Star" size={14} /> 4,9 на Яндекс Картах
           </a>

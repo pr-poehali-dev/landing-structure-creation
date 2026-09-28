@@ -375,7 +375,7 @@
 }
 
 .cta-btn-outline-terracotta {
-  background: transparent;
+  background: #fff;
   color: #e8845c;
   border-color: #e8845c;
 }
@@ -492,6 +492,94 @@
     min-height: auto;
     padding: 36px 0;
   }
+}
+
+/* ── Hero v3: лёгкий кремовый Hero без фото (главная страница) ───────────
+   Высота не фиксируется искусственно — блок плотно облегает контент
+   (по факту укладывается в 60-70% высоты экрана на десктопе), а отступ
+   до следующего блока остаётся в пределах 40-60px, без пустого разрыва. */
+.hero-wrap-v3 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--cream);
+  padding: 56px 0 48px;
+}
+@media (max-width: 640px) {
+  .hero-wrap-v3 {
+    padding: 40px 0 36px;
+  }
+}
+.hero-v3-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-v3-blob-sage {
+  width: 420px;
+  height: 420px;
+  top: -160px;
+  left: -140px;
+  background: #8fae8f;
+  opacity: 0.12;
+}
+.hero-v3-blob-lavender {
+  width: 380px;
+  height: 380px;
+  bottom: -150px;
+  right: -120px;
+  background: #b8a9c9;
+  opacity: 0.12;
+}
+@media (max-width: 640px) {
+  .hero-v3-blob-sage,
+  .hero-v3-blob-lavender {
+    width: 240px;
+    height: 240px;
+  }
+}
+.hero-v3-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  text-align: center;
+  margin: 0 auto;
+}
+.hero-v3-h1 {
+  font-family: "Cormorant", serif;
+  font-size: clamp(30px, 4.5vw, 48px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #1e3a5f;
+  margin-bottom: 16px;
+}
+.hero-v3-sub {
+  font-size: 17px;
+  color: #1e3a5f;
+  max-width: 600px;
+  margin: 0 auto 28px;
+  line-height: 1.5;
+}
+.hero-v3-trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e3a5f;
+  margin-bottom: 28px;
+}
+.hero-v3-trust a,
+.hero-v3-trust span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #1e3a5f;
+  text-decoration: none;
 }
 .hero-v2-bg {
   position: absolute;
