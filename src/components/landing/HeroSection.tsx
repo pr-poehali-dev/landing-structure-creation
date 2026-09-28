@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Icon from "@/components/ui/icon";
+import { IMG_YASLI_HERO } from "./constants";
 import { ymGoal } from "@/lib/ym";
 import ConsentCheckbox from "./ConsentCheckbox";
 import { MODAL_CONTENT, CHILD_AGE_OPTIONS, LEAD_GOAL_BY_TYPE, deriveModalType, type ModalType } from "./modalContent";
@@ -137,40 +138,47 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
     <section className="hero-wrap-v3">
       <span className="hero-v3-blob hero-v3-blob-sage" aria-hidden="true" />
       <span className="hero-v3-blob hero-v3-blob-lavender" aria-hidden="true" />
+      <span className="hero-v3-blob hero-v3-blob-peach" aria-hidden="true" />
 
-      <div className="container hero-v3-content">
-        <h1 className="hero-v3-h1">Частный детский сад «Рыбка Долли» в Керчи</h1>
-        <p className="hero-v3-sub">
-          Ясли с 1,5 лет и подготовка к школе в мини-группах до 12 детей.
-          Лицензия, своя площадка, 4-разовое питание.
-        </p>
+      <div className="container hero-v3-grid">
+        <div className="hero-v3-content">
+          <h1 className="hero-v3-h1">Частный детский сад «Рыбка Долли» в Керчи</h1>
+          <p className="hero-v3-sub">
+            Ясли с 1,5 лет и подготовка к школе в мини-группах до 12 детей.
+            Лицензия, своя площадка, 4-разовое питание.
+          </p>
 
-        {/* Строка доверия */}
-        <div className="hero-v3-trust">
-          <a href="https://yandex.ru/maps/-/CPCszO6I" target="_blank" rel="noopener noreferrer" onClick={() => ymGoal('click_yandex_maps')}>
-            <Icon name="Star" size={14} /> 4,9 на Яндекс Картах
-          </a>
-          <span><Icon name="ShieldCheck" size={14} /> Лицензия</span>
-          <span><Icon name="MapPin" size={14} /> ул. Циолковского, 12</span>
+          {/* Строка доверия */}
+          <div className="hero-v3-trust">
+            <a href="https://yandex.ru/maps/-/CPCszO6I" target="_blank" rel="noopener noreferrer" onClick={() => ymGoal('click_yandex_maps')}>
+              <Icon name="Star" size={14} /> 4,9 на Яндекс Картах
+            </a>
+            <span><Icon name="ShieldCheck" size={14} /> Лицензия</span>
+            <span><Icon name="MapPin" size={14} /> ул. Циолковского, 12</span>
+          </div>
+
+          {/* CTA */}
+          <div className="hero-v2-cta-row">
+            <button className="cta-btn cta-btn-terracotta cta-btn-lg" onClick={() => { ymGoal('click_hero_cta'); onOpenModal('excursion'); }}>
+              Записаться на экскурсию
+              <Icon name="ArrowRight" size={18} />
+            </button>
+            <a
+              href="#services"
+              className="cta-btn cta-btn-outline-terracotta cta-btn-lg"
+              onClick={(e) => {
+                e.preventDefault();
+                ymGoal('click_hero_programs');
+                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Посмотреть программы
+            </a>
+          </div>
         </div>
 
-        {/* CTA */}
-        <div className="hero-v2-cta-row">
-          <button className="cta-btn cta-btn-terracotta cta-btn-lg" onClick={() => { ymGoal('click_hero_cta'); onOpenModal('excursion'); }}>
-            Записаться на экскурсию
-            <Icon name="ArrowRight" size={18} />
-          </button>
-          <a
-            href="#services"
-            className="cta-btn cta-btn-outline-terracotta cta-btn-lg"
-            onClick={(e) => {
-              e.preventDefault();
-              ymGoal('click_hero_programs');
-              document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          >
-            Посмотреть программы
-          </a>
+        <div className="hero-v3-photo">
+          <img src={IMG_YASLI_HERO} alt="Дети в частном детском садике Рыбка Долли в Керчи" loading="eager" />
         </div>
       </div>
     </section>

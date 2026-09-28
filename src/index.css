@@ -514,7 +514,6 @@
 .hero-v3-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(2px);
   pointer-events: none;
   z-index: 0;
 }
@@ -524,7 +523,7 @@
   top: -160px;
   left: -140px;
   background: #8fae8f;
-  opacity: 0.12;
+  opacity: 0.15;
 }
 .hero-v3-blob-lavender {
   width: 380px;
@@ -532,7 +531,15 @@
   bottom: -150px;
   right: -120px;
   background: #b8a9c9;
-  opacity: 0.12;
+  opacity: 0.15;
+}
+.hero-v3-blob-peach {
+  width: 220px;
+  height: 220px;
+  top: -80px;
+  right: 10%;
+  background: #e8845c;
+  opacity: 0.1;
 }
 @media (max-width: 640px) {
   .hero-v3-blob-sage,
@@ -540,38 +547,98 @@
     width: 240px;
     height: 240px;
   }
+  .hero-v3-blob-peach {
+    width: 140px;
+    height: 140px;
+  }
 }
-.hero-v3-content {
+.hero-v3-blob-sage,
+.hero-v3-blob-lavender,
+.hero-v3-blob-peach {
+  filter: blur(40px);
+}
+.hero-v3-grid {
   position: relative;
   z-index: 2;
-  max-width: 760px;
-  text-align: center;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+@media (max-width: 900px) {
+  .hero-v3-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.hero-v3-content {
+  text-align: left;
+}
+@media (max-width: 900px) {
+  .hero-v3-content {
+    text-align: center;
+    order: 2;
+  }
+}
+.hero-v3-photo {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(30, 58, 95, 0.14);
+  aspect-ratio: 4/3;
+}
+.hero-v3-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 900px) {
+  .hero-v3-photo {
+    order: 1;
+    max-width: 420px;
+    margin: 0 auto 8px;
+  }
+}
+@media (max-width: 640px) {
+  .hero-v3-photo {
+    display: none;
+  }
 }
 .hero-v3-h1 {
   font-family: "Cormorant", serif;
-  font-size: clamp(30px, 4.5vw, 48px);
+  font-size: clamp(32px, 5vw, 54px);
   font-weight: 700;
   line-height: 1.15;
   color: #1e3a5f;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   margin-bottom: 16px;
 }
 .hero-v3-sub {
   font-size: 17px;
   color: #1e3a5f;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   max-width: 600px;
-  margin: 0 auto 28px;
+  margin: 0 0 28px;
   line-height: 1.5;
+}
+@media (max-width: 900px) {
+  .hero-v3-sub {
+    margin: 0 auto 28px;
+  }
 }
 .hero-v3-trust {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 18px;
   font-size: 13px;
   font-weight: 600;
   color: #1e3a5f;
   margin-bottom: 28px;
+}
+@media (max-width: 900px) {
+  .hero-v3-trust {
+    justify-content: center;
+  }
 }
 .hero-v3-trust a,
 .hero-v3-trust span {
