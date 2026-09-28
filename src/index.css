@@ -1648,12 +1648,11 @@
 /* ── Карточки «Для каждого возраста» (ясли / старшая группа / подготовка 2х) ─ */
 .age-cards-grid {
   display: grid;
-  grid-template-columns: 320px 420px 320px;
+  grid-template-columns: 1fr 1.3fr 1fr;
   gap: 24px;
-  justify-content: center;
   align-items: stretch;
 }
-@media (max-width: 1100px) {
+@media (max-width: 860px) {
   .age-cards-grid {
     grid-template-columns: 1fr;
     max-width: 420px;
