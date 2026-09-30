@@ -1,0 +1,17 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Missing phone returns 400",
+      "method": "POST",
+      "path": "/",
+      "body": {"reason": "Финансовый вопрос", "rating": "3 звезды", "missing": "Ничего"},
+      "expectedStatus": 400
+    }
+  ]
+}

@@ -6246,3 +6246,13 @@
   justify-content: center;
   margin-top: 28px;
 }
+
+/* ── Печать анкеты обратной связи (/feedback/) ─────────────────────────── */
+@media print {
+  body {
+    background: #fff !important;
+  }
+  .print\:bg-white {
+    background: #fff !important;
+  }
+}
