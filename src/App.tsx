@@ -13,6 +13,7 @@ import PodgotovkaKShkole from "./pages/PodgotovkaKShkole";
 import PodgotovkaKShkole2x from "./pages/PodgotovkaKShkole2x";
 import Feedback from "./pages/Feedback";
 import Checklist from "./pages/Checklist";
+import Checklist2 from "./pages/Checklist2";
 import ReadinessMapAdminPage from "./pages/internal/ReadinessMapAdminPage";
 import NotFound from "./pages/NotFound";
 import ExitIntentPopup from "./components/landing/ExitIntentPopup";
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/podgotovka-k-shkole-2-raza-v-nedelyu/" element={<PodgotovkaKShkole2x />} />
           <Route path="/feedback/" element={<Feedback />} />
           <Route path="/checklist/" element={<Checklist />} />
+          <Route path="/checklist-2/" element={<Checklist2 />} />
           <Route path="/internal/readiness-map/" element={<ReadinessMapAdminPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
