@@ -126,39 +126,62 @@ export default function Feedback() {
                   Ваше мнение помогает нам становиться лучше 🌱
                 </h1>
                 <p
-                  className="text-center italic mt-2 mb-4"
-                  style={{ color: "#1A2A3A", fontSize: 16 }}
+                  className="text-center flex items-center justify-center gap-2"
+                  style={{
+                    color: "#006D77",
+                    fontSize: 21,
+                    fontStyle: "italic",
+                    fontWeight: 600,
+                    margin: "16px 0",
+                  }}
                 >
+                  <span aria-hidden="true">🐠〜</span>
                   Благодарим вас за визит в детский центр «Рыбка Долли»
+                  <span aria-hidden="true">〜🐠</span>
                 </p>
 
                 <div
                   className="mb-5 print:text-[110%]"
                   style={{
                     fontSize: 17,
+                    lineHeight: 1.5,
                     color: "#1A2A3A",
-                    background: "rgba(0,109,119,0.05)",
+                    background: "#FAF3E8",
                     border: "1px solid rgba(0,109,119,0.18)",
                     borderRadius: 12,
-                    padding: "16px 18px",
+                    padding: 24,
                   }}
                 >
+                  <div className="text-center mb-2" style={{ fontSize: 24 }}>💌</div>
                   <p className="mb-3">
-                    Добрый день! Благодарим вас за визит в детский центр «Рыбка Долли». Нам было
-                    очень приятно познакомиться с вами и вашим ребенком.
+                    Добрый день! Благодарим вас за визит в детский центр «Рыбка Долли». Нам было{" "}
+                    <strong style={{ color: "#E85D04" }}>очень приятно познакомиться</strong> с
+                    вами и вашим ребенком.
                   </p>
+                  <hr style={{ border: "none", borderTop: "2px solid #006D77", width: 40, margin: "12px auto" }} />
                   <p>
                     Мы постоянно совершенствуем наши программы и сервис, чтобы пространство центра
                     было максимально комфортным и развивающим для детей. Эта анкета попадает{" "}
-                    <strong style={{ color: "#E85D04" }}>напрямую к руководству центра</strong>, и мы
-                    внимательно читаем каждый ответ. Для нас нет неважных деталей. Если что-то
-                    смутило, не понравилось или вы просто сомневаетесь — напишите об этом честно. Мы
-                    ценим вашу открытость!
+                    <strong style={{ color: "#E85D04" }}>напрямую к руководству центра</strong>, и мы{" "}
+                    <strong style={{ color: "#E85D04" }}>внимательно читаем каждый ответ</strong>.
+                    Для нас нет неважных деталей. Если что-то смутило, не понравилось или вы просто
+                    сомневаетесь — напишите об этом честно.{" "}
+                    <strong style={{ color: "#E85D04" }}>Мы ценим вашу открытость!</strong>
                   </p>
-                  <p className="mt-3">
-                    Это займет ровно 1 минуту. А в благодарность за уделенное время команда «Рыбки
-                    Долли» лично отправит вам один из наших чек-листов, авторами которых являемся мы,
-                    созданных на основе многолетнего опыта работы.
+                  <hr style={{ border: "none", borderTop: "2px solid #006D77", width: 40, margin: "12px auto" }} />
+                  <p>
+                    Это займет{" "}
+                    <strong style={{ color: "#E85D04" }}>ровно 1 минуту</strong>. А в благодарность
+                    за уделенное время команда «Рыбки Долли»{" "}
+                    <strong style={{ color: "#E85D04" }}>лично отправит вам</strong> один из наших
+                    чек-листов, авторами которых являемся мы, созданных на основе многолетнего
+                    опыта работы.
+                  </p>
+                  <p
+                    className="text-center mt-4"
+                    style={{ color: "#006D77", fontStyle: "italic", fontWeight: 600 }}
+                  >
+                    С заботой, команда «Рыбки Долли» 🐠
                   </p>
                 </div>
 
