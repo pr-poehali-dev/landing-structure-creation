@@ -6256,3 +6256,29 @@
     background: #fff !important;
   }
 }
+
+/* ── Печать чек-листа (/checklist/) ────────────────────────────────────── */
+@media print {
+  .checklist-page {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 110% !important;
+  }
+  .checklist-marker {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    page-break-after: always;
+    break-after: page;
+  }
+  .checklist-marker:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
+  }
+  .checklist-bad,
+  .checklist-good,
+  .checklist-secret {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+}
