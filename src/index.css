@@ -6051,11 +6051,11 @@
     padding: 0;
     background: #fff;
   }
-  body * {
+  body:has(.rm-doc) * {
     visibility: hidden;
   }
-  .rm-doc,
-  .rm-doc * {
+  body:has(.rm-doc) .rm-doc,
+  body:has(.rm-doc) .rm-doc * {
     visibility: visible;
   }
   .rm-doc {
