@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HeroSection, { Modal } from "@/components/landing/HeroSection";
 import SiteHeader from "@/components/landing/SiteHeader";
 import InfoSections from "@/components/landing/InfoSections";
@@ -15,6 +15,16 @@ export default function Index() {
     setModalSource(source || "excursion");
     setModalOpen(true);
   };
+
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.slice(1);
+      const el = document.getElementById(id);
+      if (el) {
+        window.setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 150);
+      }
+    }
+  }, []);
 
   return (
     <div className="ld">

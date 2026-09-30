@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { useSeo } from "@/lib/useSeo";
 
 const LOGO_URL = "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/05246deb-af27-4e0c-be50-d0635a2372ab.png";
@@ -6,7 +8,7 @@ interface Marker {
   title: string;
   bad: string;
   good: string;
-  why: string;
+  why: ReactNode;
 }
 
 const MARKERS: Marker[] = [
@@ -20,7 +22,19 @@ const MARKERS: Marker[] = [
     title: "Маркер 2: Невидимая защита (технологии чистоты)",
     bad: "Уборка только «для галочки» или использование едкой хлорки, которая вызывает аллергии.",
     good: "Каждое утро (до прихода детей) комната и игрушки обрабатываются УФ-облучателем. В сезон простуд работают рециркуляторы закрытого типа. Регулярные сквозные проветривания во время прогулок.",
-    why: "Мы не просто моем полы, мы создаем безопасную микросреду. Кстати, вы можете увидеть этот процесс в нашем видео «Закулисье» на сайте!",
+    why: (
+      <>
+        Мы не просто моем полы, мы создаем безопасную микросреду. Кстати, вы
+        можете увидеть этот процесс в нашем видео{" "}
+        <Link
+          to="/#zakulisie"
+          style={{ color: "#E85D04", textDecoration: "underline", fontStyle: "normal" }}
+        >
+          «Закулисье»
+        </Link>{" "}
+        на сайте!
+      </>
+    ),
   },
   {
     title: "Маркер 3: Строгий контроль здоровья команды",

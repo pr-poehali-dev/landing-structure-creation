@@ -144,7 +144,7 @@ export default function CalculatorFaqTeam({ onOpenModal }: CalculatorFaqTeamProp
           <p className="team-nanny-note">
             <Icon name="Heart" size={15} /> Нянечка Марина Анатольевна работает с обеими группами
           </p>
-          <div className="section-header" style={{ textAlign: "center", marginTop: 40 }}>
+          <div id="zakulisie" className="section-header" style={{ textAlign: "center", marginTop: 40, scrollMarginTop: 24 }}>
             <span className="section-tag">Закулисье: как начинается и заканчивается наш день</span>
           </div>
           <div className="tv-frame" style={{ margin: "0 auto" }}>
