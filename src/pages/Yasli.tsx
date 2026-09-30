@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import SiteHeader from "@/components/landing/SiteHeader";
@@ -47,6 +47,13 @@ export default function Yasli() {
     setModalSource(source || "excursion");
     setModalOpen(true);
   };
+
+  useEffect(() => {
+    if (window.location.hash === "#tour") {
+      ymGoal("open_modal_ads_tour");
+      openModal("ads_tour");
+    }
+  }, []);
 
   return (
     <div className="ld theme-yasli">
