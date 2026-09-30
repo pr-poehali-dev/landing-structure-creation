@@ -6264,11 +6264,17 @@
     color: #000 !important;
     font-size: 110% !important;
   }
+  .checklist-list {
+    display: block !important;
+  }
   .checklist-marker {
+    display: block !important;
     box-shadow: none !important;
     border-radius: 0 !important;
     page-break-after: always;
     break-after: page;
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
   .checklist-marker:last-of-type {
     page-break-after: auto;

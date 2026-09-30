@@ -114,7 +114,7 @@ export default function Checklist() {
           }}
         />
 
-        <div className="flex flex-col gap-5 md:gap-6">
+        <div className="flex flex-col gap-5 md:gap-6 checklist-list">
           {MARKERS.map((m, i) => (
             <div
               key={m.title}
