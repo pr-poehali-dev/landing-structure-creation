@@ -217,6 +217,27 @@ export default function Checklist6() {
               fontFamily: "'Montserrat', sans-serif",
               fontWeight: 500,
               fontSize: 16,
+              lineHeight: 1.6,
+            }}
+          >
+            🌐 Хотите узнать больше?
+            <br />
+            На нашем сайте{" "}
+            <a
+              href="https://ribkadollilend.ru/"
+              style={{ color: "#FFFFFF", textDecoration: "underline" }}
+            >
+              ribkadollilend.ru
+            </a>{" "}
+            мы подробно и с любовью рассказываем о жизни центра, наших
+            педагогах и ежедневной программе. Заглядывайте в гости!
+          </p>
+          <p
+            className="mt-4"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 500,
+              fontSize: 16,
             }}
           >
             С любовью и заботой,
