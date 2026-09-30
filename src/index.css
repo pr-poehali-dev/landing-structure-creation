@@ -6271,14 +6271,9 @@
     display: block !important;
     box-shadow: none !important;
     border-radius: 0 !important;
-    page-break-after: always;
-    break-after: page;
     page-break-inside: avoid;
     break-inside: avoid;
-  }
-  .checklist-marker:last-of-type {
-    page-break-after: auto;
-    break-after: auto;
+    margin-bottom: 16px;
   }
   .checklist-bad,
   .checklist-good,
