@@ -23,6 +23,16 @@ export default function PodgotovkaKShkole2x() {
     "Занятия подготовки к школе для детей 5-7 лет в Керчи: чтение, письмо, математика. Только уроки 2 раза в неделю, без пребывания в детском саду. Запишитесь на пробное занятие!"
   );
 
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "canonical";
+    link.href = "https://ribkadollilend.ru/podgotovka-k-shkole-2/";
+    document.head.appendChild(link);
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSource, setModalSource] = useState("podgotovka2x");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -163,7 +173,12 @@ export default function PodgotovkaKShkole2x() {
         <div className="container container-narrow">
           <div className="section-header" style={{ textAlign: "center" }}>
             <span className="section-tag">Диагностика</span>
-            <h2 className="age-section-h2">Узнайте, к чему готов ваш ребёнок</h2>
+            <h2 className="age-section-h2">Бесплатная диагностика перед стартом</h2>
+            <p className="age-lead">
+              Перед началом занятий Ирина Павловна проводит диагностику: оценивает текущий уровень ребёнка,
+              показывает, над чем нужно поработать, и составляет индивидуальный план. Длительность ~30 минут,
+              бесплатно для всех, кто записывается через сайт.
+            </p>
           </div>
           <DiagnosticsVideoBlock />
           <div style={{ textAlign: "center", marginTop: 24 }}>

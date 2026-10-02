@@ -52,7 +52,7 @@ const AGE_CARDS = [
     badge: "2 раза в неделю",
     photo: IMG_RANETS_ICON,
     accent: "lavender" as const,
-    href: "/podgotovka-k-shkole-2-raza-v-nedelyu/?utm_source=main&utm_medium=internal&utm_campaign=hub_podgotovka2x",
+    href: "/podgotovka-k-shkole-2/?utm_source=main&utm_medium=internal&utm_campaign=hub_podgotovka2x",
     btnLabel: "Подробнее",
     goal: "click_service_podgotovka2x",
   },

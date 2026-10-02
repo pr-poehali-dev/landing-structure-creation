@@ -21,6 +21,7 @@ import Checklist6 from "./pages/Checklist6";
 import Checklist7 from "./pages/Checklist7";
 import Checklist8 from "./pages/Checklist8";
 import Checklist9 from "./pages/Checklist9";
+import LegacyRedirect from "./components/LegacyRedirect";
 import ReadinessMapAdminPage from "./pages/internal/ReadinessMapAdminPage";
 import NotFound from "./pages/NotFound";
 import ExitIntentPopup from "./components/landing/ExitIntentPopup";
@@ -43,7 +44,7 @@ const App = () => (
           <Route path="/photo-policy" element={<PhotoPolicy />} />
           <Route path="/yasli/" element={<Yasli />} />
           <Route path="/podgotovka-k-shkole/" element={<PodgotovkaKShkole />} />
-          <Route path="/podgotovka-k-shkole-2-raza-v-nedelyu/" element={<PodgotovkaKShkole2x />} />
+          <Route path="/podgotovka-k-shkole-2-raza-v-nedelyu/" element={<LegacyRedirect to="/podgotovka-k-shkole-2/" />} />
           <Route path="/podgotovka-k-shkole-2/" element={<PodgotovkaKShkole2x />} />
           <Route path="/feedback/" element={<Feedback />} />
           <Route path="/checklist/" element={<Checklist />} />
