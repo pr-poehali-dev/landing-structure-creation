@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import SiteHeader from "@/components/landing/SiteHeader";
 import { Modal } from "@/components/landing/HeroSection";
 import { Section } from "@/components/landing/InfoSections";
+import DiagnosticsVideoBlock from "@/components/landing/DiagnosticsVideoBlock";
 import FooterSections from "@/components/landing/FooterSections";
 import { ymGoal } from "@/lib/ym";
 import { useSeo } from "@/lib/useSeo";
@@ -13,6 +14,7 @@ import {
   PODGOTOVKA_2X_POINTS,
   PODGOTOVKA_2X_FAQ,
   PODGOTOVKA_2X_PRICE,
+  TEAM,
 } from "@/components/landing/constants";
 
 export default function PodgotovkaKShkole2x() {
@@ -29,6 +31,21 @@ export default function PodgotovkaKShkole2x() {
     setModalSource(source || "podgotovka2x");
     setModalOpen(true);
   };
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === "#tour") {
+      ymGoal("open_modal_ads_tour");
+      openModal("ads_tour");
+      return;
+    }
+    if (hash) {
+      const el = document.getElementById(hash.slice(1));
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 300);
+    }
+  }, []);
+
+  const teacher = TEAM.find((t) => t.name === "Ирина Павловна");
 
   return (
     <div className="ld theme-podgotovka2x">
@@ -88,7 +105,7 @@ export default function PodgotovkaKShkole2x() {
       </section>
 
       {/* Пояснение формата — без полного дня */}
-      <Section className="bg-white">
+      <Section id="schedule" className="bg-white">
         <div className="container container-narrow">
           <div className="section-header" style={{ textAlign: "center" }}>
             <span className="section-tag">Формат занятий</span>
@@ -100,7 +117,7 @@ export default function PodgotovkaKShkole2x() {
             </p>
           </div>
 
-          <div className="age-points-grid">
+          <div id="program" className="age-points-grid">
             {PODGOTOVKA_2X_POINTS.map((p) => (
               <div key={p.text} className="age-point-card age-point-card-milk">
                 <div className="age-point-icon"><Icon name={p.icon} size={20} /></div>
@@ -116,6 +133,42 @@ export default function PodgotovkaKShkole2x() {
           <div style={{ textAlign: "center", marginTop: 32 }}>
             <button className="cta-btn cta-btn-terracotta cta-btn-lg" onClick={() => { ymGoal('click_podgotovka2x_diagnostics'); openModal('podgotovka2x'); }}>
               Записаться на пробное занятие
+              <Icon name="ArrowRight" size={18} />
+            </button>
+          </div>
+        </div>
+      </Section>
+
+      {/* Педагог */}
+      <Section id="teacher" className="bg-white">
+        <div className="container container-narrow">
+          <div className="section-header" style={{ textAlign: "center" }}>
+            <span className="section-tag">Ваш педагог</span>
+            <h2 className="age-section-h2">Ирина Павловна</h2>
+            <p className="age-lead">
+              Учитель начальных классов, опыт работы в профессии — 8 лет, в нашем центре с 2018 года.
+              Ведёт группу подготовки к школе.
+            </p>
+          </div>
+          {teacher && (
+            <figure className="age-photo-wrap">
+              <img src={teacher.img} alt="Ирина Павловна — педагог подготовки к школе" />
+            </figure>
+          )}
+        </div>
+      </Section>
+
+      {/* Диагностика */}
+      <Section id="diag" className="bg-cream">
+        <div className="container container-narrow">
+          <div className="section-header" style={{ textAlign: "center" }}>
+            <span className="section-tag">Диагностика</span>
+            <h2 className="age-section-h2">Узнайте, к чему готов ваш ребёнок</h2>
+          </div>
+          <DiagnosticsVideoBlock />
+          <div style={{ textAlign: "center", marginTop: 24 }}>
+            <button className="cta-btn cta-btn-terracotta cta-btn-lg" onClick={() => { ymGoal('click_podgotovka2x_diag'); openModal('podgotovka2x'); }}>
+              Записаться на диагностику
               <Icon name="ArrowRight" size={18} />
             </button>
           </div>

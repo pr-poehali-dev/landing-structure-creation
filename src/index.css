@@ -5581,12 +5581,14 @@
   }
 }
 [id="4-5"],
-[id="5-7"] {
+[id="5-7"],
+.theme-podgotovka2x [id] {
   scroll-margin-top: 140px;
 }
 @media (max-width: 960px) {
   [id="4-5"],
-  [id="5-7"] {
+  [id="5-7"],
+  .theme-podgotovka2x [id] {
     scroll-margin-top: 116px;
   }
 }
