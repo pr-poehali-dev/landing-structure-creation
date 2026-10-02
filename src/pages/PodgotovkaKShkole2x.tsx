@@ -156,8 +156,7 @@ export default function PodgotovkaKShkole2x() {
             <span className="section-tag">Ваш педагог</span>
             <h2 className="age-section-h2">Ирина Павловна</h2>
             <p className="age-lead">
-              Учитель начальных классов, опыт работы в профессии — 8 лет, в нашем центре с 2018 года.
-              Ведёт группу подготовки к школе.
+              Учитель начальных классов. Педагогический стаж 12 лет, из них 8 лет — в центре «Рыбка Долли»
             </p>
           </div>
           {teacher && (
