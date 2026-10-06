@@ -6,6 +6,8 @@ import ConsentCheckbox from "./ConsentCheckbox";
 import { MODAL_CONTENT, CHILD_AGE_OPTIONS, LEAD_GOAL_BY_TYPE, deriveModalType, type ModalType } from "./modalContent";
 import PhoneField from "./PhoneField";
 import { isPhoneComplete, normalizePhoneForCrm } from "@/lib/phone";
+import { submitForm } from "@/lib/formGuard";
+import HoneypotField from "./HoneypotField";
 
 // ── Modal ──────────────────────────────────────────────────────────────────
 // Контекстная модалка заявки: содержимое и цель зависят от type (tour | diagnostics).
@@ -55,9 +57,11 @@ export function Modal({
     if (!isPhoneComplete(phone)) ymGoal('form_error', { field: 'phone' });
     if (!name || !isPhoneComplete(phone) || !agreed) return;
     setLoading(true);
-    await sendLead(name, normalizePhoneForCrm(phone), age, `Модальное окно (${source})`, comment, modalType);
-    ymGoal(LEAD_GOAL_BY_TYPE[modalType], { application_type: modalType, source });
+    const ok = await sendLead(e.currentTarget as HTMLFormElement, name, normalizePhoneForCrm(phone), age, `Модальное окно (${source})`, comment, modalType);
     setLoading(false);
+    if (!ok) return;
+    if (modalType === "tour") ymGoal("form_excursion_submit", { application_type: modalType, source });
+    ymGoal(LEAD_GOAL_BY_TYPE[modalType], { application_type: modalType, source });
     setDone(true);
   };
 
@@ -73,6 +77,7 @@ export function Modal({
               <p className="modal-sub">{content.subtitle}</p>
             </div>
             <form onSubmit={submit} className="modal-form">
+              <HoneypotField />
               <div className="modal-field-group">
                 <input
                   className={`modal-input ${submitAttempted && !name ? "modal-input-error" : ""}`}
@@ -120,12 +125,8 @@ export function Modal({
 
 const SEND_LEAD_URL = "https://functions.poehali.dev/57047ae6-091f-4a98-8391-1bc5b14b157a";
 
-async function sendLead(name: string, phone: string, age: string, source: string, comment: string, applicationType: ModalType) {
-  await fetch(SEND_LEAD_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, phone, age, source, comment, application_type: applicationType }),
-  });
+async function sendLead(form: HTMLFormElement, name: string, phone: string, age: string, source: string, comment: string, applicationType: ModalType) {
+  return submitForm(SEND_LEAD_URL, { name, phone, age, source, comment, application_type: applicationType }, form);
 }
 
 // ── HeroSection (БЛОК 2: Первый экран) ──────────────────────────────────────

@@ -5,6 +5,8 @@ import { Section } from "./InfoSections";
 import WaveDivider from "./WaveDivider";
 import { ymGoal } from "@/lib/ym";
 import ConsentCheckbox from "./ConsentCheckbox";
+import { submitForm } from "@/lib/formGuard";
+import HoneypotField from "./HoneypotField";
 
 const SEND_CHECKLIST_URL = "https://functions.poehali.dev/34e49ad9-ee73-40be-bb8a-e56d71588fb0";
 
@@ -41,13 +43,10 @@ export default function FooterSections({
     e.preventDefault();
     if (!name || !email || !agreed) return;
     setLoading(true);
-    await fetch(SEND_CHECKLIST_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email }),
-    });
-    ymGoal('form_checklist_submit');
+    const ok = await submitForm(SEND_CHECKLIST_URL, { name, email }, e.currentTarget as HTMLFormElement);
     setLoading(false);
+    if (!ok) return;
+    ymGoal('form_checklist_submit');
     setDone(true);
   };
 
@@ -68,6 +67,7 @@ export default function FooterSections({
             </ul>
             {!done ? (
               <form onSubmit={submitChecklist} className="leadmag-form">
+                <HoneypotField />
                 <input
                   className="leadmag-input"
                   placeholder="Ваше имя"

@@ -4700,6 +4700,13 @@
     color: var(--teal);
     flex-shrink: 0;
   }
+  .cookie-banner {
+    bottom: 68px;
+    z-index: 96;
+  }
+  .ld {
+    padding-bottom: 68px;
+  }
   .sticky-bottom-cta {
     flex: 1;
     background: linear-gradient(90deg, #ff4500 0%, #ff6b35 50%, #ff4500 100%);

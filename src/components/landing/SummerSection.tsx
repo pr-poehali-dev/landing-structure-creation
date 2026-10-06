@@ -4,6 +4,8 @@ import { ymGoal } from "@/lib/ym";
 import ConsentCheckbox from "./ConsentCheckbox";
 import PhoneField from "./PhoneField";
 import { isPhoneComplete, normalizePhoneForCrm } from "@/lib/phone";
+import { submitForm } from "@/lib/formGuard";
+import HoneypotField from "./HoneypotField";
 
 const SEND_LEAD_URL = "https://functions.poehali.dev/57047ae6-091f-4a98-8391-1bc5b14b157a";
 
@@ -38,13 +40,14 @@ function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) 
     setLoading(true);
     const shiftObj = SHIFTS.find(s => String(s.id) === shift);
     const source = `Летний клуб — ${shiftObj?.label} (${shiftObj?.dates}), ${duration === "1" ? "1 неделя — 7 000 ₽" : "2 недели — 13 000 ₽"}`;
-    await fetch(SEND_LEAD_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, phone: normalizePhoneForCrm(phone), age: "4–7 лет", source }),
-    });
-    ymGoal("summer_form_submit");
+    const ok = await submitForm(
+      SEND_LEAD_URL,
+      { name, phone: normalizePhoneForCrm(phone), age: "4–7 лет", source },
+      e.currentTarget as HTMLFormElement
+    );
     setLoading(false);
+    if (!ok) return;
+    ymGoal("summer_form_submit");
     setDone(true);
   };
 
@@ -60,6 +63,7 @@ function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) 
               <p className="modal-sub">Выберите смену — мы перезвоним и подтвердим место</p>
             </div>
             <form onSubmit={submit} className="modal-form">
+              <HoneypotField />
               <input className="modal-input" placeholder="Имя" value={name} onChange={e => setName(e.target.value)} required />
               <PhoneField value={phone} onChange={setPhone} submitAttempted={submitAttempted} />
               <select className="modal-input modal-select" value={shift} onChange={e => setShift(e.target.value)} required>

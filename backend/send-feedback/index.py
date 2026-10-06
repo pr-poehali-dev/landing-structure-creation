@@ -4,6 +4,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+from guard import check_request, origin_line
+
 
 def handler(event: dict, context) -> dict:
     """Отправляет анкету обратной связи от родителя на email владельца центра"""
@@ -21,6 +23,11 @@ def handler(event: dict, context) -> dict:
         }
 
     body = json.loads(event.get('body') or '{}')
+
+    denied = check_request(event, body, 'feedback')
+    if denied:
+        return denied
+
     reason = str(body.get('reason', '')).strip()
     reason_other = str(body.get('reasonOther', '')).strip()
     rating = str(body.get('rating', '')).strip()
@@ -66,7 +73,7 @@ def handler(event: dict, context) -> dict:
         </tr>
       </table>
       <p style="margin-top: 16px; color: #E85D04; font-weight: bold; font-size: 13px;">Не забудьте лично отправить чек-лист в течение 24 часов!</p>
-      <p style="margin-top: 8px; color: #888; font-size: 13px;">Анкета отправлена с сайта ribkadollilend.ru</p>
+      <p style="margin-top: 8px; color: #888; font-size: 13px;">{origin_line(body)}</p>
     </div>
     """
 

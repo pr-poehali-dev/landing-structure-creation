@@ -6,6 +6,8 @@ import { ymGoal } from "@/lib/ym";
 import { LEAD_GOAL_BY_TYPE, deriveModalType, MODAL_CONTENT, CHILD_AGE_OPTIONS } from "../modalContent";
 import PhoneField from "../PhoneField";
 import { isPhoneComplete, normalizePhoneForCrm } from "@/lib/phone";
+import { submitForm } from "@/lib/formGuard";
+import HoneypotField from "../HoneypotField";
 import type { QuizConfig, QuizVerdict, QuizScaleResult } from "./types";
 import { computeTotalScore, computeVerdictScore, findVerdict, computeScales, formatProgress, buildQuizResultSummary } from "./utils";
 
@@ -18,12 +20,8 @@ interface QuizLeadPayload {
   scales: QuizScaleResult[];
 }
 
-async function sendQuizLead(name: string, phone: string, age: string, comment: string, source: string, applicationType: string, quiz: QuizLeadPayload) {
-  await fetch(SEND_LEAD_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, phone, age, comment, source, application_type: applicationType, quiz }),
-  });
+async function sendQuizLead(form: HTMLFormElement, name: string, phone: string, age: string, comment: string, source: string, applicationType: string, quiz: QuizLeadPayload) {
+  return submitForm(SEND_LEAD_URL, { name, phone, age, comment, source, application_type: applicationType, quiz }, form);
 }
 
 type QuizStep = "question" | "result" | "lead" | "success";
@@ -135,12 +133,16 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
     const cta = verdict.cta;
     const modalType = deriveModalType(undefined, cta.formType);
     const source = `Квиз (${cta.formType ?? cta.action}) — ${summary.replace(/\n/g, "; ")}`;
-    await sendQuizLead(name, normalizePhoneForCrm(phone), age, comment, source, modalType, {
+    const ok = await sendQuizLead(e.currentTarget as HTMLFormElement, name, normalizePhoneForCrm(phone), age, comment, source, modalType, {
       quizId: config.metrics.quizIdInEvent,
       verdictTitle: verdict.title,
       score,
       scales,
     });
+    if (!ok) {
+      setLeadLoading(false);
+      return;
+    }
     ymGoal(config.metrics.lead, {
       quizId: config.metrics.quizIdInEvent,
       verdict: verdict.title,
@@ -258,6 +260,7 @@ export default function QuizModal({ config, open, onClose }: QuizModalProps) {
                 {MODAL_CONTENT[deriveModalType(undefined, verdict.cta.formType)].subtitle}
               </p>
               <form onSubmit={submitLead} className="modal-form">
+                <HoneypotField />
                 <div className="modal-field-group">
                   <input
                     className={`modal-input ${submitAttempted && !name ? "modal-input-error" : ""}`}

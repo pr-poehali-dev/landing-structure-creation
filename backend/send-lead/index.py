@@ -4,6 +4,8 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+from guard import check_request, origin_line
+
 
 def render_quiz_block(quiz: dict) -> str:
     """Формирует HTML-блок с результатом квиза (вердикт + шкалы), если он передан в заявке"""
@@ -82,6 +84,11 @@ def handler(event: dict, context) -> dict:
         }
 
     body = json.loads(event.get('body') or '{}')
+
+    denied = check_request(event, body, 'lead')
+    if denied:
+        return denied
+
     name = body.get('name', '').strip()
     phone = body.get('phone', '').strip()
     age = body.get('age', '').strip()
@@ -89,6 +96,14 @@ def handler(event: dict, context) -> dict:
     source = body.get('source', 'Форма на сайте')
     quiz = body.get('quiz')
     application_type = body.get('application_type', '').strip()
+
+    digits = ''.join(ch for ch in phone if ch.isdigit())
+    if phone and not (len(digits) == 11 and digits[0] in '78'):
+        return {
+            'statusCode': 400,
+            'headers': {'Access-Control-Allow-Origin': '*'},
+            'body': json.dumps({'error': 'Некорректный номер телефона'})
+        }
 
     if not name or not phone:
         return {
@@ -148,7 +163,7 @@ def handler(event: dict, context) -> dict:
         </tr>
       </table>
       {quiz_block}
-      <p style="margin-top: 16px; color: #888; font-size: 13px;">Заявка отправлена с сайта ribkadolli.ru</p>
+      <p style="margin-top: 16px; color: #888; font-size: 13px;">{origin_line(body)}</p>
     </div>
     """
 

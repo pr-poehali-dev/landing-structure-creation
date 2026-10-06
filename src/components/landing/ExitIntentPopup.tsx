@@ -3,6 +3,8 @@ import Icon from "@/components/ui/icon";
 import { CHECKLIST } from "./constants";
 import { ymGoal } from "@/lib/ym";
 import ConsentCheckbox from "./ConsentCheckbox";
+import { submitForm } from "@/lib/formGuard";
+import HoneypotField from "./HoneypotField";
 
 const SEND_CHECKLIST_URL = "https://functions.poehali.dev/34e49ad9-ee73-40be-bb8a-e56d71588fb0";
 
@@ -50,13 +52,10 @@ export default function ExitIntentPopup() {
     e.preventDefault();
     if (!name || !email || !agreed) return;
     setLoading(true);
-    await fetch(SEND_CHECKLIST_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email }),
-    });
-    ymGoal('form_exit_popup_submit');
+    const ok = await submitForm(SEND_CHECKLIST_URL, { name, email }, e.currentTarget as HTMLFormElement);
     setLoading(false);
+    if (!ok) return;
+    ymGoal('form_exit_popup_submit');
     setDone(true);
   };
 
@@ -84,6 +83,7 @@ export default function ExitIntentPopup() {
 
         {!done ? (
           <form onSubmit={handleSubmit} className="exit-popup-form">
+            <HoneypotField />
             <input
               className="exit-popup-input"
               placeholder="Ваше имя"

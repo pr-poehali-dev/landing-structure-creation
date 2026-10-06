@@ -3,6 +3,8 @@ import { useSeo } from "@/lib/useSeo";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { formatPhoneInput, isPhoneComplete, normalizePhoneForCrm } from "@/lib/phone";
+import { submitForm } from "@/lib/formGuard";
+import HoneypotField from "@/components/landing/HoneypotField";
 
 const SEND_FEEDBACK_URL = "https://functions.poehali.dev/8d437c2a-0615-4525-9ca4-0eda4e314c84";
 const LOGO_URL = "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/05246deb-af27-4e0c-be50-d0635a2372ab.png";
@@ -33,18 +35,17 @@ const RATING_OPTIONS = [
   },
 ];
 
-async function sendFeedback(payload: {
-  reason: string;
-  reasonOther: string;
-  rating: string;
-  missing: string;
-  phone: string;
-}) {
-  await fetch(SEND_FEEDBACK_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
+async function sendFeedback(
+  payload: {
+    reason: string;
+    reasonOther: string;
+    rating: string;
+    missing: string;
+    phone: string;
+  },
+  form: HTMLFormElement
+) {
+  return submitForm(SEND_FEEDBACK_URL, payload, form);
 }
 
 export default function Feedback() {
@@ -71,14 +72,18 @@ export default function Feedback() {
     if (!phoneValid) return;
 
     setLoading(true);
-    await sendFeedback({
-      reason,
-      reasonOther: isOtherSelected ? reasonOther : "",
-      rating,
-      missing,
-      phone: normalizePhoneForCrm(phone),
-    });
+    const ok = await sendFeedback(
+      {
+        reason,
+        reasonOther: isOtherSelected ? reasonOther : "",
+        rating,
+        missing,
+        phone: normalizePhoneForCrm(phone),
+      },
+      e.currentTarget as HTMLFormElement
+    );
     setLoading(false);
+    if (!ok) return;
     setDone(true);
   };
 
@@ -187,7 +192,7 @@ export default function Feedback() {
 
                 <form
                   onSubmit={submit}
-                  className="bg-white print:shadow-none print:border print:border-gray-300"
+                  className="bg-white print:shadow-none print:border print:border-gray-300 relative"
                   style={{
                     width: "100%",
                     padding: 28,
@@ -195,6 +200,7 @@ export default function Feedback() {
                     boxShadow: "0 10px 40px rgba(0,0,0,0.12)",
                   }}
                 >
+                  <HoneypotField />
                   {/* Вопрос 1 */}
                   <div className="mb-6">
                     <h2
