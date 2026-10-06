@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import ContractPreview from "./ContractPreview";
 import FormField from "./FormField";
 import {
   EMPTY_FORM,
@@ -20,6 +21,7 @@ const SUBMIT_ENABLED = false;
 
 export default function ContractForm() {
   const [f, setF] = useState<FormState>(EMPTY_FORM);
+  const [step, setStep] = useState<"form" | "preview">("form");
   const [touched, setTouched] = useState<Partial<Record<FieldKey, boolean>>>({});
   const errors = useMemo(() => getErrors(f), [f]);
   const valid = Object.keys(errors).length === 0;
@@ -41,11 +43,28 @@ export default function ContractForm() {
     />
   );
 
+  const showPreview = () => {
+    setStep("preview");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  if (step === "preview") {
+    return (
+      <ContractPreview
+        form={f}
+        onBack={() => setStep("form")}
+        onConfirm={() => undefined}
+        confirmEnabled={SUBMIT_ENABLED}
+      />
+    );
+  }
+
   return (
     <form
       className="space-y-6"
       onSubmit={(e) => {
         e.preventDefault();
+        if (valid) showPreview();
       }}
     >
       <section className="space-y-4">
@@ -238,12 +257,9 @@ export default function ContractForm() {
       </section>
 
       <div className="space-y-2">
-        <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={!valid || !SUBMIT_ENABLED}>
+        <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={!valid}>
           Получить код для подписания
         </Button>
-        {!SUBMIT_ENABLED && valid && (
-          <p className="text-sm text-muted-foreground">Подписание временно недоступно. Мы сообщим, когда оно заработает.</p>
-        )}
       </div>
     </form>
   );
