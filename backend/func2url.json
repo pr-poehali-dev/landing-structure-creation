@@ -1,4 +1,5 @@
 {
+  "contracts-admin": "https://functions.poehali.dev/68be8c9a-fc88-49dd-b91b-c6802b66ae84",
   "contract-sign": "https://functions.poehali.dev/22a3d560-7847-466d-be7b-9f6e4cbd6cbf",
   "send-feedback": "https://functions.poehali.dev/8d437c2a-0615-4525-9ca4-0eda4e314c84",
   "send-checklist": "https://functions.poehali.dev/34e49ad9-ee73-40be-bb8a-e56d71588fb0",

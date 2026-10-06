@@ -23,6 +23,7 @@ import Checklist8 from "./pages/Checklist8";
 import Checklist9 from "./pages/Checklist9";
 import LegacyRedirect from "./components/LegacyRedirect";
 import ReadinessMapAdminPage from "./pages/internal/ReadinessMapAdminPage";
+import ContractsAdmin from "./pages/internal/ContractsAdmin";
 import NotFound from "./pages/NotFound";
 import ServiceAwareWidgets from "./components/ServiceAwareWidgets";
 import SignContract from "./pages/contract/SignContract";
@@ -61,6 +62,7 @@ const App = () => (
           <Route path="/dogovor/" element={<SignContract />} />
           <Route path="/oferta/" element={<Offer />} />
           <Route path="/dogovor/tekst/" element={<ContractText />} />
+          <Route path="/internal/contracts/" element={<ContractsAdmin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
