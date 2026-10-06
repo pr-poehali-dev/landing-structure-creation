@@ -4,7 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import CodeStep from "./CodeStep";
 import ContractPreview from "./ContractPreview";
+import SignedNotice from "./SignedNotice";
+import { requestCode } from "./contractApi";
 import FormField from "./FormField";
 import {
   EMPTY_FORM,
@@ -21,7 +24,10 @@ const SUBMIT_ENABLED = false;
 
 export default function ContractForm() {
   const [f, setF] = useState<FormState>(EMPTY_FORM);
-  const [step, setStep] = useState<"form" | "preview">("form");
+  const [step, setStep] = useState<"form" | "preview" | "code" | "done">("form");
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState("");
+  const [contractNumber, setContractNumber] = useState<number | undefined>();
   const [touched, setTouched] = useState<Partial<Record<FieldKey, boolean>>>({});
   const errors = useMemo(() => getErrors(f), [f]);
   const valid = Object.keys(errors).length === 0;
@@ -48,13 +54,39 @@ export default function ContractForm() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const sendCode = async () => {
+    setSending(true);
+    setSendError("");
+    const res = await requestCode(f);
+    setSending(false);
+    if (res.ok) setStep("code");
+    else setSendError(res.error ?? "Ошибка");
+  };
+
+  if (step === "done") return <SignedNotice email={f.email} number={contractNumber} />;
+
+  if (step === "code") {
+    return (
+      <CodeStep
+        form={f}
+        onBack={() => setStep("preview")}
+        onSigned={(n) => {
+          setContractNumber(n);
+          setStep("done");
+        }}
+      />
+    );
+  }
+
   if (step === "preview") {
     return (
       <ContractPreview
         form={f}
         onBack={() => setStep("form")}
-        onConfirm={() => undefined}
-        confirmEnabled={SUBMIT_ENABLED}
+        onConfirm={sendCode}
+        confirmEnabled={SUBMIT_ENABLED && !sending}
+        unavailable={!SUBMIT_ENABLED}
+        error={sendError}
       />
     );
   }

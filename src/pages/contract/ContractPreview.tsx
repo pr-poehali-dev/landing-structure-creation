@@ -11,6 +11,8 @@ interface Props {
   onBack: () => void;
   onConfirm: () => void;
   confirmEnabled: boolean;
+  unavailable?: boolean;
+  error?: string;
 }
 
 const Row = ({ label, value }: { label: string; value: string }) => (
@@ -29,7 +31,7 @@ const Group = ({ title, children }: { title: string; children: React.ReactNode }
 
 const yesNo = (v: boolean) => (v ? "Да" : "Нет");
 
-export default function ContractPreview({ form: f, onBack, onConfirm, confirmEnabled }: Props) {
+export default function ContractPreview({ form: f, onBack, onConfirm, confirmEnabled, unavailable, error }: Props) {
   const tariff = f.tariff ? TARIFF_LABELS[f.tariff] : null;
   return (
     <div className="space-y-6">
@@ -80,7 +82,8 @@ export default function ContractPreview({ form: f, onBack, onConfirm, confirmEna
             Всё верно, получить код для подписания
           </Button>
         </div>
-        {!confirmEnabled && (
+        {error && <p className="text-sm text-destructive">{error}</p>}
+        {unavailable && (
           <p className="text-sm text-muted-foreground">Подписание временно недоступно. Мы сообщим, когда оно заработает.</p>
         )}
       </div>
