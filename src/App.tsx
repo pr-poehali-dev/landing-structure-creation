@@ -24,8 +24,10 @@ import Checklist9 from "./pages/Checklist9";
 import LegacyRedirect from "./components/LegacyRedirect";
 import ReadinessMapAdminPage from "./pages/internal/ReadinessMapAdminPage";
 import NotFound from "./pages/NotFound";
-import ExitIntentPopup from "./components/landing/ExitIntentPopup";
-import CookieBanner from "./components/landing/CookieBanner";
+import ServiceAwareWidgets from "./components/ServiceAwareWidgets";
+import SignContract from "./pages/contract/SignContract";
+import Offer from "./pages/contract/Offer";
+import ContractText from "./pages/contract/ContractText";
 
 const queryClient = new QueryClient();
 
@@ -34,9 +36,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <ExitIntentPopup />
-      <CookieBanner />
       <BrowserRouter>
+        <ServiceAwareWidgets />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/privacy" element={<Privacy />} />
@@ -57,6 +58,9 @@ const App = () => (
           <Route path="/checklist-8/" element={<Checklist8 />} />
           <Route path="/checklist-9/" element={<Checklist9 />} />
           <Route path="/internal/readiness-map/" element={<ReadinessMapAdminPage />} />
+          <Route path="/dogovor/" element={<SignContract />} />
+          <Route path="/oferta/" element={<Offer />} />
+          <Route path="/dogovor/tekst/" element={<ContractText />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,21 +1,38 @@
 User-agent: *
 Allow: /
 Disallow: /internal/
+Disallow: /dogovor/
+Disallow: /oferta/
 
 User-agent: Googlebot
 Allow: /
+Disallow: /dogovor/
+Disallow: /oferta/
+Disallow: /internal/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /dogovor/
+Disallow: /oferta/
+Disallow: /internal/
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /dogovor/
+Disallow: /oferta/
+Disallow: /internal/
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /dogovor/
+Disallow: /oferta/
+Disallow: /internal/
 
 User-agent: Yandex
 Allow: /
+Disallow: /dogovor/
+Disallow: /oferta/
+Disallow: /internal/
 Host: ribkadollilend.ru
 
 Sitemap: https://ribkadollilend.ru/sitemap.xml
