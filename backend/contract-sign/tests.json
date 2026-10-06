@@ -1,0 +1,31 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Unknown action",
+      "method": "POST",
+      "path": "/",
+      "body": {"action": "x"},
+      "expectedStatus": 400
+    },
+    {
+      "name": "Empty form rejected",
+      "method": "POST",
+      "path": "/",
+      "body": {"action": "request_code", "form": {}},
+      "expectedStatus": 400
+    },
+    {
+      "name": "Bad code format rejected",
+      "method": "POST",
+      "path": "/",
+      "body": {"action": "verify_code", "email": "a@b.ru", "code": "12"},
+      "expectedStatus": 400
+    }
+  ]
+}
