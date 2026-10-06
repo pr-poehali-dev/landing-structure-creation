@@ -235,6 +235,7 @@ export default function FooterSections({
             <span>© 2026 ДДЦ «Рыбка Долли»</span>
             <span>ИП Савченко И.И. · ОГРНИП 318911200074795</span>
             <a href="/privacy" style={{ color: "rgba(255,255,255,0.35)", textDecoration: "underline", fontSize: 12 }}>Политика конфиденциальности</a>
+            <a href="/internal/contracts/" rel="nofollow" style={{ color: "rgba(255,255,255,0.25)", fontSize: 12 }}>Вход для сотрудников</a>
           </div>
         </div>
       </footer>
