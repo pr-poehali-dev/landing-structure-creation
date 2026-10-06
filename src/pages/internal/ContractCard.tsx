@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { downloadWord } from "./wordExport";
 import type { ContractForm } from "@/pages/contract/formUtils";
 
 export interface ContractDetails {
@@ -19,13 +21,43 @@ const Row = ({ label, value }: { label: string; value: string }) => (
   </div>
 );
 
-export default function ContractCard({ c, onBack }: { c: ContractDetails; onBack: () => void }) {
+interface Props {
+  c: ContractDetails;
+  onBack: () => void;
+  adminUrl: string;
+  adminKey: string;
+}
+
+export default function ContractCard({ c, onBack, adminUrl, adminKey }: Props) {
   const f = c.form;
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+
+  const download = async () => {
+    setBusy(true);
+    setError("");
+    try {
+      const res = await fetch(`${adminUrl}?id=${c.id}&format=doc`, { headers: { "X-Auth-Token": adminKey } });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Ошибка");
+      downloadWord(`Dogovor_${c.id}`, data.html);
+    } catch (e) {
+      setError((e as Error).message);
+    }
+    setBusy(false);
+  };
+
   return (
     <main className="mx-auto max-w-3xl space-y-6 px-4 py-10">
-      <Button variant="outline" onClick={onBack}>
-        К списку
-      </Button>
+      <div className="flex flex-wrap gap-3">
+        <Button variant="outline" onClick={onBack}>
+          К списку
+        </Button>
+        <Button onClick={download} disabled={busy}>
+          Скачать договор (DOC)
+        </Button>
+      </div>
+      {error && <p className="text-sm text-destructive">{error}</p>}
       <h1 className="text-2xl font-bold">Договор № {c.id}</h1>
       <dl className="divide-y rounded-lg border px-4">
         <Row label="Статус" value={c.status} />

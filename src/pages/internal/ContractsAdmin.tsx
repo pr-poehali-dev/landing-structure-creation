@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import useNoIndex from "@/hooks/useNoIndex";
+import { downloadWord, escapeHtml } from "./wordExport";
 import ContractCard, { type ContractDetails } from "./ContractCard";
 
 const ADMIN_URL = "https://functions.poehali.dev/68be8c9a-fc88-49dd-b91b-c6802b66ae84";
@@ -60,7 +61,29 @@ export default function ContractsAdmin() {
     setBusy(false);
   };
 
-  if (card) return <ContractCard c={card} onBack={() => setCard(null)} />;
+  const downloadList = () => {
+    if (!rows) return;
+    const head = ["№", "Дата", "ФИО", "Email", "Тариф", "Статус"];
+    const cell = "border:1px solid #999;padding:4px;";
+    const body =
+      "<h2>Подписанные договоры</h2><table style='border-collapse:collapse;'><tr>" +
+      head.map((h) => `<th style='${cell}'>${h}</th>`).join("") +
+      "</tr>" +
+      rows
+        .map(
+          (r) =>
+            "<tr>" +
+            [r.id, fmt(r.signed_at), r.full_name, r.email, TARIFFS[r.tariff] ?? r.tariff, r.status]
+              .map((v) => `<td style='${cell}'>${escapeHtml(String(v))}</td>`)
+              .join("") +
+            "</tr>"
+        )
+        .join("") +
+      "</table>";
+    downloadWord("Spisok_dogovorov", body);
+  };
+
+  if (card) return <ContractCard c={card} adminUrl={ADMIN_URL} adminKey={key} onBack={() => setCard(null)} />;
 
   return (
     <main className="mx-auto max-w-5xl space-y-6 px-4 py-10">
@@ -79,6 +102,11 @@ export default function ContractsAdmin() {
       </form>
       {error && <p className="text-sm text-destructive">{error}</p>}
       {rows && rows.length === 0 && <p className="text-muted-foreground">Подписанных договоров пока нет.</p>}
+      {rows && rows.length > 0 && (
+        <Button variant="outline" onClick={downloadList}>
+          Скачать список (DOC)
+        </Button>
+      )}
       {rows && rows.length > 0 && (
         <div className="overflow-x-auto rounded-lg border">
           <table className="w-full text-sm">

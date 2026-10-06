@@ -3,6 +3,12 @@ import json
 import os
 
 import psycopg2
+from datetime import datetime, timedelta, timezone
+
+from contract_render import contract_html, signature_mark_html, questionnaire_html
+
+MSK = timezone(timedelta(hours=3))
+MONTHS = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
 
 CORS = {'Access-Control-Allow-Origin': '*'}
 
@@ -53,9 +59,16 @@ def handler(event: dict, context) -> dict:
             row = cur.fetchone()
             if row is None:
                 return reply(404, {'error': 'Договор не найден'})
+            form = json.loads(row[7])
+            if params.get('format') == 'doc':
+                dt = row[1].astimezone(MSK)
+                date_str = f'«{dt.day:02d}» {MONTHS[dt.month - 1]} {dt.year} г.'
+                mark = signature_mark_html(form, dt.strftime('%d.%m.%Y'), dt.strftime('%H:%M:%S') + ' (МСК)', row[5] or '')
+                html_doc = mark + contract_html(form, row[0], date_str) + questionnaire_html(form) + mark
+                return reply(200, {'id': row[0], 'html': html_doc})
             return reply(200, {
                 'id': row[0], 'signed_at': row[1], 'full_name': row[2], 'email': row[3],
-                'tariff': row[4], 'ip': row[5], 'status': row[6], 'form': json.loads(row[7]),
+                'tariff': row[4], 'ip': row[5], 'status': row[6], 'form': form,
             })
         cur.execute(
             "SELECT id, signed_at, full_name, email, tariff, status FROM contracts ORDER BY id DESC LIMIT 500"
