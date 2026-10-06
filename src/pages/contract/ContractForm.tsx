@@ -1,0 +1,250 @@
+import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import FormField from "./FormField";
+import {
+  EMPTY_FORM,
+  formatDate,
+  formatDeptCode,
+  formatPhone,
+  getErrors,
+  digits,
+  type ContractForm as FormState,
+  type FieldKey,
+} from "./formUtils";
+
+const SUBMIT_ENABLED = false;
+
+export default function ContractForm() {
+  const [f, setF] = useState<FormState>(EMPTY_FORM);
+  const [touched, setTouched] = useState<Partial<Record<FieldKey, boolean>>>({});
+  const errors = useMemo(() => getErrors(f), [f]);
+  const valid = Object.keys(errors).length === 0;
+
+  const set = <K extends FieldKey>(k: K, v: FormState[K]) => {
+    setF((p) => ({ ...p, [k]: v }));
+    setTouched((p) => ({ ...p, [k]: true }));
+  };
+  const err = (k: FieldKey) => (touched[k] ? errors[k] : undefined);
+
+  const text = (k: FieldKey, label: string, extra: Partial<React.ComponentProps<typeof FormField>> = {}) => (
+    <FormField
+      id={k}
+      label={label}
+      value={String(f[k])}
+      onChange={(v) => set(k, v as never)}
+      error={err(k)}
+      {...extra}
+    />
+  );
+
+  return (
+    <form
+      className="space-y-6"
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
+      <section className="space-y-4">
+        <h3 className="text-lg font-semibold">Данные Заказчика (родителя)</h3>
+        {text("fullName", "ФИО полностью", { autoComplete: "name" })}
+        <div className="grid gap-4 sm:grid-cols-2">
+          <FormField
+            id="birthDate"
+            label="Дата рождения"
+            value={f.birthDate}
+            onChange={(v) => set("birthDate", formatDate(v))}
+            error={err("birthDate")}
+            placeholder="ДД.ММ.ГГГГ"
+            inputMode="numeric"
+          />
+          <FormField
+            id="email"
+            label="Email (для кода и договора)"
+            value={f.email}
+            onChange={(v) => set("email", v)}
+            error={err("email")}
+            inputMode="email"
+            autoComplete="email"
+            placeholder="name@mail.ru"
+          />
+          <FormField
+            id="phoneMother"
+            label="Контактный телефон (мама)"
+            value={f.phoneMother}
+            onChange={(v) => set("phoneMother", formatPhone(v))}
+            error={err("phoneMother")}
+            inputMode="tel"
+            placeholder="+7 (___) ___-__-__"
+          />
+          <FormField
+            id="phoneFather"
+            label="Контактный телефон (папа)"
+            required={false}
+            value={f.phoneFather}
+            onChange={(v) => set("phoneFather", formatPhone(v))}
+            error={err("phoneFather")}
+            inputMode="tel"
+            placeholder="+7 (___) ___-__-__"
+          />
+        </div>
+        {text("address", "Адрес регистрации", { autoComplete: "street-address" })}
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-lg font-semibold">Паспорт</h3>
+        <div className="grid gap-4 sm:grid-cols-3">
+          <FormField
+            id="passportSeries"
+            label="Серия"
+            value={f.passportSeries}
+            onChange={(v) => set("passportSeries", digits(v).slice(0, 4))}
+            error={err("passportSeries")}
+            inputMode="numeric"
+            placeholder="0000"
+          />
+          <FormField
+            id="passportNumber"
+            label="Номер"
+            value={f.passportNumber}
+            onChange={(v) => set("passportNumber", digits(v).slice(0, 6))}
+            error={err("passportNumber")}
+            inputMode="numeric"
+            placeholder="000000"
+          />
+          <FormField
+            id="passportDeptCode"
+            label="Код подразделения"
+            value={f.passportDeptCode}
+            onChange={(v) => set("passportDeptCode", formatDeptCode(v))}
+            error={err("passportDeptCode")}
+            inputMode="numeric"
+            placeholder="000-000"
+          />
+        </div>
+        <FormField
+          id="passportIssuedBy"
+          label="Кем выдан"
+          value={f.passportIssuedBy}
+          onChange={(v) => set("passportIssuedBy", v)}
+          error={err("passportIssuedBy")}
+        />
+        <FormField
+          id="passportIssuedDate"
+          label="Дата выдачи"
+          value={f.passportIssuedDate}
+          onChange={(v) => set("passportIssuedDate", formatDate(v))}
+          error={err("passportIssuedDate")}
+          inputMode="numeric"
+          placeholder="ДД.ММ.ГГГГ"
+          className="sm:max-w-xs"
+        />
+      </section>
+
+      <section className="space-y-4">
+        <h3 className="text-lg font-semibold">Ребёнок</h3>
+        {text("childName", "ФИО ребёнка полностью")}
+        <div className="grid gap-4 sm:grid-cols-2">
+          <FormField
+            id="childBirthDate"
+            label="Дата рождения ребёнка"
+            value={f.childBirthDate}
+            onChange={(v) => set("childBirthDate", formatDate(v))}
+            error={err("childBirthDate")}
+            inputMode="numeric"
+            placeholder="ДД.ММ.ГГГГ"
+          />
+          {text("childCertificate", "Номер свидетельства о рождении")}
+        </div>
+        {text("trustedPersons", "Лица, которым доверено забирать ребёнка", {
+          multiline: true,
+          placeholder: "ФИО и степень родства, через запятую",
+        })}
+        {text("health", "Сведения о состоянии здоровья / аллергиях", {
+          multiline: true,
+          placeholder: "Если нет — напишите «нет»",
+        })}
+      </section>
+
+      <section className="space-y-3">
+        <h3 className="text-lg font-semibold">
+          Тариф<span className="text-destructive"> *</span>
+        </h3>
+        <RadioGroup value={f.tariff} onValueChange={(v) => set("tariff", v as FormState["tariff"])} className="gap-3">
+          <Label htmlFor="t-basic" className="flex cursor-pointer items-start gap-3 rounded-lg border p-4 font-normal">
+            <RadioGroupItem id="t-basic" value="basic" className="mt-1" />
+            <span>
+              <span className="block font-semibold">«Основной» — 25 000 руб./мес</span>
+              <span className="text-sm text-muted-foreground">Приложение № 1</span>
+            </span>
+          </Label>
+          <Label htmlFor="t-special" className="flex cursor-pointer items-start gap-3 rounded-lg border p-4 font-normal">
+            <RadioGroupItem id="t-special" value="special" className="mt-1" />
+            <span>
+              <span className="block font-semibold">«Специальный» — 20 000 руб./мес</span>
+              <span className="text-sm text-muted-foreground">Минимальный срок 4 месяца, Приложение № 2</span>
+            </span>
+          </Label>
+        </RadioGroup>
+        {err("tariff") && <p className="text-sm text-destructive">{errors.tariff}</p>}
+      </section>
+
+      <section className="space-y-3">
+        <div className="flex items-start gap-3">
+          <Checkbox
+            id="agreeContract"
+            className="mt-1"
+            checked={f.agreeContract}
+            onCheckedChange={(v) => set("agreeContract", v === true)}
+          />
+          <Label htmlFor="agreeContract" className="font-normal leading-snug">
+            С условиями{" "}
+            <Link to="/dogovor/tekst/" target="_blank" className="text-primary underline">
+              Договора
+            </Link>
+            , Приложениями № 1 и № 2 и{" "}
+            <Link to="/oferta/" target="_blank" className="text-primary underline">
+              оферты
+            </Link>{" "}
+            ознакомлен(а) и согласен(а) <span className="text-destructive">*</span>
+          </Label>
+        </div>
+        <div className="flex items-start gap-3">
+          <Checkbox
+            id="agreePersonal"
+            className="mt-1"
+            checked={f.agreePersonal}
+            onCheckedChange={(v) => set("agreePersonal", v === true)}
+          />
+          <Label htmlFor="agreePersonal" className="font-normal leading-snug">
+            Даю согласие на обработку персональных данных (своих и Ребёнка) в соответствии с ФЗ № 152-ФЗ{" "}
+            <span className="text-destructive">*</span>
+          </Label>
+        </div>
+        <div className="flex items-start gap-3">
+          <Checkbox
+            id="agreePhoto"
+            className="mt-1"
+            checked={f.agreePhoto}
+            onCheckedChange={(v) => set("agreePhoto", v === true)}
+          />
+          <Label htmlFor="agreePhoto" className="font-normal leading-snug">
+            Даю согласие на фото- и видеосъёмку Ребёнка и размещение материалов в соцсетях центра
+          </Label>
+        </div>
+      </section>
+
+      <div className="space-y-2">
+        <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={!valid || !SUBMIT_ENABLED}>
+          Получить код для подписания
+        </Button>
+        {!SUBMIT_ENABLED && valid && (
+          <p className="text-sm text-muted-foreground">Подписание временно недоступно. Мы сообщим, когда оно заработает.</p>
+        )}
+      </div>
+    </form>
+  );
+}
