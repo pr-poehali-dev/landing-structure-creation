@@ -1,7 +1,7 @@
 import { toast } from "sonner";
 
-// Публичный ключ клиента Яндекс СмартКапчи (не секрет). Пока пусто — капча не запрашивается.
-export const SMARTCAPTCHA_SITEKEY = "";
+// Публичный ключ клиента Яндекс СмартКапчи (не секрет)
+export const SMARTCAPTCHA_SITEKEY = "ysc1_4jjtjyIRoxl3OZWzi4v1BLJMwd9okmiLnzSdjhPU51f17afe";
 
 interface SmartCaptchaApi {
   render: (container: HTMLElement, params: Record<string, unknown>) => number;
