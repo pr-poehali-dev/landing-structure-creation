@@ -1,0 +1,1 @@
+UPDATE t_p54774028_landing_structure_cr.contracts SET status = 'Тест' WHERE id IN (1, 2);
