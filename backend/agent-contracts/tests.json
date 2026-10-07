@@ -1,0 +1,7 @@
+{
+  "tests": [
+    {"name": "OPTIONS preflight", "method": "OPTIONS", "path": "/", "expectedStatus": 200},
+    {"name": "No key rejected", "method": "GET", "path": "/", "expectedStatus": 401},
+    {"name": "Wrong key rejected", "method": "GET", "path": "/", "headers": {"X-Api-Key": "wrong"}, "expectedStatus": 401}
+  ]
+}

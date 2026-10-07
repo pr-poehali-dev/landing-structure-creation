@@ -1,4 +1,5 @@
 {
+  "agent-contracts": "https://functions.poehali.dev/3e8c9c5a-ede7-4096-999e-f4e4a0b2a855",
   "contracts-admin": "https://functions.poehali.dev/68be8c9a-fc88-49dd-b91b-c6802b66ae84",
   "contract-sign": "https://functions.poehali.dev/22a3d560-7847-466d-be7b-9f6e4cbd6cbf",
   "send-feedback": "https://functions.poehali.dev/8d437c2a-0615-4525-9ca4-0eda4e314c84",
