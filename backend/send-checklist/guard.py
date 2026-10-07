@@ -111,11 +111,15 @@ def rate_limited_db(dsn: str, ip: str, scope: str) -> bool:
 
 def check_request(event: dict, body: dict, scope: str):
     """Общая проверка: honeypot, капча, лимит. Возвращает готовый ответ при отказе, иначе None"""
-    if str(body.get('website', '')).strip():
-        return reply(200, {'ok': True})
     ip = client_ip(event)
+    if str(body.get('website', '')).strip():
+        print(f'[guard:{scope}] отброшено ловушкой для ботов, ip={ip}')
+        return reply(200, {'ok': True})
     if not verify_captcha(str(body.get('captcha_token', '')), ip):
+        print(f'[guard:{scope}] капча не пройдена, ip={ip}')
         return reply(403, {'error': 'Проверка не пройдена'})
     if rate_limited(ip, scope):
+        print(f'[guard:{scope}] превышен лимит, ip={ip}')
         return reply(429, {'error': 'Слишком много заявок, попробуйте позже'})
+    print(f'[guard:{scope}] проверки пройдены, ip={ip}')
     return None

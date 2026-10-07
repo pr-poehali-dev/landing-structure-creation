@@ -10,8 +10,11 @@
       "name": "Missing fields",
       "method": "POST",
       "path": "/",
-      "body": {"name": "", "phone": ""},
-      "expectedStatus": 400
+      "body": {
+        "name": "",
+        "phone": ""
+      },
+      "expectedStatus": 403
     }
   ]
 }

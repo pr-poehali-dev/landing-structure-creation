@@ -97,7 +97,7 @@ export async function submitForm(
   payload: Record<string, unknown>,
   form?: HTMLFormElement | null
 ): Promise<boolean> {
-  const honeypot = form ? String(new FormData(form).get("website") ?? "") : "";
+  const honeypot = form ? String(new FormData(form).get("hp_trap_field") ?? "") : "";
 
   const token = await getCaptchaToken();
   if (token === null) {
