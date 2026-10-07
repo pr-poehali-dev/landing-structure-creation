@@ -1,11 +1,20 @@
 import os
 import smtplib
+import urllib.request
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 ADMIN_EMAIL = 'ribkadolli@mail.ru'
-TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), 'contract_template.docx')
+TEMPLATE_URL = 'https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/1638245e-ae08-406e-983c-fab153011f25.docx'
+
+
+def _template_bytes():
+    try:
+        with urllib.request.urlopen(TEMPLATE_URL, timeout=8) as r:
+            return r.read()
+    except Exception:
+        return None
 
 
 def _connect():
@@ -35,8 +44,7 @@ def send_code(email: str, code: str) -> None:
 
 def send_signed(parent_email: str, number: int, html_body: str) -> None:
     user = os.environ['SMTP_USER']
-    with open(TEMPLATE_PATH, 'rb') as fh:
-        docx_bytes = fh.read()
+    docx_bytes = _template_bytes()
     with _connect() as server:
         for to, subject in (
             (parent_email, f'Договор № {number} подписан'),
@@ -47,7 +55,8 @@ def send_signed(parent_email: str, number: int, html_body: str) -> None:
             msg['From'] = user
             msg['To'] = to
             msg.attach(MIMEText(html_body, 'html', 'utf-8'))
-            att = MIMEApplication(docx_bytes, _subtype='vnd.openxmlformats-officedocument.wordprocessingml.document')
-            att.add_header('Content-Disposition', 'attachment', filename='Dogovor_shablon.docx')
-            msg.attach(att)
+            if docx_bytes:
+                att = MIMEApplication(docx_bytes, _subtype='vnd.openxmlformats-officedocument.wordprocessingml.document')
+                att.add_header('Content-Disposition', 'attachment', filename='Dogovor_shablon.docx')
+                msg.attach(att)
             server.sendmail(user, to, msg.as_string())
