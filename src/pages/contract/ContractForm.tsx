@@ -142,7 +142,7 @@ export default function ContractForm() {
             placeholder="+7 (___) ___-__-__"
           />
         </div>
-        {text("address", "Адрес регистрации", { autoComplete: "street-address" })}
+        {text("address", "Адрес регистрации", { autoComplete: "street-address", placeholder: "Город, улица, номер дома и квартира", hint: "Город, улица, номер дома и квартира" })}
       </section>
 
       <section className="space-y-4">

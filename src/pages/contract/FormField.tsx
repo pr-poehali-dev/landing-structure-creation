@@ -14,7 +14,10 @@ interface Props {
   inputMode?: "text" | "numeric" | "tel" | "email";
   autoComplete?: string;
   className?: string;
+  hint?: string;
 }
+
+const FIELD_BORDER = "border-2 border-slate-500 bg-white shadow-sm hover:border-slate-700 focus-visible:border-primary";
 
 export default function FormField({
   id,
@@ -28,6 +31,7 @@ export default function FormField({
   inputMode,
   autoComplete,
   className,
+  hint,
 }: Props) {
   return (
     <div className={`space-y-1.5 ${className ?? ""}`}>
@@ -36,7 +40,7 @@ export default function FormField({
         {required && <span className="text-destructive"> *</span>}
       </Label>
       {multiline ? (
-        <Textarea id={id} value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} rows={3} />
+        <Textarea id={id} value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} rows={3} className={FIELD_BORDER} />
       ) : (
         <Input
           id={id}
@@ -45,8 +49,10 @@ export default function FormField({
           placeholder={placeholder}
           inputMode={inputMode}
           autoComplete={autoComplete}
+          className={FIELD_BORDER}
         />
       )}
+      {hint && !error && <p className="text-sm text-muted-foreground">{hint}</p>}
       {error && <p className="text-sm text-destructive">{error}</p>}
     </div>
   );
