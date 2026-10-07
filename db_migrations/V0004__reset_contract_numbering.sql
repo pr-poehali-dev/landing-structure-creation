@@ -1,0 +1,1 @@
+ALTER SEQUENCE t_p54774028_landing_structure_cr.contracts_id_seq RESTART WITH 1;
