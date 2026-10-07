@@ -49,6 +49,7 @@ def handler(event: dict, context) -> dict:
         return reply(503, {'error': 'База данных временно недоступна'})
     try:
         cur = conn.cursor()
+        cur.execute(f"SET search_path TO {os.environ.get('MAIN_DB_SCHEMA', 'public')}, public")
         if contract_id:
             if not contract_id.isdigit():
                 return reply(400, {'error': 'Некорректный номер'})

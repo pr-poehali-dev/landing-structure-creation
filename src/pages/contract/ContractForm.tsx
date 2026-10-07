@@ -20,7 +20,7 @@ import {
   type FieldKey,
 } from "./formUtils";
 
-const SUBMIT_ENABLED = false;
+const SUBMIT_ENABLED = true;
 
 export default function ContractForm() {
   const [f, setF] = useState<FormState>(EMPTY_FORM);

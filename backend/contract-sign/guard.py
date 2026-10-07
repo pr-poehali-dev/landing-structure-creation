@@ -93,6 +93,7 @@ def rate_limited_db(dsn: str, ip: str, scope: str) -> bool:
     conn = psycopg2.connect(dsn)
     try:
         cur = conn.cursor()
+        cur.execute(f"SET search_path TO {os.environ.get('MAIN_DB_SCHEMA', 'public')}, public")
         ip_q = ip.replace("'", "''")
         scope_q = scope.replace("'", "''")
         cur.execute(

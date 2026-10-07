@@ -16,6 +16,10 @@ def q(s) -> str:
 class Store:
     def __init__(self):
         self.conn = psycopg2.connect(os.environ['DATABASE_URL'])
+        schema = os.environ.get('MAIN_DB_SCHEMA', 'public')
+        cur = self.conn.cursor()
+        cur.execute(f'SET search_path TO {schema}, public')
+        self.conn.commit()
 
     def close(self):
         self.conn.close()
