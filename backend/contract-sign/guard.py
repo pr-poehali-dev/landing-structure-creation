@@ -7,6 +7,8 @@ import urllib.request
 
 import psycopg2
 
+S = os.environ.get('MAIN_DB_SCHEMA', 't_p54774028_landing_structure_cr')
+
 CORS = {'Access-Control-Allow-Origin': '*'}
 ALLOWED_HOSTS = ('ribkadollilend.ru', 'blogribkadolli.ru', 'ribkadolli.ru')
 RATE_LIMIT = 3
@@ -93,17 +95,16 @@ def rate_limited_db(dsn: str, ip: str, scope: str) -> bool:
     conn = psycopg2.connect(dsn)
     try:
         cur = conn.cursor()
-        cur.execute(f"SET search_path TO {os.environ.get('MAIN_DB_SCHEMA', 'public')}, public")
         ip_q = ip.replace("'", "''")
         scope_q = scope.replace("'", "''")
         cur.execute(
-            f"SELECT COUNT(*) FROM form_rate_limit WHERE ip = '{ip_q}' "
+            f"SELECT COUNT(*) FROM {S}.form_rate_limit WHERE ip = '{ip_q}' "
             f"AND created_at > NOW() - INTERVAL '{RATE_WINDOW_MIN} minutes'"
         )
         count = cur.fetchone()[0]
         if count >= RATE_LIMIT:
             return True
-        cur.execute(f"INSERT INTO form_rate_limit (ip, scope) VALUES ('{ip_q}', '{scope_q}')")
+        cur.execute(f"INSERT INTO {S}.form_rate_limit (ip, scope) VALUES ('{ip_q}', '{scope_q}')")
         conn.commit()
         return False
     finally:

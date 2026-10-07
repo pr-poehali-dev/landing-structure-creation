@@ -3,6 +3,8 @@ import json
 import os
 
 import psycopg2
+
+S = os.environ.get('MAIN_DB_SCHEMA', 't_p54774028_landing_structure_cr')
 from datetime import datetime, timedelta, timezone
 
 from contract_render import contract_html, signature_mark_html, questionnaire_html
@@ -49,13 +51,12 @@ def handler(event: dict, context) -> dict:
         return reply(503, {'error': 'База данных временно недоступна'})
     try:
         cur = conn.cursor()
-        cur.execute(f"SET search_path TO {os.environ.get('MAIN_DB_SCHEMA', 'public')}, public")
         if contract_id:
             if not contract_id.isdigit():
                 return reply(400, {'error': 'Некорректный номер'})
             cur.execute(
                 "SELECT id, signed_at, full_name, email, tariff, ip, status, form_json "
-                f"FROM contracts WHERE id = {int(contract_id)}"
+                f"FROM {S}.contracts WHERE id = {int(contract_id)}"
             )
             row = cur.fetchone()
             if row is None:
@@ -72,7 +73,7 @@ def handler(event: dict, context) -> dict:
                 'tariff': row[4], 'ip': row[5], 'status': row[6], 'form': form,
             })
         cur.execute(
-            "SELECT id, signed_at, full_name, email, tariff, status FROM contracts ORDER BY id DESC LIMIT 500"
+            f"SELECT id, signed_at, full_name, email, tariff, status FROM {S}.contracts ORDER BY id DESC LIMIT 500"
         )
         items = [
             {'id': r[0], 'signed_at': r[1], 'full_name': r[2], 'email': r[3], 'tariff': r[4], 'status': r[5]}
