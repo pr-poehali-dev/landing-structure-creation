@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import useNoIndex from "@/hooks/useNoIndex";
-import { CONTRACT_BLOCKS, type Item, type Run } from "./contractData";
-import { CONTRACT_DOCX_URL } from "./OfferText";
+import type { Item, Run } from "./contractData";
+import { KINDS, type ContractKind } from "./kinds";
 
 const Runs = ({ r }: { r: Run[] }) => (
   <>
@@ -15,46 +15,50 @@ const Runs = ({ r }: { r: Run[] }) => (
   </>
 );
 
-const List = ({ items, start = 1 }: { items: Item[]; start?: number }) => (
-  <ol start={start} className="list-decimal space-y-1 pl-6">
+const List = ({ items, start = 1, bullet = false }: { items: Item[]; start?: number; bullet?: boolean }) => {
+  const Tag = bullet ? "ul" : "ol";
+  return (
+  <Tag start={bullet ? undefined : start} className={`${bullet ? "list-disc" : "list-decimal"} space-y-1 pl-6`}>
     {items.map((it, i) => (
       <li key={i}>
         <Runs r={it.r} />
         {it.sub && <List items={it.sub} />}
       </li>
     ))}
-  </ol>
-);
+  </Tag>
+  );
+};
 
-export default function ContractText() {
-  useNoIndex("Текст договора с Приложениями");
+export default function ContractText({ kind = "garden" }: { kind?: ContractKind }) {
+  const cfg = KINDS[kind];
+  useNoIndex(`Текст договора с Приложениями — ${cfg.short}`);
   let listStart = 1;
   return (
     <main className="mx-auto max-w-3xl space-y-4 px-4 py-10 text-base leading-relaxed">
       <div className="flex flex-wrap items-center gap-4 rounded-lg border bg-muted/40 p-4 text-sm">
-        <a href={CONTRACT_DOCX_URL} download className="font-medium text-primary underline">
+        <a href={cfg.docxUrl} download className="font-medium text-primary underline">
           Скачать договор (DOCX)
         </a>
-        <Link to="/oferta/" className="text-primary underline">
+        <Link to={`/oferta/?kind=${kind}`} className="text-primary underline">
           Оферта и соглашение об электронной подписи
         </Link>
       </div>
       <div className="flex flex-col gap-3 pb-2 sm:flex-row">
         <Button asChild variant="outline">
-          <Link to="/dogovor/">Вернуться к прочтению договора</Link>
+          <Link to={cfg.path}>Вернуться к прочтению договора</Link>
         </Button>
         <Button asChild>
-          <Link to="/dogovor/?step=fill">Начать заполнять договор</Link>
+          <Link to={`${cfg.path}?step=fill`}>Начать заполнять договор</Link>
         </Button>
       </div>
-      {CONTRACT_BLOCKS.map((b, i) => {
+      {cfg.blocks.map((b, i) => {
         if (b.k === "h1") return <h1 key={i} className="pt-4 text-center text-2xl font-bold">{b.t}</h1>;
         if (b.k === "h2") {
           listStart = 1;
           return <h2 key={i} className="border-b pt-6 pb-1 text-xl font-semibold">{b.t}</h2>;
         }
         if (b.k === "p") return <p key={i}><Runs r={b.r} /></p>;
-        if (b.k === "ol") return <List key={i} items={b.items} start={listStart} />;
+        if (b.k === "ol" || b.k === "ul") return <List key={i} items={b.items} start={listStart} bullet={b.k === "ul"} />;
         if (b.k !== "table") return null;
         return (
           <div key={i} className="overflow-x-auto">
@@ -74,10 +78,10 @@ export default function ContractText() {
       })}
       <div className="flex flex-col gap-3 pt-4 sm:flex-row">
         <Button asChild variant="outline">
-          <Link to="/dogovor/">Вернуться к прочтению договора</Link>
+          <Link to={cfg.path}>Вернуться к прочтению договора</Link>
         </Button>
         <Button asChild>
-          <Link to="/dogovor/?step=fill">Начать заполнять договор</Link>
+          <Link to={`${cfg.path}?step=fill`}>Начать заполнять договор</Link>
         </Button>
       </div>
     </main>

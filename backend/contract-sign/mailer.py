@@ -6,12 +6,12 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 ADMIN_EMAIL = 'ribkadolli@mail.ru'
-TEMPLATE_URL = 'https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/1f18a467-f459-4a1a-85cd-62439d8fcdb6.docx'
+from contract_kinds import KINDS, kind_or_default
 
 
-def _template_bytes():
+def _template_bytes(kind: str):
     try:
-        with urllib.request.urlopen(TEMPLATE_URL, timeout=8) as r:
+        with urllib.request.urlopen(KINDS[kind]['template'], timeout=8) as r:
             return r.read()
     except Exception:
         return None
@@ -52,10 +52,11 @@ def _word_doc(number: int, body_html: str) -> bytes:
     return ('\ufeff' + doc).encode('utf-8')
 
 
-def send_signed(parent_email: str, number: int, html_body: str) -> None:
+def send_signed(parent_email: str, number: int, html_body: str, kind: str = 'garden') -> None:
+    kind = kind_or_default(kind)
     user = os.environ['SMTP_USER']
     signed_doc = _word_doc(number, html_body)
-    template = _template_bytes()
+    template = _template_bytes(kind)
     text = (
         f'Договор № {number} подписан простой электронной подписью.\n\n'
         'Подписанный договор с Приложениями и анкетой — во вложении (файл Word). '
@@ -67,9 +68,10 @@ def send_signed(parent_email: str, number: int, html_body: str) -> None:
         'Его можно открыть, сохранить и распечатать.</p>'
     )
     with _connect() as server:
+        title = KINDS[kind]['short']
         recipients = [(parent_email, f'Договор № {number} подписан')]
         if parent_email.strip().lower() != ADMIN_EMAIL.lower():
-            recipients.append((ADMIN_EMAIL, f'Подписан договор № {number}'))
+            recipients.append((ADMIN_EMAIL, f'Подписан договор № {number} ({title})'))
         for to, subject in recipients:
             msg = MIMEMultipart('mixed')
             msg['Subject'] = subject

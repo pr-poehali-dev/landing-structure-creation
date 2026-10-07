@@ -69,9 +69,9 @@ class Store:
             self.conn.rollback()
             return 0
         cur.execute(
-            f"INSERT INTO {S}.contracts (full_name, email, tariff, ip, form_json) VALUES "
+            f"INSERT INTO {S}.contracts (full_name, email, tariff, ip, form_json, kind) VALUES "
             f"({q(form['fullName'])}, {q(form['email'])}, {q(form['tariff'])}, {q(ip)}, "
-            f"{q(json.dumps(form, ensure_ascii=False))}) RETURNING id"
+            f"{q(json.dumps(form, ensure_ascii=False))}, {q(form.get('kind', 'garden'))}) RETURNING id"
         )
         number = cur.fetchone()[0]
         self.conn.commit()

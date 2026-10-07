@@ -1,6 +1,10 @@
-export type Tariff = "basic" | "special";
+import type { ContractKind } from "./kinds";
+import { SHIFTS } from "./shifts";
+
+export type Tariff = "basic" | "special" | "morning" | "day" | "half" | "club";
 
 export interface ContractForm {
+  kind: ContractKind;
   fullName: string;
   birthDate: string;
   passportSeries: string;
@@ -21,9 +25,20 @@ export interface ContractForm {
   agreeContract: boolean;
   agreePersonal: boolean;
   agreePhoto: boolean;
+  shiftNumber: string;
+  shiftFrom: string;
+  shiftTo: string;
+  earlyVisit: boolean;
+  school: string;
+  schoolClass: string;
+  parentWork: string;
+  parent2Name: string;
+  parent2Work: string;
+  hobbies: string;
 }
 
 export const EMPTY_FORM: ContractForm = {
+  kind: "garden",
   fullName: "",
   birthDate: "",
   passportSeries: "",
@@ -44,7 +59,23 @@ export const EMPTY_FORM: ContractForm = {
   agreeContract: false,
   agreePersonal: false,
   agreePhoto: false,
+  shiftNumber: "",
+  shiftFrom: "",
+  shiftTo: "",
+  earlyVisit: false,
+  school: "",
+  schoolClass: "",
+  parentWork: "",
+  parent2Name: "",
+  parent2Work: "",
+  hobbies: "",
 };
+
+const SINGLE_TARIFF: Partial<Record<ContractKind, Tariff>> = { half: "half", club: "club" };
+
+export function makeEmptyForm(kind: ContractKind): ContractForm {
+  return { ...EMPTY_FORM, kind, tariff: SINGLE_TARIFF[kind] ?? "" };
+}
 
 export const digits = (s: string) => s.replace(/\D/g, "");
 
@@ -89,6 +120,14 @@ export function isDateValid(v: string): boolean {
 
 export type FieldKey = keyof ContractForm;
 
+export function isShiftDateValid(v: string): boolean {
+  const m = /^(\d{2})\.(\d{2})\.(\d{4})$/.exec(v);
+  if (!m) return false;
+  const [d, mo, y] = [Number(m[1]), Number(m[2]), Number(m[3])];
+  const dt = new Date(y, mo - 1, d);
+  return dt.getFullYear() === y && dt.getMonth() === mo - 1 && dt.getDate() === d;
+}
+
 export function getErrors(f: ContractForm): Partial<Record<FieldKey, string>> {
   const e: Partial<Record<FieldKey, string>> = {};
   const req = (k: FieldKey, label = "Заполните поле") => {
@@ -111,7 +150,18 @@ export function getErrors(f: ContractForm): Partial<Record<FieldKey, string>> {
   if (f.phoneFather && !isPhoneValid(f.phoneFather)) e.phoneFather = "Формат +7 (XXX) XXX-XX-XX";
   if (!isEmailValid(f.email)) e.email = "Введите корректный email";
   if (!f.childCertificate.trim()) e.childCertificate = "Заполните поле";
-  if (!f.tariff) e.tariff = "Выберите тариф";
+  if (!f.tariff) e.tariff = f.kind === "prod" ? "Выберите группу" : "Выберите тариф";
+  if (f.kind === "club") {
+    if (!f.shiftNumber.trim()) e.shiftNumber = SHIFTS.length ? "Выберите смену" : "Укажите номер смены";
+    if (!SHIFTS.length) {
+      if (!isShiftDateValid(f.shiftFrom)) e.shiftFrom = "Формат ДД.ММ.ГГГГ";
+      if (!isShiftDateValid(f.shiftTo)) e.shiftTo = "Формат ДД.ММ.ГГГГ";
+    }
+  }
+  if (f.kind === "prod") {
+    req("school");
+    req("schoolClass");
+  }
   if (!f.agreeContract) e.agreeContract = "Обязательно";
   if (!f.agreePersonal) e.agreePersonal = "Обязательно";
   return e;

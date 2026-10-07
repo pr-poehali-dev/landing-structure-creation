@@ -55,13 +55,14 @@ def handler(event: dict, context) -> dict:
             if not contract_id.isdigit():
                 return reply(400, {'error': 'Некорректный номер'})
             cur.execute(
-                "SELECT id, signed_at, full_name, email, tariff, ip, status, form_json "
+                "SELECT id, signed_at, full_name, email, tariff, ip, status, form_json, kind "
                 f"FROM {S}.contracts WHERE id = {int(contract_id)}"
             )
             row = cur.fetchone()
             if row is None:
                 return reply(404, {'error': 'Договор не найден'})
             form = json.loads(row[7])
+            form['kind'] = row[8]
             if params.get('format') == 'doc':
                 dt = row[1].astimezone(MSK)
                 date_str = f'«{dt.day:02d}» {MONTHS[dt.month - 1]} {dt.year} г.'
@@ -70,13 +71,13 @@ def handler(event: dict, context) -> dict:
                 return reply(200, {'id': row[0], 'html': html_doc})
             return reply(200, {
                 'id': row[0], 'signed_at': row[1], 'full_name': row[2], 'email': row[3],
-                'tariff': row[4], 'ip': row[5], 'status': row[6], 'form': form,
+                'tariff': row[4], 'ip': row[5], 'status': row[6], 'kind': row[8], 'form': form,
             })
         cur.execute(
-            f"SELECT id, signed_at, full_name, email, tariff, status FROM {S}.contracts ORDER BY id DESC LIMIT 500"
+            f"SELECT id, signed_at, full_name, email, tariff, status, kind FROM {S}.contracts ORDER BY id DESC LIMIT 500"
         )
         items = [
-            {'id': r[0], 'signed_at': r[1], 'full_name': r[2], 'email': r[3], 'tariff': r[4], 'status': r[5]}
+            {'id': r[0], 'signed_at': r[1], 'full_name': r[2], 'email': r[3], 'tariff': r[4], 'status': r[5], 'kind': r[6]}
             for r in cur.fetchall()
         ]
         return reply(200, {'items': items})

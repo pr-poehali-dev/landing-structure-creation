@@ -60,6 +60,12 @@ const App = () => (
           <Route path="/checklist-9/" element={<Checklist9 />} />
           <Route path="/internal/readiness-map/" element={<ReadinessMapAdminPage />} />
           <Route path="/dogovor/" element={<SignContract />} />
+          <Route path="/dogovor/prodlenka/" element={<SignContract kind="prod" />} />
+          <Route path="/dogovor/nepolny-den/" element={<SignContract kind="half" />} />
+          <Route path="/dogovor/klub/" element={<SignContract kind="club" />} />
+          <Route path="/dogovor/prodlenka/tekst/" element={<ContractText kind="prod" />} />
+          <Route path="/dogovor/nepolny-den/tekst/" element={<ContractText kind="half" />} />
+          <Route path="/dogovor/klub/tekst/" element={<ContractText kind="club" />} />
           <Route path="/oferta/" element={<Offer />} />
           <Route path="/dogovor/tekst/" element={<ContractText />} />
           <Route path="/internal/contracts/" element={<ContractsAdmin />} />

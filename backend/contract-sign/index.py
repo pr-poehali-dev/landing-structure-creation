@@ -75,7 +75,7 @@ def verify_code(event: dict, body: dict) -> dict:
         + signature_mark_html(form, now.strftime('%d.%m.%Y'), time_str, ip)
         + '</div>'
     )
-    send_signed(form['email'], number, body_html)
+    send_signed(form['email'], number, body_html, form.get('kind', 'garden'))
     return reply(200, {'ok': True, 'number': number})
 
 

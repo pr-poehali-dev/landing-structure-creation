@@ -3,7 +3,7 @@ export type Item = { r: Run[]; sub?: Item[] };
 export type Block =
   | { k: "h1" | "h2"; t: string }
   | { k: "p"; r: Run[] }
-  | { k: "ol"; start: number; items: Item[] }
+  | { k: "ol" | "ul"; start: number; items: Item[] }
   | { k: "table"; rows: string[][] };
 
 export const CONTRACT_BLOCKS: Block[] = [

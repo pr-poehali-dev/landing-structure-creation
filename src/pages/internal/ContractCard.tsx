@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { downloadWord } from "./wordExport";
 import type { ContractForm } from "@/pages/contract/formUtils";
+import { KIND_LABELS, TARIFF_LABELS } from "@/pages/contract/kinds";
 
 export interface ContractDetails {
   id: number;
@@ -11,6 +12,7 @@ export interface ContractDetails {
   tariff: string;
   ip: string;
   status: string;
+  kind?: string;
   form: ContractForm;
 }
 
@@ -63,7 +65,14 @@ export default function ContractCard({ c, onBack, adminUrl, adminKey }: Props) {
         <Row label="Статус" value={c.status} />
         <Row label="Подписан" value={new Date(c.signed_at).toLocaleString("ru-RU", { timeZone: "Europe/Moscow" }) + " (МСК)"} />
         <Row label="IP-адрес" value={c.ip} />
-        <Row label="Тариф" value={f.tariff === "special" ? "Специальный (20 000 руб./мес)" : "Основной (25 000 руб./мес)"} />
+        <Row label="Договор" value={KIND_LABELS[c.kind ?? "garden"] ?? ""} />
+        <Row label={c.kind === "prod" ? "Группа" : "Тариф"} value={TARIFF_LABELS[f.tariff] ?? f.tariff} />
+        {c.kind === "club" && <Row label="Смена" value={`№ ${f.shiftNumber}, ${f.shiftFrom} — ${f.shiftTo}`} />}
+        {c.kind === "club" && <Row label="Раннее посещение с 8:00" value={f.earlyVisit ? "Да" : "Нет"} />}
+        {c.kind === "prod" && <Row label="Школа, класс" value={`${f.school}, ${f.schoolClass}`} />}
+        {c.kind === "prod" && <Row label="Место работы (родитель)" value={f.parentWork} />}
+        {c.kind === "prod" && <Row label="Второй родитель" value={`${f.parent2Name || "—"}, ${f.parent2Work || "—"}`} />}
+        {c.kind === "prod" && <Row label="Творческие увлечения" value={f.hobbies} />}
         <Row label="ФИО Заказчика" value={f.fullName} />
         <Row label="Дата рождения" value={f.birthDate} />
         <Row label="Паспорт" value={`${f.passportSeries} ${f.passportNumber}, выдан ${f.passportIssuedBy}, ${f.passportIssuedDate}, код ${f.passportDeptCode}`} />

@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import useNoIndex from "@/hooks/useNoIndex";
 import { downloadWord, escapeHtml } from "./wordExport";
 import ContractCard, { type ContractDetails } from "./ContractCard";
+import { KIND_LABELS, TARIFF_LABELS } from "@/pages/contract/kinds";
 
 const ADMIN_URL = "https://functions.poehali.dev/68be8c9a-fc88-49dd-b91b-c6802b66ae84";
 const KEY_STORAGE = "contracts_admin_key";
@@ -15,9 +16,11 @@ interface Row {
   email: string;
   tariff: string;
   status: string;
+  kind?: string;
 }
 
-const TARIFFS: Record<string, string> = { basic: "Основной", special: "Специальный" };
+const TARIFFS = TARIFF_LABELS;
+const kindName = (k?: string) => KIND_LABELS[k ?? "garden"] ?? k ?? "";
 
 const fmt = (s: string) => new Date(s).toLocaleString("ru-RU", { timeZone: "Europe/Moscow" });
 
@@ -63,7 +66,7 @@ export default function ContractsAdmin() {
 
   const downloadList = () => {
     if (!rows) return;
-    const head = ["№", "Дата", "ФИО", "Email", "Тариф", "Статус"];
+    const head = ["№", "Дата", "Договор", "ФИО", "Email", "Тариф", "Статус"];
     const cell = "border:1px solid #999;padding:4px;";
     const body =
       "<h2>Подписанные договоры</h2><table style='border-collapse:collapse;'><tr>" +
@@ -73,7 +76,7 @@ export default function ContractsAdmin() {
         .map(
           (r) =>
             "<tr>" +
-            [r.id, fmt(r.signed_at), r.full_name, r.email, TARIFFS[r.tariff] ?? r.tariff, r.status]
+            [r.id, fmt(r.signed_at), kindName(r.kind), r.full_name, r.email, TARIFFS[r.tariff] ?? r.tariff, r.status]
               .map((v) => `<td style='${cell}'>${escapeHtml(String(v))}</td>`)
               .join("") +
             "</tr>"
@@ -114,6 +117,7 @@ export default function ContractsAdmin() {
               <tr>
                 <th className="p-3">№</th>
                 <th className="p-3">Дата</th>
+                <th className="p-3">Договор</th>
                 <th className="p-3">ФИО</th>
                 <th className="p-3">Тариф</th>
                 <th className="p-3">Статус</th>
@@ -124,6 +128,7 @@ export default function ContractsAdmin() {
                 <tr key={r.id} className="cursor-pointer border-t hover:bg-muted/50" onClick={() => open(r.id)}>
                   <td className="p-3 font-medium">{r.id}</td>
                   <td className="p-3">{fmt(r.signed_at)}</td>
+                  <td className="p-3">{kindName(r.kind)}</td>
                   <td className="p-3">{r.full_name}</td>
                   <td className="p-3">{TARIFFS[r.tariff] ?? r.tariff}</td>
                   <td className="p-3">{r.status}</td>

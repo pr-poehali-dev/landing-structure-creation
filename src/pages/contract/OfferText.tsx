@@ -1,16 +1,26 @@
 import { Link } from "react-router-dom";
+import { KINDS, type ContractKind } from "./kinds";
+
+const REFS: Record<ContractKind, { sign: string; notify: string; personal: string }> = {
+  garden: { sign: " (п. 8.3.1 Договора; ст. 160, 434, 438 ГК РФ; ст. 6, 9 ФЗ № 63-ФЗ)", notify: " (п. 7.6 Договора)", personal: " (п. 8.4 Договора)" },
+  half: { sign: " (п. 8.2.1 Договора; ст. 160, 434, 438 ГК РФ; ст. 6, 9 ФЗ № 63-ФЗ)", notify: " (п. 7.6 Договора)", personal: " (п. 8.3 Договора)" },
+  club: { sign: " (п. 9.1 Договора; ст. 160, 434, 438 ГК РФ; ст. 6, 9 ФЗ № 63-ФЗ)", notify: " (п. 8.4 Договора)", personal: " (п. 9.2 Договора)" },
+  prod: { sign: " (ст. 160, 434, 438 ГК РФ; ст. 6, 9 ФЗ № 63-ФЗ)", notify: "", personal: " (Приложение № 4 к Договору)" },
+};
 
 export const OFFER_VERSION = "1.0";
 export const OFFER_DATE = "6 октября 2026 г.";
 export const CONTRACT_DOCX_URL =
   "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/1f18a467-f459-4a1a-85cd-62439d8fcdb6.docx";
 
-export default function OfferText() {
+export default function OfferText({ kind = "garden" }: { kind?: ContractKind }) {
+  const cfg = KINDS[kind];
+  const ref = REFS[kind];
   return (
     <article className="space-y-4 text-base leading-relaxed">
       <header className="space-y-1">
         <h2 className="text-xl font-bold">
-          Публичная оферта о заключении договора об оказании услуг по присмотру и уходу за детьми
+          Публичная оферта о заключении договора: {cfg.short.toLowerCase()}
         </h2>
         <p className="text-sm text-muted-foreground">
           Версия {OFFER_VERSION}, дата публикации: {OFFER_DATE}
@@ -18,17 +28,16 @@ export default function OfferText() {
       </header>
       <p>
         Индивидуальный предприниматель Савченко Ирина Игоревна (ОГРНИП 318911200074795, ИНН 911116164829), далее
-        «Исполнитель», предлагает неопределённому кругу лиц заключить договор об оказании услуг по присмотру и уходу за
-        детьми (далее — Договор) на условиях, изложенных в полном тексте Договора и Приложениях № 1 и № 2 (тарифы
-        «Основной» и «Специальный»).
+        «Исполнитель», предлагает неопределённому кругу лиц заключить договор «{cfg.short}» (далее — Договор) на условиях,
+        изложенных в полном тексте Договора и приложениях ({cfg.summary}).
       </p>
       <p>
         Полный текст Договора с Приложениями доступен по{" "}
-        <Link to="/dogovor/tekst/" className="underline text-primary">
+        <Link to={cfg.textPath} className="underline text-primary">
           ссылке
         </Link>{" "}
         и для скачивания в формате{" "}
-        <a href={CONTRACT_DOCX_URL} className="underline text-primary" download>
+        <a href={cfg.docxUrl} className="underline text-primary" download>
           DOCX
         </a>{" "}
         до момента подписания.
@@ -40,13 +49,13 @@ export default function OfferText() {
       </p>
       <p>
         Стороны признают документы, подписанные простой электронной подписью, равнозначными бумажным с собственноручной
-        подписью (п. 8.3.1 Договора; ст. 160, 434, 438 ГК РФ; ст. 6, 9 ФЗ № 63-ФЗ). Простой электронной подписью
+        подписью {ref.sign}. Простой электронной подписью
         признаётся указанный Заказчиком email вместе с одноразовым кодом, направленным на этот адрес.
       </p>
       <p>
         Принимая оферту, Заказчик подтверждает, что действует как законный представитель ребёнка, ознакомлен с
         условиями Договора, Приложений и настоящего соглашения, а также даёт согласие на обработку персональных данных
-        (п. 8.4 Договора).
+        {ref.personal}.
       </p>
       <p>
         Исполнитель может обновлять версию оферты и Договора с указанием новой версии и даты вверху страницы. К
@@ -55,7 +64,7 @@ export default function OfferText() {
       </p>
       <p>
         Уведомления и заявления по Договору направляются по каналам связи, указанным Заказчиком (email, мессенджер), и
-        считаются полученными в день отправки (п. 7.6 Договора).
+        считаются полученными в день отправки{ref.notify}.
       </p>
     </article>
   );

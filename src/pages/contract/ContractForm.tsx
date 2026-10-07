@@ -4,13 +4,15 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { KINDS, type ContractKind } from "./kinds";
+import { SHIFTS } from "./shifts";
 import CodeStep from "./CodeStep";
 import ContractPreview from "./ContractPreview";
 import SignedNotice from "./SignedNotice";
 import { requestCode } from "./contractApi";
 import FormField from "./FormField";
 import {
-  EMPTY_FORM,
+  makeEmptyForm,
   formatDate,
   formatDeptCode,
   formatPhone,
@@ -22,8 +24,9 @@ import {
 
 const SUBMIT_ENABLED = true;
 
-export default function ContractForm() {
-  const [f, setF] = useState<FormState>(EMPTY_FORM);
+export default function ContractForm({ kind }: { kind: ContractKind }) {
+  const cfg = KINDS[kind];
+  const [f, setF] = useState<FormState>(() => makeEmptyForm(kind));
   const [step, setStep] = useState<"form" | "preview" | "code" | "done">("form");
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState("");
@@ -220,28 +223,95 @@ export default function ContractForm() {
         })}
       </section>
 
-      <section className="space-y-3">
-        <h3 className="text-lg font-semibold">
-          Тариф<span className="text-destructive"> *</span>
-        </h3>
-        <RadioGroup value={f.tariff} onValueChange={(v) => set("tariff", v as FormState["tariff"])} className="gap-3">
-          <Label htmlFor="t-basic" className="flex cursor-pointer items-start gap-3 rounded-lg border p-4 font-normal">
-            <RadioGroupItem id="t-basic" value="basic" className="mt-1" />
-            <span>
-              <span className="block font-semibold">«Основной» — 25 000 руб./мес</span>
-              <span className="text-sm text-muted-foreground">Приложение № 1</span>
-            </span>
-          </Label>
-          <Label htmlFor="t-special" className="flex cursor-pointer items-start gap-3 rounded-lg border p-4 font-normal">
-            <RadioGroupItem id="t-special" value="special" className="mt-1" />
-            <span>
-              <span className="block font-semibold">«Специальный» — 20 000 руб./мес</span>
-              <span className="text-sm text-muted-foreground">Минимальный срок 4 месяца, Приложение № 2</span>
-            </span>
-          </Label>
-        </RadioGroup>
-        {err("tariff") && <p className="text-sm text-destructive">{errors.tariff}</p>}
-      </section>
+      {kind === "club" && (
+        <section className="space-y-4">
+          <h3 className="text-lg font-semibold">Смена</h3>
+          {SHIFTS.length > 0 ? (
+            <RadioGroup
+              value={f.shiftNumber}
+              onValueChange={(v) => {
+                const sh = SHIFTS.find((x) => String(x.number) === v);
+                setF((p) => ({ ...p, shiftNumber: v, shiftFrom: sh?.from ?? "", shiftTo: sh?.to ?? "" }));
+                setTouched((p) => ({ ...p, shiftNumber: true }));
+              }}
+              className="gap-3"
+            >
+              {SHIFTS.map((sh) => (
+                <Label key={sh.number} htmlFor={`shift-${sh.number}`} className="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-slate-400 bg-white p-4 font-normal">
+                  <RadioGroupItem id={`shift-${sh.number}`} value={String(sh.number)} className="mt-1" />
+                  <span className="font-semibold">
+                    Смена {sh.number}: с {sh.from} по {sh.to}
+                  </span>
+                </Label>
+              ))}
+            </RadioGroup>
+          ) : (
+            <div className="grid gap-4 sm:grid-cols-3">
+              {text("shiftNumber", "Номер смены")}
+              <FormField
+                id="shiftFrom"
+                label="Начало смены"
+                value={f.shiftFrom}
+                onChange={(v) => set("shiftFrom", formatDate(v))}
+                error={err("shiftFrom")}
+                inputMode="numeric"
+                placeholder="ДД.ММ.ГГГГ"
+              />
+              <FormField
+                id="shiftTo"
+                label="Окончание смены"
+                value={f.shiftTo}
+                onChange={(v) => set("shiftTo", formatDate(v))}
+                error={err("shiftTo")}
+                inputMode="numeric"
+                placeholder="ДД.ММ.ГГГГ"
+              />
+            </div>
+          )}
+          {err("shiftNumber") && SHIFTS.length > 0 && <p className="text-sm text-destructive">{errors.shiftNumber}</p>}
+          <div className="flex items-start gap-3">
+            <Checkbox id="earlyVisit" className="mt-1" checked={f.earlyVisit} onCheckedChange={(v) => set("earlyVisit", v === true)} />
+            <Label htmlFor="earlyVisit" className="font-normal leading-snug">
+              Раннее посещение с 8:00 вместо 10:00 (+3 000 руб. за смену, с завтраком)
+            </Label>
+          </div>
+        </section>
+      )}
+
+      {kind === "prod" && (
+        <section className="space-y-4">
+          <h3 className="text-lg font-semibold">Школа и семья</h3>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {text("school", "Школа")}
+            {text("schoolClass", "Класс")}
+            {text("parentWork", "Место работы, должность (родитель)", { required: false })}
+            {text("parent2Name", "ФИО второго родителя", { required: false })}
+            {text("parent2Work", "Место работы, должность (второй родитель)", { required: false })}
+          </div>
+          {text("hobbies", "Творческие увлечения ребёнка", { multiline: true, required: false })}
+        </section>
+      )}
+
+      {cfg.tariffs.length > 1 && (
+        <section className="space-y-3">
+          <h3 className="text-lg font-semibold">
+            {cfg.tariffTitle}
+            <span className="text-destructive"> *</span>
+          </h3>
+          <RadioGroup value={f.tariff} onValueChange={(v) => set("tariff", v as FormState["tariff"])} className="gap-3">
+            {cfg.tariffs.map((t) => (
+              <Label key={t.value} htmlFor={`t-${t.value}`} className="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-slate-400 bg-white p-4 font-normal">
+                <RadioGroupItem id={`t-${t.value}`} value={t.value} className="mt-1" />
+                <span>
+                  <span className="block font-semibold">{t.title}</span>
+                  <span className="text-sm text-muted-foreground">{t.note}</span>
+                </span>
+              </Label>
+            ))}
+          </RadioGroup>
+          {err("tariff") && <p className="text-sm text-destructive">{errors.tariff}</p>}
+        </section>
+      )}
 
       <section className="space-y-3">
         <div className="flex items-start gap-3">
@@ -253,11 +323,11 @@ export default function ContractForm() {
           />
           <Label htmlFor="agreeContract" className="font-normal leading-snug">
             С условиями{" "}
-            <Link to="/dogovor/tekst/" target="_blank" className="text-primary underline">
+            <Link to={cfg.textPath} target="_blank" className="text-primary underline">
               Договора
             </Link>
-            , Приложениями № 1 и № 2 и{" "}
-            <Link to="/oferta/" target="_blank" className="text-primary underline">
+            , {cfg.appendices} и{" "}
+            <Link to={`/oferta/?kind=${kind}`} target="_blank" className="text-primary underline">
               оферты
             </Link>{" "}
             ознакомлен(а) и согласен(а) <span className="text-destructive">*</span>

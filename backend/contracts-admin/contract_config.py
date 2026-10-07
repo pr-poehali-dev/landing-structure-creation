@@ -1,0 +1,3 @@
+SHIFTS = []
+
+HALF_HOURS = ('', '')

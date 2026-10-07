@@ -1,9 +1,15 @@
 import { Button } from "@/components/ui/button";
 import type { ContractForm } from "./formUtils";
 
-const TARIFF_LABELS = {
+import { KINDS } from "./kinds";
+
+const TARIFF_LABELS: Record<string, { name: string; price: string }> = {
   basic: { name: "«Основной»", price: "25 000 руб./мес" },
   special: { name: "«Специальный»", price: "20 000 руб./мес (минимальный срок 4 месяца)" },
+  half: { name: "«Неполный день с питанием»", price: "18 000 руб./мес" },
+  club: { name: "Смена летнего клуба", price: "15 500 руб." },
+  morning: { name: "Утренняя продлёнка", price: "с 8:00 до 12:30" },
+  day: { name: "Дневная продлёнка", price: "с 12:00 до 18:00" },
 };
 
 interface Props {
@@ -33,6 +39,7 @@ const yesNo = (v: boolean) => (v ? "Да" : "Нет");
 
 export default function ContractPreview({ form: f, onBack, onConfirm, confirmEnabled, unavailable, error }: Props) {
   const tariff = f.tariff ? TARIFF_LABELS[f.tariff] : null;
+  const cfg = KINDS[f.kind];
   return (
     <div className="space-y-6">
       <div className="space-y-1">
@@ -66,9 +73,28 @@ export default function ContractPreview({ form: f, onBack, onConfirm, confirmEna
         <Row label="Здоровье / аллергии" value={f.health} />
       </Group>
 
-      <Group title="Тариф и согласия">
-        <Row label="Тариф" value={tariff ? `${tariff.name} — ${tariff.price}` : ""} />
-        <Row label="Условия Договора, Приложения № 1 и № 2, оферта" value={yesNo(f.agreeContract)} />
+      {f.kind === "club" && (
+        <Group title="Смена">
+          <Row label="Номер смены" value={f.shiftNumber} />
+          <Row label="Даты" value={`${f.shiftFrom} — ${f.shiftTo}`} />
+          <Row label="Раннее посещение с 8:00" value={yesNo(f.earlyVisit)} />
+        </Group>
+      )}
+
+      {f.kind === "prod" && (
+        <Group title="Школа и семья">
+          <Row label="Школа" value={f.school} />
+          <Row label="Класс" value={f.schoolClass} />
+          <Row label="Место работы (родитель)" value={f.parentWork} />
+          <Row label="Второй родитель" value={f.parent2Name} />
+          <Row label="Место работы (второй родитель)" value={f.parent2Work} />
+          <Row label="Творческие увлечения" value={f.hobbies} />
+        </Group>
+      )}
+
+      <Group title={`${cfg.tariffTitle} и согласия`}>
+        <Row label={cfg.tariffTitle} value={tariff ? `${tariff.name} — ${tariff.price}` : ""} />
+        <Row label={`Условия Договора, ${cfg.summary}, оферта`} value={yesNo(f.agreeContract)} />
         <Row label="Обработка персональных данных" value={yesNo(f.agreePersonal)} />
         <Row label="Фото- и видеосъёмка" value={yesNo(f.agreePhoto)} />
       </Group>
