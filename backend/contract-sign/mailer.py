@@ -42,21 +42,48 @@ def send_code(email: str, code: str) -> None:
         server.sendmail(user, email, msg.as_string())
 
 
+def _word_doc(number: int, body_html: str) -> bytes:
+    doc = (
+        '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" '
+        'xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8">'
+        f'<title>Договор № {number}</title></head>'
+        '<body style="font-family:Arial,sans-serif;font-size:12pt;">' + body_html + '</body></html>'
+    )
+    return ('\ufeff' + doc).encode('utf-8')
+
+
 def send_signed(parent_email: str, number: int, html_body: str) -> None:
     user = os.environ['SMTP_USER']
-    docx_bytes = _template_bytes()
+    signed_doc = _word_doc(number, html_body)
+    template = _template_bytes()
+    text = (
+        f'Договор № {number} подписан простой электронной подписью.\n\n'
+        'Подписанный договор с Приложениями и анкетой — во вложении (файл Word). '
+        'Его можно открыть, сохранить и распечатать.'
+    )
+    html_text = (
+        f'<p>Договор № {number} подписан простой электронной подписью.</p>'
+        '<p>Подписанный договор с Приложениями и анкетой — во вложении (файл Word). '
+        'Его можно открыть, сохранить и распечатать.</p>'
+    )
     with _connect() as server:
         for to, subject in (
             (parent_email, f'Договор № {number} подписан'),
             (ADMIN_EMAIL, f'Подписан договор № {number}'),
         ):
-            msg = MIMEMultipart()
+            msg = MIMEMultipart('mixed')
             msg['Subject'] = subject
             msg['From'] = user
             msg['To'] = to
-            msg.attach(MIMEText(html_body, 'html', 'utf-8'))
-            if docx_bytes:
-                att = MIMEApplication(docx_bytes, _subtype='vnd.openxmlformats-officedocument.wordprocessingml.document')
-                att.add_header('Content-Disposition', 'attachment', filename='Dogovor_shablon.docx')
-                msg.attach(att)
+            alt = MIMEMultipart('alternative')
+            alt.attach(MIMEText(text, 'plain', 'utf-8'))
+            alt.attach(MIMEText(html_text, 'html', 'utf-8'))
+            msg.attach(alt)
+            att = MIMEApplication(signed_doc, _subtype='msword')
+            att.add_header('Content-Disposition', 'attachment', filename=f'Dogovor_{number}_podpisan.doc')
+            msg.attach(att)
+            if template:
+                tpl = MIMEApplication(template, _subtype='vnd.openxmlformats-officedocument.wordprocessingml.document')
+                tpl.add_header('Content-Disposition', 'attachment', filename='Dogovor_shablon.docx')
+                msg.attach(tpl)
             server.sendmail(user, to, msg.as_string())
