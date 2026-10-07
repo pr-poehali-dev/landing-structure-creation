@@ -67,10 +67,10 @@ def send_signed(parent_email: str, number: int, html_body: str) -> None:
         'Его можно открыть, сохранить и распечатать.</p>'
     )
     with _connect() as server:
-        for to, subject in (
-            (parent_email, f'Договор № {number} подписан'),
-            (ADMIN_EMAIL, f'Подписан договор № {number}'),
-        ):
+        recipients = [(parent_email, f'Договор № {number} подписан')]
+        if parent_email.strip().lower() != ADMIN_EMAIL.lower():
+            recipients.append((ADMIN_EMAIL, f'Подписан договор № {number}'))
+        for to, subject in recipients:
             msg = MIMEMultipart('mixed')
             msg['Subject'] = subject
             msg['From'] = user
