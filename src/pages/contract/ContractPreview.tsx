@@ -79,7 +79,7 @@ export default function ContractPreview({ form: f, onBack, onConfirm, confirmEna
             Вернуться к анкете
           </Button>
           <Button type="button" size="lg" onClick={onConfirm} disabled={!confirmEnabled}>
-            Всё верно, получить код для подписания
+            Всё верно, подписать договор
           </Button>
         </div>
         {error && <p className="text-sm text-destructive">{error}</p>}

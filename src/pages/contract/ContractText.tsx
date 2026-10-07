@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import useNoIndex from "@/hooks/useNoIndex";
 import { CONTRACT_BLOCKS, type Item, type Run } from "./contractData";
 import { CONTRACT_DOCX_URL } from "./OfferText";
@@ -38,6 +39,14 @@ export default function ContractText() {
           Оферта и соглашение об электронной подписи
         </Link>
       </div>
+      <div className="flex flex-col gap-3 pb-2 sm:flex-row">
+        <Button asChild variant="outline">
+          <Link to="/dogovor/">Вернуться к прочтению договора</Link>
+        </Button>
+        <Button asChild>
+          <Link to="/dogovor/?step=fill">Начать заполнять договор</Link>
+        </Button>
+      </div>
       {CONTRACT_BLOCKS.map((b, i) => {
         if (b.k === "h1") return <h1 key={i} className="pt-4 text-center text-2xl font-bold">{b.t}</h1>;
         if (b.k === "h2") {
@@ -63,6 +72,14 @@ export default function ContractText() {
           </div>
         );
       })}
+      <div className="flex flex-col gap-3 pt-4 sm:flex-row">
+        <Button asChild variant="outline">
+          <Link to="/dogovor/">Вернуться к прочтению договора</Link>
+        </Button>
+        <Button asChild>
+          <Link to="/dogovor/?step=fill">Начать заполнять договор</Link>
+        </Button>
+      </div>
     </main>
   );
 }

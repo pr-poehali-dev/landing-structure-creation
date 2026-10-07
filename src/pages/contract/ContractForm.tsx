@@ -290,7 +290,7 @@ export default function ContractForm() {
 
       <div className="space-y-2">
         <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={!valid}>
-          Получить код для подписания
+          Подписать договор
         </Button>
       </div>
     </form>
