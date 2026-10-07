@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export const OFFER_VERSION = "1.0";
 export const OFFER_DATE = "6 октября 2026 г.";
 export const CONTRACT_DOCX_URL =
-  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/1638245e-ae08-406e-983c-fab153011f25.docx";
+  "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/1f18a467-f459-4a1a-85cd-62439d8fcdb6.docx";
 
 export default function OfferText() {
   return (

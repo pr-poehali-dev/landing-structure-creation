@@ -6,7 +6,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 ADMIN_EMAIL = 'ribkadolli@mail.ru'
-TEMPLATE_URL = 'https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/1638245e-ae08-406e-983c-fab153011f25.docx'
+TEMPLATE_URL = 'https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/1f18a467-f459-4a1a-85cd-62439d8fcdb6.docx'
 
 
 def _template_bytes():
