@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
 
-from contract_config import SHIFTS
+from contract_config import HALF_GROUPS, SHIFTS
 from contract_kinds import KINDS
 
 BASE_REQUIRED = [
@@ -11,13 +11,13 @@ BASE_REQUIRED = [
 ]
 EXTRA_REQUIRED = {
     'garden': [],
-    'half': [],
+    'half': ['halfGroup'],
     'club': ['shiftNumber'],
     'prod': ['school', 'schoolClass'],
 }
 OPTIONAL = [
     'phoneFather', 'agreePhoto', 'earlyVisit', 'shiftFrom', 'shiftTo', 'parentWork', 'parent2Name', 'parent2Work', 'hobbies',
-    'school', 'schoolClass', 'shiftNumber',
+    'school', 'schoolClass', 'shiftNumber', 'halfGroup',
 ]
 TARIFFS = {
     'garden': ('basic', 'special'),
@@ -54,6 +54,8 @@ def clean_form(raw: dict) -> tuple:
         return form, 'Необходимо подтвердить обязательные согласия'
     if form['tariff'] not in TARIFFS[kind]:
         return form, 'Выберите тариф'
+    if kind == 'half' and form['halfGroup'] not in HALF_GROUPS:
+        return form, 'Выберите группу'
     if kind == 'club':
         shift = next((s for s in SHIFTS if str(s['number']) == form['shiftNumber']), None)
         if SHIFTS and shift is None:

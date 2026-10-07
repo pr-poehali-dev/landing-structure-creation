@@ -25,6 +25,7 @@ export interface ContractForm {
   agreeContract: boolean;
   agreePersonal: boolean;
   agreePhoto: boolean;
+  halfGroup: "" | "nursery" | "senior";
   shiftNumber: string;
   shiftFrom: string;
   shiftTo: string;
@@ -59,6 +60,7 @@ export const EMPTY_FORM: ContractForm = {
   agreeContract: false,
   agreePersonal: false,
   agreePhoto: false,
+  halfGroup: "",
   shiftNumber: "",
   shiftFrom: "",
   shiftTo: "",
@@ -158,6 +160,7 @@ export function getErrors(f: ContractForm): Partial<Record<FieldKey, string>> {
       if (!isShiftDateValid(f.shiftTo)) e.shiftTo = "Формат ДД.ММ.ГГГГ";
     }
   }
+  if (f.kind === "half" && !f.halfGroup) e.halfGroup = "Выберите группу";
   if (f.kind === "prod") {
     req("school");
     req("schoolClass");

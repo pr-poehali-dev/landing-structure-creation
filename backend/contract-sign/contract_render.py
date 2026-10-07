@@ -3,7 +3,7 @@ import html
 import re
 
 from contract_kinds import KINDS, kind_or_default
-from contract_config import HALF_HOURS
+from contract_config import HALF_GROUPS
 
 TARIFFS = {
     'basic': 'Основной (25 000 руб./мес)',
@@ -177,8 +177,10 @@ def fill_paragraph(text: str, form: dict, date_str: str, number: int = 0, kind: 
             return t
         if 'ИНН ___' in text:
             return text.replace('ИНН _______________________', f'ИНН {INN}')
-    if kind == 'half' and 'в период с ______ до ______ час.' in text and HALF_HOURS[0]:
-        return text.replace('с ______ до ______ час.', f'с {HALF_HOURS[0]} до {HALF_HOURS[1]} час.')
+    if kind == 'half' and 'в период с ______ до ______ час.' in text:
+        grp = HALF_GROUPS.get(form.get('halfGroup'))
+        if grp:
+            return text.replace('с ______ до ______ час.', f'с {grp["from"]} до {grp["to"]} час.')
     if kind == 'prod':
         if text.strip() == 'г. Керчь':
             return f'г. Керчь, {date_str}'
@@ -255,6 +257,12 @@ def signature_mark_html(form: dict, date_str: str, time_str: str, ip: str) -> st
     photo = 'да' if form.get('agreePhoto') else 'нет'
     label = 'Группа' if kind == 'prod' else 'Тариф'
     extra = ''
+    if kind == 'half':
+        grp = HALF_GROUPS.get(form.get('halfGroup')) or {}
+        extra = (
+            f'<tr><td style="padding:2px 12px 2px 0;color:#666;">Группа:</td>'
+            f'<td>{esc(grp.get("title", ""))}, с {esc(grp.get("from", ""))} до {esc(grp.get("to", ""))}</td></tr>'
+        )
     if kind == 'club':
         early = 'да (+3 000 руб. за смену)' if form.get('earlyVisit') else 'нет'
         extra = (

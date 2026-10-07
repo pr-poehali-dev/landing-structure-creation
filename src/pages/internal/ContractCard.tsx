@@ -67,6 +67,7 @@ export default function ContractCard({ c, onBack, adminUrl, adminKey }: Props) {
         <Row label="IP-адрес" value={c.ip} />
         <Row label="Договор" value={KIND_LABELS[c.kind ?? "garden"] ?? ""} />
         <Row label={c.kind === "prod" ? "Группа" : "Тариф"} value={TARIFF_LABELS[f.tariff] ?? f.tariff} />
+        {c.kind === "half" && <Row label="Группа" value={f.halfGroup === "senior" ? "Старшая, с 8:00 до 13:00" : "Ясельная, с 8:00 до 12:00"} />}
         {c.kind === "club" && <Row label="Смена" value={`№ ${f.shiftNumber}, ${f.shiftFrom} — ${f.shiftTo}`} />}
         {c.kind === "club" && <Row label="Раннее посещение с 8:00" value={f.earlyVisit ? "Да" : "Нет"} />}
         {c.kind === "prod" && <Row label="Школа, класс" value={`${f.school}, ${f.schoolClass}`} />}

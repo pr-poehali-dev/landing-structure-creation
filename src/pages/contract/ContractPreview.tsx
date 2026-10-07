@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import type { ContractForm } from "./formUtils";
 
 import { KINDS } from "./kinds";
+import { HALF_GROUPS } from "./shifts";
 
 const TARIFF_LABELS: Record<string, { name: string; price: string }> = {
   basic: { name: "«Основной»", price: "25 000 руб./мес" },
@@ -72,6 +73,12 @@ export default function ContractPreview({ form: f, onBack, onConfirm, confirmEna
         <Row label="Кому доверено забирать" value={f.trustedPersons} />
         <Row label="Здоровье / аллергии" value={f.health} />
       </Group>
+
+      {f.kind === "half" && f.halfGroup && (
+        <Group title="Группа">
+          <Row label="Группа" value={`${HALF_GROUPS[f.halfGroup].title}, ${HALF_GROUPS[f.halfGroup].note.toLowerCase()}`} />
+        </Group>
+      )}
 
       {f.kind === "club" && (
         <Group title="Смена">

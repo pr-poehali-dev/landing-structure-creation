@@ -5,7 +5,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { KINDS, type ContractKind } from "./kinds";
-import { SHIFTS } from "./shifts";
+import { HALF_GROUPS, SHIFTS } from "./shifts";
 import CodeStep from "./CodeStep";
 import ContractPreview from "./ContractPreview";
 import SignedNotice from "./SignedNotice";
@@ -275,6 +275,26 @@ export default function ContractForm({ kind }: { kind: ContractKind }) {
               Раннее посещение с 8:00 вместо 10:00 (+3 000 руб. за смену, с завтраком)
             </Label>
           </div>
+        </section>
+      )}
+
+      {kind === "half" && (
+        <section className="space-y-3">
+          <h3 className="text-lg font-semibold">
+            Группа<span className="text-destructive"> *</span>
+          </h3>
+          <RadioGroup value={f.halfGroup} onValueChange={(v) => set("halfGroup", v as FormState["halfGroup"])} className="gap-3">
+            {(Object.keys(HALF_GROUPS) as Array<keyof typeof HALF_GROUPS>).map((g) => (
+              <Label key={g} htmlFor={`g-${g}`} className="flex cursor-pointer items-start gap-3 rounded-lg border-2 border-slate-400 bg-white p-4 font-normal">
+                <RadioGroupItem id={`g-${g}`} value={g} className="mt-1" />
+                <span>
+                  <span className="block font-semibold">{HALF_GROUPS[g].title}</span>
+                  <span className="text-sm text-muted-foreground">{HALF_GROUPS[g].note}</span>
+                </span>
+              </Label>
+            ))}
+          </RadioGroup>
+          {err("halfGroup") && <p className="text-sm text-destructive">{errors.halfGroup}</p>}
         </section>
       )}
 
