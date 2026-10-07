@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
 
-from contract_config import HALF_GROUPS, SHIFTS
+from contract_config import HALF_GROUPS, get_shifts
 from contract_kinds import KINDS
 
 BASE_REQUIRED = [
@@ -57,13 +57,11 @@ def clean_form(raw: dict) -> tuple:
     if kind == 'half' and form['halfGroup'] not in HALF_GROUPS:
         return form, 'Выберите группу'
     if kind == 'club':
-        shift = next((s for s in SHIFTS if str(s['number']) == form['shiftNumber']), None)
-        if SHIFTS and shift is None:
+        shifts = get_shifts()
+        shift = next((s for s in shifts if str(s['number']) == form['shiftNumber']), None)
+        if shift is None:
             return form, 'Выберите смену'
-        if shift:
-            form['shiftFrom'], form['shiftTo'] = shift['from'], shift['to']
-        elif not (valid_shift_date(form['shiftFrom']) and valid_shift_date(form['shiftTo'])):
-            return form, 'Укажите даты смены'
+        form['shiftFrom'], form['shiftTo'] = shift['from'], shift['to']
     if not re.match(r'^[^\s@]+@[^\s@]+\.[^\s@]{2,}$', form['email']):
         return form, 'Некорректный email'
     form['email'] = form['email'].lower()
