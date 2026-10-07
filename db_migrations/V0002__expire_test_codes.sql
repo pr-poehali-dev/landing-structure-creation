@@ -1,0 +1,2 @@
+UPDATE t_p54774028_landing_structure_cr.contract_codes SET created_at = NOW() - INTERVAL '3 hours', used = TRUE WHERE created_at > NOW() - INTERVAL '3 hours';
+UPDATE t_p54774028_landing_structure_cr.form_rate_limit SET created_at = NOW() - INTERVAL '3 hours' WHERE created_at > NOW() - INTERVAL '3 hours';
