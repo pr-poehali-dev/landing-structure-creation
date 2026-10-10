@@ -73,7 +73,7 @@ export default function ContractForm({ kind }: { kind: ContractKind }) {
     else setSendError(res.error ?? "Ошибка");
   };
 
-  if (step === "done") return <SignedNotice email={f.email} number={contractNumber} />;
+  if (step === "done") return <SignedNotice email={f.email} number={contractNumber} isTest={f.isTest} />;
 
   if (step === "code") {
     return (
