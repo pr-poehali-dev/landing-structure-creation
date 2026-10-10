@@ -17,6 +17,7 @@ interface Row {
   tariff: string;
   status: string;
   kind?: string;
+  source?: string;
 }
 
 const TARIFFS = TARIFF_LABELS;
@@ -66,7 +67,7 @@ export default function ContractsAdmin() {
 
   const downloadList = () => {
     if (!rows) return;
-    const head = ["№", "Дата", "Договор", "ФИО", "Email", "Тариф", "Статус"];
+    const head = ["№", "Дата", "Договор", "ФИО", "Email", "Тариф", "Откуда узнали", "Статус"];
     const cell = "border:1px solid #999;padding:4px;";
     const body =
       "<h2>Подписанные договоры</h2><table style='border-collapse:collapse;'><tr>" +
@@ -76,7 +77,7 @@ export default function ContractsAdmin() {
         .map(
           (r) =>
             "<tr>" +
-            [r.id, fmt(r.signed_at), kindName(r.kind), r.full_name, r.email, TARIFFS[r.tariff] ?? r.tariff, r.status]
+            [r.id, fmt(r.signed_at), kindName(r.kind), r.full_name, r.email, TARIFFS[r.tariff] ?? r.tariff, r.source ?? "", r.status]
               .map((v) => `<td style='${cell}'>${escapeHtml(String(v))}</td>`)
               .join("") +
             "</tr>"
@@ -120,6 +121,7 @@ export default function ContractsAdmin() {
                 <th className="p-3">Договор</th>
                 <th className="p-3">ФИО</th>
                 <th className="p-3">Тариф</th>
+                <th className="p-3">Откуда узнали</th>
                 <th className="p-3">Статус</th>
               </tr>
             </thead>
@@ -131,6 +133,7 @@ export default function ContractsAdmin() {
                   <td className="p-3">{kindName(r.kind)}</td>
                   <td className="p-3">{r.full_name}</td>
                   <td className="p-3">{TARIFFS[r.tariff] ?? r.tariff}</td>
+                  <td className="p-3">{r.source || "—"}</td>
                   <td className="p-3">{r.status}</td>
                 </tr>
               ))}
