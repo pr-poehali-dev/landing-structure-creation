@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -9,7 +9,6 @@ import { KINDS, type ContractKind } from "./kinds";
 import { HALF_GROUPS, SHIFTS } from "./shifts";
 import CodeStep from "./CodeStep";
 import ContractPreview from "./ContractPreview";
-import TestBanner from "./TestBanner";
 import SignedNotice from "./SignedNotice";
 import { requestCode } from "./contractApi";
 import FormField from "./FormField";
@@ -35,6 +34,11 @@ export default function ContractForm({ kind }: { kind: ContractKind }) {
   const [sendError, setSendError] = useState("");
   const [contractNumber, setContractNumber] = useState<number | undefined>();
   const [touched, setTouched] = useState<Partial<Record<FieldKey, boolean>>>({});
+  const [params] = useSearchParams();
+  const isTest = params.get("test") === "1";
+  useEffect(() => {
+    setF((p) => (p.isTest === isTest ? p : { ...p, isTest }));
+  }, [isTest]);
   const errors = useMemo(() => getErrors(f), [f]);
   const valid = Object.keys(errors).length === 0;
 
@@ -105,7 +109,6 @@ export default function ContractForm({ kind }: { kind: ContractKind }) {
         if (valid) showPreview();
       }}
     >
-      {f.isTest && <TestBanner />}
       <section className="space-y-4">
         <h3 className="text-lg font-semibold">Данные Заказчика (родителя)</h3>
         {text("fullName", "ФИО полностью", { autoComplete: "name" })}

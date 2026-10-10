@@ -2,6 +2,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import useNoIndex from "@/hooks/useNoIndex";
 import ContractForm from "./ContractForm";
+import TestBanner from "./TestBanner";
 import OfferText from "./OfferText";
 import SignatureAgreement from "./SignatureAgreement";
 import { KINDS, type ContractKind } from "./kinds";
@@ -11,14 +12,16 @@ export default function SignContract({ kind = "garden" }: { kind?: ContractKind 
   useNoIndex(`Заключить договор — ${cfg.short}`);
   const [params, setParams] = useSearchParams();
   const filling = params.get("step") === "fill";
+  const isTest = params.get("test") === "1";
 
   const go = (fill: boolean) => {
-    setParams(fill ? { step: "fill" } : {});
+    setParams({ ...(fill ? { step: "fill" } : {}), ...(isTest ? { test: "1" } : {}) });
     window.scrollTo({ top: 0 });
   };
 
   return (
     <main className="mx-auto max-w-5xl space-y-8 px-4 py-10">
+      {isTest && <TestBanner />}
       <div className="space-y-1">
         <p className="text-sm font-medium text-muted-foreground">{cfg.short}</p>
         <h1 className="text-3xl font-bold">{filling ? "Заполнение и подписание договора" : "Заключить договор"}</h1>
