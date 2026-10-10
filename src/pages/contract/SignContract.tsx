@@ -5,6 +5,7 @@ import ContractForm from "./ContractForm";
 import TestBanner from "./TestBanner";
 import OfferText from "./OfferText";
 import SignatureAgreement from "./SignatureAgreement";
+import { withTest } from "./formUtils";
 import { KINDS, type ContractKind } from "./kinds";
 
 export default function SignContract({ kind = "garden" }: { kind?: ContractKind }) {
@@ -32,10 +33,10 @@ export default function SignContract({ kind = "garden" }: { kind?: ContractKind 
           <a href={cfg.docxUrl} download className="font-medium text-primary underline">
             Скачать полный текст договора с Приложениями (DOCX)
           </a>
-          <Link to={cfg.textPath} className="text-primary underline">
+          <Link to={withTest(cfg.textPath, isTest)} className="text-primary underline">
             Читать договор на сайте
           </Link>
-          <Link to={`/oferta/?kind=${kind}`} className="text-primary underline">
+          <Link to={withTest(`/oferta/?kind=${kind}`, isTest)} className="text-primary underline">
             Смотреть оферту
           </Link>
         </div>

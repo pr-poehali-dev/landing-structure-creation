@@ -19,6 +19,7 @@ import {
   formatDeptCode,
   formatPhone,
   getErrors,
+  withTest,
   digits,
   type ContractForm as FormState,
   type FieldKey,
@@ -369,11 +370,11 @@ export default function ContractForm({ kind }: { kind: ContractKind }) {
           />
           <Label htmlFor="agreeContract" className="font-normal leading-snug">
             С условиями{" "}
-            <Link to={cfg.textPath} target="_blank" className="text-primary underline">
+            <Link to={withTest(cfg.textPath, f.isTest)} target="_blank" className="text-primary underline">
               Договора
             </Link>
             , {cfg.appendices} и{" "}
-            <Link to={`/oferta/?kind=${kind}`} target="_blank" className="text-primary underline">
+            <Link to={withTest(`/oferta/?kind=${kind}`, f.isTest)} target="_blank" className="text-primary underline">
               оферты
             </Link>{" "}
             ознакомлен(а) и согласен(а) <span className="text-destructive">*</span>

@@ -84,6 +84,11 @@ const SINGLE_TARIFF: Partial<Record<ContractKind, Tariff>> = { half: "half", clu
 export const isTestMode = () =>
   typeof window !== "undefined" && new URLSearchParams(window.location.search).get("test") === "1";
 
+export function withTest(path: string, isTest: boolean): string {
+  if (!isTest) return path;
+  return path + (path.includes("?") ? "&" : "?") + "test=1";
+}
+
 export function makeEmptyForm(kind: ContractKind): ContractForm {
   return { ...EMPTY_FORM, kind, tariff: SINGLE_TARIFF[kind] ?? "", isTest: isTestMode() };
 }

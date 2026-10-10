@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import useNoIndex from "@/hooks/useNoIndex";
 import type { Item, Run } from "./contractData";
+import TestBanner from "./TestBanner";
+import { withTest } from "./formUtils";
 import { KINDS, type ContractKind } from "./kinds";
 
 const Runs = ({ r }: { r: Run[] }) => (
@@ -32,23 +34,25 @@ const List = ({ items, start = 1, bullet = false }: { items: Item[]; start?: num
 export default function ContractText({ kind = "garden" }: { kind?: ContractKind }) {
   const cfg = KINDS[kind];
   useNoIndex(`Текст договора с Приложениями — ${cfg.short}`);
+  const isTest = useSearchParams()[0].get("test") === "1";
   let listStart = 1;
   return (
     <main className="mx-auto max-w-3xl space-y-4 px-4 py-10 text-base leading-relaxed">
+      {isTest && <TestBanner />}
       <div className="flex flex-wrap items-center gap-4 rounded-lg border bg-muted/40 p-4 text-sm">
         <a href={cfg.docxUrl} download className="font-medium text-primary underline">
           Скачать договор (DOCX)
         </a>
-        <Link to={`/oferta/?kind=${kind}`} className="text-primary underline">
+        <Link to={withTest(`/oferta/?kind=${kind}`, isTest)} className="text-primary underline">
           Оферта и соглашение об электронной подписи
         </Link>
       </div>
       <div className="flex flex-col gap-3 pb-2 sm:flex-row">
         <Button asChild variant="outline">
-          <Link to={cfg.path}>Вернуться к прочтению договора</Link>
+          <Link to={withTest(cfg.path, isTest)}>Вернуться к прочтению договора</Link>
         </Button>
         <Button asChild>
-          <Link to={`${cfg.path}?step=fill`}>Начать заполнять договор</Link>
+          <Link to={withTest(`${cfg.path}?step=fill`, isTest)}>Начать заполнять договор</Link>
         </Button>
       </div>
       {cfg.blocks.map((b, i) => {
@@ -78,10 +82,10 @@ export default function ContractText({ kind = "garden" }: { kind?: ContractKind 
       })}
       <div className="flex flex-col gap-3 pt-4 sm:flex-row">
         <Button asChild variant="outline">
-          <Link to={cfg.path}>Вернуться к прочтению договора</Link>
+          <Link to={withTest(cfg.path, isTest)}>Вернуться к прочтению договора</Link>
         </Button>
         <Button asChild>
-          <Link to={`${cfg.path}?step=fill`}>Начать заполнять договор</Link>
+          <Link to={withTest(`${cfg.path}?step=fill`, isTest)}>Начать заполнять договор</Link>
         </Button>
       </div>
     </main>
