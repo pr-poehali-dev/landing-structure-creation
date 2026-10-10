@@ -88,7 +88,7 @@ def handler(event: dict, context) -> dict:
         cur = conn.cursor()
         cur.execute(
             f"SELECT id, signed_at, full_name, email, tariff, status, kind, form_json "
-            f"FROM {S}.contracts ORDER BY id DESC LIMIT {limit}"
+            f"FROM {S}.contracts WHERE COALESCE((form_json::json)->>'isTest', '') <> 'true' ORDER BY id DESC LIMIT {limit}"
         )
         items = []
         for r in cur.fetchall():

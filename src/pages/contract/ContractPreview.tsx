@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import type { ContractForm } from "./formUtils";
 
+import TestBanner from "./TestBanner";
 import { KINDS } from "./kinds";
 import { HALF_GROUPS } from "./shifts";
 
@@ -43,6 +44,7 @@ export default function ContractPreview({ form: f, onBack, onConfirm, confirmEna
   const cfg = KINDS[f.kind];
   return (
     <div className="space-y-6">
+      {f.isTest && <TestBanner />}
       <div className="space-y-1">
         <h3 className="text-xl font-semibold">Проверьте данные</h3>
         <p className="text-sm text-muted-foreground">

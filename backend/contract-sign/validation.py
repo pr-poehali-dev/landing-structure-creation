@@ -17,7 +17,7 @@ EXTRA_REQUIRED = {
 }
 OPTIONAL = [
     'phoneFather', 'agreePhoto', 'earlyVisit', 'shiftFrom', 'shiftTo', 'parentWork', 'parent2Name', 'parent2Work', 'hobbies',
-    'school', 'schoolClass', 'shiftNumber', 'halfGroup',
+    'school', 'schoolClass', 'shiftNumber', 'halfGroup', 'isTest',
 ]
 SOURCES = ('Входящий звонок', 'Рекомендация', 'Заявка с сайта', 'FB', 'WhatsApp')
 TARIFFS = {
@@ -47,7 +47,7 @@ def clean_form(raw: dict) -> tuple:
     form = {'kind': kind}
     for k in required + OPTIONAL:
         v = raw.get(k, '')
-        form[k] = bool(v) if k in ('agreePhoto', 'earlyVisit') else str(v or '').strip()[:500]
+        form[k] = bool(v) if k in ('agreePhoto', 'earlyVisit', 'isTest') else str(v or '').strip()[:500]
     for k in required:
         if not form[k]:
             return form, 'Заполните все обязательные поля'

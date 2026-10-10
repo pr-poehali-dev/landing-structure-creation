@@ -39,6 +39,7 @@ export interface ContractForm {
   parent2Work: string;
   hobbies: string;
   source: string;
+  isTest: boolean;
 }
 
 export const EMPTY_FORM: ContractForm = {
@@ -75,12 +76,16 @@ export const EMPTY_FORM: ContractForm = {
   parent2Work: "",
   hobbies: "",
   source: "",
+  isTest: false,
 };
 
 const SINGLE_TARIFF: Partial<Record<ContractKind, Tariff>> = { half: "half", club: "club" };
 
+export const isTestMode = () =>
+  typeof window !== "undefined" && new URLSearchParams(window.location.search).get("test") === "1";
+
 export function makeEmptyForm(kind: ContractKind): ContractForm {
-  return { ...EMPTY_FORM, kind, tariff: SINGLE_TARIFF[kind] ?? "" };
+  return { ...EMPTY_FORM, kind, tariff: SINGLE_TARIFF[kind] ?? "", isTest: isTestMode() };
 }
 
 export const digits = (s: string) => s.replace(/\D/g, "");

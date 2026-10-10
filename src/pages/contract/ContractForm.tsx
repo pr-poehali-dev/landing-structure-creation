@@ -9,6 +9,7 @@ import { KINDS, type ContractKind } from "./kinds";
 import { HALF_GROUPS, SHIFTS } from "./shifts";
 import CodeStep from "./CodeStep";
 import ContractPreview from "./ContractPreview";
+import TestBanner from "./TestBanner";
 import SignedNotice from "./SignedNotice";
 import { requestCode } from "./contractApi";
 import FormField from "./FormField";
@@ -104,6 +105,7 @@ export default function ContractForm({ kind }: { kind: ContractKind }) {
         if (valid) showPreview();
       }}
     >
+      {f.isTest && <TestBanner />}
       <section className="space-y-4">
         <h3 className="text-lg font-semibold">Данные Заказчика (родителя)</h3>
         {text("fullName", "ФИО полностью", { autoComplete: "name" })}

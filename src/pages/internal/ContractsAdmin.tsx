@@ -18,6 +18,7 @@ interface Row {
   status: string;
   kind?: string;
   source?: string;
+  is_test?: boolean;
 }
 
 const TARIFFS = TARIFF_LABELS;
@@ -77,7 +78,7 @@ export default function ContractsAdmin() {
         .map(
           (r) =>
             "<tr>" +
-            [r.id, fmt(r.signed_at), kindName(r.kind), r.full_name, r.email, TARIFFS[r.tariff] ?? r.tariff, r.source ?? "", r.status]
+            [r.is_test ? `${r.id} (ТЕСТ)` : r.id, fmt(r.signed_at), kindName(r.kind), r.full_name, r.email, TARIFFS[r.tariff] ?? r.tariff, r.source ?? "", r.status]
               .map((v) => `<td style='${cell}'>${escapeHtml(String(v))}</td>`)
               .join("") +
             "</tr>"
@@ -128,7 +129,10 @@ export default function ContractsAdmin() {
             <tbody>
               {rows.map((r) => (
                 <tr key={r.id} className="cursor-pointer border-t hover:bg-muted/50" onClick={() => open(r.id)}>
-                  <td className="p-3 font-medium">{r.id}</td>
+                  <td className="p-3 font-medium">
+                    {r.id}
+                    {r.is_test && <span className="ml-2 rounded bg-orange-100 px-2 py-0.5 text-xs font-semibold text-orange-800">Тест</span>}
+                  </td>
                   <td className="p-3">{fmt(r.signed_at)}</td>
                   <td className="p-3">{kindName(r.kind)}</td>
                   <td className="p-3">{r.full_name}</td>
