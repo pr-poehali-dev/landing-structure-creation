@@ -107,6 +107,7 @@ def handler(event: dict, context) -> dict:
                 'amount': amount_for(r[4], form),
                 'currency': 'RUB',
                 'status': r[5],
+                'source': form.get('source', ''),
             })
         return reply(200, {'count': len(items), 'items': items})
     finally:

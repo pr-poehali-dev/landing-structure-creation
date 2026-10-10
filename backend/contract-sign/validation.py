@@ -7,7 +7,7 @@ from contract_kinds import KINDS
 BASE_REQUIRED = [
     'fullName', 'birthDate', 'passportSeries', 'passportNumber', 'passportIssuedBy', 'passportIssuedDate',
     'passportDeptCode', 'address', 'phoneMother', 'email', 'childName', 'childBirthDate', 'childCertificate',
-    'trustedPersons', 'health', 'tariff',
+    'trustedPersons', 'health', 'tariff', 'source',
 ]
 EXTRA_REQUIRED = {
     'garden': [],
@@ -19,6 +19,7 @@ OPTIONAL = [
     'phoneFather', 'agreePhoto', 'earlyVisit', 'shiftFrom', 'shiftTo', 'parentWork', 'parent2Name', 'parent2Work', 'hobbies',
     'school', 'schoolClass', 'shiftNumber', 'halfGroup',
 ]
+SOURCES = ('Входящий звонок', 'Рекомендация', 'Заявка с сайта', 'FB', 'WhatsApp')
 TARIFFS = {
     'garden': ('basic', 'special'),
     'half': ('half',),
@@ -52,6 +53,8 @@ def clean_form(raw: dict) -> tuple:
             return form, 'Заполните все обязательные поля'
     if not raw.get('agreeContract') or not raw.get('agreePersonal'):
         return form, 'Необходимо подтвердить обязательные согласия'
+    if form['source'] not in SOURCES:
+        return form, 'Выберите, откуда вы о нас узнали'
     if form['tariff'] not in TARIFFS[kind]:
         return form, 'Выберите тариф'
     if kind == 'half' and form['halfGroup'] not in HALF_GROUPS:

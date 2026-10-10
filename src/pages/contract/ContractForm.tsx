@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { KINDS, type ContractKind } from "./kinds";
 import { HALF_GROUPS, SHIFTS } from "./shifts";
@@ -13,6 +14,7 @@ import { requestCode } from "./contractApi";
 import FormField from "./FormField";
 import {
   makeEmptyForm,
+  SOURCES,
   formatDate,
   formatDeptCode,
   formatPhone,
@@ -332,6 +334,25 @@ export default function ContractForm({ kind }: { kind: ContractKind }) {
           {err("tariff") && <p className="text-sm text-destructive">{errors.tariff}</p>}
         </section>
       )}
+
+      <section className="space-y-2">
+        <Label htmlFor="source" className="text-lg font-semibold">
+          Откуда вы о нас узнали?<span className="text-destructive"> *</span>
+        </Label>
+        <Select value={f.source} onValueChange={(v) => set("source", v)}>
+          <SelectTrigger id="source" className="bg-white">
+            <SelectValue placeholder="Выберите вариант" />
+          </SelectTrigger>
+          <SelectContent>
+            {SOURCES.map((s) => (
+              <SelectItem key={s} value={s}>
+                {s}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        {err("source") && <p className="text-sm text-destructive">{errors.source}</p>}
+      </section>
 
       <section className="space-y-3">
         <div className="flex items-start gap-3">

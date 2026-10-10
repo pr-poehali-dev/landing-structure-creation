@@ -101,6 +101,7 @@ export default function ContractPreview({ form: f, onBack, onConfirm, confirmEna
 
       <Group title={`${cfg.tariffTitle} и согласия`}>
         <Row label={cfg.tariffTitle} value={tariff ? `${tariff.name} — ${tariff.price}` : ""} />
+        <Row label="Откуда узнали о нас" value={f.source} />
         <Row label={`Условия Договора, ${cfg.summary}, оферта`} value={yesNo(f.agreeContract)} />
         <Row label="Обработка персональных данных" value={yesNo(f.agreePersonal)} />
         <Row label="Фото- и видеосъёмка" value={yesNo(f.agreePhoto)} />
