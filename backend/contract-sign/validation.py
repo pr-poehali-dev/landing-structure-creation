@@ -19,7 +19,7 @@ OPTIONAL = [
     'phoneFather', 'agreePhoto', 'earlyVisit', 'shiftFrom', 'shiftTo', 'parentWork', 'parent2Name', 'parent2Work', 'hobbies',
     'school', 'schoolClass', 'shiftNumber', 'halfGroup', 'isTest',
 ]
-SOURCES = ('Входящий звонок', 'Рекомендация', 'Заявка с сайта', 'FB', 'WhatsApp')
+SOURCES = ('Рекомендация', 'Заявка с сайта', 'реклама в Яндекс', 'реклама ВКонтакте', 'шли мимо и решили зайти')
 TARIFFS = {
     'garden': ('basic', 'special'),
     'half': ('half',),

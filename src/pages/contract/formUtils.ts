@@ -3,7 +3,7 @@ import { SHIFTS } from "./shifts";
 
 export type Tariff = "basic" | "special" | "morning" | "day" | "half" | "club";
 
-export const SOURCES = ["Входящий звонок", "Рекомендация", "Заявка с сайта", "FB", "WhatsApp"] as const;
+export const SOURCES = ["Рекомендация", "Заявка с сайта", "реклама в Яндекс", "реклама ВКонтакте", "шли мимо и решили зайти"] as const;
 
 export interface ContractForm {
   kind: ContractKind;
