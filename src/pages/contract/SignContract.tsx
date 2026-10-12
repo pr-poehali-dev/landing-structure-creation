@@ -8,18 +8,36 @@ import OfferText from "./OfferText";
 import SignatureAgreement from "./SignatureAgreement";
 import { withTest } from "./formUtils";
 import { KINDS, type ContractKind } from "./kinds";
+import useOffer from "./useOffer";
+import OfferBanner from "./OfferBanner";
+import OfferInvalid from "./OfferInvalid";
 
-export default function SignContract({ kind = "garden" }: { kind?: ContractKind }) {
+export default function SignContract({ kind: kindProp = "garden" }: { kind?: ContractKind }) {
+  const offerState = useOffer();
+  const offer = offerState.status === "ready" ? offerState.offer : null;
+  const kind: ContractKind = offer ? offer.program : kindProp;
   const cfg = KINDS[kind];
   useNoIndex(`Заключить договор — ${cfg.short}`);
   const [params, setParams] = useSearchParams();
   const filling = params.get("step") === "fill";
   const isTest = params.get("test") === "1";
+  const offerCode = params.get("offer") ?? "";
 
   const go = (fill: boolean) => {
-    setParams({ ...(fill ? { step: "fill" } : {}), ...(isTest ? { test: "1" } : {}) });
+    setParams({
+      ...(fill ? { step: "fill" } : {}),
+      ...(offerCode ? { offer: offerCode } : {}),
+      ...(isTest ? { test: "1" } : {}),
+    });
     window.scrollTo({ top: 0 });
   };
+
+  if (offerState.status === "loading") {
+    return <main className="mx-auto max-w-3xl px-4 py-16 text-center text-muted-foreground">Загружаем договор...</main>;
+  }
+  if (offerState.status === "invalid" || offerState.status === "failed") {
+    return <OfferInvalid message={offerState.error} retry={offerState.status === "failed" ? () => window.location.reload() : undefined} />;
+  }
 
   return (
     <main className="mx-auto max-w-5xl space-y-8 px-4 py-10">
@@ -30,7 +48,7 @@ export default function SignContract({ kind = "garden" }: { kind?: ContractKind 
       </div>
 
       <div className={filling ? "hidden" : "space-y-8"}>
-        <KindSwitcher current={kind} isTest={isTest} />
+        {offer ? <OfferBanner offer={offer} /> : <KindSwitcher current={kind} isTest={isTest} />}
         <div className="flex flex-wrap items-center gap-4 rounded-lg border bg-muted/40 p-4 text-sm">
           <a href={cfg.docxUrl} download className="font-medium text-primary underline">
             Скачать полный текст договора с Приложениями (DOCX)
@@ -53,10 +71,11 @@ export default function SignContract({ kind = "garden" }: { kind?: ContractKind 
         <Button variant="outline" onClick={() => go(false)}>
           Вернуться к прочтению договора
         </Button>
+        {offer && <OfferBanner offer={offer} />}
         <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
           <div className="space-y-4">
             <h2 className="text-2xl font-semibold">Анкета-заявление</h2>
-            <ContractForm kind={kind} />
+            <ContractForm kind={kind} offer={offer} offerCode={offerCode} />
           </div>
           <aside className="lg:sticky lg:top-6 lg:self-start">
             <SignatureAgreement kind={kind} />

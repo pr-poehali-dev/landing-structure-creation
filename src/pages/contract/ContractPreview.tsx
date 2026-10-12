@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import type { ContractForm } from "./formUtils";
+import type { PersonalOffer } from "./contractApi";
 
 import { KINDS } from "./kinds";
 import { HALF_GROUPS } from "./shifts";
@@ -11,6 +12,7 @@ const TARIFF_LABELS: Record<string, { name: string; price: string }> = {
   club: { name: "Смена летнего клуба", price: "15 500 руб." },
   morning: { name: "Утренняя продлёнка", price: "с 8:00 до 12:30" },
   day: { name: "Дневная продлёнка", price: "с 12:00 до 18:00" },
+  personal: { name: "Персональный", price: "" },
 };
 
 interface Props {
@@ -20,6 +22,7 @@ interface Props {
   confirmEnabled: boolean;
   unavailable?: boolean;
   error?: string;
+  offer?: PersonalOffer | null;
 }
 
 const Row = ({ label, value }: { label: string; value: string }) => (
@@ -38,7 +41,8 @@ const Group = ({ title, children }: { title: string; children: React.ReactNode }
 
 const yesNo = (v: boolean) => (v ? "Да" : "Нет");
 
-export default function ContractPreview({ form: f, onBack, onConfirm, confirmEnabled, unavailable, error }: Props) {
+export default function ContractPreview({ form: f, onBack, onConfirm, confirmEnabled, unavailable, error, offer }: Props) {
+  const rub = (n: number) => n.toLocaleString("ru-RU").replace(/\u00a0/g, " ");
   const tariff = f.tariff ? TARIFF_LABELS[f.tariff] : null;
   const cfg = KINDS[f.kind];
   return (
@@ -100,7 +104,15 @@ export default function ContractPreview({ form: f, onBack, onConfirm, confirmEna
       )}
 
       <Group title={`${cfg.tariffTitle} и согласия`}>
-        <Row label={cfg.tariffTitle} value={tariff ? `${tariff.name} — ${tariff.price}` : ""} />
+        {offer ? (
+          <>
+            <Row label="Персональный тариф" value={`«${offer.tariff_name}»`} />
+            <Row label="Стоимость" value={`${rub(offer.price_month)} руб./мес`} />
+            {f.kind === "prod" && tariff && <Row label={cfg.tariffTitle} value={`${tariff.name} — ${tariff.price}`} />}
+          </>
+        ) : (
+          <Row label={cfg.tariffTitle} value={tariff ? `${tariff.name} — ${tariff.price}` : ""} />
+        )}
         <Row label="Откуда узнали о нас" value={f.source === "Другое" ? `Другое: ${f.sourceOther}` : f.source} />
         <Row label={`Условия Договора, ${cfg.summary}, оферта`} value={yesNo(f.agreeContract)} />
         <Row label="Обработка персональных данных" value={yesNo(f.agreePersonal)} />

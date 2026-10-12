@@ -1,7 +1,7 @@
 import type { ContractKind } from "./kinds";
 import { SHIFTS } from "./shifts";
 
-export type Tariff = "basic" | "special" | "morning" | "day" | "half" | "club";
+export type Tariff = "basic" | "special" | "morning" | "day" | "half" | "club" | "personal";
 
 export const SOURCES = ["Рекомендация", "Заявка с сайта", "реклама в Яндекс", "реклама ВКонтакте", "шли мимо и решили зайти", "Другое"] as const;
 
@@ -86,9 +86,16 @@ const SINGLE_TARIFF: Partial<Record<ContractKind, Tariff>> = { half: "half", clu
 export const isTestMode = () =>
   typeof window !== "undefined" && new URLSearchParams(window.location.search).get("test") === "1";
 
+export const currentOfferCode = () =>
+  typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("offer") ?? "" : "";
+
 export function withTest(path: string, isTest: boolean): string {
-  if (!isTest) return path;
-  return path + (path.includes("?") ? "&" : "?") + "test=1";
+  const extra: string[] = [];
+  const offer = currentOfferCode();
+  if (offer) extra.push("offer=" + encodeURIComponent(offer));
+  if (isTest) extra.push("test=1");
+  if (!extra.length) return path;
+  return path + (path.includes("?") ? "&" : "?") + extra.join("&");
 }
 
 export function makeEmptyForm(kind: ContractKind): ContractForm {

@@ -7,6 +7,7 @@ from guard import client_ip, reply, verify_captcha
 from validation import clean_form
 from contract_render import contract_html, signature_mark_html, questionnaire_html
 from mailer import send_code, send_signed
+from offers import INVALID_OFFER, apply_offer, public_offer
 from store import Store, MAX_CODES_PER_HOUR
 
 MSK = timezone(timedelta(hours=3))
@@ -17,15 +18,43 @@ def hash_code(email: str, code: str) -> str:
     return hashlib.sha256(f'{email}:{code}'.encode()).hexdigest()
 
 
-def request_code(event: dict, body: dict) -> dict:
-    form, error = clean_form(body.get('form') or {})
-    if error:
-        return reply(400, {'error': error})
-    ip = client_ip(event)
-    if not verify_captcha(str(body.get('captcha_token', '')), ip):
-        return reply(403, {'error': 'Проверка не пройдена'})
+def load_offer(store: Store, code) -> tuple:
+    """(предложение, None) для активного кода или (None, ответ-ошибка)"""
+    code = str(code or '').strip()[:100]
+    offer = store.get_offer(code) if code else None
+    if offer is None or offer['status'] != 'active':
+        return None, reply(404, {'error': INVALID_OFFER})
+    offer['code'] = code
+    return offer, None
+
+
+def check_offer(body: dict) -> dict:
     store = Store()
     try:
+        offer, err = load_offer(store, body.get('offer_code'))
+    finally:
+        store.close()
+    if err:
+        return err
+    return reply(200, {'ok': True, 'offer': public_offer(offer)})
+
+
+def request_code(event: dict, body: dict) -> dict:
+    ip = client_ip(event)
+    store = Store()
+    try:
+        offer = None
+        raw = body.get('form') or {}
+        if body.get('offer_code'):
+            offer, err = load_offer(store, body.get('offer_code'))
+            if err:
+                return err
+            raw = apply_offer(raw, offer)
+        form, error = clean_form(raw, offer)
+        if error:
+            return reply(400, {'error': error})
+        if not verify_captcha(str(body.get('captcha_token', '')), ip):
+            return reply(403, {'error': 'Проверка не пройдена'})
         if store.codes_last_hour(form['email']) >= MAX_CODES_PER_HOUR:
             return reply(429, {'error': 'Слишком много запросов кода, попробуйте через час'})
         code = f'{secrets.randbelow(1000000):06d}'
@@ -59,6 +88,8 @@ def verify_code(event: dict, body: dict) -> dict:
             return reply(400, {'error': 'Неверный код'})
         form = json.loads(form_json)
         number = store.consume_and_create_contract(code_id, form, ip)
+        if number == -1:
+            return reply(410, {'error': INVALID_OFFER})
         if not number:
             return reply(409, {'error': 'Код уже использован'})
     finally:
@@ -96,6 +127,8 @@ def handler(event: dict, context) -> dict:
     if str(body.get('website', '')).strip():
         return reply(200, {'ok': True})
     action = body.get('action')
+    if action == 'check_offer':
+        return check_offer(body)
     if action == 'request_code':
         return request_code(event, body)
     if action == 'verify_code':

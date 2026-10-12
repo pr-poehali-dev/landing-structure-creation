@@ -46,7 +46,12 @@ def authorized(event: dict) -> bool:
     return bool(expected) and hmac.compare_digest(given.encode(), expected.encode())
 
 
+PROGRAM_TITLES = {'garden': 'Садик', 'prod': 'ГПД', 'half': 'Неполный день', 'club': 'Летний клуб'}
+
+
 def amount_for(tariff: str, form: dict):
+    if form.get('offerCode') and form.get('offerPrice'):
+        return int(form['offerPrice'])
     base = TARIFF_AMOUNTS.get(tariff)
     if base is None:
         return None
@@ -103,8 +108,12 @@ def handler(event: dict, context) -> dict:
                 'phone_second': form.get('phoneFather', ''),
                 'email': r[3],
                 'service': KIND_TITLES.get(r[6], r[6]),
-                'tariff': TARIFF_TITLES.get(r[4], r[4]),
+                'program': PROGRAM_TITLES.get(r[6], r[6]),
+                'tariff': form['offerTariff'] if form.get('offerCode') else TARIFF_TITLES.get(r[4], r[4]),
+                'tariff_name': form['offerTariff'] if form.get('offerCode') else TARIFF_TITLES.get(r[4], r[4]),
                 'amount': amount_for(r[4], form),
+                'price_month': amount_for(r[4], form),
+                'offer_code': form.get('offerCode') or None,
                 'currency': 'RUB',
                 'status': r[5],
                 'source': form.get('source', ''),

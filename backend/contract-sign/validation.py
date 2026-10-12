@@ -3,6 +3,7 @@ from datetime import datetime
 
 from contract_config import HALF_GROUPS, get_shifts
 from contract_kinds import KINDS
+from offers import stamp_offer
 
 BASE_REQUIRED = [
     'fullName', 'birthDate', 'passportSeries', 'passportNumber', 'passportIssuedBy', 'passportIssuedDate',
@@ -40,7 +41,7 @@ def valid_date(s: str) -> bool:
     return 1900 <= d.year and d <= datetime.now()
 
 
-def clean_form(raw: dict) -> tuple:
+def clean_form(raw: dict, offer: dict = None) -> tuple:
     """Возвращает (очищенная анкета, текст ошибки или None)"""
     kind = raw.get('kind') if raw.get('kind') in KINDS else 'garden'
     required = BASE_REQUIRED + EXTRA_REQUIRED[kind]
@@ -59,7 +60,8 @@ def clean_form(raw: dict) -> tuple:
         if not form['sourceOther']:
             return form, 'Укажите, откуда вы о нас узнали'
         form['source'] = 'Другое: ' + form['sourceOther'][:200]
-    if form['tariff'] not in TARIFFS[kind]:
+    allowed = TARIFFS[kind] + (('personal',) if offer and kind == 'garden' else ())
+    if form['tariff'] not in allowed:
         return form, 'Выберите тариф'
     if kind == 'half' and form['halfGroup'] not in HALF_GROUPS:
         return form, 'Выберите группу'
@@ -83,6 +85,8 @@ def clean_form(raw: dict) -> tuple:
         return form, 'Некорректные паспортные данные'
     if len(digits(form['passportDeptCode'])) != 6:
         return form, 'Некорректный код подразделения'
+    if offer:
+        stamp_offer(form, offer)
     return form, None
 
 

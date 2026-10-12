@@ -11,7 +11,7 @@ import { HALF_GROUPS, SHIFTS } from "./shifts";
 import CodeStep from "./CodeStep";
 import ContractPreview from "./ContractPreview";
 import SignedNotice from "./SignedNotice";
-import { requestCode } from "./contractApi";
+import { requestCode, type PersonalOffer } from "./contractApi";
 import FormField from "./FormField";
 import {
   makeEmptyForm,
@@ -28,9 +28,19 @@ import {
 
 const SUBMIT_ENABLED = true;
 
-export default function ContractForm({ kind }: { kind: ContractKind }) {
+interface FormProps {
+  kind: ContractKind;
+  offer?: PersonalOffer | null;
+  offerCode?: string;
+}
+
+export default function ContractForm({ kind, offer, offerCode }: FormProps) {
   const cfg = KINDS[kind];
-  const [f, setF] = useState<FormState>(() => makeEmptyForm(kind));
+  const [f, setF] = useState<FormState>(() => {
+    const base = makeEmptyForm(kind);
+    if (!offer) return base;
+    return { ...base, childName: offer.child_name, tariff: kind === "garden" ? "personal" : base.tariff };
+  });
   const [step, setStep] = useState<"form" | "preview" | "code" | "done">("form");
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState("");
@@ -69,7 +79,7 @@ export default function ContractForm({ kind }: { kind: ContractKind }) {
   const sendCode = async () => {
     setSending(true);
     setSendError("");
-    const res = await requestCode(f);
+    const res = await requestCode(f, offerCode || undefined);
     setSending(false);
     if (res.ok) setStep("code");
     else setSendError(res.error ?? "Ошибка");
@@ -99,6 +109,7 @@ export default function ContractForm({ kind }: { kind: ContractKind }) {
         confirmEnabled={SUBMIT_ENABLED && !sending}
         unavailable={!SUBMIT_ENABLED}
         error={sendError}
+        offer={offer}
       />
     );
   }
@@ -209,7 +220,7 @@ export default function ContractForm({ kind }: { kind: ContractKind }) {
 
       <section className="space-y-4">
         <h3 className="text-lg font-semibold">Ребёнок</h3>
-        {text("childName", "ФИО ребёнка полностью")}
+        {text("childName", "ФИО ребёнка полностью", offer ? { readOnly: true, hint: "Указано в персональном предложении" } : {})}
         <div className="grid gap-4 sm:grid-cols-2">
           <FormField
             id="childBirthDate"
@@ -321,7 +332,7 @@ export default function ContractForm({ kind }: { kind: ContractKind }) {
         </section>
       )}
 
-      {cfg.tariffs.length > 1 && (
+      {cfg.tariffs.length > 1 && !(offer && kind === "garden") && (
         <section className="space-y-3">
           <h3 className="text-lg font-semibold">
             {cfg.tariffTitle}

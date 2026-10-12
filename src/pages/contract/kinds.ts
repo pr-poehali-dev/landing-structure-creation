@@ -102,4 +102,5 @@ export const TARIFF_LABELS: Record<string, string> = {
   day: "Дневная группа",
   half: "Неполный день пребывания",
   club: "Смена клуба",
+  personal: "Персональный",
 };

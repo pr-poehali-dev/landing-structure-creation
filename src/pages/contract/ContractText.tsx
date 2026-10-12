@@ -5,6 +5,9 @@ import type { Item, Run } from "./contractData";
 import TestBanner from "./TestBanner";
 import { withTest } from "./formUtils";
 import { KINDS, type ContractKind } from "./kinds";
+import useOffer from "./useOffer";
+import OfferBanner from "./OfferBanner";
+import OfferInvalid from "./OfferInvalid";
 
 const Runs = ({ r }: { r: Run[] }) => (
   <>
@@ -31,14 +34,24 @@ const List = ({ items, start = 1, bullet = false }: { items: Item[]; start?: num
   );
 };
 
-export default function ContractText({ kind = "garden" }: { kind?: ContractKind }) {
+export default function ContractText({ kind: kindProp = "garden" }: { kind?: ContractKind }) {
+  const offerState = useOffer();
+  const offer = offerState.status === "ready" ? offerState.offer : null;
+  const kind: ContractKind = offer ? offer.program : kindProp;
   const cfg = KINDS[kind];
   useNoIndex(`Текст договора с Приложениями — ${cfg.short}`);
   const isTest = useSearchParams()[0].get("test") === "1";
   let listStart = 1;
+  if (offerState.status === "loading") {
+    return <main className="mx-auto max-w-3xl px-4 py-16 text-center text-muted-foreground">Загружаем договор...</main>;
+  }
+  if (offerState.status === "invalid" || offerState.status === "failed") {
+    return <OfferInvalid message={offerState.error} retry={offerState.status === "failed" ? () => window.location.reload() : undefined} />;
+  }
   return (
     <main className="mx-auto max-w-3xl space-y-4 px-4 py-10 text-base leading-relaxed">
       {isTest && <TestBanner />}
+      {offer && <OfferBanner offer={offer} />}
       <div className="flex flex-wrap items-center gap-4 rounded-lg border bg-muted/40 p-4 text-sm">
         <a href={cfg.docxUrl} download className="font-medium text-primary underline">
           Скачать договор (DOCX)

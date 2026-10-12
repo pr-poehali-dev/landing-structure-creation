@@ -15,6 +15,7 @@ interface Props {
   autoComplete?: string;
   className?: string;
   hint?: string;
+  readOnly?: boolean;
 }
 
 const FIELD_BORDER = "border-2 border-slate-500 bg-white shadow-sm hover:border-slate-700 focus-visible:border-primary";
@@ -32,6 +33,7 @@ export default function FormField({
   autoComplete,
   className,
   hint,
+  readOnly,
 }: Props) {
   return (
     <div className={`space-y-1.5 ${className ?? ""}`}>
@@ -49,7 +51,8 @@ export default function FormField({
           placeholder={placeholder}
           inputMode={inputMode}
           autoComplete={autoComplete}
-          className={FIELD_BORDER}
+          readOnly={readOnly}
+          className={readOnly ? `${FIELD_BORDER} bg-muted` : FIELD_BORDER}
         />
       )}
       {hint && !error && <p className="text-sm text-muted-foreground">{hint}</p>}
