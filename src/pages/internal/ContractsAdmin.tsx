@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import useNoIndex from "@/hooks/useNoIndex";
 import { downloadWord, escapeHtml } from "./wordExport";
+import SourceStats from "./SourceStats";
 import ContractCard, { type ContractDetails } from "./ContractCard";
 import { KIND_LABELS, TARIFF_LABELS } from "@/pages/contract/kinds";
 
@@ -112,6 +113,7 @@ export default function ContractsAdmin() {
           Скачать список (DOC)
         </Button>
       )}
+      {rows && rows.length > 0 && <SourceStats rows={rows} />}
       {rows && rows.length > 0 && (
         <div className="overflow-x-auto rounded-lg border">
           <table className="w-full text-sm">
