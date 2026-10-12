@@ -26,6 +26,7 @@ import ReadinessMapAdminPage from "./pages/internal/ReadinessMapAdminPage";
 import ContractsAdmin from "./pages/internal/ContractsAdmin";
 import NotFound from "./pages/NotFound";
 import ServiceAwareWidgets from "./components/ServiceAwareWidgets";
+import OffersAdmin from "./pages/internal/OffersAdmin";
 import ContractChoice from "./pages/contract/ContractChoice";
 import SignContract from "./pages/contract/SignContract";
 import Offer from "./pages/contract/Offer";
@@ -72,6 +73,7 @@ const App = () => (
           <Route path="/dogovor/tekst/" element={<ContractChoice />} />
           <Route path="/dogovor/polny-den/tekst/" element={<ContractText />} />
           <Route path="/internal/contracts/" element={<ContractsAdmin />} />
+          <Route path="/internal/offers/" element={<OffersAdmin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

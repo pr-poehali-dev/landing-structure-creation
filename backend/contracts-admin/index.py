@@ -51,6 +51,21 @@ def handler(event: dict, context) -> dict:
         return reply(503, {'error': 'База данных временно недоступна'})
     try:
         cur = conn.cursor()
+        if params.get('offers'):
+            cur.execute(
+                "SELECT id, program, child_name, tariff_name, price_month, comment, code, status, created_at, contract_id "
+                f"FROM {S}.personal_offers ORDER BY id DESC LIMIT 500"
+            )
+            paths = {'garden': '/dogovor/polny-den/', 'prod': '/dogovor/prodlenka/'}
+            offers = [
+                {
+                    'id': r[0], 'program': r[1], 'child_name': r[2], 'tariff_name': r[3], 'price_month': r[4],
+                    'comment': r[5], 'status': r[7], 'created_at': r[8], 'contract_id': r[9],
+                    'link': f'https://ribkadollilend.ru{paths[r[1]]}?offer={r[6]}',
+                }
+                for r in cur.fetchall()
+            ]
+            return reply(200, {'items': offers})
         if contract_id:
             if not contract_id.isdigit():
                 return reply(400, {'error': 'Некорректный номер'})
