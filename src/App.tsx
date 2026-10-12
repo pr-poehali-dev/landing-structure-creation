@@ -26,6 +26,7 @@ import ReadinessMapAdminPage from "./pages/internal/ReadinessMapAdminPage";
 import ContractsAdmin from "./pages/internal/ContractsAdmin";
 import NotFound from "./pages/NotFound";
 import ServiceAwareWidgets from "./components/ServiceAwareWidgets";
+import ContractChoice from "./pages/contract/ContractChoice";
 import SignContract from "./pages/contract/SignContract";
 import Offer from "./pages/contract/Offer";
 import ContractText from "./pages/contract/ContractText";
@@ -59,7 +60,8 @@ const App = () => (
           <Route path="/checklist-8/" element={<Checklist8 />} />
           <Route path="/checklist-9/" element={<Checklist9 />} />
           <Route path="/internal/readiness-map/" element={<ReadinessMapAdminPage />} />
-          <Route path="/dogovor/" element={<SignContract />} />
+          <Route path="/dogovor/" element={<ContractChoice />} />
+          <Route path="/dogovor/polny-den/" element={<SignContract />} />
           <Route path="/dogovor/prodlenka/" element={<SignContract kind="prod" />} />
           <Route path="/dogovor/nepolny-den/" element={<SignContract kind="half" />} />
           <Route path="/dogovor/klub/" element={<SignContract kind="club" />} />

@@ -30,9 +30,9 @@ const CDN = "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd
 export const KINDS: Record<ContractKind, KindConfig> = {
   garden: {
     kind: "garden",
-    path: "/dogovor/",
+    path: "/dogovor/polny-den/",
     textPath: "/dogovor/tekst/",
-    short: "Детский сад",
+    short: "Полный день пребывания",
     heading: "Договор об оказании услуг по присмотру и уходу за детьми",
     blocks: CONTRACT_BLOCKS,
     docxUrl: CDN + "1f18a467-f459-4a1a-85cd-62439d8fcdb6.docx",
@@ -48,7 +48,7 @@ export const KINDS: Record<ContractKind, KindConfig> = {
     kind: "prod",
     path: "/dogovor/prodlenka/",
     textPath: "/dogovor/prodlenka/tekst/",
-    short: "Продлёнка",
+    short: "Группа продленного дня",
     heading: "Договор об оказании услуг по присмотру и уходу за детьми младшего школьного возраста в группе продлённого дня",
     blocks: PROD_BLOCKS,
     docxUrl: CDN + "bbc0afbb-ae2f-4c9d-b464-cc3477145a2c.docx",
@@ -64,7 +64,7 @@ export const KINDS: Record<ContractKind, KindConfig> = {
     kind: "half",
     path: "/dogovor/nepolny-den/",
     textPath: "/dogovor/nepolny-den/tekst/",
-    short: "Неполный день с питанием",
+    short: "Неполный день пребывания",
     heading: "Договор об оказании услуг по присмотру и уходу за детьми (неполный день с питанием)",
     blocks: HALF_BLOCKS,
     docxUrl: CDN + "8273685d-314f-4e77-b345-6e70a293875f.docx",
@@ -89,9 +89,9 @@ export const KINDS: Record<ContractKind, KindConfig> = {
 };
 
 export const KIND_LABELS: Record<string, string> = {
-  garden: "Детский сад",
-  prod: "Продлёнка",
-  half: "Неполный день",
+  garden: "Полный день пребывания",
+  prod: "Группа продленного дня",
+  half: "Неполный день пребывания",
   club: "Летний клуб",
 };
 
@@ -100,6 +100,6 @@ export const TARIFF_LABELS: Record<string, string> = {
   special: "Специальный",
   morning: "Утренняя группа",
   day: "Дневная группа",
-  half: "Неполный день",
+  half: "Неполный день пребывания",
   club: "Смена клуба",
 };
