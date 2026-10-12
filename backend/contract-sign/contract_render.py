@@ -53,11 +53,13 @@ def special_conditions_html(form: dict) -> str:
     if not form.get('offerCode') or not comment:
         return ''
     return (
-        '<h2>ОСОБЫЕ УСЛОВИЯ</h2>'
+        '<div style="border:2px solid #333;padding:10px 14px;margin:14px 0;">'
+        '<h2 style="margin-top:0;">ОСОБЫЕ УСЛОВИЯ</h2>'
         '<p>Особые условия, указанные в настоящем разделе, согласованы Сторонами индивидуально и имеют '
         'преимущественную силу перед иными положениями настоящего Договора и Приложений к нему. '
         'В случае расхождения между Особыми условиями и иными положениями Договора применяются Особые условия.</p>'
-        f'<p>{esc(comment).replace(chr(10), "<br>")}</p>'
+        f'<p><strong>{esc(comment).replace(chr(10), "<br>")}</strong></p>'
+        '</div>'
     )
 
 
