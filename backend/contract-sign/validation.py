@@ -17,9 +17,9 @@ EXTRA_REQUIRED = {
 }
 OPTIONAL = [
     'phoneFather', 'agreePhoto', 'earlyVisit', 'shiftFrom', 'shiftTo', 'parentWork', 'parent2Name', 'parent2Work', 'hobbies',
-    'school', 'schoolClass', 'shiftNumber', 'halfGroup', 'isTest',
+    'school', 'schoolClass', 'shiftNumber', 'halfGroup', 'isTest', 'sourceOther',
 ]
-SOURCES = ('Рекомендация', 'Заявка с сайта', 'реклама в Яндекс', 'реклама ВКонтакте', 'шли мимо и решили зайти')
+SOURCES = ('Рекомендация', 'Заявка с сайта', 'реклама в Яндекс', 'реклама ВКонтакте', 'шли мимо и решили зайти', 'Другое')
 TARIFFS = {
     'garden': ('basic', 'special'),
     'half': ('half',),
@@ -55,6 +55,10 @@ def clean_form(raw: dict) -> tuple:
         return form, 'Необходимо подтвердить обязательные согласия'
     if form['source'] not in SOURCES:
         return form, 'Выберите, откуда вы о нас узнали'
+    if form['source'] == 'Другое':
+        if not form['sourceOther']:
+            return form, 'Укажите, откуда вы о нас узнали'
+        form['source'] = 'Другое: ' + form['sourceOther'][:200]
     if form['tariff'] not in TARIFFS[kind]:
         return form, 'Выберите тариф'
     if kind == 'half' and form['halfGroup'] not in HALF_GROUPS:

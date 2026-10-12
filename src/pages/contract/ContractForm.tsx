@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -358,6 +359,19 @@ export default function ContractForm({ kind }: { kind: ContractKind }) {
           </SelectContent>
         </Select>
         {err("source") && <p className="text-sm text-destructive">{errors.source}</p>}
+        {f.source === "Другое" && (
+          <>
+            <Input
+              id="sourceOther"
+              className="bg-white"
+              placeholder="Напишите, откуда вы о нас узнали"
+              maxLength={200}
+              value={f.sourceOther}
+              onChange={(e) => set("sourceOther", e.target.value)}
+            />
+            {err("sourceOther") && <p className="text-sm text-destructive">{errors.sourceOther}</p>}
+          </>
+        )}
       </section>
 
       <section className="space-y-3">

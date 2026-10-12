@@ -3,7 +3,7 @@ import { SHIFTS } from "./shifts";
 
 export type Tariff = "basic" | "special" | "morning" | "day" | "half" | "club";
 
-export const SOURCES = ["Рекомендация", "Заявка с сайта", "реклама в Яндекс", "реклама ВКонтакте", "шли мимо и решили зайти"] as const;
+export const SOURCES = ["Рекомендация", "Заявка с сайта", "реклама в Яндекс", "реклама ВКонтакте", "шли мимо и решили зайти", "Другое"] as const;
 
 export interface ContractForm {
   kind: ContractKind;
@@ -39,6 +39,7 @@ export interface ContractForm {
   parent2Work: string;
   hobbies: string;
   source: string;
+  sourceOther: string;
   isTest: boolean;
 }
 
@@ -76,6 +77,7 @@ export const EMPTY_FORM: ContractForm = {
   parent2Work: "",
   hobbies: "",
   source: "",
+  sourceOther: "",
   isTest: false,
 };
 
@@ -180,6 +182,7 @@ export function getErrors(f: ContractForm): Partial<Record<FieldKey, string>> {
     req("schoolClass");
   }
   if (!(SOURCES as readonly string[]).includes(f.source)) e.source = "Выберите вариант";
+  else if (f.source === "Другое" && !f.sourceOther.trim()) e.sourceOther = "Укажите свой вариант";
   if (!f.agreeContract) e.agreeContract = "Обязательно";
   if (!f.agreePersonal) e.agreePersonal = "Обязательно";
   return e;
