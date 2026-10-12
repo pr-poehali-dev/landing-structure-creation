@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import useNoIndex from "@/hooks/useNoIndex";
 import ContractForm from "./ContractForm";
 import TestBanner from "./TestBanner";
+import KindSwitcher from "./KindSwitcher";
 import OfferText from "./OfferText";
 import SignatureAgreement from "./SignatureAgreement";
 import { withTest } from "./formUtils";
@@ -29,6 +30,7 @@ export default function SignContract({ kind = "garden" }: { kind?: ContractKind 
       </div>
 
       <div className={filling ? "hidden" : "space-y-8"}>
+        <KindSwitcher current={kind} isTest={isTest} />
         <div className="flex flex-wrap items-center gap-4 rounded-lg border bg-muted/40 p-4 text-sm">
           <a href={cfg.docxUrl} download className="font-medium text-primary underline">
             Скачать полный текст договора с Приложениями (DOCX)
