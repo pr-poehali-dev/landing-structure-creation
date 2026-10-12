@@ -69,7 +69,8 @@ const App = () => (
           <Route path="/dogovor/nepolny-den/tekst/" element={<ContractText kind="half" />} />
           <Route path="/dogovor/klub/tekst/" element={<ContractText kind="club" />} />
           <Route path="/oferta/" element={<Offer />} />
-          <Route path="/dogovor/tekst/" element={<ContractText />} />
+          <Route path="/dogovor/tekst/" element={<ContractChoice />} />
+          <Route path="/dogovor/polny-den/tekst/" element={<ContractText />} />
           <Route path="/internal/contracts/" element={<ContractsAdmin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

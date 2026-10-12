@@ -31,7 +31,7 @@ export const KINDS: Record<ContractKind, KindConfig> = {
   garden: {
     kind: "garden",
     path: "/dogovor/polny-den/",
-    textPath: "/dogovor/tekst/",
+    textPath: "/dogovor/polny-den/tekst/",
     short: "Полный день пребывания",
     heading: "Договор об оказании услуг по присмотру и уходу за детьми",
     blocks: CONTRACT_BLOCKS,
