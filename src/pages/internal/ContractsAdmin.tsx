@@ -20,10 +20,15 @@ interface Row {
   kind?: string;
   source?: string;
   is_test?: boolean;
+  offer_tariff?: string;
+  offer_price?: number | null;
 }
 
 const TARIFFS = TARIFF_LABELS;
 const kindName = (k?: string) => KIND_LABELS[k ?? "garden"] ?? k ?? "";
+
+const tariffText = (r: Row) =>
+  r.offer_tariff ? `${r.offer_tariff}${r.offer_price ? ` — ${r.offer_price.toLocaleString("ru-RU")} руб./мес` : ""}` : TARIFFS[r.tariff] ?? r.tariff;
 
 const fmt = (s: string) => new Date(s).toLocaleString("ru-RU", { timeZone: "Europe/Moscow" });
 
@@ -79,7 +84,7 @@ export default function ContractsAdmin() {
         .map(
           (r) =>
             "<tr>" +
-            [r.is_test ? `${r.id} (ТЕСТ)` : r.id, fmt(r.signed_at), kindName(r.kind), r.full_name, r.email, TARIFFS[r.tariff] ?? r.tariff, r.source ?? "", r.status]
+            [r.is_test ? `${r.id} (ТЕСТ)` : r.id, fmt(r.signed_at), kindName(r.kind), r.full_name, r.email, (r.offer_tariff ? "Персональный: " : "") + tariffText(r), r.source ?? "", r.status]
               .map((v) => `<td style='${cell}'>${escapeHtml(String(v))}</td>`)
               .join("") +
             "</tr>"
@@ -138,7 +143,10 @@ export default function ContractsAdmin() {
                   <td className="p-3">{fmt(r.signed_at)}</td>
                   <td className="p-3">{kindName(r.kind)}</td>
                   <td className="p-3">{r.full_name}</td>
-                  <td className="p-3">{TARIFFS[r.tariff] ?? r.tariff}</td>
+                  <td className="p-3">
+                    {tariffText(r)}
+                    {r.offer_tariff && <span className="ml-2 rounded bg-blue-100 px-2 py-0.5 text-xs font-semibold text-blue-800">Персональный</span>}
+                  </td>
                   <td className="p-3">{r.source || "—"}</td>
                   <td className="p-3">{r.status}</td>
                 </tr>

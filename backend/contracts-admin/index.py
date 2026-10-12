@@ -74,10 +74,10 @@ def handler(event: dict, context) -> dict:
                 'tariff': row[4], 'ip': row[5], 'status': row[6], 'kind': row[8], 'form': form,
             })
         cur.execute(
-            f"SELECT id, signed_at, full_name, email, tariff, status, kind, (form_json::json)->>'source', (form_json::json)->>'isTest' FROM {S}.contracts ORDER BY id DESC LIMIT 500"
+            f"SELECT id, signed_at, full_name, email, tariff, status, kind, (form_json::json)->>'source', (form_json::json)->>'isTest', (form_json::json)->>'offerTariff', (form_json::json)->>'offerPrice' FROM {S}.contracts ORDER BY id DESC LIMIT 500"
         )
         items = [
-            {'id': r[0], 'signed_at': r[1], 'full_name': r[2], 'email': r[3], 'tariff': r[4], 'status': r[5], 'kind': r[6], 'source': r[7] or '', 'is_test': r[8] == 'true'}
+            {'id': r[0], 'signed_at': r[1], 'full_name': r[2], 'email': r[3], 'tariff': r[4], 'status': r[5], 'kind': r[6], 'source': r[7] or '', 'is_test': r[8] == 'true', 'offer_tariff': r[9] or '', 'offer_price': int(r[10]) if r[10] and r[10].isdigit() else None}
             for r in cur.fetchall()
         ]
         return reply(200, {'items': items})
