@@ -15,6 +15,7 @@ PROGRAM_ALIASES = {
 }
 PROGRAM_TITLES = {'garden': 'Садик', 'prod': 'ГПД'}
 STATUS_TITLES = {'active': 'Активно', 'used': 'Использовано', 'cancelled': 'Отменено'}
+MAX_COMMENT = 500
 MAX_PRICE = 1000000
 DEFAULT_LIMIT = 50
 MAX_LIMIT = 200
@@ -68,7 +69,9 @@ def create_offer(cur, body: dict) -> dict:
         return reply(400, {'error': 'Укажите программу: garden (садик) или prod (ГПД)'})
     child_name = str(body.get('child_name', '')).strip()[:200]
     tariff_name = str(body.get('tariff_name', '')).strip()[:200]
-    comment = str(body.get('comment', '') or '').strip()[:1000]
+    comment = str(body.get('comment', '') or '').replace('\r\n', '\n').replace('\r', '\n').strip()
+    if len(comment) > MAX_COMMENT:
+        return reply(400, {'error': f'Комментарий слишком длинный: максимум {MAX_COMMENT} символов'})
     if not child_name:
         return reply(400, {'error': 'Укажите ФИО ребёнка (child_name)'})
     if not tariff_name:

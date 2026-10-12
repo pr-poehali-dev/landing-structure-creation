@@ -9,7 +9,6 @@ import SignatureAgreement from "./SignatureAgreement";
 import { withTest } from "./formUtils";
 import { KINDS, type ContractKind } from "./kinds";
 import useOffer from "./useOffer";
-import OfferBanner from "./OfferBanner";
 import OfferInvalid from "./OfferInvalid";
 
 export default function SignContract({ kind: kindProp = "garden" }: { kind?: ContractKind }) {
@@ -48,7 +47,7 @@ export default function SignContract({ kind: kindProp = "garden" }: { kind?: Con
       </div>
 
       <div className={filling ? "hidden" : "space-y-8"}>
-        {offer ? <OfferBanner offer={offer} /> : <KindSwitcher current={kind} isTest={isTest} />}
+        {!offer && <KindSwitcher current={kind} isTest={isTest} />}
         <div className="flex flex-wrap items-center gap-4 rounded-lg border bg-muted/40 p-4 text-sm">
           <a href={cfg.docxUrl} download className="font-medium text-primary underline">
             Скачать полный текст договора с Приложениями (DOCX)
@@ -71,7 +70,6 @@ export default function SignContract({ kind: kindProp = "garden" }: { kind?: Con
         <Button variant="outline" onClick={() => go(false)}>
           Вернуться к прочтению договора
         </Button>
-        {offer && <OfferBanner offer={offer} />}
         <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
           <div className="space-y-4">
             <h2 className="text-2xl font-semibold">Анкета-заявление</h2>

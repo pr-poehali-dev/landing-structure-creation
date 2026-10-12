@@ -47,27 +47,18 @@ def items_html(items: list, tag: str = 'ol', fill=None) -> str:
     return out + f'</{tag}>'
 
 
-def price_text(value) -> str:
-    return f'{int(value):,}'.replace(',', '\u00a0')
-
-
-def offer_block_html(form: dict) -> str:
-    """Блок индивидуальных условий оплаты для договора по персональному предложению"""
-    if not form.get('offerCode'):
+def special_conditions_html(form: dict) -> str:
+    """Раздел «Особые условия» для договора по персональному предложению: только если заполнен комментарий"""
+    comment = str(form.get('offerComment') or '').replace('\r\n', '\n').replace('\r', '\n').strip()
+    if not form.get('offerCode') or not comment:
         return ''
-    name = esc(form.get('offerTariff', ''))
-    out = (
-        '<h2>Индивидуальные условия оплаты</h2>'
-        f'<p>Стороны согласовали индивидуальный тариф «{name}». '
-        f'Стоимость услуг по Договору составляет {price_text(form.get("offerPrice", 0))} руб. в месяц.</p>'
+    return (
+        '<h2>ОСОБЫЕ УСЛОВИЯ</h2>'
+        '<p>Особые условия, указанные в настоящем разделе, согласованы Сторонами индивидуально и имеют '
+        'преимущественную силу перед иными положениями настоящего Договора и Приложений к нему. '
+        'В случае расхождения между Особыми условиями и иными положениями Договора применяются Особые условия.</p>'
+        f'<p>{esc(comment).replace(chr(10), "<br>")}</p>'
     )
-    if form.get('offerComment'):
-        out += f'<p>{esc(form["offerComment"])}</p>'
-    out += (
-        '<p>Указанная стоимость применяется вместо стоимости стандартных тарифов, указанной в Приложениях к Договору. '
-        'Остальные условия Договора и Приложений остаются без изменений.</p>'
-    )
-    return out
 
 
 def passport_text(form: dict) -> str:
@@ -247,8 +238,8 @@ def contract_html(form: dict, number: int, date_str: str) -> str:
                 continue
         if kind == 'prod' and k == 'h2' and blk['t'].strip() == 'Анкета':
             break
-        if k == 'h2' and not offer_done:
-            out += offer_block_html(form)
+        if k == 'h2' and not offer_done and blk['t'].strip().lower().startswith('приложение'):
+            out += special_conditions_html(form)
             offer_done = True
         if k == 'h1':
             t = esc(blk['t']).replace('Б/Н', str(number))
@@ -282,7 +273,7 @@ def signature_mark_html(form: dict, date_str: str, time_str: str, ip: str) -> st
     kind = kind_or_default(form.get('kind'))
     tariff = TARIFFS.get(form.get('tariff'), form.get('tariff', ''))
     if form.get('tariff') == 'personal':
-        tariff = f'Персональный «{form.get("offerTariff", "")}»'
+        tariff = 'Индивидуальное предложение'
     photo = 'да' if form.get('agreePhoto') else 'нет'
     label = 'Группа' if kind == 'prod' else 'Тариф'
     extra = ''
@@ -298,11 +289,6 @@ def signature_mark_html(form: dict, date_str: str, time_str: str, ip: str) -> st
             f'<tr><td style="padding:2px 12px 2px 0;color:#666;">Смена:</td>'
             f'<td>№ {esc(form.get("shiftNumber", ""))}, {esc(form.get("shiftFrom", ""))} — {esc(form.get("shiftTo", ""))}</td></tr>'
             f'<tr><td style="padding:2px 12px 2px 0;color:#666;">Раннее посещение с 8:00:</td><td>{esc(early)}</td></tr>'
-        )
-    if form.get('offerCode'):
-        extra += (
-            f'<tr><td style="padding:2px 12px 2px 0;color:#666;">Индивидуальные условия:</td>'
-            f'<td>«{esc(form.get("offerTariff", ""))}», {price_text(form.get("offerPrice", 0))} руб./мес</td></tr>'
         )
     return (
         '<div style="margin-top:24px;padding:14px 16px;border:2px solid #2e7d32;border-radius:8px;background:#f1f8f1;">'

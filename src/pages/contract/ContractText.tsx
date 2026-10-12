@@ -6,7 +6,7 @@ import TestBanner from "./TestBanner";
 import { withTest } from "./formUtils";
 import { KINDS, type ContractKind } from "./kinds";
 import useOffer from "./useOffer";
-import OfferBanner from "./OfferBanner";
+import SpecialConditions from "./SpecialConditions";
 import OfferInvalid from "./OfferInvalid";
 
 const Runs = ({ r }: { r: Run[] }) => (
@@ -42,6 +42,7 @@ export default function ContractText({ kind: kindProp = "garden" }: { kind?: Con
   useNoIndex(`Текст договора с Приложениями — ${cfg.short}`);
   const isTest = useSearchParams()[0].get("test") === "1";
   let listStart = 1;
+  const firstAppendix = cfg.blocks.findIndex((x) => x.k === "h2" && x.t.trim().toLowerCase().startsWith("приложение"));
   if (offerState.status === "loading") {
     return <main className="mx-auto max-w-3xl px-4 py-16 text-center text-muted-foreground">Загружаем договор...</main>;
   }
@@ -51,7 +52,6 @@ export default function ContractText({ kind: kindProp = "garden" }: { kind?: Con
   return (
     <main className="mx-auto max-w-3xl space-y-4 px-4 py-10 text-base leading-relaxed">
       {isTest && <TestBanner />}
-      {offer && <OfferBanner offer={offer} />}
       <div className="flex flex-wrap items-center gap-4 rounded-lg border bg-muted/40 p-4 text-sm">
         <a href={cfg.docxUrl} download className="font-medium text-primary underline">
           Скачать договор (DOCX)
@@ -72,7 +72,16 @@ export default function ContractText({ kind: kindProp = "garden" }: { kind?: Con
         if (b.k === "h1") return <h1 key={i} className="pt-4 text-center text-2xl font-bold">{b.t}</h1>;
         if (b.k === "h2") {
           listStart = 1;
-          return <h2 key={i} className="border-b pt-6 pb-1 text-xl font-semibold">{b.t}</h2>;
+          const heading = <h2 key={i} className="border-b pt-6 pb-1 text-xl font-semibold">{b.t}</h2>;
+          if (i === firstAppendix) {
+            return (
+              <div key={i} className="space-y-4">
+                <SpecialConditions offer={offer} />
+                {heading}
+              </div>
+            );
+          }
+          return heading;
         }
         if (b.k === "p") return <p key={i}><Runs r={b.r} /></p>;
         if (b.k === "ol" || b.k === "ul") return <List key={i} items={b.items} start={listStart} bullet={b.k === "ul"} />;

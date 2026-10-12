@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import type { ContractForm } from "./formUtils";
 import type { PersonalOffer } from "./contractApi";
+import SpecialConditions from "./SpecialConditions";
 
 import { KINDS } from "./kinds";
 import { HALF_GROUPS } from "./shifts";
@@ -42,7 +43,6 @@ const Group = ({ title, children }: { title: string; children: React.ReactNode }
 const yesNo = (v: boolean) => (v ? "Да" : "Нет");
 
 export default function ContractPreview({ form: f, onBack, onConfirm, confirmEnabled, unavailable, error, offer }: Props) {
-  const rub = (n: number) => n.toLocaleString("ru-RU").replace(/\u00a0/g, " ");
   const tariff = f.tariff ? TARIFF_LABELS[f.tariff] : null;
   const cfg = KINDS[f.kind];
   return (
@@ -104,20 +104,14 @@ export default function ContractPreview({ form: f, onBack, onConfirm, confirmEna
       )}
 
       <Group title={`${cfg.tariffTitle} и согласия`}>
-        {offer ? (
-          <>
-            <Row label="Персональный тариф" value={`«${offer.tariff_name}»`} />
-            <Row label="Стоимость" value={`${rub(offer.price_month)} руб./мес`} />
-            {f.kind === "prod" && tariff && <Row label={cfg.tariffTitle} value={`${tariff.name} — ${tariff.price}`} />}
-          </>
-        ) : (
-          <Row label={cfg.tariffTitle} value={tariff ? `${tariff.name} — ${tariff.price}` : ""} />
-        )}
+        {!(offer && f.kind === "garden") && <Row label={cfg.tariffTitle} value={tariff ? `${tariff.name} — ${tariff.price}` : ""} />}
         <Row label="Откуда узнали о нас" value={f.source === "Другое" ? `Другое: ${f.sourceOther}` : f.source} />
         <Row label={`Условия Договора, ${cfg.summary}, оферта`} value={yesNo(f.agreeContract)} />
         <Row label="Обработка персональных данных" value={yesNo(f.agreePersonal)} />
         <Row label="Фото- и видеосъёмка" value={yesNo(f.agreePhoto)} />
       </Group>
+
+      <SpecialConditions offer={offer} />
 
       <div className="space-y-2">
         <div className="flex flex-col gap-3 sm:flex-row">
