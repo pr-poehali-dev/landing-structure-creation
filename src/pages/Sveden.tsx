@@ -1,3 +1,4 @@
+import { MTO_SECTIONS } from "@/data/mto";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { useSeo } from "@/lib/useSeo";
@@ -39,7 +40,7 @@ const SECTIONS = [
   { id: "document", title: "Документы" },
   { id: "education", title: "Образование" },
   { id: "employees", title: "Руководство. Педагогический состав" },
-  { id: "objects", title: "Материально-техническое обеспечение" },
+  { id: "objects", title: "Материально-техническое обеспечение и оснащённость образовательного процесса. Доступная среда" },
   { id: "paid_edu", title: "Платные образовательные услуги" },
 ];
 
@@ -124,6 +125,26 @@ export default function Sveden() {
                 Контактные данные руководства предназначены для связи по вопросам, связанным с образовательной деятельностью организации.
               </p>
               <p className="legal-p">Информация обновляется в случае изменений в составе руководства.</p>
+            </div>
+          )}
+          {sec.id === "objects" && (
+            <div className="space-y-3">
+              {MTO_SECTIONS.map((m) => (
+                <div key={m.title} className="space-y-2">
+                  <h3 className="text-lg font-semibold">{m.title}</h3>
+                  {m.blocks.map((b, i) =>
+                    b.t === "ul" ? (
+                      <ul key={i} className="list-disc pl-6 space-y-1">
+                        {b.items.map((it) => (
+                          <li key={it} className="legal-p">{it}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p key={i} className={b.t === "b" ? "legal-p font-medium" : "legal-p"}>{b.text}</p>
+                    )
+                  )}
+                </div>
+              ))}
             </div>
           )}
           {sec.id === "document" && <DocList docs={SVEDEN_DOCUMENTS} />}
