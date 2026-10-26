@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { useSeo } from "@/lib/useSeo";
-import { SVEDEN_DOCUMENTS } from "./svedenDocuments";
+import { SVEDEN_DOCUMENTS, SVEDEN_STRUCT_DOCUMENTS, type SvedenDoc } from "./svedenDocuments";
+
+const DocList = ({ docs }: { docs: SvedenDoc[] }) => (
+  <ul className="space-y-2">
+    {docs.map((d) => (
+      <li key={d.url}>
+        <a href={d.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-2 text-primary underline">
+          <Icon name="FileText" size={18} className="mt-0.5 shrink-0" />
+          <span>{d.title} (PDF)</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+);
 
 const SECTIONS = [
   { id: "common", title: "Основные сведения" },
@@ -42,20 +55,10 @@ export default function Sveden() {
               <p className="legal-p">Общее руководство осуществляет Савченко Ирина Игоревна</p>
               <p className="legal-p">Место нахождения: Республика Крым, город Керчь</p>
               <h3 className="text-lg font-semibold">Документы, регламентирующие управление образовательной организацией</h3>
+              <DocList docs={SVEDEN_STRUCT_DOCUMENTS} />
             </div>
           )}
-          {sec.id === "document" && (
-            <ul className="space-y-2">
-              {SVEDEN_DOCUMENTS.map((d) => (
-                <li key={d.url}>
-                  <a href={d.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-2 text-primary underline">
-                    <Icon name="FileText" size={18} className="mt-0.5 shrink-0" />
-                    <span>{d.title} (PDF)</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
+          {sec.id === "document" && <DocList docs={SVEDEN_DOCUMENTS} />}
         </section>
       ))}
     </div>
