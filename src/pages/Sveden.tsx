@@ -1,8 +1,37 @@
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { MTO_SECTIONS } from "@/data/mto";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { useSeo } from "@/lib/useSeo";
 import { SVEDEN_DOCUMENTS, SVEDEN_STRUCT_DOCUMENTS, SVEDEN_LANG_DOCUMENTS, SVEDEN_PAID_DOCUMENTS, type SvedenDoc } from "./svedenDocuments";
+
+const TEACHERS = [
+  {
+    name: "Левченко Наталья Петровна",
+    position: "Педагог-организатор",
+    education:
+      "Среднее профессиональное: «Воспитатель детей дошкольного возраста» (ЧПОУ Нижегородский гуманитарно-технический колледж). Профессиональная переподготовка: «Преподаватель английского языка в образовательных организациях в условиях реализации программ ФГОС» (НОНО «Профессии»)",
+    since: "с 03.08.2020",
+  },
+  {
+    name: "Горбанева Ирина Васильевна",
+    position: "Педагог",
+    education: "Высшее: Киевский государственный педагогический университет им. Драгоманова, специальность «Психолог»",
+    since: "с 01.02.2022",
+  },
+  {
+    name: "Капшик Светлана Владимировна",
+    position: "Педагог",
+    education: "Высшее: Глуховский национальный педагогический университет им. Александра Довженко, дошкольное образование",
+    since: "с 12.08.2025",
+  },
+  {
+    name: "Адильханова Изив Нурипашаевна",
+    position: "Педагог",
+    education: "Высшее: ДГПУ, «Учитель начальных классов»",
+    since: "с 01.10.2018",
+  },
+];
 
 const DocList = ({ docs }: { docs: SvedenDoc[] }) => (
   <ul className="space-y-2">
@@ -137,6 +166,29 @@ export default function Sveden() {
                 Контактные данные руководства предназначены для связи по вопросам, связанным с образовательной деятельностью организации.
               </p>
               <p className="legal-p">Информация обновляется в случае изменений в составе руководства.</p>
+              <h3 className="text-lg font-semibold">Педагогический состав</h3>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>ФИО</TableHead>
+                      <TableHead>Должность</TableHead>
+                      <TableHead>Уровень образования, специальность</TableHead>
+                      <TableHead>Работает в организации</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {TEACHERS.map((t) => (
+                      <TableRow key={t.name}>
+                        <TableCell>{t.name}</TableCell>
+                        <TableCell>{t.position}</TableCell>
+                        <TableCell>{t.education}</TableCell>
+                        <TableCell>{t.since}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             </div>
           )}
           {sec.id === "objects" && (
