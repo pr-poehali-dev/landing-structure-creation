@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { useSeo } from "@/lib/useSeo";
+import { SVEDEN_DOCUMENTS } from "./svedenDocuments";
 
 const SECTIONS = [
   { id: "common", title: "Основные сведения" },
@@ -30,6 +31,18 @@ export default function Sveden() {
       {SECTIONS.map((sec) => (
         <section key={sec.id} id={sec.id}>
           <h2 className="legal-h2">{sec.title}</h2>
+          {sec.id === "document" && (
+            <ul className="space-y-2">
+              {SVEDEN_DOCUMENTS.map((d) => (
+                <li key={d.url}>
+                  <a href={d.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-2 text-primary underline">
+                    <Icon name="FileText" size={18} className="mt-0.5 shrink-0" />
+                    <span>{d.title} (PDF)</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
       ))}
     </div>
