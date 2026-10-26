@@ -30,7 +30,7 @@ const COMMON_INFO: { label: string; lines: string[] }[] = [
 const PROGRAMS: { title: string; level: string; form: string; term: string; url: string }[] = [
   { title: "РОДИТЕЛЬСКАЯ ШКОЛА: РАННЕЕ РАЗВИТИЕ ДЕТЕЙ", level: "дополнительное образование детей и взрослых", form: "с применением электронного обучения, дистанционных образовательных технологий", term: "6 недель", url: "https://disk.yandex.ru/i/mLUQXAtMHhsEqQ" },
   { title: "«Гениальный ребенок»", level: "дополнительное образование детей и взрослых", form: "с применением электронного обучения, дистанционных образовательных технологий", term: "1 год", url: "https://disk.yandex.ru/d/4lV7J89w4WEEww" },
-  { title: "«Гениальный ребенок»", level: "", form: "очная форма", term: "1 год", url: "https://disk.yandex.ru/d/IHsXphCZm_V5PQ" },
+  { title: "«Гениальный ребенок»", level: "дополнительное образование детей и взрослых", form: "очная форма", term: "1 год", url: "https://disk.yandex.ru/d/IHsXphCZm_V5PQ" },
 ];
 
 const SECTIONS = [
