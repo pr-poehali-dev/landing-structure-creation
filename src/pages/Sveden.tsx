@@ -116,6 +116,9 @@ export default function Sveden() {
               <h3 className="text-lg font-semibold">Руководитель образовательной организации</h3>
               <p className="legal-p">ФИО: Савченко Ирина Игоревна</p>
               <p className="legal-p">Должность: Индивидуальный предприниматель</p>
+              <p className="legal-p">ИНН: 911116164829</p>
+              <p className="legal-p">Телефон: +7 (988) 152-16-98</p>
+              <p className="legal-p">Электронная почта: ribkadolli@mail.ru</p>
               <p className="legal-p">На данный момент филиалов образовательной организации нет.</p>
               <p className="legal-p">
                 Контактные данные руководства предназначены для связи по вопросам, связанным с образовательной деятельностью организации.
