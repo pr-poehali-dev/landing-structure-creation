@@ -31,6 +31,19 @@ export default function Sveden() {
       {SECTIONS.map((sec) => (
         <section key={sec.id} id={sec.id}>
           <h2 className="legal-h2">{sec.title}</h2>
+          {sec.id === "struct" && (
+            <div className="space-y-3">
+              <p className="legal-p">
+                ИП Савченко Ирина Игоревна осуществляет свою деятельность на основе единоначалия, без выделения отдельных структурных
+                подразделений. Управление образовательной организацией осуществляется в соответствии с Федеральным законом от 29 декабря
+                2012 г. № 273-ФЗ "Об образовании в Российской Федерации" и локальными нормативными актами.
+              </p>
+              <h3 className="text-lg font-semibold">Руководство образовательной организацией</h3>
+              <p className="legal-p">Общее руководство осуществляет Савченко Ирина Игоревна</p>
+              <p className="legal-p">Место нахождения: Республика Крым, город Керчь</p>
+              <h3 className="text-lg font-semibold">Документы, регламентирующие управление образовательной организацией</h3>
+            </div>
+          )}
           {sec.id === "document" && (
             <ul className="space-y-2">
               {SVEDEN_DOCUMENTS.map((d) => (
