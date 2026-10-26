@@ -49,6 +49,7 @@ const SECTIONS = [
   { id: "employees", title: "Руководство. Педагогический состав" },
   { id: "objects", title: "Материально-техническое обеспечение и оснащённость образовательного процесса. Доступная среда" },
   { id: "paid_edu", title: "Платные образовательные услуги" },
+  { id: "finance", title: "Финансово-хозяйственная деятельность" },
 ];
 
 export default function Sveden() {
@@ -172,6 +173,20 @@ export default function Sveden() {
               </ul>
               <h3 className="text-lg font-semibold">Документы для скачивания</h3>
               <DocList docs={SVEDEN_PAID_DOCUMENTS} />
+            </div>
+          )}
+          {sec.id === "finance" && (
+            <div className="space-y-3">
+              <p className="legal-p">
+                Финансово-хозяйственная деятельность образовательной организации осуществляется в соответствии с законодательством Российской Федерации, обеспечивая прозрачность и эффективность использования финансовых ресурсов.
+              </p>
+              <h3 className="text-lg font-semibold">1. Источники финансирования образовательной деятельности</h3>
+              <p className="legal-p">Финансирование образовательного процесса осуществляется за счет следующих источников:</p>
+              <ul className="list-disc pl-6 space-y-1">
+                <li className="legal-p">Доходы от оказания платных образовательных услуг (в соответствии с заключенными договорами);</li>
+                <li className="legal-p">Собственные средства организации;</li>
+                <li className="legal-p">Иные поступления, не запрещенные законодательством РФ.</li>
+              </ul>
             </div>
           )}
           {sec.id === "document" && <DocList docs={SVEDEN_DOCUMENTS} />}
