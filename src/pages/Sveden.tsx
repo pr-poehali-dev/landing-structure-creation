@@ -52,6 +52,7 @@ const SECTIONS = [
   { id: "finance", title: "Финансово-хозяйственная деятельность" },
   { id: "vacant", title: "Вакантные места для приема (перевода) обучающихся" },
   { id: "grants", title: "Стипендии и меры поддержки обучающихся" },
+  { id: "international", title: "Международное сотрудничество" },
 ];
 
 export default function Sveden() {
@@ -212,6 +213,14 @@ export default function Sveden() {
               <p className="legal-p">Льготы и иные формы социальной поддержки – отсутствуют.</p>
               <h3 className="text-lg font-semibold">3. Общежитие и интернат</h3>
               <p className="legal-p">Образовательная организация не предоставляет общежитие и интернат для проживания обучающихся.</p>
+            </div>
+          )}
+          {sec.id === "international" && (
+            <div className="space-y-3">
+              <p className="legal-p">
+                Информация о заключенных и планируемых к заключению договорах с иностранными и (или) международными организациями по вопросам образования и науки (при наличии) - не имеется.
+              </p>
+              <p className="legal-p">Информация о международной аккредитации образовательных программ (при наличии) - не имеется.</p>
             </div>
           )}
           {sec.id === "document" && <DocList docs={SVEDEN_DOCUMENTS} />}
