@@ -2,7 +2,7 @@ import { MTO_SECTIONS } from "@/data/mto";
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { useSeo } from "@/lib/useSeo";
-import { SVEDEN_DOCUMENTS, SVEDEN_STRUCT_DOCUMENTS, SVEDEN_LANG_DOCUMENTS, type SvedenDoc } from "./svedenDocuments";
+import { SVEDEN_DOCUMENTS, SVEDEN_STRUCT_DOCUMENTS, SVEDEN_LANG_DOCUMENTS, SVEDEN_PAID_DOCUMENTS, type SvedenDoc } from "./svedenDocuments";
 
 const DocList = ({ docs }: { docs: SvedenDoc[] }) => (
   <ul className="space-y-2">
@@ -145,6 +145,19 @@ export default function Sveden() {
                   )}
                 </div>
               ))}
+            </div>
+          )}
+          {sec.id === "paid_edu" && (
+            <div className="space-y-3">
+              <p className="legal-p">
+                Образовательная организация предоставляет платные образовательные услуги в строгом соответствии с действующим законодательством Российской Федерации.
+              </p>
+              <h3 className="text-lg font-semibold">1. Порядок предоставления платных образовательных услуг</h3>
+              <p className="legal-p">
+                Обучение осуществляется на основании договора между образовательной организацией и обучающимся (или его законным представителем). Все условия оказания услуг регулируются внутренними нормативными актами.
+              </p>
+              <h3 className="text-lg font-semibold">Документы для скачивания</h3>
+              <DocList docs={SVEDEN_PAID_DOCUMENTS} />
             </div>
           )}
           {sec.id === "document" && <DocList docs={SVEDEN_DOCUMENTS} />}

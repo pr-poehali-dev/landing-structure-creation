@@ -38,3 +38,9 @@ export const SVEDEN_DOCUMENTS: SvedenDoc[] = [
 export const SVEDEN_LANG_DOCUMENTS: SvedenDoc[] = [
   { title: "Положение о языке обучения", url: `${B}/e1536b2b-fb15-471e-a4e9-7f4672a31a07.pdf` },
 ];
+
+export const SVEDEN_PAID_DOCUMENTS: SvedenDoc[] = [
+  { title: "Положение о порядке предоставления платных образовательных услуг", url: `${B}/068bdece-2d8c-49fc-b925-451c0714bc0d.pdf` },
+  { title: "Положение об основаниях и порядке снижения стоимости платных образовательных услуг", url: `${B}/8b7ab7ec-5aa3-4f43-a909-5c4faf061263.pdf` },
+  { title: "Приказ об утверждении стоимости обучения по образовательной услуге в 2025/2026 учебном году", url: `${B}/bb6b41ab-f121-482c-b711-c26e210a2eef.pdf` },
+];
