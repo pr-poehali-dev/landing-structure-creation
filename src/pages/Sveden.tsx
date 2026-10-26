@@ -51,6 +51,7 @@ const SECTIONS = [
   { id: "paid_edu", title: "Платные образовательные услуги" },
   { id: "finance", title: "Финансово-хозяйственная деятельность" },
   { id: "vacant", title: "Вакантные места для приема (перевода) обучающихся" },
+  { id: "grants", title: "Стипендии и меры поддержки обучающихся" },
 ];
 
 export default function Sveden() {
@@ -200,6 +201,17 @@ export default function Sveden() {
               <p className="legal-p">
                 Актуальная информация о наличии вакантных мест будет обновляться по мере изменений в образовательных программах и набора обучающихся.
               </p>
+            </div>
+          )}
+          {sec.id === "grants" && (
+            <div className="space-y-3">
+              <p className="legal-p">В образовательной организации не предусмотрены стипендии и меры социальной поддержки обучающихся.</p>
+              <h3 className="text-lg font-semibold">1. Стипендии</h3>
+              <p className="legal-p">Стипендиальное обеспечение – не предусмотрено.</p>
+              <h3 className="text-lg font-semibold">2. Меры социальной поддержки</h3>
+              <p className="legal-p">Льготы и иные формы социальной поддержки – отсутствуют.</p>
+              <h3 className="text-lg font-semibold">3. Общежитие и интернат</h3>
+              <p className="legal-p">Образовательная организация не предоставляет общежитие и интернат для проживания обучающихся.</p>
             </div>
           )}
           {sec.id === "document" && <DocList docs={SVEDEN_DOCUMENTS} />}
