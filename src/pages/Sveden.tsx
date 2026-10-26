@@ -16,6 +16,17 @@ const DocList = ({ docs }: { docs: SvedenDoc[] }) => (
   </ul>
 );
 
+const COMMON_INFO: { label: string; lines: string[] }[] = [
+  { label: "Полное наименование", lines: ["ИНДИВИДУАЛЬНЫЙ ПРЕДПРИНИМАТЕЛЬ САВЧЕНКО ИРИНА ИГОРЕВНА"] },
+  { label: "Сокращенное наименование", lines: ["ИП САВЧЕНКО ИРИНА ИГОРЕВНА"] },
+  { label: "Дата регистрации", lines: ["17.09.2018"] },
+  { label: "Наименование представительств и филиалов образовательной организации", lines: ["Отсутствуют"] },
+  { label: "Место нахождения образовательной организации", lines: ["Республика Крым, город Керчь"] },
+  { label: "Режим и график работы", lines: ["понедельник - пятница с 08:00 — 17:00", "суббота, воскресенье - выходные"] },
+  { label: "Контакты", lines: ["Телефон: +7 (988) 152-16-98", "Электронная почта: ribkadolli@mail.ru"] },
+  { label: "Лицензия на осуществление образовательной деятельности", lines: ["№ Л035-01251-91/03250491 от 23.09.2025"] },
+];
+
 const SECTIONS = [
   { id: "common", title: "Основные сведения" },
   { id: "struct", title: "Структура и органы управления образовательной организацией" },
@@ -44,6 +55,18 @@ export default function Sveden() {
       {SECTIONS.map((sec) => (
         <section key={sec.id} id={sec.id}>
           <h2 className="legal-h2">{sec.title}</h2>
+          {sec.id === "common" && (
+            <div className="space-y-4">
+              {COMMON_INFO.map((item) => (
+                <div key={item.label}>
+                  <h3 className="text-lg font-semibold">{item.label}</h3>
+                  {item.lines.map((l) => (
+                    <p key={l} className="legal-p">{l}</p>
+                  ))}
+                </div>
+              ))}
+            </div>
+          )}
           {sec.id === "struct" && (
             <div className="space-y-3">
               <p className="legal-p">
