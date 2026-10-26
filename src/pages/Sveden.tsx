@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Icon from "@/components/ui/icon";
 import { useSeo } from "@/lib/useSeo";
-import { SVEDEN_DOCUMENTS, SVEDEN_STRUCT_DOCUMENTS, type SvedenDoc } from "./svedenDocuments";
+import { SVEDEN_DOCUMENTS, SVEDEN_STRUCT_DOCUMENTS, SVEDEN_LANG_DOCUMENTS, type SvedenDoc } from "./svedenDocuments";
 
 const DocList = ({ docs }: { docs: SvedenDoc[] }) => (
   <ul className="space-y-2">
@@ -25,6 +25,12 @@ const COMMON_INFO: { label: string; lines: string[] }[] = [
   { label: "Режим и график работы", lines: ["понедельник - пятница с 08:00 — 17:00", "суббота, воскресенье - выходные"] },
   { label: "Контакты", lines: ["Телефон: +7 (988) 152-16-98", "Электронная почта: ribkadolli@mail.ru"] },
   { label: "Лицензия на осуществление образовательной деятельности", lines: ["№ Л035-01251-91/03250491 от 23.09.2025"] },
+];
+
+const PROGRAMS: { title: string; level: string; form: string; term: string; url: string }[] = [
+  { title: "РОДИТЕЛЬСКАЯ ШКОЛА: РАННЕЕ РАЗВИТИЕ ДЕТЕЙ", level: "дополнительное образование детей и взрослых", form: "с применением электронного обучения, дистанционных образовательных технологий", term: "6 недель", url: "https://disk.yandex.ru/i/mLUQXAtMHhsEqQ" },
+  { title: "«Гениальный ребенок»", level: "дополнительное образование детей и взрослых", form: "с применением электронного обучения, дистанционных образовательных технологий", term: "1 год", url: "https://disk.yandex.ru/d/4lV7J89w4WEEww" },
+  { title: "«Гениальный ребенок»", level: "", form: "очная форма", term: "1 год", url: "https://disk.yandex.ru/d/IHsXphCZm_V5PQ" },
 ];
 
 const SECTIONS = [
@@ -79,6 +85,26 @@ export default function Sveden() {
               <p className="legal-p">Место нахождения: Республика Крым, город Керчь</p>
               <h3 className="text-lg font-semibold">Документы, регламентирующие управление образовательной организацией</h3>
               <DocList docs={SVEDEN_STRUCT_DOCUMENTS} />
+            </div>
+          )}
+          {sec.id === "education" && (
+            <div className="space-y-4">
+              <h3 className="text-lg font-semibold">Реализуемые образовательные программы</h3>
+              {PROGRAMS.map((p, i) => (
+                <div key={i} className="space-y-1">
+                  <p className="legal-p font-medium">{i + 1}. {p.title}</p>
+                  {p.level && <p className="legal-p">Уровень образования: {p.level}</p>}
+                  <p className="legal-p">Форма обучения: {p.form}</p>
+                  <p className="legal-p">Нормативный срок обучения: {p.term}</p>
+                  <a href={p.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary underline">
+                    <Icon name="ExternalLink" size={18} />
+                    <span>Программа</span>
+                  </a>
+                </div>
+              ))}
+              <h3 className="text-lg font-semibold">Язык образования</h3>
+              <p className="legal-p">Образовательная деятельность ведется на русском языке.</p>
+              <DocList docs={SVEDEN_LANG_DOCUMENTS} />
             </div>
           )}
           {sec.id === "document" && <DocList docs={SVEDEN_DOCUMENTS} />}

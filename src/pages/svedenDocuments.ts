@@ -34,3 +34,7 @@ export const SVEDEN_DOCUMENTS: SvedenDoc[] = [
   { title: "Положение об обработке персональных данных", url: `${B}/dd60c99c-6247-4da4-9890-fac8c3a89a6f.pdf` },
   { title: "Положение о порядке рассмотрения обращений граждан", url: `${B}/55d5903b-9d68-4ae9-a2d3-3a7cc676c3cb.pdf` },
 ];
+
+export const SVEDEN_LANG_DOCUMENTS: SvedenDoc[] = [
+  { title: "Положение о языке обучения", url: `${B}/e1536b2b-fb15-471e-a4e9-7f4672a31a07.pdf` },
+];
