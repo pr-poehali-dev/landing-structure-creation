@@ -107,6 +107,22 @@ export default function Sveden() {
               <DocList docs={SVEDEN_LANG_DOCUMENTS} />
             </div>
           )}
+          {sec.id === "employees" && (
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold">Руководство</h3>
+              <p className="legal-p">
+                Управление осуществляется на основании принципов единоначалия и в соответствии с действующим законодательством Российской Федерации.
+              </p>
+              <h3 className="text-lg font-semibold">Руководитель образовательной организации</h3>
+              <p className="legal-p">ФИО: Савченко Ирина Игоревна</p>
+              <p className="legal-p">Должность: Индивидуальный предприниматель</p>
+              <p className="legal-p">На данный момент филиалов образовательной организации нет.</p>
+              <p className="legal-p">
+                Контактные данные руководства предназначены для связи по вопросам, связанным с образовательной деятельностью организации.
+              </p>
+              <p className="legal-p">Информация обновляется в случае изменений в составе руководства.</p>
+            </div>
+          )}
           {sec.id === "document" && <DocList docs={SVEDEN_DOCUMENTS} />}
         </section>
       ))}
