@@ -11,24 +11,28 @@ const TEACHERS = [
     position: "Педагог-организатор",
     education:
       "Среднее профессиональное: «Воспитатель детей дошкольного возраста» (ЧПОУ Нижегородский гуманитарно-технический колледж). Профессиональная переподготовка: «Преподаватель английского языка в образовательных организациях в условиях реализации программ ФГОС» (НОНО «Профессии»)",
+    training: "Не проходилось",
     since: "с 03.08.2020",
   },
   {
     name: "Горбанева Ирина Васильевна",
-    position: "Педагог",
+    position: "Педагог-организатор",
     education: "Высшее: Киевский государственный педагогический университет им. Драгоманова, специальность «Психолог»",
+    training: "Не проходилось",
     since: "с 01.02.2022",
   },
   {
     name: "Капшик Светлана Владимировна",
-    position: "Педагог",
+    position: "Педагог-организатор",
     education: "Высшее: Глуховский национальный педагогический университет им. Александра Довженко, дошкольное образование",
+    training: "Не проходилось",
     since: "с 12.08.2025",
   },
   {
     name: "Адильханова Изив Нурипашаевна",
-    position: "Педагог",
+    position: "Педагог-организатор",
     education: "Высшее: ДГПУ, «Учитель начальных классов»",
+    training: "Не проходилось",
     since: "с 01.10.2018",
   },
 ];
@@ -174,6 +178,7 @@ export default function Sveden() {
                       <TableHead>ФИО</TableHead>
                       <TableHead>Должность</TableHead>
                       <TableHead>Уровень образования, специальность</TableHead>
+                      <TableHead>Повышение квалификации</TableHead>
                       <TableHead>Работает в организации</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -183,6 +188,7 @@ export default function Sveden() {
                         <TableCell>{t.name}</TableCell>
                         <TableCell>{t.position}</TableCell>
                         <TableCell>{t.education}</TableCell>
+                        <TableCell>{t.training}</TableCell>
                         <TableCell>{t.since}</TableCell>
                       </TableRow>
                     ))}
