@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Privacy from "./pages/Privacy";
+import Sveden from "./pages/Sveden";
 import Consent from "./pages/Consent";
 import PhotoPolicy from "./pages/PhotoPolicy";
 import Yasli from "./pages/Yasli";
@@ -44,6 +45,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/sveden" element={<Sveden />} />
           <Route path="/consent" element={<Consent />} />
           <Route path="/photo-policy" element={<PhotoPolicy />} />
           <Route path="/yasli/" element={<Yasli />} />
