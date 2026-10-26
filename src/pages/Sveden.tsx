@@ -8,6 +8,8 @@ import { SVEDEN_DOCUMENTS, SVEDEN_STRUCT_DOCUMENTS, SVEDEN_LANG_DOCUMENTS, SVEDE
 const TEACHERS = [
   {
     name: "Левченко Наталья Петровна",
+    totalExp: "—",
+    teachExp: "—",
     position: "Педагог-организатор",
     education:
       "Среднее профессиональное: «Воспитатель детей дошкольного возраста» (ЧПОУ Нижегородский гуманитарно-технический колледж). Профессиональная переподготовка: «Преподаватель английского языка в образовательных организациях в условиях реализации программ ФГОС» (НОНО «Профессии»)",
@@ -16,6 +18,8 @@ const TEACHERS = [
   },
   {
     name: "Горбанева Ирина Васильевна",
+    totalExp: "32 года 2 мес. (с 02.08.1994)",
+    teachExp: "—",
     position: "Педагог-организатор",
     education: "Высшее: Киевский государственный педагогический университет им. Драгоманова, специальность «Психолог»",
     training: "Не проходилось",
@@ -23,6 +27,8 @@ const TEACHERS = [
   },
   {
     name: "Капшик Светлана Владимировна",
+    totalExp: "—",
+    teachExp: "—",
     position: "Педагог-организатор",
     education: "Высшее: Глуховский национальный педагогический университет им. Александра Довженко, «Дошкольное образование. Воспитатель детей дошкольного возраста»",
     training: "Не проходилось",
@@ -30,6 +36,8 @@ const TEACHERS = [
   },
   {
     name: "Адильханова Изив Нурипашаевна",
+    totalExp: "8 лет",
+    teachExp: "4 года",
     position: "Педагог-организатор",
     education: "Высшее: ДГПУ, «Учитель начальных классов» по специальности «Педагогика и методика начального образования»",
     training: "Не проходилось",
@@ -179,6 +187,8 @@ export default function Sveden() {
                       <TableHead>Должность</TableHead>
                       <TableHead>Уровень образования, специальность</TableHead>
                       <TableHead>Повышение квалификации</TableHead>
+                      <TableHead>Общий стаж</TableHead>
+                      <TableHead>Педагогический стаж</TableHead>
                       <TableHead>Работает в организации</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -189,6 +199,8 @@ export default function Sveden() {
                         <TableCell>{t.position}</TableCell>
                         <TableCell>{t.education}</TableCell>
                         <TableCell>{t.training}</TableCell>
+                        <TableCell>{t.totalExp}</TableCell>
+                        <TableCell>{t.teachExp}</TableCell>
                         <TableCell>{t.since}</TableCell>
                       </TableRow>
                     ))}
