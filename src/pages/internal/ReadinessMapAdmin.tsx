@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "@/lib/router-compat";
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -50,7 +51,7 @@ const DEMO_DATA: ReadinessMapData = {
 // Непубличная страница: не в навигации, meta robots noindex (см. ReadinessMapAdminPage).
 // ?preview=empty или ?preview=demo в URL — быстрый просмотр бланка без клика (для QA/скриншотов).
 export default function ReadinessMapAdmin() {
-  const params = new URLSearchParams(window.location.search);
+  const [params] = useSearchParams();
   const previewParam = params.get("preview");
 
   const [data, setData] = useState<ReadinessMapData>(

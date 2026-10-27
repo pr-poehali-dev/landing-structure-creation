@@ -1,2 +1,0 @@
-UPDATE t_p54774028_landing_structure_cr.contracts SET id = 1 WHERE id = 4 AND NOT EXISTS (SELECT 1 FROM t_p54774028_landing_structure_cr.contracts WHERE id = 1);
-SELECT setval('t_p54774028_landing_structure_cr.contracts_id_seq', 1, true);

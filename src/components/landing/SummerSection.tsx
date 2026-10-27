@@ -69,7 +69,7 @@ function SummerModal({ open, onClose }: { open: boolean; onClose: () => void }) 
               <select className="modal-input modal-select" value={shift} onChange={e => setShift(e.target.value)} required>
                 <option value="">Выберите смену</option>
                 {SHIFTS.map(s => (
-                  <option key={s.id} value={String(s.id)}>{s.emoji} {s.label} ({s.dates})</option>
+                  <option key={s.id} value={String(s.id)}>{s.label} ({s.dates})</option>
                 ))}
               </select>
               <div className="summer-duration-group">

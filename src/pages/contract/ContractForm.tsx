@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "@/lib/router-compat";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -36,8 +36,10 @@ interface FormProps {
 
 export default function ContractForm({ kind, offer, offerCode }: FormProps) {
   const cfg = KINDS[kind];
+  const [params] = useSearchParams();
+  const isTest = params.get("test") === "1";
   const [f, setF] = useState<FormState>(() => {
-    const base = makeEmptyForm(kind);
+    const base = { ...makeEmptyForm(kind), isTest };
     if (!offer) return base;
     return { ...base, childName: offer.child_name, tariff: kind === "garden" ? "personal" : base.tariff };
   });
@@ -46,8 +48,6 @@ export default function ContractForm({ kind, offer, offerCode }: FormProps) {
   const [sendError, setSendError] = useState("");
   const [contractNumber, setContractNumber] = useState<number | undefined>();
   const [touched, setTouched] = useState<Partial<Record<FieldKey, boolean>>>({});
-  const [params] = useSearchParams();
-  const isTest = params.get("test") === "1";
   useEffect(() => {
     setF((p) => (p.isTest === isTest ? p : { ...p, isTest }));
   }, [isTest]);

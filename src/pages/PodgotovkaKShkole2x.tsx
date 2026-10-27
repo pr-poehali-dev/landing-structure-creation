@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import Icon from "@/components/ui/icon";
 import SiteHeader from "@/components/landing/SiteHeader";
 import { Modal } from "@/components/landing/HeroSection";
@@ -22,16 +22,6 @@ export default function PodgotovkaKShkole2x() {
     "Подготовка к школе 2 раза в неделю в Керчи — ДДЦ «Рыбка Долли» | Без полного дня в саду",
     "Занятия подготовки к школе для детей 5-7 лет в Керчи: чтение, письмо, математика. Только уроки 2 раза в неделю, без пребывания в детском саду. Запишитесь на пробное занятие!"
   );
-
-  useEffect(() => {
-    const link = document.createElement("link");
-    link.rel = "canonical";
-    link.href = "https://ribkadollilend.ru/podgotovka-k-shkole-2/";
-    document.head.appendChild(link);
-    return () => {
-      document.head.removeChild(link);
-    };
-  }, []);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalSource, setModalSource] = useState("podgotovka2x");

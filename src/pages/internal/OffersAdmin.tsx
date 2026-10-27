@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "@/lib/router-compat";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import useNoIndex from "@/hooks/useNoIndex";
@@ -37,7 +37,10 @@ const fmt = (s: string) => new Date(s).toLocaleString("ru-RU", { timeZone: "Euro
 
 export default function OffersAdmin() {
   useNoIndex("Персональные предложения — служебный раздел");
-  const [key, setKey] = useState(() => sessionStorage.getItem(KEY_STORAGE) ?? "");
+  const [key, setKey] = useState("");
+  useEffect(() => {
+    setKey(sessionStorage.getItem(KEY_STORAGE) ?? "");
+  }, []);
   const [rows, setRows] = useState<Offer[] | null>(null);
   const [filter, setFilter] = useState<(typeof FILTERS)[number]["value"]>("all");
   const [error, setError] = useState("");

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { KINDS, type ContractKind } from "./kinds";
 
 const REFS: Record<ContractKind, { sign: string; notify: string; personal: string }> = {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import Icon from "@/components/ui/icon";
 import SiteHeader from "@/components/landing/SiteHeader";
 import AgeTabs from "@/components/landing/AgeTabs";

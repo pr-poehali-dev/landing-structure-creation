@@ -1,1 +1,0 @@
-ALTER TABLE t_p54774028_landing_structure_cr.contracts ADD COLUMN IF NOT EXISTS kind TEXT NOT NULL DEFAULT 'garden';

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { KINDS, type ContractKind } from "./kinds";
 import { withTest } from "./formUtils";
 

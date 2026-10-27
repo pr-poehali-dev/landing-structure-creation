@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import useNoIndex from "@/hooks/useNoIndex";
 import { downloadWord, escapeHtml } from "./wordExport";
 import SourceStats from "./SourceStats";
@@ -35,7 +35,10 @@ const fmt = (s: string) => new Date(s).toLocaleString("ru-RU", { timeZone: "Euro
 
 export default function ContractsAdmin() {
   useNoIndex("Договоры — служебный раздел");
-  const [key, setKey] = useState(() => sessionStorage.getItem(KEY_STORAGE) ?? "");
+  const [key, setKey] = useState("");
+  useEffect(() => {
+    setKey(sessionStorage.getItem(KEY_STORAGE) ?? "");
+  }, []);
   const [rows, setRows] = useState<Row[] | null>(null);
   const [card, setCard] = useState<ContractDetails | null>(null);
   const [error, setError] = useState("");

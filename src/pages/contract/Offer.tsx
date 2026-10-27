@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "@/lib/router-compat";
 import { Button } from "@/components/ui/button";
 import useNoIndex from "@/hooks/useNoIndex";
 import OfferText from "./OfferText";

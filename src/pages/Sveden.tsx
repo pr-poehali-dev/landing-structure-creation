@@ -1,6 +1,6 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { MTO_SECTIONS } from "@/data/mto";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import Icon from "@/components/ui/icon";
 import { useSeo } from "@/lib/useSeo";
 import { SVEDEN_DOCUMENTS, SVEDEN_STRUCT_DOCUMENTS, SVEDEN_LANG_DOCUMENTS, SVEDEN_PAID_DOCUMENTS, type SvedenDoc } from "./svedenDocuments";

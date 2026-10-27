@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation } from "@/lib/router-compat";
 import ExitIntentPopup from "@/components/landing/ExitIntentPopup";
 import CookieBanner from "@/components/landing/CookieBanner";
 
