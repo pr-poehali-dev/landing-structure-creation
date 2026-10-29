@@ -102,6 +102,9 @@ export default function ContractsAdmin() {
 
   return (
     <main className="mx-auto max-w-5xl space-y-6 px-4 py-10">
+      <Link to="/" className="inline-block text-sm text-primary underline">
+        ← На главную страницу сайта
+      </Link>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-2xl font-bold">Подписанные договоры</h1>
         <Link to="/internal/offers/" className="text-sm text-primary underline">
