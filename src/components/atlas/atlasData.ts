@@ -2,6 +2,8 @@ export const ATLAS_HERO_IMG = "https://cdn.poehali.dev/projects/806f3e0c-84d0-41
 export const ATLAS_PAGE_IMG = "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/bcde675a-126a-4250-bb2d-27b1f212cc41.png";
 
 export interface AtlasProgram {
+  image: string;
+  imageAlt: string;
   icon: string;
   age: string;
   title: string;
@@ -13,6 +15,8 @@ export interface AtlasProgram {
 
 export const ATLAS_PROGRAMS: AtlasProgram[] = [
   {
+    image: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/2d75fb35-cc3f-44e4-b290-ba4350651022.png",
+    imageAlt: "Занятие в яслях: воспитатель играет с малышами за круглым столом",
     icon: "Baby",
     age: "1,5 – 3 года",
     title: "Ясли",
@@ -21,6 +25,8 @@ export const ATLAS_PROGRAMS: AtlasProgram[] = [
     href: "/yasli",
   },
   {
+    image: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/240e100f-8fa5-4676-818c-6cc3ce05c25a.png",
+    imageAlt: "Педагог играет с детьми в старшей группе",
     icon: "Palette",
     age: "3 – 5 лет",
     title: "Старшая группа",
@@ -29,6 +35,8 @@ export const ATLAS_PROGRAMS: AtlasProgram[] = [
     href: "/podgotovka-k-shkole",
   },
   {
+    image: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/70b2d160-3418-4ac5-9028-fcdb83bdafff.png",
+    imageAlt: "Занятия по подготовке к школе: программы «Фундамент» и «Подготовка к школе»",
     icon: "BookOpen",
     age: "2 раза в неделю",
     title: "Подготовка к школе",
@@ -37,6 +45,8 @@ export const ATLAS_PROGRAMS: AtlasProgram[] = [
     href: "/podgotovka-k-shkole-2",
   },
   {
+    image: "https://cdn.poehali.dev/projects/806f3e0c-84d0-4138-96fe-1f0a9797bd1a/bucket/bc9fb8cf-6ca3-4539-961e-64b2656191fb.png",
+    imageAlt: "Школьники играют на английском на продленке",
     icon: "Languages",
     age: "Школьники",
     title: "Продленка и английский",

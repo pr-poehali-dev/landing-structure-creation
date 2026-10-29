@@ -91,7 +91,9 @@ export default function Atlas() {
               );
               const cls = "mt-auto inline-flex items-center gap-2 text-sm font-semibold text-[var(--teal-dark)] hover:underline";
               return (
-                <article key={p.title} className="flex flex-col rounded-3xl border border-orange-100 bg-[var(--cream)] p-6 transition-shadow hover:shadow-lg">
+                <article key={p.title} className="flex flex-col overflow-hidden rounded-3xl border border-orange-100 bg-[var(--cream)] transition-shadow hover:shadow-lg">
+                  <img src={p.image} alt={p.imageAlt} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                  <div className="flex flex-1 flex-col p-6">
                   <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--teal)] text-white">
                     <Icon name={p.icon} size={28} />
                   </span>
@@ -103,6 +105,7 @@ export default function Atlas() {
                   ) : (
                     <Link to={p.href} className={cls}>{btn}</Link>
                   )}
+                  </div>
                 </article>
               );
             })}
