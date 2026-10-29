@@ -143,7 +143,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
 
       <div className="container hero-v3-grid">
         <div className="hero-v3-content">
-          <h1 className="hero-v3-h1">Частный детский сад «Рыбка Долли» в Керчи</h1>
+          <h1 className="hero-v3-h1">Частный детский центр «Рыбка Долли» в Керчи</h1>
           <p className="hero-v3-sub">
             Ясли с 1,5 лет и подготовка к школе в мини-группах до 12 детей.
             Лицензия, своя площадка, 4-разовое питание.
@@ -179,7 +179,7 @@ export default function HeroSection({ onOpenModal }: HeroSectionProps) {
         </div>
 
         <div className="hero-v3-photo">
-          <img src={IMG_HERO_MAIN} alt="Дети в частном детском садике Рыбка Долли в Керчи" loading="eager" />
+          <img src={IMG_HERO_MAIN} alt="Дети в частном детском центре Рыбка Долли в Керчи" loading="eager" />
         </div>
       </div>
     </section>

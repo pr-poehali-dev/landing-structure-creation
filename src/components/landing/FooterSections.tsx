@@ -113,7 +113,7 @@ export default function FooterSections({
             )}
             <p className="final-sub">
               Не откладывайте — запишитесь на бесплатную экскурсию
-              и убедитесь сами, что это именно тот садик, который вам нужен.
+              и убедитесь сами, что это именно тот центр, который вам нужен.
             </p>
             <div className="final-actions">
               <button className="cta-btn cta-btn-primary cta-btn-lg" onClick={() => { ymGoal('click_final_cta'); onOpenModal('excursion'); }}>
@@ -143,7 +143,7 @@ export default function FooterSections({
               height="280"
               frameBorder="0"
               allowFullScreen
-              title="Детский сад Рыбка Долли на карте"
+              title="Детский центр Рыбка Долли на карте"
               style={{ borderRadius: "16px", display: "block" }}
             />
           </div>
@@ -156,7 +156,7 @@ export default function FooterSections({
           <div className="footer-inner">
             <div className="footer-brand">
               <div className="footer-logo">🌊 ДДЦ «Рыбка Долли»</div>
-              <p>Частный детский сад в Керчи</p>
+              <p>Частный детский центр в Керчи</p>
               <p>г. Керчь, ул. Циолковского, 12</p>
             </div>
             <div className="footer-links-col">

@@ -19,8 +19,8 @@ import {
 
 export default function PodgotovkaKShkole2x() {
   useSeo(
-    "Подготовка к школе 2 раза в неделю в Керчи — ДДЦ «Рыбка Долли» | Без полного дня в саду",
-    "Занятия подготовки к школе для детей 5-7 лет в Керчи: чтение, письмо, математика. Только уроки 2 раза в неделю, без пребывания в детском саду. Запишитесь на пробное занятие!"
+    "Подготовка к школе 2 раза в неделю в Керчи — ДДЦ «Рыбка Долли» | Без полного дня в центре",
+    "Занятия подготовки к школе для детей 5-7 лет в Керчи: чтение, письмо, математика. Только уроки 2 раза в неделю, без пребывания в детском центре. Запишитесь на пробное занятие!"
   );
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -69,7 +69,7 @@ export default function PodgotovkaKShkole2x() {
         <div className="container hero-v2-content">
           <h1 className="hero-v2-h1">Подготовка к школе — занятия 2 раза в неделю</h1>
           <p className="hero-v2-sub">
-            Чтение, письмо, математика для детей 5-7 лет. Без полного пребывания в саду — только уроки,
+            Чтение, письмо, математика для детей 5-7 лет. Без полного пребывания в центре — только уроки,
             как кружок или курсы, 60 минут дважды в неделю.
           </p>
 
@@ -109,11 +109,11 @@ export default function PodgotovkaKShkole2x() {
         <div className="container container-narrow">
           <div className="section-header" style={{ textAlign: "center" }}>
             <span className="section-tag">Формат занятий</span>
-            <h2 className="age-section-h2">Только уроки — без детского сада</h2>
+            <h2 className="age-section-h2">Только уроки — без детского центра</h2>
             <p className="age-lead">
               Это не группа полного дня: ребёнок приходит к нам исключительно на занятие — без завтрака, обеда,
               тихого часа и прогулок. Позанимались 60 минут — и домой. Подходит, если малыш уже ходит
-              в детский сад или школу и ему нужна именно точечная подготовка.
+              в детский центр или школу и ему нужна именно точечная подготовка.
             </p>
           </div>
 
@@ -212,14 +212,14 @@ export default function PodgotovkaKShkole2x() {
             <div className="age-point-card">
               <div className="age-point-icon"><Icon name="Clock" size={20} /></div>
               <p className="age-point-text">
-                <strong>Занятия 2 раза в неделю</strong> — только уроки, 60 минут, без пребывания в саду.
+                <strong>Занятия 2 раза в неделю</strong> — только уроки, 60 минут, без пребывания в центре.
                 Подходит, если ребёнок уже ходит в другой садик или школу.
               </p>
             </div>
             <div className="age-point-card">
               <div className="age-point-icon"><Icon name="Sun" size={20} /></div>
               <p className="age-point-text">
-                <strong>Старшая группа</strong> — полный день в саду: питание, прогулки, сон и занятия.{" "}
+                <strong>Старшая группа</strong> — полный день в центре: питание, прогулки, сон и занятия.{" "}
                 <Link to="/podgotovka-k-shkole/#5-7" className="fear-anchor-link" style={{ display: "inline-flex" }}>
                   Смотреть программу старшей группы
                 </Link>

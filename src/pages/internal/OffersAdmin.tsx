@@ -20,7 +20,7 @@ interface Offer {
   link: string;
 }
 
-const PROGRAMS = { garden: "Садик", prod: "ГПД" };
+const PROGRAMS = { garden: "Детский центр", prod: "ГПД" };
 const STATUSES = {
   active: { label: "Активно", cls: "bg-green-100 text-green-800" },
   used: { label: "Использовано", cls: "bg-blue-100 text-blue-800" },

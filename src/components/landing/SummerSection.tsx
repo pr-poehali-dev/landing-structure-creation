@@ -159,7 +159,7 @@ export default function SummerSection() {
                     border: '2.5px solid #FF6B35',
                   }} />
                   <div style={{ fontSize: 28, lineHeight: 1, marginBottom: 6 }}>☀️</div>
-                  <div style={{ fontSize: 16, fontWeight: 800, color: '#FF6B35', lineHeight: 1.2 }}>Садик работает</div>
+                  <div style={{ fontSize: 16, fontWeight: 800, color: '#FF6B35', lineHeight: 1.2 }}>Центр работает</div>
                   <div style={{ fontSize: 16, fontWeight: 800, color: '#FF6B35', lineHeight: 1.2, marginBottom: 6 }}>всё лето!</div>
                   <div style={{ width: '60%', height: 1.5, background: '#FFD0B0', margin: '6px auto' }} />
                   <div style={{ fontSize: 12, color: '#b07a3a', fontWeight: 600 }}>июнь — август</div>
@@ -187,7 +187,7 @@ export default function SummerSection() {
                 <div className="summer-card-desc">
                   <span className="summer-price-row"><b>1 неделя</b> — 7 000 ₽</span>
                   <span className="summer-price-row"><b>2 недели</b> — 13 000 ₽</span>
-                  <span className="summer-price-note">Обычный абонемент в садик — от 20 000 ₽/мес</span>
+                  <span className="summer-price-note">Обычный абонемент в центр — от 20 000 ₽/мес</span>
                 </div>
               </div>
               <div className="summer-card" style={{ background: "linear-gradient(145deg, rgba(30,136,229,0.55) 0%, rgba(100,181,246,0.45) 100%)", borderColor: "rgba(144,202,249,0.65)" }}>
@@ -230,7 +230,7 @@ export default function SummerSection() {
             {/* Пометка */}
             <div className="summer-notice">
               <Icon name="Info" size={16} />
-              <span>Летний клуб — временный формат только на лето. Постоянные группы садика работают <b>круглый год</b> по обычному расписанию.</span>
+              <span>Летний клуб — временный формат только на лето. Постоянные группы детских садов работают <b>круглый год</b> по обычному расписанию.</span>
             </div>
 
             <button

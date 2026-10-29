@@ -49,7 +49,7 @@ export default function Atlas() {
         <div className="container grid items-center gap-10 md:grid-cols-2 md:gap-14">
           <div>
             <span className="mb-3 block text-xs font-semibold uppercase tracking-wider text-[var(--teal)]">Прозрачность 24/7</span>
-            <h2 className={`${h2} mb-5`}>Больше, чем просто детский сад</h2>
+            <h2 className={`${h2} mb-5`}>Больше, чем просто детский центр</h2>
             <p className="mb-4 leading-relaxed text-[var(--text-muted)]">
               В обычных центрах вы узнаете о дне ребенка из короткого разговора у раздевалки: «Он хорошо покушал и поспал». В «Рыбке Долли» вы получаете прозрачность 24/7. Ежедневные фотоотчеты, обратная связь от воспитателя, ежемесячные подробные отчеты о бытовых навыках, навыках социализации и прочих, игровые задания и подарки для мам как благодарность за вашу вовлеченность.
             </p>
@@ -69,7 +69,7 @@ export default function Atlas() {
           </div>
           <img
             src={ATLAS_PAGE_IMG}
-            alt="Страница «Атласа достижений»: дни в саду, выполненные задания, жемчужины и навыки малыша"
+            alt="Страница «Атласа достижений»: дни в центре, выполненные задания, жемчужины и навыки малыша"
             className="w-full rounded-3xl shadow-2xl"
             loading="lazy"
           />
@@ -92,7 +92,7 @@ export default function Atlas() {
               const cls = "mt-auto inline-flex items-center gap-2 text-sm font-semibold text-[var(--teal-dark)] hover:underline";
               return (
                 <article key={p.title} className="flex flex-col overflow-hidden rounded-3xl border border-orange-100 bg-[var(--cream)] transition-shadow hover:shadow-lg">
-                  <img src={p.image} alt={p.imageAlt} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                  <img src={p.image} alt={p.imageAlt} loading="lazy" className="aspect-square w-full object-cover object-top" />
                   <div className="flex flex-1 flex-col p-6">
                   <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--teal)] text-white">
                     <Icon name={p.icon} size={28} />
