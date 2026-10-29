@@ -1,5 +1,4 @@
 import { useLocation } from "@/lib/router-compat";
-import ExitIntentPopup from "@/components/landing/ExitIntentPopup";
 import CookieBanner from "@/components/landing/CookieBanner";
 
 const SERVICE_PREFIXES = ["/dogovor", "/oferta", "/internal"];
@@ -9,7 +8,6 @@ export default function ServiceAwareWidgets() {
   if (SERVICE_PREFIXES.some((p) => pathname.startsWith(p))) return null;
   return (
     <>
-      <ExitIntentPopup />
       <CookieBanner />
     </>
   );

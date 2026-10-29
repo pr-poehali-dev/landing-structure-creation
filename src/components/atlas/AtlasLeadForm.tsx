@@ -6,12 +6,14 @@ import HoneypotField from "@/components/landing/HoneypotField";
 import { isPhoneComplete, normalizePhoneForCrm } from "@/lib/phone";
 import { submitForm } from "@/lib/formGuard";
 import { ymGoal } from "@/lib/ym";
+import { CHILD_AGE_OPTIONS } from "@/components/landing/modalContent";
 
 const SEND_LEAD_URL = "https://functions.poehali.dev/57047ae6-091f-4a98-8391-1bc5b14b157a";
 
 export default function AtlasLeadForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [age, setAge] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
@@ -27,7 +29,7 @@ export default function AtlasLeadForm() {
       {
         name,
         phone: normalizePhoneForCrm(phone),
-        age: "",
+        age,
         comment: "",
         source: "Лендинг «Атлас достижений» (Яндекс.Директ)",
         application_type: "tour",
@@ -69,6 +71,12 @@ export default function AtlasLeadForm() {
         )}
       </div>
       <PhoneField value={phone} onChange={setPhone} submitAttempted={attempted} />
+      <select className="modal-input modal-select" value={age} onChange={(e) => setAge(e.target.value)}>
+        <option value="">Возраст ребёнка</option>
+        {CHILD_AGE_OPTIONS.map((a) => (
+          <option key={a} value={a}>{a}</option>
+        ))}
+      </select>
       <ConsentCheckbox checked={agreed} onChange={setAgreed} />
       <button type="submit" className="cta-btn cta-btn-primary cta-btn-lg justify-center" disabled={loading || !agreed}>
         {loading ? "Отправляем..." : "Записаться на экскурсию"}
