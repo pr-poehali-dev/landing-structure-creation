@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import AdminKeyInput from "@/components/internal/AdminKeyInput";
 import { Link } from "@/lib/router-compat";
 import useNoIndex from "@/hooks/useNoIndex";
 import { downloadWord, escapeHtml } from "./wordExport";
@@ -118,7 +118,7 @@ export default function ContractsAdmin() {
           load();
         }}
       >
-        <Input type="password" value={key} onChange={(e) => setKey(e.target.value)} placeholder="Ключ доступа" />
+        <AdminKeyInput value={key} onChange={setKey} />
         <Button type="submit" disabled={!key || busy}>
           Войти
         </Button>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@/lib/router-compat";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import AdminKeyInput from "@/components/internal/AdminKeyInput";
 import useNoIndex from "@/hooks/useNoIndex";
 
 const ADMIN_URL = "https://functions.poehali.dev/68be8c9a-fc88-49dd-b91b-c6802b66ae84";
@@ -89,7 +89,7 @@ export default function OffersAdmin() {
           load();
         }}
       >
-        <Input type="password" value={key} onChange={(e) => setKey(e.target.value)} placeholder="Ключ доступа" />
+        <AdminKeyInput value={key} onChange={setKey} />
         <Button type="submit" disabled={!key || busy}>
           {rows ? "Обновить" : "Войти"}
         </Button>
