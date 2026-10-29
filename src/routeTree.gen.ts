@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AtlasRouteImport } from './routes/atlas'
 import { Route as ChecklistRouteImport } from './routes/checklist'
 import { Route as Checklist2RouteImport } from './routes/checklist-2'
 import { Route as Checklist3RouteImport } from './routes/checklist-3'
@@ -45,6 +46,11 @@ import { Route as DogovorProdlenkaTekstRouteImport } from './routes/dogovor.prod
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AtlasRoute = AtlasRouteImport.update({
+  id: '/atlas',
+  path: '/atlas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChecklistRoute = ChecklistRouteImport.update({
@@ -205,6 +211,7 @@ const DogovorProdlenkaTekstRoute = DogovorProdlenkaTekstRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/atlas': typeof AtlasRoute
   '/checklist': typeof ChecklistRoute
   '/checklist-2': typeof Checklist2Route
   '/checklist-3': typeof Checklist3Route
@@ -239,6 +246,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/atlas': typeof AtlasRoute
   '/checklist': typeof ChecklistRoute
   '/checklist-2': typeof Checklist2Route
   '/checklist-3': typeof Checklist3Route
@@ -274,6 +282,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/atlas': typeof AtlasRoute
   '/checklist': typeof ChecklistRoute
   '/checklist-2': typeof Checklist2Route
   '/checklist-3': typeof Checklist3Route
@@ -310,6 +319,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/atlas'
     | '/checklist'
     | '/checklist-2'
     | '/checklist-3'
@@ -344,6 +354,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/atlas'
     | '/checklist'
     | '/checklist-2'
     | '/checklist-3'
@@ -378,6 +389,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/atlas'
     | '/checklist'
     | '/checklist-2'
     | '/checklist-3'
@@ -413,6 +425,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AtlasRoute: typeof AtlasRoute
   ChecklistRoute: typeof ChecklistRoute
   Checklist2Route: typeof Checklist2Route
   Checklist3Route: typeof Checklist3Route
@@ -453,6 +466,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/atlas': {
+      id: '/atlas'
+      path: '/atlas'
+      fullPath: '/atlas'
+      preLoaderRoute: typeof AtlasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checklist': {
@@ -677,6 +697,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AtlasRoute: AtlasRoute,
   ChecklistRoute: ChecklistRoute,
   Checklist2Route: Checklist2Route,
   Checklist3Route: Checklist3Route,
