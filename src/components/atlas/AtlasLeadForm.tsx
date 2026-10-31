@@ -42,6 +42,7 @@ export default function AtlasLeadForm() {
     ymGoal("form_excursion_submit", { application_type: "tour", source: "atlas" });
     ymGoal("lead_tour", { application_type: "tour", source: "atlas" });
     ymGoal("atlas_lead", { application_type: "tour", source: "atlas" });
+    ymGoal("atlas_zayavka", { application_type: "tour", source: "atlas" });
     setDone(true);
   };
 
