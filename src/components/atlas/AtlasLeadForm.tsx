@@ -23,6 +23,7 @@ export default function AtlasLeadForm() {
     e.preventDefault();
     setAttempted(true);
     if (!name || !isPhoneComplete(phone) || !agreed) return;
+    ymGoal("atlas_click", { source: "atlas" });
     setLoading(true);
     const ok = await submitForm(
       SEND_LEAD_URL,
