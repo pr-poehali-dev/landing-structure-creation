@@ -33,6 +33,13 @@ export default function Atlas() {
               Записаться на экскурсию и увидеть Атлас вживую
               <Icon name="ArrowRight" size={18} />
             </button>
+            <a
+              href="/#prices"
+              onClick={() => ymGoal("click_atlas_prices")}
+              className="cta-btn cta-btn-outline-terracotta cta-btn-lg mt-3 w-full justify-center sm:ml-3 sm:mt-0 sm:w-auto"
+            >
+              Посмотреть цены
+            </a>
           </div>
           <div className="order-1 md:order-2">
             <img
